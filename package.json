@@ -1,0 +1,39 @@
+{
+  "engines": {
+    "node": "^10.4.0",
+    "yarn": "^1.7.0"
+  },
+  "dependencies": {
+    "history": "^4.7.2",
+    "rails-ujs": "^5.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-loadable": "^5.4.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react_ujs": "^2.4.4"
+  },
+  "scripts": {
+    "test": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --config=webpack/test.js; bundle exec opal-webpack-compile-server kill",
+    "watch": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --watch; bundle exec opal-webpack-compile-server kill",
+    "start": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && bundle exec webpack-serve --config ./webpack/development.js; bundle exec opal-webpack-compile-server kill",
+    "build": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --config=webpack/production.js; bundle exec opal-webpack-compile-server kill",
+    "cordova": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --config=webpack/cordova.js; bundle exec opal-webpack-compile-server kill"
+  },
+  "devDependencies": {
+    "chokidar": "^2.0.3",
+    "compression-webpack-plugin": "^1.1.11",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "json-stringify-safe": "^5.0.1",
+    "node-sass": "^4.9.0",
+    "opal-webpack-loader": "^0.2.0",
+    "opal-webpack-resolver-plugin": "^0.1.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.2",
+    "webpack-manifest-plugin": "^2.0.3",
+    "webpack-serve": "^1.0.2"
+  }
+}
