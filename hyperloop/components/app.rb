@@ -1,5 +1,5 @@
 class App < Hyperloop::Component
   render do
-    H1 { 'Yes this is working'}
+    H1 { 'Hyperstack.org website begins here'}
   end
 end
