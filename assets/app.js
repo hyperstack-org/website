@@ -7,8 +7,20 @@ import ReactDOM from 'react-dom';
 import * as History from 'history';
 import * as ReactRouter from 'react-router';
 import * as ReactRouterDOM from 'react-router-dom';
-
 import * as ReactRailsUJS from 'react_ujs';
+
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemTitle,
+    AccordionItemBody,
+} from 'react-accessible-accordion';
+global.Accordion = Accordion;
+global.AccordionItem = AccordionItem;
+global.AccordionItemTitle = AccordionItemTitle;
+global.AccordionItemBody = AccordionItemBody;
+// Demo styles, see 'Styles' section below for some notes on use.
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 // for opal/hyperloop modules to find React and others they must explicitly be saved
 // to the global space, otherwise webpack will encapsulate them locally here
@@ -17,7 +29,6 @@ global.ReactDOM = ReactDOM;
 global.History = History;
 global.ReactRouter = ReactRouter;
 global.ReactRouterDOM = ReactRouterDOM;
-
 global.ReactRailsUJS = ReactRailsUJS;
 
 // for lazy loading
@@ -43,6 +54,7 @@ import init_app from '../hyperloop/hyperloop_webpack_loader.rb';
 init_app();
 // then it needs to be loaded, this will actually run the code and start the application
 Opal.require('../hyperloop/hyperloop_webpack_loader.rb');
+// Opal.require('hyperloop_webpack_loader');
 
 // this is required for hot reloading to work
 if (module.hot) {

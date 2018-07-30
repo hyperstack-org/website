@@ -137,7 +137,7 @@ module.exports = {
             // this configuration is for triggering a hot reload for views
             "listening": function (server) {
                 const socket = new WebSocket('ws://localhost:8081');
-                const watchPath = path.resolve(__dirname, '../views'); // adjust path here if needed
+                const watchPath = path.resolve(__dirname, '../public'); // adjust path here if needed
                 const options = {};
                 const watcher = chokidar.watch(watchPath, options);
 

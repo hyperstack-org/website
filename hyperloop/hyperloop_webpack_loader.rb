@@ -4,7 +4,6 @@ require 'browser/delay' # CLIENT ONLY
 require 'opal-autoloader'
 require 'hyper-store'
 require 'hyper-react'
-# require 'react/auto-import'
 
 # require_tree 'stores'
 # require_tree 'models'
