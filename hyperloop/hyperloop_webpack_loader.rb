@@ -5,8 +5,7 @@ require 'opal-autoloader'
 require 'hyper-store'
 require 'hyper-react'
 
-# require_tree 'stores'
-# require_tree 'models'
+require_tree 'stores'
 require_tree 'components'
 require_tree 'patches'
 

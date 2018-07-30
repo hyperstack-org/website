@@ -53,8 +53,8 @@ import init_app from '../hyperloop/hyperloop_webpack_loader.rb';
 // then it needs to initalized, this will register the available opal ruby modules
 init_app();
 // then it needs to be loaded, this will actually run the code and start the application
-Opal.require('../hyperloop/hyperloop_webpack_loader.rb');
-// Opal.require('hyperloop_webpack_loader');
+// Opal.require('../hyperloop/hyperloop_webpack_loader.rb');
+Opal.require('hyperloop_webpack_loader');
 
 // this is required for hot reloading to work
 if (module.hot) {
