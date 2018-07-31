@@ -1,11 +1,17 @@
+class Semantic < React::NativeLibrary
+  imports 'Sem'
+end
+
 class App < Hyperloop::Component
   render(DIV) do
-    H1 { 'Hyperstack.org website'}
-    Sem.Button(primary: true) { "push me for a good time" }
+    Sem.Button(primary: true) { "this shows the wrror" }
     P { "Warning: Failed prop type: In component `App`
         Provided prop `className` not specified in spec
         in App (created by App)
         in App" }
     P { "Jan, I think this is coming from the way Sem is being imported? See patches/auto_import which I ntook from Pinta" }
+
+    Semantic.Button(primary: true) { "this works" }
+
   end
 end
