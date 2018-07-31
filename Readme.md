@@ -1,5 +1,7 @@
 # Hyperstack.org website
 
+This is a Hyperstack project based on Rack with a Webpack build process.
+
 ## Setup
 
 + `bundle`
@@ -10,8 +12,6 @@
 + `nf start`
 + `http://localhost:9292/`
 
-## Libraries used
+## JavaScript Libraries used in this project
 
-+ https://github.com/springload/react-accessible-accordion
-
-test
++ Semantic UI React `https://react.semantic-ui.com/`

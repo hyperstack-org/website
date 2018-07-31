@@ -9,19 +9,6 @@ import * as ReactRouter from 'react-router';
 import * as ReactRouterDOM from 'react-router-dom';
 import * as ReactRailsUJS from 'react_ujs';
 
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemTitle,
-    AccordionItemBody,
-} from 'react-accessible-accordion';
-global.Accordion = Accordion;
-global.AccordionItem = AccordionItem;
-global.AccordionItemTitle = AccordionItemTitle;
-global.AccordionItemBody = AccordionItemBody;
-// Demo styles, see 'Styles' section below for some notes on use.
-import 'react-accessible-accordion/dist/fancy-example.css';
-
 // for opal/hyperloop modules to find React and others they must explicitly be saved
 // to the global space, otherwise webpack will encapsulate them locally here
 global.React = React;
@@ -35,9 +22,9 @@ global.ReactRailsUJS = ReactRailsUJS;
 // import ReactLoadable from 'react-loadable';
 // global.ReactLoadable = ReactLoadable;
 
-// example for importing a component framework
-// import * as Sem from 'semantic-ui-react';
-// global.Sem = Sem;
+// importing component frameworks
+import * as Sem from 'semantic-ui-react';
+global.Sem = Sem;
 
 // sometime accessing the .default is necessary
 // import * as React_TimeAgo from 'react-timeago';
