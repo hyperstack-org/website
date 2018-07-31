@@ -3,6 +3,7 @@ class Semantic < React::NativeLibrary
 end
 
 class App < Hyperloop::Component
+  param class_name: 'test'
   render(DIV) do
     Sem.Button(primary: true) { "this shows the wrror" }
     P { "Warning: Failed prop type: In component `App`
