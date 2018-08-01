@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/janbiedermann/hyper-react
-  revision: 3b7361aa57bd48d4ebcc2e2970ea276a254f2586
+  revision: 6b68222866c40f5dbafc38802af7fa9337fecbe2
   branch: ulysses
   specs:
     hyper-react (1.0.0.lap28)

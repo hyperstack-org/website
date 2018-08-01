@@ -23,8 +23,8 @@ global.ReactRailsUJS = ReactRailsUJS;
 // global.ReactLoadable = ReactLoadable;
 
 // importing component frameworks
-import * as SemanticReact from 'semantic-ui-react';
-global.SemanticReact = SemanticReact;
+import * as Sem from 'semantic-ui-react';
+global.Sem = Sem;
 
 // sometime accessing the .default is necessary
 // import * as React_TimeAgo from 'react-timeago';
