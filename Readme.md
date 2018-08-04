@@ -1,16 +1,13 @@
-# Hyperloop Website V3
+# Hyperstack Website V3
 
 ## Work in progress!
 
 The new website will:
 
-+ be a 100% Hyperloop SPA (featuring Components, Stores, Routes and Operations)
-+ be built with Opal and Webpack (no Middleman)
-+ demonstrate the use of hyperloop-js as a simple alternative deployment method (hyperloop-js coming in via NPM)
-+ consist of just three files (index.html, app.js and app.css)
++ be a 100% Hyperstack SPA (featuring Components, Stores, Routes and Operations)
 + have super fast client-side search
 + will use HyperRouter for routing
-+ ultra-responsive UI based on SemanticUIReact (we are ditching bootstrap)
++ ultra-responsive UI based on SemanticUIReact
 + work online and offline
 + HTTP.get all DOCS pages directly from the gems with client-side markdown
 + have live editing with (hopefully) a Ruby linter and good error messages

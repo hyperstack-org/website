@@ -27,7 +27,7 @@ class HomePage < Hyperloop::Router::Component
             DIV(class: 'column') do
               DIV(class: 'introduction') do
                 H1(class: 'ui inverted header') do
-                  SPAN(class: 'library') { 'Hyperloop' }
+                  SPAN(class: 'library') { 'Hyperstack' }
                 end
                 DIV(class: 'ui hidden divider')
                 Link('/start', class: 'ui big basic inverted pink view-ui button getstartedbutton') do
