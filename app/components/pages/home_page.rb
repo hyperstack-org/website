@@ -30,10 +30,10 @@ class HomePage < Hyperloop::Router::Component
                   SPAN(class: 'library') { 'Build spectactular web applications with Ruby' }
                 end
 
-                DIV(class: 'ui hidden divider')
-                H2(class: 'ui inverted header') do
-                  SPAN(class: 'library') { 'Single-page apps without the pain of JavaScript' }
-                end
+                # DIV(class: 'ui hidden divider')
+                # H2(class: 'ui inverted header') do
+                #   SPAN(class: 'library') { 'Single-page apps without the pain of JavaScript' }
+                # end
 
                 DIV(class: 'ui hidden divider')
                 Link('/start', class: 'ui big basic inverted pink view-ui button getstartedbutton') do
@@ -55,8 +55,8 @@ class HomePage < Hyperloop::Router::Component
                 IMG(class: 'ui icon image', src: 'dist/images/icons/paint.png')
                 'Simplicity'
               end
-              P() { 'Build interactive Web applications quickly. Hyperloop encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperloop takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value.' }
-              A(href: '', class: 'ui secondary large button') { 'Simplicity' }
+              P() { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value.' }
+              # A(href: '', class: 'ui secondary large button') { 'Simplicity' }
             end
 
             DIV(class: 'column') do
@@ -64,8 +64,8 @@ class HomePage < Hyperloop::Router::Component
                 IMG(class: 'ui icon image', src: 'dist/images/icons/gear.png')
                 'Isomorphic Ruby'
               end
-              P() { 'One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. Hyperloop is fully integrated with Rails and also gives you unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperloop lets you build beautiful interactive user interfaces in Ruby.' }
-              A(href: '', class: 'ui pink large button hyperlooppinkbutton') { 'Isomorphic Ruby' }
+              P() { 'One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperstack lets you build beautiful interactive user interfaces in Ruby.' }
+              # A(href: '', class: 'ui pink large button hyperlooppinkbutton') { 'Isomorphic Ruby' }
             end
 
             DIV(class: 'column') do
@@ -74,7 +74,7 @@ class HomePage < Hyperloop::Router::Component
                 'Complete Architecture'
               end
               P() { 'Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state.' }
-              A(href: '', class: 'ui black large button') { 'Complete Architecture' }
+              # A(href: '', class: 'ui black large button') { 'Complete Architecture' }
             end
           end
         end
