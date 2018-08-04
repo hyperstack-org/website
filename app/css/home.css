@@ -551,6 +551,12 @@
   color: #e81176;
   font-weight: bold;
 }
+#example.index .masthead.segment h2 > .library {
+  display: block;
+  font-size: 1.75em;
+  color: #e81176;
+  font-weight: bold;
+}
 #example.index .masthead.segment h1 b {
   display: inline-block;
   font-weight: 300;
