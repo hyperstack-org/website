@@ -56,7 +56,6 @@ class HomePage < Hyperloop::Router::Component
                 'Simplicity'
               end
               P() { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value.' }
-              # A(href: '', class: 'ui secondary large button') { 'Simplicity' }
             end
 
             DIV(class: 'column') do
@@ -65,7 +64,6 @@ class HomePage < Hyperloop::Router::Component
                 'Isomorphic Ruby'
               end
               P() { 'One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperstack lets you build beautiful interactive user interfaces in Ruby.' }
-              # A(href: '', class: 'ui pink large button hyperlooppinkbutton') { 'Isomorphic Ruby' }
             end
 
             DIV(class: 'column') do
@@ -74,7 +72,6 @@ class HomePage < Hyperloop::Router::Component
                 'Complete Architecture'
               end
               P() { 'Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state.' }
-              # A(href: '', class: 'ui black large button') { 'Complete Architecture' }
             end
           end
         end

@@ -28,8 +28,8 @@ class AppMenu < Hyperloop::Router::Component
               " Menu\n        "
             end.on(:click) { SidebarStore.toggle }
 
-            A(href: '/docs', 'data-site': 'ui', class: 'additional item visible') { 'Docs' }
-            A(href: 'https://github.com/ruby-hyperloop', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
+            Link('/docs', class: 'additional item visible') { 'Docs' }
+            A(href: 'https://github.com/hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
             A(href: 'https://gitter.im/ruby-hyperloop/chat', 'data-site': 'ui', class: 'additional item visible') { 'Chat' }
 
             if (params.section != 'home')
