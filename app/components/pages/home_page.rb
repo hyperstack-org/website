@@ -27,7 +27,7 @@ class HomePage < Hyperloop::Router::Component
             DIV(class: 'column') do
               DIV(class: 'introduction') do
                 H1(class: 'ui inverted header') do
-                  SPAN(class: 'library') { 'Build spectactular web applications with Ruby' }
+                  SPAN(class: 'library') { 'Build spectactular web applications in Ruby' }
                 end
 
                 # DIV(class: 'ui hidden divider')
