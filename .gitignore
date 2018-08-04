@@ -1,3 +1,4 @@
 node_modules
 yarn.lock
 .owl_cache
+.DS_Store

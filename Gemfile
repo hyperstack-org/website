@@ -1,17 +1,27 @@
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
-
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
-
-gem 'slim'
-gem 'rack'
+gem 'opal_hot_reloader'
+gem 'foreman'
 gem 'rake'
-gem 'puma'
-# gem 'c_lexer'
-gem 'opal', github: 'janbiedermann/opal', branch: 'es6_import_export'
-gem 'opal-autoloader'
-gem 'opal-webpack-compile-server', require: false
-# gem 'hyper-router', github: 'janbiedermann/hyper-router', branch: 'ulysses'
 
-gem 'hyper-react', github: 'janbiedermann/hyper-react', branch: 'ulysses'
-gem 'hyper-store', github: 'janbiedermann/hyper-store', branch: 'ulysses'
+gem 'rack'
+gem 'opal-sprockets'
+
+# gem 'hyper-react', git: 'https://github.com/ruby-hyperloop/hyper-react.git', branch: 'config-patch'
+
+gem 'rake'
+gem 'opal'
+gem 'opal-browser'
+gem 'rails', '5.1.6'
+gem 'opal-rails'
+gem 'react-rails'
+gem 'hyper-router', git: 'https://github.com/janbiedermann/hyper-router.git', branch: 'edge'
+# gem 'hyper-router'
+#gem 'hyper-router'
+gem 'uglifier'
+
+gem 'opal-jquery', git: 'https://github.com/opal/opal-jquery.git', branch: 'master'
+
+gem 'hyperloop', '1.0.0.lap28'
+gem 'hyper-operation', '1.0.0.lap28'
+gem 'hyper-spec', '1.0.0.lap28'

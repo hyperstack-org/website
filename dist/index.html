@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Hyperloop-JS Demo</title>
+
+    <!-- React and JQuery -->
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- React Router (if you are using it) -->
+    <!-- <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script> -->
+
+    <!-- Opal (or bring your own) -->
+    <script src="http://cdn.opalrb.org/opal/current/opal.min.js"></script>
+
+    <!-- Opal and Hyperloop -->
+    <!-- <script src="opal.min.js"></script> -->
+    <script src="hyperloop.min.js"></script>
+    <script src="hyperloop-compiler.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script type="text/ruby">
+      class TopLevelComponent < Hyperloop::Component
+        render(DIV) do
+          div.container do
+            H1 { "Components, Stores and Operations" }
+            P { "A few examples using Hyperloop Components which wrap React, Stores to hold state which is shared between Components and an Operation for mutating the Store's state. Finally, a Clock which demonstrates local state and a callback which triggers every second." }
+            TypeAlong()
+            Buttons()
+            Clock()
+            StylishTable()
+          end
+        end
+      end
+
+      class Buttons < Hyperloop::Component
+        render(DIV) do
+          H2 { "Some buttons" }
+          BUTTON(class: 'btn btn-primary') { 'See the value' }.on(:click) { alert "MyStore value is '#{ MyStore.value }'" }
+          BUTTON(class: 'btn btn-link') { 'Clear' }.on(:click) { ClearOp.run }
+        end
+      end
+
+      class TypeAlong < Hyperloop::Component
+        render(DIV) do
+          H2 { "MyStore value is '#{ MyStore.value }'" }
+          INPUT(type: :text, value: MyStore.value ).on(:change) do |e|
+            MyStore.set_value e.target.value
+          end
+        end
+      end
+
+      class Clock < Hyperloop::Component
+        param format: '%a, %e %b %Y %H:%M:%S'
+        before_mount do
+          mutate.time Time.now.strftime(params.format)
+          every(1) { mutate.time Time.now.strftime(params.format) }
+        end
+        render(DIV) do
+          H2 { "And a clock" }
+          "The time is #{state.time}"
+        end
+      end
+
+      class MyStore < Hyperloop::Store
+        state :value, reader: true, scope: :class
+        def self.set_value value
+          mutate.value value
+        end
+        def self.clear
+          mutate.value ""
+        end
+      end
+
+      class ClearOp < Hyperloop::Operation
+        step { puts "about to clear everything" }
+        step { MyStore.clear }
+      end
+
+      class StylishTable < Hyperloop::Component
+      render(DIV) do
+      H2 { "A stylish table" }
+        table.table.table_bordered do
+          thead do
+            tr do
+              th { "First Name" }
+              th { "Last Name" }
+              th { "Username" }
+            end
+          end
+          tbody do
+            tr do
+              td { "Mark" }
+              td { "Otto" }
+              td.text_success { MyStore.value }
+            end
+          end
+        end
+      end
+    end
+
+    </script>
+
+  </head>
+
+  <body>
+    <div data-hyperloop-mount="TopLevelComponent"></div>
+  </body>
+</html>
