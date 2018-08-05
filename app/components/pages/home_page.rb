@@ -17,7 +17,6 @@ class HomePage < Hyperloop::Router::Component
         AppMenu(section: 'home')
         mast_head
         stack_overview
-        # stack_overview2
         three_columns_of_text
       end
       AppFooter()
@@ -26,7 +25,7 @@ class HomePage < Hyperloop::Router::Component
 
   def stack_overview
     BR()
-    Sem.Header(size: :huge, textAlign: :center) { "Full-stack modern web tooling with everything you need to build stunning, interactive single-page web applications quickly in a languale you love - Ruby." }
+    Sem.Header(size: :huge, textAlign: :center) { "Full-stack modern web tooling with everything you need to build stunning, interactive single-page web applications quickly in a language you love - Ruby." }
     BR()
     Sem.Grid(celled: true) do
       Sem.GridRow(columns: 1, class: 'no-padding') do
@@ -45,11 +44,8 @@ class HomePage < Hyperloop::Router::Component
       end
     end
     BR()
+    Sem.Header(size: :huge, textAlign: :center) { "Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end. We also include a hot-loading build environment!" }
     BR()
-  end
-
-  def stack_overview2
-    Sem.Image(src: '/dist/images/overview.png')
   end
 
   def mast_head
@@ -61,10 +57,10 @@ class HomePage < Hyperloop::Router::Component
               SPAN(class: 'library') { 'Build spectactular web applications in Ruby' }
             end
 
-            # DIV(class: 'ui hidden divider')
-            # H2(class: 'ui inverted header') do
-            #   SPAN(class: 'library') { 'Single-page apps without the pain of JavaScript' }
-            # end
+            DIV(class: 'ui hidden divider')
+            H2(class: 'ui header') do
+              Sem.Header(class: 'inverted') { 'Hyperstack is open-source and supported by a friendly community' }
+            end
 
             DIV(class: 'ui hidden divider')
             Link('/start', class: 'ui big basic inverted pink view-ui button getstartedbutton') do
