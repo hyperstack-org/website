@@ -27,6 +27,7 @@ class PageLayout < Hyperloop::Router::Component
   def main_content
     DIV(class: 'full height') do
       AppMenu(section: params.section, history: history, location: location)
+
       DIV(class: 'header segment') do
         DIV(class: 'container') do
           DIV(class: 'introductiontitle') do
@@ -35,6 +36,7 @@ class PageLayout < Hyperloop::Router::Component
           end
         end
       end
+
       DIV(class: 'main container') do
         params.sidebar_component.render
         params.body_component.render

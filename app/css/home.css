@@ -283,6 +283,10 @@
   transform: rotateX(0deg) rotateZ(0deg) rotateY(0deg) translateY(-6%) translateZ(0px);
 }
 
+.no-padding {
+    padding: 0 !important;
+  }
+
 @keyframes masthead {
  0% {
     background-position: 0% 0%;
