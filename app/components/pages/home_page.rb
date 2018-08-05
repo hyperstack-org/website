@@ -23,31 +23,6 @@ class HomePage < Hyperloop::Router::Component
     end
   end
 
-  def stack_overview
-    BR()
-    Sem.Header(size: :huge, textAlign: :center) { "Full-stack modern web tooling with everything you need to build stunning, interactive single-page web applications quickly in a language you love - Ruby." }
-    BR()
-    Sem.Grid(celled: true) do
-      Sem.GridRow(columns: 1, class: 'no-padding') do
-        Sem.GridColumn() { Sem.Image(src: '/dist/images/hyperstack_react.png', size: :huge, centered: true) }
-      end
-      Sem.GridRow(columns: 1, class: 'no-padding') do
-        Sem.GridColumn() { Sem.Image(src: '/dist/images/webpack_opal.png', size: :medium, centered: true) }
-      end
-      Sem.GridRow(columns: 6, class: 'no-padding') do
-        Sem.GridColumn() { }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/rack.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/rails.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/roda.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/sinatra.png', size: :medium, centered: true) }
-        Sem.GridColumn() { }
-      end
-    end
-    BR()
-    Sem.Header(size: :huge, textAlign: :center) { "Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end. We also include a hot-loading build environment!" }
-    BR()
-  end
-
   def mast_head
     DIV(class: 'masthead segment stopped') do
       DIV(class: 'ui page grid') do
@@ -72,6 +47,31 @@ class HomePage < Hyperloop::Router::Component
         end
       end
     end
+  end
+
+  def stack_overview
+    BR()
+    Sem.Header(size: :huge, textAlign: :center) { "Full-stack modern web tooling with everything you need to build stunning, interactive single-page web applications quickly in a language you love - Ruby." }
+    BR()
+    Sem.Grid(celled: true) do
+      Sem.GridRow(columns: 1, class: 'no-padding') do
+        Sem.GridColumn() { Sem.Image(src: '/dist/images/hyperstack_react.png', size: :huge, centered: true) }
+      end
+      Sem.GridRow(columns: 1, class: 'no-padding') do
+        Sem.GridColumn() { Sem.Image(src: '/dist/images/webpack_opal.png', size: :medium, centered: true) }
+      end
+      Sem.GridRow(columns: 6, class: 'no-padding') do
+        Sem.GridColumn() { }
+        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/rack.png', size: :medium, centered: true) }
+        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/rails.png', size: :medium, centered: true) }
+        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/roda.png', size: :medium, centered: true) }
+        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/dist/images/sinatra.png', size: :medium, centered: true) }
+        Sem.GridColumn() { }
+      end
+    end
+    BR()
+    Sem.Header(size: :huge, textAlign: :center) { "Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end. We also include a hot-loading build environment!" }
+    BR()
   end
 
   def three_columns_of_text
