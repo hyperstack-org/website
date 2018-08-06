@@ -10,13 +10,13 @@ class PageToc < Hyperloop::Component
   end
 
   render do
-    Sem.Rail(close: true, dividing: false, position: 'left') do
-      ReactYahooSticky(enable: true, top: 50) do
+    # Sem.Rail(close: true, dividing: false, position: 'left') do
+    #   ReactYahooSticky(enable: true, top: 50) do
         DIV(class: 'ui sticky visible transition') do
           accordion if SiteStore.sections[params.section].loaded?
         end
-      end
-    end
+      # end
+    # end
   end
 
   def display_title page, index
@@ -26,7 +26,8 @@ class PageToc < Hyperloop::Component
     end
   end
 
-  def navigate page, index
+  def navigate_to_page page, index
+    puts "navigate_to_page"
     newindex = (NavigationStore.accordionindex === index) ? -1 : index
     NavigationStore.mutate.accordionindex newindex
      Element['html, body'].animate({
@@ -34,15 +35,22 @@ class PageToc < Hyperloop::Component
      }, :slow)
     SiteStore.sections[params.section].set_current_page page
     NavigationStore.mutate.slug ""
-    params.history.push "/#{params.section}/#{page[:name]}"
+    params.history.push "/alfie/#{params.section}/#{page[:name]}"
     force_update!
+  end
+
+  def navigate_to_heading page, heading
+    puts "navigate_to_heading"
+    slug = "#{heading[:slug]}"
+    params.history.push "/alfie/#{params.section}/#{page[:name]}/#{slug}"
+    NavigationStore.mutate.slug slug
   end
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
       SiteStore.sections[params.section].pages.each_with_index do |page, index|
         display_title(page, index).on(:click) do
-          navigate(page, index)
+          navigate_to_page(page, index)
         end
 
         Sem.AccordionContent(className: 'menu', active: (NavigationStore.state.accordionindex === index)) do
@@ -50,9 +58,7 @@ class PageToc < Hyperloop::Component
             if (heading[:level] < 4)
               A(class: "item #{'subitem' if (heading[:level]==3)}") { heading[:text] }
                 .on(:click) do
-                  slug = "#{heading[:slug]}"
-                  params.history.push "/#{params.section}/#{page[:name]}/#{slug}"
-                  NavigationStore.mutate.slug slug
+                  navigate_to_heading page, heading
                 end
             end
           end

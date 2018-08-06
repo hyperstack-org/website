@@ -20,6 +20,7 @@ class PageBody < Hyperloop::Component
   end
 
   render do
+    puts "page body render #{params.section}"
     DIV(class: 'page-container') do
       if SiteStore.sections[params.section].loaded?
         set_pagebody_cssstyle
