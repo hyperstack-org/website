@@ -60,7 +60,11 @@ class AlfiePage < Hyperloop::Router::Component
     # H1 { "#{params.match.params[:section]}" }
     # H1 { "#{params.match.params[:page]}" }
     # H1 { "#{params.match.params[:slug]}" }
-    PageBody(section: params.match.params[:section]) if params.match.params[:section]
+    if params.match.params[:section]
+      PageBody(section: params.match.params[:section])
+    else
+      DocsOverviewPage()
+    end
     # this is where we shound navigate to the correct place
   end
 

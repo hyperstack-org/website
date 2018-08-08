@@ -11,11 +11,11 @@ class PageToc < Hyperloop::Component
 
   render do
     # Sem.Rail(close: true, dividing: false, position: 'left') do
-    #   ReactYahooSticky(enable: true, top: 50) do
+      ReactYahooSticky(enable: true, top: 50) do
         DIV(class: 'ui sticky visible transition') do
           accordion if SiteStore.sections[params.section].loaded?
         end
-      # end
+      end
     # end
   end
 
@@ -40,7 +40,7 @@ class PageToc < Hyperloop::Component
   end
 
   def navigate_to_heading page, heading
-    puts "navigate_to_heading"
+    # puts "navigate_to_heading"
     slug = "#{heading[:slug]}"
     params.history.push "/alfie/#{params.section}/#{page[:name]}/#{slug}"
     NavigationStore.mutate.slug slug
