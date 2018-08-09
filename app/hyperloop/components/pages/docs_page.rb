@@ -25,7 +25,7 @@ class DocsPage < Hyperloop::Router::Component
         DIV(class: 'container') do
           DIV(class: 'introductiontitle') do
             DIV(class: 'ui huge header') { "Hyperstack Docs" }
-            # P() { 'The Complete Isomorphic Ruby Framework' }
+            P() { 'A modern web stack for people who love Ruby' }
           end
         end
       end
