@@ -39,7 +39,9 @@ class DocsPage < Hyperloop::Router::Component
   def render_side_bar_with_all_sections
     Sem.Rail(close: true, dividing: false, position: 'left') do
       ReactYahooSticky(enable: true, top: 50) do
-        accordion
+        DIV(class: 'ui sticky visible transition') do
+          accordion
+        end
       end
     end
   end
