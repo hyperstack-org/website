@@ -23,13 +23,12 @@ class AppMenu < Hyperloop::Router::Component
           end
 
           DIV(class: 'ui large secondary network menu') do
-            A(class: 'view-ui item') do
-              I(class: 'sidebar icon')
-              " Menu\n        "
-            end.on(:click) { SidebarStore.toggle }
+            # A(class: 'view-ui item') do
+            #   I(class: 'sidebar icon')
+            #   " Menu\n        "
+            # end.on(:click) { SidebarStore.toggle }
 
             Link('/docs', class: 'additional item visible') { 'Docs' }
-            Link('/alfie', class: 'additional item visible') { 'Alfie' }
             A(href: 'https://github.com/hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
             A(href: 'https://gitter.im/ruby-hyperloop/chat', 'data-site': 'ui', class: 'additional item visible') { 'Chat' }
 

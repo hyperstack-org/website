@@ -35,14 +35,14 @@ class PageToc < Hyperloop::Component
      }, :slow)
     SiteStore.sections[params.section].set_current_page page
     NavigationStore.mutate.slug ""
-    params.history.push "/alfie/#{params.section}/#{page[:name]}"
+    params.history.push "/docs/#{params.section}/#{page[:name]}"
     force_update!
   end
 
   def navigate_to_heading page, heading
     # puts "navigate_to_heading"
     slug = "#{heading[:slug]}"
-    params.history.push "/alfie/#{params.section}/#{page[:name]}/#{slug}"
+    params.history.push "/docs/#{params.section}/#{page[:name]}/#{slug}"
     NavigationStore.mutate.slug slug
   end
 

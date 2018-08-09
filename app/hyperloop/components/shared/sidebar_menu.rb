@@ -1,33 +1,29 @@
 class SidebarMenu < Hyperloop::Router::Component
 
-  
+
   render do
 
     BurgerMenu.Push(
-      pagewrapid: 'page-wrap', 
-      outercontainerid: 'index', 
-      isOpen: (SidebarStore.visible ? true : false), 
-      customBurgerIcon: false, 
-      customCrossIcon: false, 
+      pagewrapid: 'page-wrap',
+      outercontainerid: 'index',
+      isOpen: (SidebarStore.visible ? true : false),
+      customBurgerIcon: false,
+      customCrossIcon: false,
       disableOverlayClick: true
       ) do
 
       Link('/', class: 'header') do
         IMG(src: 'dist/images/hyperloop-logo-title.png')
-      end  
+      end
 
-              
-      Link('/start') { 'GET STARTED' }
-      Link('/installation', class: 'item') { 'INSTALLATION' }
-      Link('/tutorials', class: 'item') { 'TUTORIALS' }
+
+      Link('/docs/start/components') { 'GET STARTED' }
       Link('/docs', class: 'item') { 'DOCUMENTATION' }
-      Link('/gems', class: 'item') { 'GEMS' }
-      Link('/tools', class: 'item') { 'TOOLS' }
 
     end
 
     # Sem.Sidebar(id: 'menu', animation: 'overlay', visible: (SidebarStore.visible ? true : false), className: 'menu vertical inverted hyperloopgreen') do
-    # #DIV(id: 'menu', class: 'ui push left sidebar menu vertical inverted hyperloopgreen') do 
+    # #DIV(id: 'menu', class: 'ui push left sidebar menu vertical inverted hyperloopgreen') do
 
 
     #   DIV(class: 'item') do
@@ -41,9 +37,9 @@ class SidebarMenu < Hyperloop::Router::Component
 
     #   DIV(class: 'item') do
     #     DIV(class: 'ui small inverted header') do
-         
+
     #       Link('/start', class: 'item') { 'GET STARTED' }
-          
+
     #     end
     #   end
 
@@ -79,9 +75,9 @@ class SidebarMenu < Hyperloop::Router::Component
 
 
     # end
-    
+
   end
-  
+
 
 
 

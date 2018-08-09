@@ -16,16 +16,10 @@ class AppRouter < Hyperloop::Router
     DIV {
       Switch do
         Route('/', exact: true, mounts: HomePage)
-        Route('/alfie', exact: true, mounts: AlfiePage)
-        Route('/alfie/:section', exact: true, mounts: AlfiePage)
-        Route('/alfie/:section/:page', exact: true, mounts: AlfiePage)
-        Route('/alfie/:section/:page/:slug', exact: false, mounts: AlfiePage)
-        # Route('/start', exact: false, mounts: StartPage)
-        # Route('/installation', exact: false, mounts: InstallationPage)
-        # Route('/tutorials', exact: false, mounts: TutorialsPage)
-        # Route('/gems', exact: false, mounts: GemsPage)
-        # Route('/tools', exact: false, mounts: ToolsPage)
-        Route('/docs', exact: false, mounts: DocsPage)
+        Route('/docs', exact: true, mounts: DocsPage)
+        Route('/docs/:section', exact: true, mounts: DocsPage)
+        Route('/docs/:section/:page', exact: true, mounts: DocsPage)
+        Route('/docs/:section/:page/:slug', exact: false, mounts: DocsPage)
         Route('/searchresult', exact: false, mounts: SearchResultPage)
       end
     }
