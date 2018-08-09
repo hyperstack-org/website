@@ -10,18 +10,18 @@ class PageToc < Hyperloop::Component
   end
 
   render do
-    # Sem.Rail(close: true, dividing: false, position: 'left') do
-      ReactYahooSticky(enable: true, top: 50) do
-        DIV(class: 'ui sticky visible transition') do
+    # # Sem.Rail(close: true, dividing: false, position: 'left') do
+    #   ReactYahooSticky(enable: true, top: 50) do
+    #     DIV(class: 'ui sticky visible transition') do
           accordion if SiteStore.sections[params.section] && SiteStore.sections[params.section].loaded?
           # puts params.section
-        end
-      end
+      #   end
+      # end
     # end
   end
 
   def display_title page, index
-    Sem.AccordionTitle(className: 'item', index: index, active: (NavigationStore.accordionindex===index)) do
+    Sem.AccordionTitle(className: 'item accordion-section-heading0', index: index, active: (NavigationStore.accordionindex===index)) do
       I(class: 'dropdown icon')
       B() { page[:headings][0][:text] }
     end
@@ -54,10 +54,10 @@ class PageToc < Hyperloop::Component
           navigate_to_page(page, index)
         end
 
-        Sem.AccordionContent(className: 'menu', active: (NavigationStore.state.accordionindex === index)) do
+        Sem.AccordionContent(className: '', active: (NavigationStore.state.accordionindex === index)) do
           page[:headings].drop(1).each do |heading|
             if (heading[:level] < 4)
-              A(class: "item #{'subitem' if (heading[:level]==3)}") { heading[:text] }
+              A(class: "item accordion-section-item #{'accordion-section-subitem' if (heading[:level]==3)}") { heading[:text] }
                 .on(:click) do
                   navigate_to_heading page, heading
                 end

@@ -11,9 +11,36 @@
   top: 0;
 }
 
-.main_accordion {
+.main-accordion-container {
+  border: 0px !important;
+}
+
+.main-accordion-title {
   background-color: #E5116B;
   color: white !important;
+  font-size: 1.4em !important;
+  padding: 1em !important;
+}
+
+.accordion-section-container {
+  padding-top: 0.2em !important;
+  padding-bottom: 2.5em !important;
+}
+
+.accordion-section-heading0 {
+  color: black !important;
+}
+
+.accordion-section-item {
+  color: #149c8e !important;
+}
+
+.accordion-section-subitem {
+  color: rgba(0,0,0,.5) !important;
+}
+
+.accordion-section-subitem:hover {
+  color: black !important;
 }
 
 #example.index .pusher > .page {

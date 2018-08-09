@@ -59,7 +59,7 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def accordion
-    Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
+    Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu main-accordion-container') do
       SiteStore.sections.each_with_index do |section, index|
 
         display_title(section, index).on(:click) do
@@ -67,7 +67,7 @@ class DocsPage < Hyperloop::Router::Component
           NavigationStore.mutate.main_accordion_index newindex
         end
 
-        Sem.AccordionContent(className: 'menu', active: (NavigationStore.state.main_accordion_index === index)) do
+        Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
           PageToc(history: params.history, location: params.location, section: section[0])
         end
       end
@@ -75,7 +75,7 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def display_title section, index
-    Sem.AccordionTitle(className: 'main_accordion', index: index, active: (NavigationStore.main_accordion_index === index)) do
+    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: (NavigationStore.main_accordion_index === index)) do
       I(class: 'dropdown icon')
       B() { section[1].display_name }
     end
