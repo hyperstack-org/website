@@ -13,7 +13,7 @@ class PageToc < Hyperloop::Component
     # Sem.Rail(close: true, dividing: false, position: 'left') do
       ReactYahooSticky(enable: true, top: 50) do
         DIV(class: 'ui sticky visible transition') do
-          accordian if SiteStore.sections[params.section] && SiteStore.sections[params.section].loaded?
+          accordion if SiteStore.sections[params.section] && SiteStore.sections[params.section].loaded?
           # puts params.section
         end
       end
@@ -47,7 +47,7 @@ class PageToc < Hyperloop::Component
     NavigationStore.mutate.slug slug
   end
 
-  def accordian
+  def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
       SiteStore.sections[params.section].pages.each_with_index do |page, index|
         display_title(page, index).on(:click) do

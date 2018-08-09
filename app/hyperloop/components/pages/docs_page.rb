@@ -73,7 +73,7 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def display_title section, index
-    Sem.AccordionTitle(className: 'main_accordian', index: index, active: (NavigationStore.main_accordion_index === index)) do
+    Sem.AccordionTitle(className: 'main_accordion', index: index, active: (NavigationStore.main_accordion_index === index)) do
       I(class: 'dropdown icon')
       B() { section[1].display_name }
     end
