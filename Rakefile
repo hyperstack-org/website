@@ -1,16 +1,6 @@
-require 'opal'
-require 'opal_hot_reloader' # this will move to hyperloop.js
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-task :build do
-  puts "Building app.js..."
-  Opal.append_path "app"
-  File.open("dist/app.js", "w+") do |out|
-   out << Opal::Builder.build("app").to_s
-  end
-  puts "all done"
-end
+require_relative 'config/application'
 
-task :server do
-  Rake::Task['build'].execute
-  sh 'foreman start'
-end
+Rails.application.load_tasks
