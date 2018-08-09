@@ -10,7 +10,7 @@ class SiteSearch < Hyperloop::Router::Component
   param onChange: nil
 
   param sectionoptions: [
-    { key: 'docs', text: 'In Documentation', value: 'docs' },
+    { key: 'docs', text: 'In Documentation', value: 'dsl_docs' },
     { key: 'start', text: 'In Get started', value: 'start' },
     { key: 'tutorials', text: 'In Tutorials', value: 'tutorials' }
   ]

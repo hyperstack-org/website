@@ -4,14 +4,23 @@ class SectionStore < Hyperloop::Store
 
   state loaded: false
 
-  def initialize pages, section_name
+  def initialize pages, section_name, display_name
 
     @section_name = section_name
+    @display_name = display_name
     @pages = pages
 
     load_and_convert_pages
     mutate.current_page @pages[0]
 
+  end
+
+  def section_name
+    @section_name
+  end
+
+  def display_name
+    @display_name
   end
 
   def pages

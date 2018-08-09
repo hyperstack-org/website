@@ -12,8 +12,8 @@
 }
 
 .main_accordian {
-  background-color: pink;
-
+  background-color: #E5116B;
+  color: white !important;
 }
 
 #example.index .pusher > .page {

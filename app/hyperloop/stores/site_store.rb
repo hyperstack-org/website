@@ -23,15 +23,16 @@ class SiteStore < Hyperloop::Store
     def init
       @section_stores = {}
       load_start_section
-      load_docs_section
       load_installation_section
-      load_gems_section
+      load_docs_section
+      # load_gems_section
       load_tools_section
       # load_tutorials_section
     end
 
     def load_start_section
       section_name = "start"
+      display_name = "Getting Started"
 
       pages = [
         { id: 0, name: 'components', repo: 'hyperloop-website',     file: 'pages/start/components.md',  allow_edit: true },
@@ -41,11 +42,12 @@ class SiteStore < Hyperloop::Store
         { id: 4, name: 'policies', repo: 'hyperloop-website',     file: 'pages/start/policies.md',  allow_edit: true },
         { id: 5, name: 'pradgmatic', repo: 'hyperloop-website',     file: 'pages/start/pradgmatic.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
+      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
 
     def load_docs_section
       section_name = "docs"
+      display_name = "Hyperstack DSL Docs"
 
       pages = [
         { id: 0, name: 'components', repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
@@ -56,46 +58,49 @@ class SiteStore < Hyperloop::Store
         { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
         { id: 6, name: 'dummy', repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
+      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
 
     def load_installation_section
       section_name = "installation"
+      display_name = "Installation & Setup"
 
       pages = [
         { id: 0, name: 'installation', repo: 'hyperloop-website', file: 'pages/installation/overview.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
+      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
 
-    def load_gems_section
-      section_name = "gems"
-
-      pages = [
-        { id: 0, name: 'gems', repo: 'hyperloop-website', file: 'pages/gems/gems.md',  allow_edit: true }
-      ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
-    end
+    # def load_gems_section
+    #   section_name = "gems"
+    #
+    #   pages = [
+    #     { id: 0, name: 'gems', repo: 'hyperloop-website', file: 'pages/gems/gems.md',  allow_edit: true }
+    #   ]
+    #   @section_stores[section_name] = SectionStore.new(pages, section_name)
+    # end
 
     def load_tools_section
       section_name = "tools"
+      display_name = "Tools"
 
       pages = [
         { id: 0, name: 'tools', repo: 'hyperloop-website', file: 'pages/tools/tools.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
+      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
 
-    def load_tutorials_section
-      section_name = "tutorials"
-
-      pages = [
-        { id: 0, name: 'helloworld', repo: 'hyperloop-website', file: 'pages/tutorial/helloworld.md',  allow_edit: true },
-        { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
-
-      ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name)
-    end
+    # def load_tutorials_section
+    #   section_name = "tutorials"
+    #   display_name = "Tutorials"
+    #
+    #   pages = [
+    #     { id: 0, name: 'helloworld', repo: 'hyperloop-website', file: 'pages/tutorial/helloworld.md',  allow_edit: true },
+    #     { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
+    #
+    #   ]
+    #   @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+    # end
   end
 
 end
