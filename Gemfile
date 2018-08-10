@@ -47,6 +47,7 @@ gem 'hyper-component', git: 'https://github.com/ruby-hyperloop/hyper-component',
 gem 'hyper-router', git: 'https://github.com/ruby-hyperloop/hyper-router', branch: 'edge'
 gem 'hyper-store', git: 'https://github.com/ruby-hyperloop/hyper-store', branch: 'edge'
 gem 'hyperloop-config', git: 'https://github.com/ruby-hyperloop/hyperloop-config', branch: 'edge'
+gem 'opal_hot_reloader', git: 'https://github.com/fkchang/opal-hot-reloader.git'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -64,7 +65,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'opal_hot_reloader', git: 'https://github.com/fkchang/opal-hot-reloader.git'
   gem 'foreman'
 end
 
