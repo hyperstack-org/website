@@ -17,3 +17,8 @@ This project is work in progress, not complete yet!
 
 + `foreman start`
 + `http://localhost:3000/`
+
+# Deploy
+
++ push to edge or master
++ `https://travis-ci.org/hyperstack-org/hyperstack-website/builds`

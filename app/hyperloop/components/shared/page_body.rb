@@ -65,7 +65,7 @@ class PageBody < Hyperloop::Component
       end
     end.as_node
 
-    Sem.Popup(trigger: button.to_n, content: 'This will submit a PR against edge. Your contribution is most welcome.')
+    Sem.Popup(trigger: button.to_n, content: 'Click to submit a PR against edge. Your contribution is most welcome.')
   end
 
 end

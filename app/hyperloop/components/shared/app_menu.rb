@@ -11,7 +11,7 @@ class AppMenu < Hyperloop::Router::Component
           DIV(class: 'ui logo shape') do
             DIV(class: 'sides') do
               DIV(class: 'active learn side') do
-                Link('/') { 
+                Link('/') {
                   IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
                 }
               end
@@ -54,7 +54,8 @@ class AppMenu < Hyperloop::Router::Component
             # }
             Sem.MenuItem {
               message = is_edge? ? 'edge of alpha' : 'alpha'
-              Sem.Label(color: 'red', horizontal: true, size: :huge) { message }
+              label = Sem.Label(color: 'red', horizontal: true, size: :huge) { message }.as_node
+              Sem.Popup(trigger: label.to_n, position: 'bottom right', content: 'This project is in alpha and the code and docs are work in progress.')
             }
           end
         end
