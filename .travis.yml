@@ -36,4 +36,4 @@ deploy:
     master: hyperstack-website
     edge: hyperstack-website-edge
   on:
-    rvm: 2.5.1
+    rvm: 2.4.4
