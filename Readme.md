@@ -1,7 +1,7 @@
 # Hyperstack Website
 
-[![Build Status](https://travis-ci.org/hyperstack-org/website.svg?branch=master)](https://travis-ci.org/hyperstack-org/website)
-[![Coverage Status](https://coveralls.io/repos/github/hyperstack-org/website/badge.svg?branch=master)](https://coveralls.io/github/hyperstack-org/website?branch=master)
+[![Build Status](https://travis-ci.org/hyperstack-org/hyperstack-website.svg?branch=master)](https://travis-ci.org/hyperstack-org/hyperstack-website)
+[![Coverage Status](https://coveralls.io/repos/github/hyperstack-org/hyperstack-website/badge.svg?branch=master)](https://coveralls.io/github/hyperstack-org/hyperstack-website?branch=master)
 
 This project is work in progress, not complete yet!
 
