@@ -50,11 +50,11 @@ class SiteStore < Hyperloop::Store
       display_name = "Hyperstack DSL Docs"
 
       pages = [
-        { id: 0, name: 'components', repo: 'hyperstack-client',     file: 'hyper-component.md',  allow_edit: true },
-        { id: 1, name: 'stores', repo: 'hyperstack-client',     file: 'hyper-store.md',  allow_edit: true },
-        { id: 2, name: 'models', repo: 'hyperstack-client',      file: 'hyper-model.md',  allow_edit: true },
-        { id: 3, name: 'router', repo: 'hyperstack-client',    file: 'hyper-router.md',  allow_edit: true },
-        { id: 4, name: 'operations', repo: 'hyperstack-client', file: 'hyper-operation.md',  allow_edit: true },
+        { id: 0, name: 'components', repo: 'hyperstack-client',     file: 'docs/hyper-component.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hyperstack-client',     file: 'docs/hyper-store.md',  allow_edit: true },
+        { id: 2, name: 'models', repo: 'hyperstack-client',      file: 'docs/hyper-model.md',  allow_edit: true },
+        { id: 3, name: 'router', repo: 'hyperstack-client',    file: 'docs/hyper-router.md',  allow_edit: true },
+        { id: 4, name: 'operations', repo: 'hyperstack-client', file: 'docs/hyper-operation.md',  allow_edit: true },
         # { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
         # { id: 6, name: 'dummy', repo: 'hyperstack-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]

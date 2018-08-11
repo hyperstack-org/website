@@ -48,11 +48,11 @@ class SectionStore < Hyperloop::Store
   end
 
   def raw_url page
-    "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
+    "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/master/#{page[:file]}"
   end
 
   def edit_url page
-    "https://github.com/ruby-hyperloop/#{page[:repo]}/edit/master/#{page[:file]}"
+    "https://github.com/hyperstack-org/#{page[:repo]}/edit/master/#{page[:file]}"
   end
 
   private
