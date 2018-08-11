@@ -23,4 +23,17 @@ before_script:
   - if [[ "$DRIVER" == "google-chrome" ]]; then bundle exec chromedriver-update; fi
   - if [[ "$DRIVER" == "google-chrome" ]]; then bundle exec chromedriver --version; fi
   - if [[ "$DRIVER" == "google-chrome" ]]; then google-chrome --version; fi
-script: bundle exec rails test
+script:
+  # Run rails tests
+  - bundle exec rails test
+  # Check if assets can be compiled for production
+  - bin/rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=secret
+deploy:
+  provider: heroku
+  api_key:
+    secure: 1sJyYHWk0YhRmw4kcWrvbDPK4VUwpANUknbFxkHIl6KUz7+MT4lI7eLevwwcUSn21WvK0nrLVvtLIAx9rUsys3Z6PGulRsqg+3/4ARLkRVXRPO+gDSXECLZD5SyaqssZStI6oHyOFE5SwZkpbATAV+Cg8K8U9RvQ7eDgZzMrsFp/NVG++9ka7gzB3bsdpEUNjuT5td4K/G30X0zFNda2HX/GV228B/26CDx3MZyzTI2iU2mq76qGjlUQTWsPqA6YIdEm2BQwlW0MLzT6cnToBsCmTpIPs4KX2o4/8dYn4y9cbty8gTnf3tgWeeUdRsOBU+KLIdLDigzIAeBqS0z9fAZ1piNOGTAaSV6MI3uYFJoDI+bXnB04bVeuplW35gcFsV4kdZ8tc2gqCufPXy/U+60DTBnXuNCSv4IV8+mp+j8waM3QP68iRZp7UrdAJyq17nNpFtYtlghBmwNFoBvUYw1i2bPkUiZU2See2D4vXF6f5ekOm4UsWFfhY3dWGJMTF/qsji1buJGQvUkJGK2ABxMZLQ6PGvVWfaVgVqT9U0wy7/8iZtYReckWppi+JGB4bAlwdsIPzCUbUKgSdyS2Kg5nNL1TRwZvEvFYhz1z8MFTxxA92csrKff0RMn7HuHuGz7j9klEAOEbdW3gEhj12SM5W4BA3zfQ7aMToyTUfAU=
+  app:
+    master: hyperstack-website
+    edge: hyperstack-website-edge
+  on:
+    rvm: 2.4.4
