@@ -4,25 +4,18 @@ class SiteSearch < Hyperloop::Router::Component
   param :section
 
   state results: []
-  state searchinputvalue: ""
-  state sectionselection: 'docs'
-  #state searchwordselection: ''
+  state search_input_value: ""
+  state section_selection: 'docs'
   param onChange: nil
 
-  param sectionoptions: [
+  param section_options: [
     { key: 'docs', text: 'In Documentation', value: 'dsl_docs' },
     { key: 'start', text: 'In Get started', value: 'start' },
     { key: 'tutorials', text: 'In Tutorials', value: 'tutorials' }
   ]
 
-  # param searchwordoptions: [
-  #   { key: 'exact', text: 'Exact word', value: 'exact' },
-  #   { key: 'partial', text: 'partial word', value: 'partial' }
-  # ]
-
   after_mount do
-    mutate.sectionselection params.section
-    #mutate.searchwordselection 'exact'
+    mutate.section_selection params.section
   end
 
   render do
@@ -32,45 +25,35 @@ class SiteSearch < Hyperloop::Router::Component
   def search_control
     Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
       INPUT(){}.on(:change) do |e|
-       mutate.searchinputvalue e.target.value
+       mutate.search_input_value e.target.value
       end
 
       Sem.Icon(name: 'search')
-      Sem.Select(compact: false, options: params.sectionoptions.to_n).on :change do |e|
+      Sem.Select(compact: false, options: params.section_options.to_n).on :change do |e|
 
-        mutate.sectionselection Hash.new(e.to_n)['value']
-        #params.onChange.call(state.sectionselection) if params.onChange.present?
-        # puts "SELECT #{state.sectionselection}"
-        # `alert(#{e})`
-
-        # test1 = e.target
-        # `test2=#{test1}`
-        # `alert(test2)`
-
-        #test =  state.sectionselection.map{|element| Hash.new(element)}
-        #puts "VALUE: #{test}"
+        mutate.section_selection Hash.new(e.to_n)['value']
       end
 
       Sem.Button() {'Search'}.on(:click) do
-        if (state.searchinputvalue.length>4)
-          if ( (SearchEngineStore.querystring != state.searchinputvalue) ||
-             (SearchEngineStore.previoussectionquery != params.section) )
+        if (state.search_input_value.length > 1)
+          if ( (SearchEngineStore.querystring != state.search_input_value) ||
+             (SearchEngineStore.previous_section_query != params.section) )
 
-                SearchEngineStore.mutate.querystring state.searchinputvalue
-                SearchEngineStore.mutate.previoussectionquery params.section
-                SearchEngineStore.mutate.allresults nil
+                SearchEngineStore.mutate.querystring state.search_input_value
+                SearchEngineStore.mutate.previous_section_query params.section
+                SearchEngineStore.mutate.all_results nil
 
             SearchEngineStore.search_withlunr(params.section)
           end
 
-          if (SearchEngineStore.allresults.empty?)
-            alert("Sorry, no result found for { #{state.searchinputvalue} }")
+          if (SearchEngineStore.all_results.empty?)
+            alert("Sorry, no result found for { #{state.search_input_value} }")
           else
             params.history.push "/searchresult"
           end
 
         else
-          alert("Search word too small, must be > 4")
+          alert("Search word too small, must be > 1")
         end
       end
     end
@@ -78,10 +61,8 @@ class SiteSearch < Hyperloop::Router::Component
 end
 
 
-
-
 ########################################
-##  CODE USED FOR Sem.Search
+##  CODE USED FOR old filer of TOC
 
 # def search_control_old
   #   Sem.Search(category: true, aligned: :left,

@@ -1,27 +1,21 @@
 class SearchEngineStore < Hyperloop::Store
 
-  
+
 
   class << self
 
     state querystring: "", scope: :shared, reader: true
-    state previoussectionquery: "", scope: :shared, reader: true
-    
-    state allresults: [], scope: :shared, reader: true
+    state previous_section_query: "", scope: :shared, reader: true
+    state all_results: [], scope: :shared, reader: true
     state nbresults: 0, scope: :shared, reader: true
-    
     state lunr_section_searchindex: Hash.new { |h, k| h[k] = '' }, scope: :shared, reader: true
 
-    
-    def build_lunr_section_searchindex section      
+    def build_lunr_section_searchindex section
         `lunrsectionindex=[]`
-        SiteStore.sections[section].pages.each do |page| 
+        SiteStore.sections[section].pages.each do |page|
             `lunrsectionindex = lunrsectionindex.concat(#{page[:lunrsearchindex]});`
         end
         SearchEngineStore.mutate.lunr_section_searchindex[section] = `lunrsectionindex`
-        
-        # test = SearchEngineStore.lunr_section_searchindex[section].map{|element| Hash.new(element)}
-        # puts test
     end
 
     def search_withlunr section
@@ -29,47 +23,47 @@ class SearchEngineStore < Hyperloop::Store
       if SearchEngineStore.lunr_section_searchindex[section].empty?
         build_lunr_section_searchindex(section)
       end
-      
+
       globalIndex = SearchEngineStore.lunr_section_searchindex[section]
       jssearchresults = `Searchquery(Lunrindex(#{globalIndex}), #{globalIndex}, #{state.querystring})`
       searchresults = jssearchresults.map{|element| Hash.new(element)}
 
-    
+
       nbresults = 0
       searchresults.each do |searchresult|
         nbresults += searchresult[:nbresults]
       end
       SearchEngineStore.mutate.nbresults nbresults
-      
+
       sortedresults =  searchresults.sort_by { |hsh| hsh[:ref] }
-      mutate.allresults sortedresults
+      mutate.all_results sortedresults
 
     end
 
 
-    
+
     # def search_content sectionname
 
 
     #   data = []
-      
+
     #   a = {}
     #   a[:name] = sectionname
-      
+
     #   a[:results] = []
     #   pages = SiteStore.sections[sectionname].pages
-      
+
     #     pages.each do |page|
     #       a[:results].concat( match_content(state.inputvalue, page) )
     #       #puts "PAGE: #{page[:friendly_doc_name]} #{a[:results]}"
     #     end
 
-        
+
     #     data << a unless a[:results].size == 0
-        
+
     #     a[:result_number] = a[:results].size.to_s
     #     #puts data[0]
-    #     mutate.allresults data
+    #     mutate.all_results data
     #     #puts data[0][:name]
 
     # end
@@ -84,9 +78,9 @@ class SearchEngineStore < Hyperloop::Store
     #   keyindex = 0
     #   search_regex = Regexp.new('(\W|^)'+value.downcase+'(\W|$)')
     #   content = page['body']
-      
+
     #   search_content_result = excerpt(content.downcase, search_regex, radius: 30)
-      
+
     #   begin
     #   #if (!search_content_result.nil?)
     #     #puts "search_content_result #{search_content_result[:result_item_text]}"
@@ -106,7 +100,7 @@ class SearchEngineStore < Hyperloop::Store
     #     result_item = {}
 
     #   end while !search_content_result.nil?
-      
+
     #   ret
     # end
 
@@ -152,7 +146,7 @@ class SearchEngineStore < Hyperloop::Store
     #     return unless matches = text.match(regex)
     #     phrase = matches[0]
 
-        
+
     #     unless separator.empty?
     #       text.split(separator).each do |value|
     #         if value.match(regex)

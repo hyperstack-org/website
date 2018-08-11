@@ -14,7 +14,7 @@ class SearchResultSidebar < Hyperloop::Component
       ReactYahooSticky(enable: true, top: 50) do
         DIV(class: 'ui sticky visible transition') do
           H1(){"#{SearchEngineStore.nbresults} results found."}
-          H2(){"in #{SearchEngineStore.allresults.length} chapters"}
+          H2(){"in #{SearchEngineStore.all_results.length} chapters"}
         end
       end
     end

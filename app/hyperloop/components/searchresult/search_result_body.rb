@@ -35,7 +35,7 @@ class SearchResultBody < Hyperloop::Router::Component
 
 
       
-      SearchEngineStore.allresults.each_with_index do |result, index|
+      SearchEngineStore.all_results.each_with_index do |result, index|
 
         resulthtmlparagraph = ""
         resultpagename = ""
@@ -44,7 +44,7 @@ class SearchResultBody < Hyperloop::Router::Component
         resultsectionname = ""
         resultpageid = ""
       
-        SiteStore.sections[SearchEngineStore.previoussectionquery].pages.each_with_index do |page, index| 
+        SiteStore.sections[SearchEngineStore.previous_section_query].pages.each_with_index do |page, index| 
           
           page[:headings].each do |heading|
             if (heading[:id] == result[:ref]) 

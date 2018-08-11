@@ -52,13 +52,13 @@ class SearchResultModal < Hyperloop::Component
           #     P() { SearchEngineStore.inputvalue }
           #     DIV() do 
                 
-          #       if (SearchEngineStore.allresults.empty?)
+          #       if (SearchEngineStore.all_results.empty?)
 
           #         H2() {"No Result"}
 
           #       else
 
-          #         SearchEngineStore.allresults.each_with_index do |result, index|
+          #         SearchEngineStore.all_results.each_with_index do |result, index|
                     
           #           H2() {"Result #{index}: #{result[:headingslug]}"}
           #           .on(:click) { gotoslug(result[:headingslug], result[:sectionname], result[:pageid]) }

@@ -42,7 +42,7 @@ class AppMenu < Hyperloop::Router::Component
               }
               Sem.MenuItem {
                 if (!(SearchEngineStore.querystring.empty?) && !(location.pathname == "/searchresult"))
-                  Sem.Button(color: 'pink') {"See results for: { #{SearchEngineStore.querystring} }"}.on(:click) do
+                  Sem.Button(color: 'red') {"See results for: { #{SearchEngineStore.querystring} }"}.on(:click) do
                     params.history.push "/searchresult"
                   end
                 end
