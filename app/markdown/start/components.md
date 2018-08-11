@@ -1,5 +1,7 @@
 # Components
 
+# Work in progress - ALPHA (code and docs)
+
 Hyperloop user interfaces are composed of React Components written in Ruby.
 
 Here is the basic structure of a Component:
