@@ -44,9 +44,11 @@ class AppMenu < Hyperloop::Router::Component
                 end
               }
             end
-
+            # Sem.MenuItem {
+            #   IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
+            # }
             Sem.MenuItem {
-              IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
+              Sem.Label(color: 'red', horizontal: true, size: :big) { "alpha" }
             }
           end
         end
