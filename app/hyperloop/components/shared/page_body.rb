@@ -49,11 +49,11 @@ class PageBody < Hyperloop::Component
   end
 
   def edit_button
-    DIV(class: 'edit-github-button') do
+    button = DIV(class: 'edit-github-button') do
       if state.needs_refresh
         Sem.Message(positive: true) {
-          Sem.MessageHeader { "Refresh for changes" }
-          P { "Note: There can be a delay with Github pages" }
+          Sem.MessageHeader { "Thank you! Your edits are on edge." }
+          P { "Github can take up to 5 mins to refresh, you will need to reload this page." }
         }
       else
         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
@@ -63,7 +63,9 @@ class PageBody < Hyperloop::Component
           `window.open(#{SiteStore.sections[params.section].current_page[:edit_url]}, "_blank");`
         end
       end
-    end
+    end.as_node
+
+    Sem.Popup(trigger: button.to_n, content: 'This will submit a PR against edge. Your contribution is most welcome.')
   end
 
 end

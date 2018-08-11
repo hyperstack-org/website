@@ -52,7 +52,7 @@ class SectionStore < Hyperloop::Store
   end
 
   def edit_url page
-    "https://github.com/hyperstack-org/#{page[:repo]}/edit/master/#{page[:file]}"
+    "https://github.com/hyperstack-org/#{page[:repo]}/edit/edge/#{page[:file]}"
   end
 
   private
