@@ -23,4 +23,8 @@ before_script:
   - if [[ "$DRIVER" == "google-chrome" ]]; then bundle exec chromedriver-update; fi
   - if [[ "$DRIVER" == "google-chrome" ]]; then bundle exec chromedriver --version; fi
   - if [[ "$DRIVER" == "google-chrome" ]]; then google-chrome --version; fi
-script: bundle exec rails test
+script:
+  # Run rails tests
+  - bundle exec rails test
+  # Check if assets can be compiled for production
+  - bin/rails assets:precompile RAILS_ENV=production SECRET_KEY_BASE=secret
