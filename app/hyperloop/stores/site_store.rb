@@ -35,12 +35,12 @@ class SiteStore < Hyperloop::Store
       display_name = "Getting Started"
 
       pages = [
-        { id: 0, name: 'components', repo: 'hyperstack-webiste',     file: 'app/markdown/start/components.md',  allow_edit: true },
-        { id: 1, name: 'stores', repo: 'hyperstack-webiste',     file: 'app/markdown/start/stores.md',  allow_edit: true },
-        { id: 2, name: 'models', repo: 'hyperstack-webiste',     file: 'app/markdown/start/models.md',  allow_edit: true },
-        { id: 3, name: 'operations', repo: 'hyperstack-webiste',     file: 'app/markdown/start/operations.md',  allow_edit: true },
-        { id: 4, name: 'policies', repo: 'hyperstack-webiste',     file: 'app/markdown/start/policies.md',  allow_edit: true },
-        { id: 5, name: 'pradgmatic', repo: 'hyperstack-webiste',     file: 'app/markdown/start/pradgmatic.md',  allow_edit: true }
+        { id: 0, name: 'components', repo: 'hyperstack-website',     file: 'app/markdown/start/components.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hyperstack-website',     file: 'app/markdown/start/stores.md',  allow_edit: true },
+        { id: 2, name: 'models', repo: 'hyperstack-website',     file: 'app/markdown/start/models.md',  allow_edit: true },
+        { id: 3, name: 'operations', repo: 'hyperstack-website',     file: 'app/markdown/start/operations.md',  allow_edit: true },
+        { id: 4, name: 'policies', repo: 'hyperstack-website',     file: 'app/markdown/start/policies.md',  allow_edit: true },
+        { id: 5, name: 'pradgmatic', repo: 'hyperstack-website',     file: 'app/markdown/start/pradgmatic.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
@@ -56,7 +56,7 @@ class SiteStore < Hyperloop::Store
         { id: 3, name: 'router', repo: 'hyperstack-client',    file: 'hyper-router.md',  allow_edit: true },
         { id: 4, name: 'operations', repo: 'hyperstack-client', file: 'hyper-operation.md',  allow_edit: true },
         # { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
-        # { id: 6, name: 'dummy', repo: 'hyperstack-webiste', file: 'dist/dummy_DOCS.md',  allow_edit: true }
+        # { id: 6, name: 'dummy', repo: 'hyperstack-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
@@ -66,7 +66,7 @@ class SiteStore < Hyperloop::Store
       display_name = "Installation & Setup"
 
       pages = [
-        { id: 0, name: 'installation', repo: 'hyperstack-webiste', file: 'app/markdown/installation/overview.md',  allow_edit: true }
+        { id: 0, name: 'installation', repo: 'hyperstack-website', file: 'app/markdown/installation/overview.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
@@ -75,7 +75,7 @@ class SiteStore < Hyperloop::Store
     #   section_name = "gems"
     #
     #   pages = [
-    #     { id: 0, name: 'gems', repo: 'hyperstack-webiste', file: 'app/markdown/gems/gems.md',  allow_edit: true }
+    #     { id: 0, name: 'gems', repo: 'hyperstack-website', file: 'app/markdown/gems/gems.md',  allow_edit: true }
     #   ]
     #   @section_stores[section_name] = SectionStore.new(pages, section_name)
     # end
@@ -85,7 +85,7 @@ class SiteStore < Hyperloop::Store
       display_name = "Tools"
 
       pages = [
-        { id: 0, name: 'tools', repo: 'hyperstack-webiste', file: 'app/markdown/tools/tools.md',  allow_edit: true }
+        { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/markdown/tools/tools.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
@@ -95,7 +95,7 @@ class SiteStore < Hyperloop::Store
     #   display_name = "Tutorials"
     #
     #   pages = [
-    #     { id: 0, name: 'helloworld', repo: 'hyperstack-webiste', file: 'app/markdown/tutorial/helloworld.md',  allow_edit: true },
+    #     { id: 0, name: 'helloworld', repo: 'hyperstack-website', file: 'app/markdown/tutorial/helloworld.md',  allow_edit: true },
     #     { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
     #
     #   ]
