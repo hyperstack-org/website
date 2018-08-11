@@ -11,7 +11,9 @@ class AppMenu < Hyperloop::Router::Component
           DIV(class: 'ui logo shape') do
             DIV(class: 'sides') do
               DIV(class: 'active learn side') do
-                IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
+                Link('/') { 
+                  IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
+                }
               end
             end
           end
