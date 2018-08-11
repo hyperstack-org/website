@@ -12,7 +12,7 @@ class HomePage < Hyperloop::Router::Component
 
   render do
     DIV(id: 'example', class: 'index') do
-      SidebarMenu()
+      # SidebarMenu()
       DIV(class: 'page_wrap full height') do
         AppMenu(section: 'home')
         mast_head

@@ -17,7 +17,7 @@ class PageLayout < Hyperloop::Router::Component
 
   render do
     DIV(id: 'example', class: 'index') do
-        SidebarMenu()
+        # SidebarMenu()
         DIV(class: 'page-wrap') do
           main_content
         end

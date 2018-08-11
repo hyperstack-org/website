@@ -1,3 +1,5 @@
+require 'helpers/is_edge'
+
 class AppMenu < Hyperloop::Router::Component
   param :section
 
@@ -44,11 +46,13 @@ class AppMenu < Hyperloop::Router::Component
                 end
               }
             end
+            # enabled when we come out of alpha
             # Sem.MenuItem {
-            #   IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
+              # IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
             # }
             Sem.MenuItem {
-              Sem.Label(color: 'red', horizontal: true, size: :big) { "alpha" }
+              message = is_edge? ? 'edge of alpha' : 'alpha'
+              Sem.Label(color: 'red', horizontal: true, size: :huge) { message }
             }
           end
         end
