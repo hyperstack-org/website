@@ -86,9 +86,8 @@ class HomePage < Hyperloop::Router::Component
     DIV(class: 'ui page grid') do
       DIV(class: 'fifteen wide column centered') do
         Sem.Header(size: :huge, textAlign: :center) do
-          SPAN() {"Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end."}
-          BR()
-          SPAN() {"We also include a hot-loading build environment."}
+          DIV {"Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end."}
+          DIV {"We even include a fast, hot-loading build environment for pure programmer joy."}
         end
         BR()
         BR()
