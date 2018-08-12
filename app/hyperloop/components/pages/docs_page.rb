@@ -55,15 +55,15 @@ class DocsPage < Hyperloop::Router::Component
       PageBody(section_name: params.match.params[:section])
     else
       # DocsOverviewPage()
-      PageBody(section_name: 'docs_overview') #if SiteStore.sections['docs_overview'].loaded?
-      # puts SiteStore.sections['docs_overview'].loaded?
+      PageBody(section_name: 'docs_overview') #if SiteStore.section_stores['docs_overview'].loaded?
+      # puts SiteStore.section_stores['docs_overview'].loaded?
     end
     # this is where we shound navigate to the correct place
   end
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu main-accordion-container') do
-      SiteStore.sections.each_with_index do |section, index|
+      SiteStore.section_stores.each_with_index do |section, index|
         # puts section[1]
         unless section[1].exclude_from_toc?
           display_title(section, index).on(:click) do

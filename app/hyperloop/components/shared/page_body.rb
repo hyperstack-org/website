@@ -23,14 +23,14 @@ class PageBody < Hyperloop::Component
 
   render(DIV) do
     Sem.Segment(class: 'page-container') do
-      if SiteStore.sections[params.section_name].loaded?
+      if SiteStore.section_stores[params.section_name].loaded?
         if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { 'edge' }
         else
           Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
         end
-        edit_button if SiteStore.sections[params.section_name].current_page[:allow_edit]
-        html = SiteStore.sections[params.section_name].current_page[:html].to_s
+        edit_button if SiteStore.section_stores[params.section_name].current_page[:allow_edit]
+        html = SiteStore.section_stores[params.section_name].current_page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
     end
@@ -57,7 +57,7 @@ class PageBody < Hyperloop::Component
 
         }.on(:click) do
           mutate.needs_refresh true
-          `window.open(#{SiteStore.sections[params.section_name].current_page[:edit_url]}, "_blank");`
+          `window.open(#{SiteStore.section_stores[params.section_name].current_page[:edit_url]}, "_blank");`
         end
       end
     end.as_node

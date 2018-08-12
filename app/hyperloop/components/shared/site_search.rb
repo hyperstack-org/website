@@ -83,7 +83,7 @@ end
   #   .on(:resultSelect) do |e, data|
   #     puts data.result.text
   #     mutate.value data.result.text
-  #     SiteStore.sections[params.section].set_current_page data.result.page
+  #     SiteStore.section_stores[params.section].set_current_page data.result.page
   #         #params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
   #     #force_update!
   #     #{}"/#{params.section}/#{data.result.repo}/#{data.result.file}"

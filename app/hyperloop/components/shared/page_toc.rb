@@ -13,7 +13,7 @@ class PageToc < Hyperloop::Component
     # # Sem.Rail(close: true, dividing: false, position: 'left') do
     #   ReactYahooSticky(enable: true, top: 50) do
     #     DIV(class: 'ui sticky visible transition') do
-          accordion if SiteStore.sections[params.section] && SiteStore.sections[params.section].loaded?
+          accordion if SiteStore.section_stores[params.section] && SiteStore.section_stores[params.section].loaded?
           # puts params.section
       #   end
       # end
@@ -34,7 +34,7 @@ class PageToc < Hyperloop::Component
      Element['html, body'].animate({
        scrollTop: 0
      }, :slow)
-    SiteStore.sections[params.section].set_current_page page
+    SiteStore.section_stores[params.section].set_current_page page
     NavigationStore.mutate.slug ""
     params.history.push "/docs/#{params.section}/#{page[:name]}"
     force_update!
@@ -49,7 +49,7 @@ class PageToc < Hyperloop::Component
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
-      SiteStore.sections[params.section].pages.each_with_index do |page, index|
+      SiteStore.section_stores[params.section].pages.each_with_index do |page, index|
         display_title(page, index).on(:click) do
           navigate_to_page(page, index)
         end

@@ -6,7 +6,7 @@ class SiteStore < Hyperloop::Store
 
   class << self
 
-    def sections
+    def section_stores
       @section_stores
     end
 

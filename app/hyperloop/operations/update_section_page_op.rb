@@ -4,7 +4,7 @@ class UpdateSectionpageOp < Hyperloop::Operation
   # param :page
 
   # step do
-    # SiteStore.sections[params.section].set_current_page params.page
+    # SiteStore.section_stores[params.section].set_current_page params.page
   # end
 
 end
