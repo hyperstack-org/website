@@ -1,7 +1,7 @@
 class PageToc < Hyperloop::Component
   param :history
   param :location
-  param :section
+  param :section_name
 
   before_mount do
     if (NavigationStore.accordionindex < 0)
@@ -13,8 +13,8 @@ class PageToc < Hyperloop::Component
     # # Sem.Rail(close: true, dividing: false, position: 'left') do
     #   ReactYahooSticky(enable: true, top: 50) do
     #     DIV(class: 'ui sticky visible transition') do
-          accordion if SiteStore.section_stores[params.section] && SiteStore.section_stores[params.section].loaded?
-          # puts params.section
+          accordion if SiteStore.section_stores[params.section_name] && SiteStore.section_stores[params.section_name].loaded?
+          # puts params.section_name
       #   end
       # end
     # end
@@ -34,22 +34,22 @@ class PageToc < Hyperloop::Component
      Element['html, body'].animate({
        scrollTop: 0
      }, :slow)
-    SiteStore.section_stores[params.section].set_current_page page
+    SiteStore.section_stores[params.section_name].set_current_page page
     NavigationStore.mutate.slug ""
-    params.history.push "/docs/#{params.section}/#{page[:name]}"
+    params.history.push "/docs/#{params.section_name}/#{page[:name]}"
     force_update!
   end
 
   def navigate_to_heading page, heading
     # puts "navigate_to_heading"
     slug = "#{heading[:slug]}"
-    params.history.push "/docs/#{params.section}/#{page[:name]}/#{slug}"
+    params.history.push "/docs/#{params.section_name}/#{page[:name]}/#{slug}"
     NavigationStore.mutate.slug slug
   end
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
-      SiteStore.section_stores[params.section].pages.each_with_index do |page, index|
+      SiteStore.section_stores[params.section_name].pages.each_with_index do |page, index|
         display_title(page, index).on(:click) do
           navigate_to_page(page, index)
         end

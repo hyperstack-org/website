@@ -1,7 +1,7 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
     # @section_name = 'docs'
-    # @sidebar_component = PageToc(history: params.history, location: params.location, section: @section_name).as_node
+    # @sidebar_component = PageToc(history: params.history, location: params.location, section_name: @section_name).as_node
     # # sidebar = TestMe().as_node
     # @body_component = PageBody(section_name: @section_name).as_node
   end
@@ -71,7 +71,7 @@ class DocsPage < Hyperloop::Router::Component
             NavigationStore.mutate.main_accordion_index newindex
           end
           Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
-            PageToc(history: params.history, location: params.location, section: section[0])
+            PageToc(history: params.history, location: params.location, section_name: section[0])
           end
         end
       end
