@@ -34,6 +34,7 @@ class DocsPage < Hyperloop::Router::Component
         render_side_bar_with_all_sections
         render_correct_page
       end
+
   end
 
   def render_side_bar_with_all_sections

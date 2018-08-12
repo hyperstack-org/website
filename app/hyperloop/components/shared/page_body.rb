@@ -1,3 +1,5 @@
+require 'helpers/is_edge'
+
 class PageBody < Hyperloop::Component
 
   param :section_name
@@ -21,8 +23,9 @@ class PageBody < Hyperloop::Component
 
   render do
     # puts "page body render #{params.section_name}"
-    DIV(class: 'page-container') do
+    Sem.Segment(class: 'page-container') do
       if SiteStore.sections[params.section_name].loaded?
+        Sem.Label(color: 'red', ribbon: :right, size: :huge) { 'edge' } if is_edge?
         set_pagebody_cssstyle
         edit_button if SiteStore.sections[params.section_name].current_page[:allow_edit]
         html = SiteStore.sections[params.section_name].current_page[:html].to_s
