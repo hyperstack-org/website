@@ -51,10 +51,9 @@ class DocsPage < Hyperloop::Router::Component
     # H1 { "#{params.match.params[:section]}" }
     # H1 { "#{params.match.params[:page]}" }
     # H1 { "#{params.match.params[:slug]}" }
-    if params.match.params[:section]
-      PageBody(section_name: params.match.params[:section])
+    if params.match.params[:section_name]
+      PageBody(section_name: params.match.params[:section_name])
     else
-      # DocsOverviewPage()
       PageBody(section_name: 'docs_overview') #if SiteStore.section_stores['docs_overview'].loaded?
       # puts SiteStore.section_stores['docs_overview'].loaded?
     end
