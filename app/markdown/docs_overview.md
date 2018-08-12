@@ -1,4 +1,4 @@
-# Welcome to Hyperstack
+# Welcome to Hyperstack!
 
 Hyperstack was previously known as RubyHyperloop but as we approach our 1.0 release, we have renamed the project and moved to a new home.
 
