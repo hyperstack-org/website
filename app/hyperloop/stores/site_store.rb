@@ -22,12 +22,22 @@ class SiteStore < Hyperloop::Store
 
     def init
       @section_stores = {}
+      load_overview_page
       load_start_section
       load_docs_section
       load_installation_section
-      # load_gems_section
       load_tools_section
       # load_tutorials_section
+    end
+
+    def load_overview_page
+      section_name = "docs_overview"
+      display_name = "Overview"
+
+      pages = [
+        { id: 0, name: 'overview', repo: 'hyperstack-website', file: 'app/markdown/docs_overview.md',  allow_edit: true },
+      ]
+      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
 
     def load_start_section
@@ -70,15 +80,6 @@ class SiteStore < Hyperloop::Store
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
     end
-
-    # def load_gems_section
-    #   section_name = "gems"
-    #
-    #   pages = [
-    #     { id: 0, name: 'gems', repo: 'hyperstack-website', file: 'app/markdown/gems/gems.md',  allow_edit: true }
-    #   ]
-    #   @section_stores[section_name] = SectionStore.new(pages, section_name)
-    # end
 
     def load_tools_section
       section_name = "tools"
