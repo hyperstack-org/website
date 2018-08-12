@@ -70,7 +70,7 @@ class HomePage < Hyperloop::Router::Component
       end
       Sem.GridRow(columns: 1, class: 'no-padding') do
         Sem.GridColumn() do
-           Sem.Image(src: '/images/Webpack_opal.png', size: :medium, centered: true)
+           Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true)
          end
       end
       Sem.GridRow(columns: 6, class: 'no-padding') do
