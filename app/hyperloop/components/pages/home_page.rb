@@ -7,7 +7,7 @@ class HomePage < Hyperloop::Router::Component
   after_mount do
     Element['.bm-overlay'].on(:click) {
       SidebarStore.hide
-    }
+    } 
   end
 
   render do
