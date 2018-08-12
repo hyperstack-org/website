@@ -22,7 +22,7 @@ class SiteStore < Hyperloop::Store
 
     def init
       @section_stores = {}
-      load_overview_page
+      # load_overview_page
       load_start_section
       load_docs_section
       load_installation_section
