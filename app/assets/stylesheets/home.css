@@ -207,7 +207,7 @@
   top: 18%;
   left: 0px;
   content: '';
-  background: url(images/ui.png);
+  background: url(/images/ui.png);
 
   -moz-transform-origin: 50% 50%;
   -o-transform-origin: 50% 50%;
