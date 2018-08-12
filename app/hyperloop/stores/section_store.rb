@@ -1,4 +1,4 @@
-
+require 'helpers/is_edge'
 
 class SectionStore < Hyperloop::Store
 
@@ -53,10 +53,12 @@ class SectionStore < Hyperloop::Store
   end
 
   def raw_url(page)
-    "https://rawgit.com/hyperstack-org/#{page[:repo]}/master/#{page[:file]}"
+    branch = is_edge? ? 'edge' : 'master'
+    "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
   end
 
   def edit_url(page)
+    # all PRs against edge
     "https://github.com/hyperstack-org/#{page[:repo]}/edit/edge/#{page[:file]}"
   end
 

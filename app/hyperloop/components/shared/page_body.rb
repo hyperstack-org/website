@@ -21,25 +21,19 @@ class PageBody < Hyperloop::Component
     # convert_runable_code_blocks
   end
 
-  render do
-    # puts "page body render #{params.section_name}"
+  render(DIV) do
     Sem.Segment(class: 'page-container') do
       if SiteStore.sections[params.section_name].loaded?
-        Sem.Label(color: 'red', ribbon: :right, size: :huge) { 'edge' } if is_edge?
-        set_pagebody_cssstyle
+        if is_edge?
+          Sem.Label(color: 'red', ribbon: :right, size: :large) { 'edge' }
+        else
+          Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
+        end
         edit_button if SiteStore.sections[params.section_name].current_page[:allow_edit]
         html = SiteStore.sections[params.section_name].current_page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
     end
-  end
-
-  def set_pagebody_cssstyle
-
-    #Element['.ptopmargin-2'].prev('h1').css('height', '0em')
-    # Element['h3'].prev().not('h2').css('margin-bottom', '5em')
-    # Element['h4'].prev().css('margin-bottom', '5em')
-    # Element['h2'].before( "<p>Test</p>" )
   end
 
   def convert_runable_code_blocks
@@ -52,7 +46,7 @@ class PageBody < Hyperloop::Component
   end
 
   def edit_button
-    button = DIV(class: 'edit-github-button') do
+    button = SPAN(class: '') do
       if state.needs_refresh
         Sem.Message(positive: true) {
           Sem.MessageHeader { "Thank you! Your edits are on edge." }
