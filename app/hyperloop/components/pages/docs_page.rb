@@ -3,7 +3,7 @@ class DocsPage < Hyperloop::Router::Component
     # @section_name = 'docs'
     # @sidebar_component = PageToc(history: params.history, location: params.location, section: @section_name).as_node
     # # sidebar = TestMe().as_node
-    # @body_component = PageBody(section: @section_name).as_node
+    # @body_component = PageBody(section_name: @section_name).as_node
   end
 
   render(DIV) do
@@ -51,9 +51,11 @@ class DocsPage < Hyperloop::Router::Component
     # H1 { "#{params.match.params[:page]}" }
     # H1 { "#{params.match.params[:slug]}" }
     if params.match.params[:section]
-      PageBody(section: params.match.params[:section])
+      PageBody(section_name: params.match.params[:section])
     else
-      DocsOverviewPage()
+      # DocsOverviewPage()
+      PageBody(section_name: 'docs_overview') #if SiteStore.sections['docs_overview'].loaded?
+      # puts SiteStore.sections['docs_overview'].loaded?
     end
     # this is where we shound navigate to the correct place
   end
@@ -61,14 +63,15 @@ class DocsPage < Hyperloop::Router::Component
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu main-accordion-container') do
       SiteStore.sections.each_with_index do |section, index|
-
-        display_title(section, index).on(:click) do
-          newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
-          NavigationStore.mutate.main_accordion_index newindex
-        end
-
-        Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
-          PageToc(history: params.history, location: params.location, section: section[0])
+        # puts section[1]
+        unless section[1].exclude_from_toc?
+          display_title(section, index).on(:click) do
+            newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
+            NavigationStore.mutate.main_accordion_index newindex
+          end
+          Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
+            PageToc(history: params.history, location: params.location, section: section[0])
+          end
         end
       end
     end

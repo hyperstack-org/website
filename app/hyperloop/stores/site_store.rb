@@ -37,7 +37,8 @@ class SiteStore < Hyperloop::Store
       pages = [
         { id: 0, name: 'overview', repo: 'hyperstack-website', file: 'app/markdown/docs_overview.md',  allow_edit: true },
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+      @section_stores[section_name] = SectionStore.new(exclude_from_toc: true, pages: pages,
+                                                      section_name: section_name, display_name: display_name)
     end
 
     def load_start_section
@@ -52,7 +53,7 @@ class SiteStore < Hyperloop::Store
         { id: 4, name: 'policies', repo: 'hyperstack-website',     file: 'app/markdown/start/policies.md',  allow_edit: true },
         { id: 5, name: 'pradgmatic', repo: 'hyperstack-website',     file: 'app/markdown/start/pradgmatic.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+      @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     def load_docs_section
@@ -68,7 +69,7 @@ class SiteStore < Hyperloop::Store
         # { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
         # { id: 6, name: 'dummy', repo: 'hyperstack-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+      @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     def load_installation_section
@@ -78,7 +79,7 @@ class SiteStore < Hyperloop::Store
       pages = [
         { id: 0, name: 'installation', repo: 'hyperstack-website', file: 'app/markdown/installation/overview.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+      @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     def load_tools_section
@@ -88,7 +89,7 @@ class SiteStore < Hyperloop::Store
       pages = [
         { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/markdown/tools/tools.md',  allow_edit: true }
       ]
-      @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+      @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     # def load_tutorials_section
@@ -100,7 +101,7 @@ class SiteStore < Hyperloop::Store
     #     { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
     #
     #   ]
-    #   @section_stores[section_name] = SectionStore.new(pages, section_name, display_name)
+    #   @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     # end
   end
 

@@ -10,7 +10,7 @@
 #
 #   render(DIV) do
 #     sidebar = PageToc(history: params.history, location: params.location, section: params.section_name).as_node
-#     body = PageBody(section: params.section_name).as_node
+#     body = PageBody(section_name: params.section_name).as_node
 #
 #     PageLayout(sidebar_component: sidebar,
 #               body_component: body,

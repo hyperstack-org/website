@@ -1,6 +1,6 @@
 class PageBody < Hyperloop::Component
 
-  param :section
+  param :section_name
 
   before_mount do
     mutate.needs_refresh false
@@ -20,12 +20,12 @@ class PageBody < Hyperloop::Component
   end
 
   render do
-    # puts "page body render #{params.section}"
+    # puts "page body render #{params.section_name}"
     DIV(class: 'page-container') do
-      if SiteStore.sections[params.section].loaded?
+      if SiteStore.sections[params.section_name].loaded?
         set_pagebody_cssstyle
-        edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
-        html = SiteStore.sections[params.section].current_page[:html].to_s
+        edit_button if SiteStore.sections[params.section_name].current_page[:allow_edit]
+        html = SiteStore.sections[params.section_name].current_page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
     end
@@ -60,7 +60,7 @@ class PageBody < Hyperloop::Component
 
         }.on(:click) do
           mutate.needs_refresh true
-          `window.open(#{SiteStore.sections[params.section].current_page[:edit_url]}, "_blank");`
+          `window.open(#{SiteStore.sections[params.section_name].current_page[:edit_url]}, "_blank");`
         end
       end
     end.as_node

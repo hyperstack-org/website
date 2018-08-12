@@ -4,11 +4,12 @@ class SectionStore < Hyperloop::Store
 
   state loaded: false
 
-  def initialize pages, section_name, display_name
+  def initialize(params)
 
-    @section_name = section_name
-    @display_name = display_name
-    @pages = pages
+    @section_name = params[:section_name]
+    @display_name = params[:display_name]
+    @pages = params[:pages]
+    @exclude_from_toc = params[:exclude_from_toc] || false
 
     load_and_convert_pages
     mutate.current_page @pages[0]
@@ -25,6 +26,10 @@ class SectionStore < Hyperloop::Store
 
   def pages
     @pages
+  end
+
+  def exclude_from_toc?
+    @exclude_from_toc
   end
 
   def loaded?
@@ -47,11 +52,11 @@ class SectionStore < Hyperloop::Store
     mutate.current_anchor anchor
   end
 
-  def raw_url page
+  def raw_url(page)
     "https://rawgit.com/hyperstack-org/#{page[:repo]}/master/#{page[:file]}"
   end
 
-  def edit_url page
+  def edit_url(page)
     "https://github.com/hyperstack-org/#{page[:repo]}/edit/edge/#{page[:file]}"
   end
 
@@ -61,11 +66,11 @@ class SectionStore < Hyperloop::Store
     @promises = 0
 
     @pages.each do |page|
-      get(page)
+      get_and_convert! page
     end
   end
 
-  def get page
+  def get_and_convert! page
     @promises += 1
 
     HTTP.get( raw_url(page) ) do |response|
