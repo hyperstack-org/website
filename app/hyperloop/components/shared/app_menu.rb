@@ -63,9 +63,9 @@ class AppMenu < Hyperloop::Router::Component
 
   def edge_or_master_menu_item
     if is_edge?
-      A(href: 'https://hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Go to master' }
+      A(href: 'https://hyperstack.org', 'data-site': 'ui', class: 'additional item visible') { 'Go to master' }
     else
-      A(href: 'https://edge.hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Go to edge' }
+      A(href: 'https://edge.hyperstack.org', 'data-site': 'ui', class: 'additional item visible') { 'Go to edge' }
     end
   end
 
