@@ -36,7 +36,7 @@ class HomePage < Hyperloop::Router::Component
             H2(class: 'ui header') do
               Sem.Header(class: 'inverted') do
                 DIV() {'Hyperstack'}
-                
+
                 DIV() {'is open-source and supported by a friendly community' }
                 BR()
               end
@@ -64,10 +64,14 @@ class HomePage < Hyperloop::Router::Component
     end
     Sem.Grid(celled: true) do
       Sem.GridRow(columns: 1, class: 'no-padding') do
-        Sem.GridColumn() { Sem.Image(src: '/images/hyperstack_react.png', size: :huge, centered: true) }
+        Sem.GridColumn() do
+           Sem.Image(src: '/images/hyperstack_react.png', size: :huge, centered: true)
+        end
       end
       Sem.GridRow(columns: 1, class: 'no-padding') do
-        Sem.GridColumn() { Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true) }
+        Sem.GridColumn() do
+           Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true)
+         end
       end
       Sem.GridRow(columns: 6, class: 'no-padding') do
         Sem.GridColumn() { }
@@ -78,14 +82,13 @@ class HomePage < Hyperloop::Router::Component
         Sem.GridColumn() { }
       end
     end
-    
+
     DIV(class: 'ui page grid') do
       DIV(class: 'fifteen wide column centered') do
-        BR()
         Sem.Header(size: :huge, textAlign: :center) do
-         SPAN() {"Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end."} 
-         BR()
-         SPAN() {"We also include a hot-loading build environment!"}
+          SPAN() {"Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end."}
+          BR()
+          SPAN() {"We also include a hot-loading build environment."}
         end
         BR()
         BR()
@@ -121,6 +124,16 @@ class HomePage < Hyperloop::Router::Component
         end
       end
     end
+
+    DIV(class: 'ui page grid') do
+      DIV(class: 'fifteen wide column centered') do
+        BR()
+        Sem.Header(size: :huge, textAlign: :center) do
+          SPAN() {"Think JavaScript rules the front-end? Think again."}
+        end
+        BR()
+        BR()
+      end
+    end
   end
 end
-  

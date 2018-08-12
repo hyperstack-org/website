@@ -23,8 +23,8 @@ class SiteStore < Hyperloop::Store
     def init
       @section_stores = {}
       load_start_section
-      load_installation_section
       load_docs_section
+      load_installation_section
       # load_gems_section
       load_tools_section
       # load_tutorials_section
@@ -47,7 +47,7 @@ class SiteStore < Hyperloop::Store
 
     def load_docs_section
       section_name = "docs"
-      display_name = "Hyperstack DSL Docs"
+      display_name = "Hyperstack DSL"
 
       pages = [
         { id: 0, name: 'components', repo: 'hyperstack-client',     file: 'docs/hyper-component.md',  allow_edit: true },
