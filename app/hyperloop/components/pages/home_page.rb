@@ -7,7 +7,7 @@ class HomePage < Hyperloop::Router::Component
   after_mount do
     Element['.bm-overlay'].on(:click) {
       SidebarStore.hide
-    } 
+    }
   end
 
   render do
@@ -18,6 +18,7 @@ class HomePage < Hyperloop::Router::Component
         mast_head
         stack_overview
         three_columns_of_text
+        SearchResultModal(history: history)
       end
       AppFooter()
     end

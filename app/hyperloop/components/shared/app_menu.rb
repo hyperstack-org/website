@@ -14,7 +14,8 @@ class AppMenu < Hyperloop::Router::Component
             chat_menu_item
             search_control
             # github_stars
-            edge_badge
+            # edge_badge
+            edge_or_master_menu_item
           end
         end
       end
@@ -60,12 +61,20 @@ class AppMenu < Hyperloop::Router::Component
     end
   end
 
-  def edge_badge
-    Sem.MenuItem {
-      label = Sem.Label(color: 'red', horizontal: true, size: :huge) { 'alpha' }.as_node
-      Sem.Popup(trigger: label.to_n, position: 'bottom right', content: 'This project is in alpha and the code and docs are work in progress.')
-    }
+  def edge_or_master_menu_item
+    if is_edge?
+      A(href: 'https://hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Go to master' }
+    else
+      A(href: 'https://edge.hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Go to edge' }
+    end
   end
+
+  # def edge_badge
+  #   Sem.MenuItem {
+  #     label = Sem.Label(color: 'red', horizontal: true, size: :huge) { 'alpha' }.as_node
+  #     Sem.Popup(trigger: label.to_n, position: 'bottom right', content: 'This project is in alpha and the code and docs are work in progress.')
+  #   }
+  # end
 
   def github_stars
     Sem.MenuItem {
