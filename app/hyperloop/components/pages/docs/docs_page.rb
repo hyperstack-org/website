@@ -13,6 +13,7 @@ class DocsPage < Hyperloop::Router::Component
         AppMenu(section: 'docs', history: history, location: location)
         DIV(class: 'page-wrap') do
           main_content
+          loader unless SiteStore.loaded?
           # AppFooter()
           SearchResultModal(history: history)
         end
@@ -20,15 +21,21 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
+  def loader
+    Sem.Dimmer(active: true, inverted: true) do
+      Sem.Loader(size: :large) {'Loading pages...'}
+    end
+  end
+
   def main_content
-      DIV(class: 'header segment') do
-        DIV(class: 'container') do
-          DIV(class: 'introductiontitle') do
-            DIV(class: 'ui huge header') { "Hyperstack Docs" }
-            P() { 'A modern web stack for people who love Ruby' }
-          end
-        end
-      end
+      # DIV(class: 'header segment') do
+      #   DIV(class: 'container') do
+      #     DIV(class: 'introductiontitle') do
+      #       DIV(class: 'ui huge header') { "Hyperstack Docs" }
+      #       P() { 'A modern web stack for people who love Ruby' }
+      #     end
+      #   end
+      # end
 
       DIV(class: 'main container') do
         render_side_bar_with_all_sections

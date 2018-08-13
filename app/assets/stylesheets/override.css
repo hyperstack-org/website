@@ -20,6 +20,10 @@ a:hover {
   position: relative;
 }
 
+.page-wrap {
+    padding-top: 50px;
+}
+
 .edit-github-button {
   position: absolute;
   top: 90px;
