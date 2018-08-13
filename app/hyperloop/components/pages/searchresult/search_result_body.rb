@@ -1,22 +1,22 @@
 
 class SearchResultBody < Hyperloop::Router::Component
-  
+
   param :history
   param :location
   param :section
 
 
   def gotoslug slug, sectionname, pageid
-    
-    NavigationStore.mutate.slug ""
+
+    # NavigationStore.mutate.slug ""
     pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
     SiteStore.section_stores[sectionname].set_current_page pagetogo
-     
-    NavigationStore.mutate.accordionindex pageid
-    NavigationStore.mutate.slug slug
+
+    # NavigationStore.mutate.accordionindex pageid
+    # NavigationStore.mutate.slug slug
 
     history.push "/#{sectionname}/#{pagetogo[:name]}/#{slug}"
-        
+
   end
 
   def highlight(text, search_string)
@@ -30,11 +30,11 @@ class SearchResultBody < Hyperloop::Router::Component
 
 
   render do
-    
+
     DIV(class: 'searchresultcontent') do
 
 
-      
+
       SearchEngineStore.all_results.each_with_index do |result, index|
 
         resulthtmlparagraph = ""
@@ -43,11 +43,11 @@ class SearchResultBody < Hyperloop::Router::Component
         resultheadingslug = ""
         resultsectionname = ""
         resultpageid = ""
-      
-        SiteStore.section_stores[SearchEngineStore.previous_section_query].pages.each_with_index do |page, index| 
-          
+
+        SiteStore.section_stores[SearchEngineStore.previous_section_query].pages.each_with_index do |page, index|
+
           page[:headings].each do |heading|
-            if (heading[:id] == result[:ref]) 
+            if (heading[:id] == result[:ref])
               resultsectionname = heading[:sectionname]
               resultpageid = heading[:pageid]
               resultpagename = heading[:pagename]
@@ -57,41 +57,41 @@ class SearchResultBody < Hyperloop::Router::Component
             end
           end
 
-        end      
-        
+        end
+
 
         H2(class: 'ui header') do
           #IMG(src: 'dist/images/icons/gear.png')
           Sem.Icon(name: 'chevron right')
           DIV(class: 'content') do
-          
-            A() do 
-              DIV(dangerously_set_inner_HTML: 
-                { __html: 
-                  "#{index+1}. In #{resultpagename}: #{highlight(resultheadingname, result[:matchingwords]) } <a class='ui black label'>#{result[:nbresults]} results</a>" 
+
+            A() do
+              DIV(dangerously_set_inner_HTML:
+                { __html:
+                  "#{index+1}. In #{resultpagename}: #{highlight(resultheadingname, result[:matchingwords]) } <a class='ui black label'>#{result[:nbresults]} results</a>"
                 })
-              
+
             end.on(:click) { gotoslug(resultheadingslug, resultsectionname, resultpageid) }
 
-            # A(class:'ui black label') {"#{result[:nbresults]} results" } 
+            # A(class:'ui black label') {"#{result[:nbresults]} results" }
 
             DIV(class: 'sub header') do
               "_______________"
             end
 
           end
-          
+
         end
 
-           
+
 
         DIV(dangerously_set_inner_HTML: { __html: highlight(resulthtmlparagraph, result[:matchingwords]) })
-        
+
         BR()
       end
 
     end
-    
+
 
   end
 

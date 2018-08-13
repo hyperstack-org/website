@@ -67,8 +67,8 @@ class DocsPage < Hyperloop::Router::Component
         # puts section[1]
         unless section[1].exclude_from_toc?
           display_title(section, index).on(:click) do
-            newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
-            NavigationStore.mutate.main_accordion_index newindex
+            # newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
+            # NavigationStore.mutate.main_accordion_index newindex
             history.push "/docs/#{section[0]}"
           end
           Sem.AccordionContent(className: 'accordion-section-container',

@@ -5,9 +5,9 @@ class PageToc < Hyperloop::Component
   param page_name: ''
 
   before_mount do
-    if (NavigationStore.accordionindex < 0)
-      NavigationStore.mutate.accordionindex(-1)
-    end
+    # if (NavigationStore.accordionindex < 0)
+      # NavigationStore.mutate.accordionindex(-1)
+    # end
   end
 
   render do
@@ -22,7 +22,7 @@ class PageToc < Hyperloop::Component
   end
 
   def display_title page, index
-    Sem.AccordionTitle(className: 'item accordion-section-heading0', index: index, active: (NavigationStore.accordionindex===index)) do
+    Sem.AccordionTitle(className: 'item accordion-section-heading0', index: index, active: (page[:name] == params.page_name ? true : false)) do
       I(class: 'dropdown icon')
       B() { page[:headings][0][:text] }
     end
@@ -30,8 +30,8 @@ class PageToc < Hyperloop::Component
 
   def navigate_to_page page, index
     puts "navigate_to_page"
-    newindex = (NavigationStore.accordionindex === index) ? -1 : index
-    NavigationStore.mutate.accordionindex newindex
+    # newindex = (NavigationStore.accordionindex === index) ? -1 : index
+    # NavigationStore.mutate.accordionindex newindex
      Element['html, body'].animate({
        scrollTop: 0
      }, :slow)

@@ -4,9 +4,9 @@ class SearchResultModal < Hyperloop::Component
 
   param :history
 
-  state visible: false, scope: :shared, reader: true 
+  state visible: false, scope: :shared, reader: true
 
-  
+
 
   def self.open
     mutate.visible true
@@ -17,16 +17,16 @@ class SearchResultModal < Hyperloop::Component
   end
 
   def gotoslug slug, sectionname, pageid
-    
-    NavigationStore.mutate.slug ""
+
+    # NavigationStore.mutate.slug ""
     pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
     SiteStore.section_stores[sectionname].set_current_page pagetogo
-    
+
     params.history.push "/#{sectionname}/#{pagetogo[:name]}/#{slug}"
-    NavigationStore.mutate.accordionindex pageid
-    NavigationStore.mutate.slug slug
+    # NavigationStore.mutate.accordionindex pageid
+    # NavigationStore.mutate.slug slug
     SearchResultModal.close
-    
+
   end
 
   render do
@@ -36,22 +36,22 @@ class SearchResultModal < Hyperloop::Component
       Sem.ModalContent(image: true, scrolling: true) do
         Sem.Image(size: 'massive', src: 'dist/images/hyperloop-logo-title.png', wrapped: true) {}
         Sem.ModalDescription() do
-          
+
           HEADER() {"RESULTS LISTING"}
-          
-          
-          # if (SearchEngineStore.inputvaluetoosmall) 
-          #   P() { 
-              
+
+
+          # if (SearchEngineStore.inputvaluetoosmall)
+          #   P() {
+
           #       "Input value to short, must be > 4 chars"
-              
+
           #     }
 
           # else
 
           #     P() { SearchEngineStore.inputvalue }
-          #     DIV() do 
-                
+          #     DIV() do
+
           #       if (SearchEngineStore.all_results.empty?)
 
           #         H2() {"No Result"}
@@ -59,28 +59,28 @@ class SearchResultModal < Hyperloop::Component
           #       else
 
           #         SearchEngineStore.all_results.each_with_index do |result, index|
-                    
+
           #           H2() {"Result #{index}: #{result[:headingslug]}"}
           #           .on(:click) { gotoslug(result[:headingslug], result[:sectionname], result[:pageid]) }
-                  
+
           #         end
 
           #       end
-                
+
           #     end
 
           # end
-          
+
         end
       end
       Sem.ModalActions do
         Sem.Button(negative: true) {"Close"}.on(:click) {SearchResultModal.close}
-        
+
       end
     end
-    
 
-      
+
+
 
   end
 
