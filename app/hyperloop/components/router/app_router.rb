@@ -18,8 +18,8 @@ class AppRouter < Hyperloop::Router
         Route('/', exact: true, mounts: HomePage)
         Route('/docs', exact: true, mounts: DocsPage)
         Route('/docs/:section_name', exact: true, mounts: DocsPage)
-        Route('/docs/:section_name/:page', exact: true, mounts: DocsPage)
-        Route('/docs/:section_name/:page/:slug', exact: false, mounts: DocsPage)
+        Route('/docs/:section_name/:page_name', exact: true, mounts: DocsPage)
+        # Route('/docs/:section_name/:page/:slug', exact: false, mounts: DocsPage)
         Route('/searchresult', exact: false, mounts: SearchResultPage)
       end
     }

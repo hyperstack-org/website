@@ -3,6 +3,7 @@ require 'helpers/is_edge'
 class PageBody < Hyperloop::Component
 
   param :section_name
+  param page_name: ''
 
   before_mount do
     mutate.needs_refresh false
@@ -29,8 +30,16 @@ class PageBody < Hyperloop::Component
         else
           Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
         end
+
         edit_button if SiteStore.section_stores[params.section_name].current_page[:allow_edit]
-        html = SiteStore.section_stores[params.section_name].current_page[:html].to_s
+
+        if params.page_name.empty?
+          page = SiteStore.section_stores[params.section_name].pages.first
+        else
+          page = SiteStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
+        end
+        html = page[:html].to_s
+
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
     end

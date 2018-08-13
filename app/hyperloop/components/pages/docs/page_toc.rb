@@ -34,7 +34,7 @@ class PageToc < Hyperloop::Component
      Element['html, body'].animate({
        scrollTop: 0
      }, :slow)
-    SiteStore.section_stores[params.section_name].set_current_page page
+    # SiteStore.section_stores[params.section_name].set_current_page page
     NavigationStore.mutate.slug ""
     params.history.push "/docs/#{params.section_name}/#{page[:name]}"
     force_update!
@@ -43,7 +43,8 @@ class PageToc < Hyperloop::Component
   def navigate_to_heading page, heading
     # puts "navigate_to_heading"
     slug = "#{heading[:slug]}"
-    params.history.push "/docs/#{params.section_name}/#{page[:name]}/#{slug}"
+    params.history.push "/docs/#{params.section_name}/#{page[:name]}##{slug}"
+    force_update!
     NavigationStore.mutate.slug slug
   end
 

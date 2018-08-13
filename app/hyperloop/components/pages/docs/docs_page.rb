@@ -48,16 +48,13 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def render_correct_page
-    # H1 { "#{params.match.params[:section]}" }
-    # H1 { "#{params.match.params[:page]}" }
-    # H1 { "#{params.match.params[:slug]}" }
+    puts "section_name: #{params.match.params[:section_name]}"
+    puts "page_name: #{params.match.params[:page_name]}"
     if params.match.params[:section_name]
-      PageBody(section_name: params.match.params[:section_name])
+      PageBody(section_name: params.match.params[:section_name], page_name: params.match.params[:page_name] || '')
     else
-      PageBody(section_name: 'docs_overview') #if SiteStore.section_stores['docs_overview'].loaded?
-      # puts SiteStore.section_stores['docs_overview'].loaded?
+      PageBody(section_name: 'docs_overview')
     end
-    # this is where we shound navigate to the correct place
   end
 
   def accordion
@@ -68,6 +65,7 @@ class DocsPage < Hyperloop::Router::Component
           display_title(section, index).on(:click) do
             newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
             NavigationStore.mutate.main_accordion_index newindex
+            history.push "/docs/#{section[0]}"
           end
           Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
             PageToc(history: params.history, location: params.location, section_name: section[0])
