@@ -4,7 +4,7 @@ class PageBody < Hyperloop::Component
 
   param :section_name
   param page_name: ''
-  param goto_hash: ''
+  param page_anchor: ''
 
   before_mount do
     mutate.needs_refresh false
@@ -21,11 +21,11 @@ class PageBody < Hyperloop::Component
     #   end
     # end
 
-    unless params.goto_hash.empty?
-      element = Element["#{params.goto_hash}"]
+    unless params.page_anchor.empty?
+      element = Element["#{params.page_anchor}"]
       if element.offset()
         anchorchapter_position = element.offset().top
-        Element['html, body'].animate({
+        Element['html, pagebody'].animate({
               scrollTop: anchorchapter_position
             }, 0)
       end
@@ -50,6 +50,7 @@ class PageBody < Hyperloop::Component
         else
           page = SiteStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
         end
+
         html = page[:html].to_s
 
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
