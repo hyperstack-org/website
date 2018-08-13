@@ -2,6 +2,7 @@ class PageToc < Hyperloop::Component
   param :history
   param :location
   param :section_name
+  param page_name: ''
 
   before_mount do
     if (NavigationStore.accordionindex < 0)
@@ -55,7 +56,8 @@ class PageToc < Hyperloop::Component
           navigate_to_page(page, index)
         end
 
-        Sem.AccordionContent(className: '', active: (NavigationStore.state.accordionindex === index)) do
+        Sem.AccordionContent(className: '',
+          active: (page[:name] == params.page_name ? true : false)) do
           page[:headings].drop(1).each do |heading|
             if (heading[:level] < 4)
               A(class: "item accordion-section-item #{'accordion-section-subitem' if (heading[:level]==3)}") { heading[:text] }

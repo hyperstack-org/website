@@ -71,8 +71,11 @@ class DocsPage < Hyperloop::Router::Component
             NavigationStore.mutate.main_accordion_index newindex
             history.push "/docs/#{section[0]}"
           end
-          Sem.AccordionContent(className: 'accordion-section-container', active: (NavigationStore.state.main_accordion_index === index)) do
-            PageToc(history: params.history, location: params.location, section_name: section[0])
+          Sem.AccordionContent(className: 'accordion-section-container',
+            active: (params.match.params[:section_name] == section[0] ? true : false)) do
+              PageToc(history: params.history, location: params.location, section_name: section[0],
+                page_name: params.match.params[:page_name] || ''
+              )
           end
         end
       end
@@ -80,7 +83,7 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def display_title section, index
-    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: (NavigationStore.main_accordion_index === index)) do
+    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: true) do
       I(class: 'dropdown icon')
       B() { section[1].display_name }
     end
