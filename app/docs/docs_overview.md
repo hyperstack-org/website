@@ -1,6 +1,6 @@
 # Welcome to Hyperstack!
 
-Hyperstack was previously known as RubyHyperloop but as we approach our 1.0 release, we have renamed the project and moved to a new home.
+Hyperstack, previously known as RubyHyperloop, has been renamed and moved to a new website as we move towards our 2.0 release.
 
 First off, why are we renaming to Hyperstack?  We love the Hyperloop name, as we hope Hyperloop is the "Ruby on Rails" of the future, and it speaks to the full circle loop connecting client to server and back again, as well as plays on the famous React "Flux Loop".  So why change?  The biggest reason is simply that the name too heavily conflicts with Hyperloop (the train) especially when it comes to getting domain names, or doing web searches.  Secondarily there is the notion that we are providing a "full stack" framework in the truest sense of the word, and thus it is a Hyperstack.   
 
@@ -9,32 +9,35 @@ First off, why are we renaming to Hyperstack?  We love the Hyperloop name, as we
 * Solidify current Hyperloop DSLs, Public APIs, documentation and tutorials.
 * Close any major issues, especially those that will potentially break or add significantly to DSLs or Public APIs.
 * Provide an easy migration path from Hyperloop to Hyperstack
-* Separate out client code from server code, i.e. client code will end up in a single NPM module, server code will end up in a single rails gem.  _[See note #1.](#notes)_
-* The boundary between client and server will be a set of well defined internal (but public) APIs between the client and server independent of any specific technology such as Rails or ActiveRecord. _[See note #2.](#notes)_
+* Separate out client code from server code, i.e. client code will end up in a single NPM module, server code will end up in a single rails gem.  (See note #1)
+* The boundary between client and server will be a set of well defined internal (but public) APIs between the client and server independent of any specific technology such as Rails or ActiveRecord. [See note #2)
 * Use convention over configuration, and provide as simple as an install process as possible, perhaps as simple as adding a gem.
+* Brand new website completely built with Hyperstack technology
+* CI/CD build and deploy process for all NPM modules, Gems and the Webiste project
 
 For a deeper philosophical understanding of where this is going checkout this [page](https://github.com/Hyperstack-org/website/wiki/Rethinking-Hyperstack)
 
 ### What does this all mean?
 
-* All current Hyperloop functionality will be packaged into a single `Hyperstack-rails` gem (server-side) and `Hyperstack-client` NPM module (client-side code.)   
-* Incorporating all client code into NPM will enable us to better use webpack and related technologies (such as tree shaking, etc.)  
+* All previous Hyperloop functionality will be packaged into a single `hyperstack-client` NPM module (all client-side code) and `hyperstack-rails` gem (all Rails server-side code)
+* Incorporating all client code into NPM will enable us to better use Webpack and related technologies (such as tree shaking, etc.)  
 * Separating the HyperComponent and HyperOperation server code and defining the existing HTTP protocols as public APIs will enable us to use different server side technologies.
+
 * Separating HyperModel into a client only abstraction will enable HyperModel to be used independently of ActiveRecord.  For example you could use HyperModel as strictly a client abstraction and use an Operation to load and save data via an existing API.
 
 ### Path To Hyperstack 1.0
 
 1. Release all current WIP on `edge` (or elsewhere) to a `0.9` set of gems, so that master = gems for all repos.
-1. Release latest WIP `hyper-spec` to the hyper-stack github repo (this repo).  Contains lots of improvements and runs much faster. _[See note #3 for why this is separate from item 1 above.](#notes)_
+1. Release latest WIP `hyper-spec` to the hyper-stack github repo (this repo).  Contains lots of improvements and runs much faster. (See note #3 for why this is separate from item 1 above.)
 1. During the following process move all current and newly deprecated features and name spaces (i.e. `Hyperloop::Component`) into separate require files that keeps backward compatibility, but reports uses of the deprecated feature.  
-1. Create the following new gems, retaining relevant test specs.  _[See note #4.](#notes)_  
+1. Create the following new gems, retaining relevant test specs.  (See note #4)
    * `hyper-component`, which will include the HyperComponent and HyperStore functionality, but no prerendering or other server-side functions.
-   * `hyper-operation`, which will include the Operation and ServerOp functionality but without the Server side code.  In the process define the HyperOperation HTTP API and how push technologies can be plugged in. _[See note #5.](#notes)_
+   * `hyper-operation`, which will include the Operation and ServerOp functionality but without the Server side code.  In the process define the HyperOperation HTTP API and how push technologies can be plugged in. (See note #5)
    * `hyper-model` which will only include the client functionality (i.e. no load, save or data synchronization).
 1. Build a `Hyperstack.js` NPM module from the above gems.
 1. The code (and test specs) from each of the above gems that belongs server side will be moved to new gems as follows:
    * `hyper-component-rails` which will include the ability to mount and prerender components from rails views and controllers.
-   * `hyper-operation-rails` which will respond to the ServerOp and related HTTP end points.  How specifically broadcasting is incorporated is TBD. [See note #2.](#notes)
+   * `hyper-operation-rails` which will respond to the ServerOp and related HTTP end points.  How specifically broadcasting is incorporated is TBD. (See note #2)
    * `hyper-model-active-record` which uses ActiveRecord as the persistence mechanism for hyper-model.  
 1. Incorporate these gems plus the rails generator and installers into a `Hyperstack-rails` gem.
 1. Once the initial system is running we will begin releasing a series of release candidates using the traditional rcxx nomenclature.
@@ -57,4 +60,4 @@ Most everything above has been proven already, and we are really just doing a lo
 2. For HTTP requests we will define a simple API based on the current protocol used by ServerOps.  The problem is that there is no standard way to define data to be pushed, and each push technology (i.e. action-cable, pusher.com, etc) has small client side modules that hide protocol details.  Likewise each push technology has specific mechanisms server-side to operate the push protocol.  We will have to experiment with various configuration mechanisms, and see what works best.
 3. The current "WIP" HyperSpec is not 100% compatible with current HyperSpec so it will be released directly to the Hyperstack repo.  As there is no dependency between HyperSpec and the rest of Hyperloop/Hyperstack you can just keep using the currently released hyperspec if you want.
 4. HyperComponent and HyperModel will only run on the client, so eventually these could be directly built as NPM modules.
-5. HyperOperation is based largely on trailblazer Operations, and thus developers may wish to use them on the Server as well as the client.  The base Operation class has no ability to deal with remotely invoking or responding to an Operation hosted on the Server.   This functionality is provided by the ServerOp subclass.  The new HyperOperation gem will only include the client side code for the ServerOp, and the push receiver will be stubbed somehow to allow for multiple push technologies [See note #2 above.](#notes)
+5. HyperOperation is based largely on trailblazer Operations, and thus developers may wish to use them on the Server as well as the client.  The base Operation class has no ability to deal with remotely invoking or responding to an Operation hosted on the Server.   This functionality is provided by the ServerOp subclass.  The new HyperOperation gem will only include the client side code for the ServerOp, and the push receiver will be stubbed somehow to allow for multiple push technologies (See note #2 above)

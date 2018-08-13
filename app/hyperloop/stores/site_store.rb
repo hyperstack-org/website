@@ -22,43 +22,43 @@ class SiteStore < Hyperloop::Store
 
     def init
       @section_stores = {}
-      load_overview_page
+      load_overview_section
       load_start_section
-      load_docs_section
+      load_dsl_section
       load_installation_section
       load_tools_section
       # load_tutorials_section
     end
 
-    def load_overview_page
-      section_name = "docs_overview"
-      display_name = "Overview"
+    def load_overview_section
+      section_name = 'docs_overview'
+      display_name = 'Overview'
 
       pages = [
-        { id: 0, name: 'overview', repo: 'hyperstack-website', file: 'app/markdown/docs_overview.md',  allow_edit: true },
+        { id: 0, name: 'overview', repo: 'hyperstack-website', file: 'app/docs/docs_overview.md',  allow_edit: true },
       ]
       @section_stores[section_name] = SectionStore.new(exclude_from_toc: true, pages: pages,
                                                       section_name: section_name, display_name: display_name)
     end
 
     def load_start_section
-      section_name = "start"
-      display_name = "Getting Started"
+      section_name = 'start'
+      display_name = 'Getting Started'
 
       pages = [
-        { id: 0, name: 'components', repo: 'hyperstack-website',     file: 'app/markdown/start/components.md',  allow_edit: true },
-        { id: 1, name: 'stores', repo: 'hyperstack-website',     file: 'app/markdown/start/stores.md',  allow_edit: true },
-        { id: 2, name: 'models', repo: 'hyperstack-website',     file: 'app/markdown/start/models.md',  allow_edit: true },
-        { id: 3, name: 'operations', repo: 'hyperstack-website',     file: 'app/markdown/start/operations.md',  allow_edit: true },
-        { id: 4, name: 'policies', repo: 'hyperstack-website',     file: 'app/markdown/start/policies.md',  allow_edit: true },
-        { id: 5, name: 'pradgmatic', repo: 'hyperstack-website',     file: 'app/markdown/start/pradgmatic.md',  allow_edit: true }
+        { id: 0, name: 'components', repo: 'hyperstack-website',     file: 'app/docs/start/components.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hyperstack-website',     file: 'app/docs/start/stores.md',  allow_edit: true },
+        { id: 2, name: 'models', repo: 'hyperstack-website',     file: 'app/docs/start/models.md',  allow_edit: true },
+        { id: 3, name: 'operations', repo: 'hyperstack-website',     file: 'app/docs/start/operations.md',  allow_edit: true },
+        { id: 4, name: 'policies', repo: 'hyperstack-website',     file: 'app/docs/start/policies.md',  allow_edit: true },
+        { id: 5, name: 'pradgmatic', repo: 'hyperstack-website',     file: 'app/docs/start/pradgmatic.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
-    def load_docs_section
-      section_name = "docs"
-      display_name = "Hyperstack DSL"
+    def load_dsl_section
+      section_name = 'dsl'
+      display_name = 'Hyperstack DSL'
 
       pages = [
         { id: 0, name: 'components', repo: 'hyperstack-client',     file: 'docs/hyper-component.md',  allow_edit: true },
@@ -66,28 +66,26 @@ class SiteStore < Hyperloop::Store
         { id: 2, name: 'models', repo: 'hyperstack-client',      file: 'docs/hyper-model.md',  allow_edit: true },
         { id: 3, name: 'router', repo: 'hyperstack-client',    file: 'docs/hyper-router.md',  allow_edit: true },
         { id: 4, name: 'operations', repo: 'hyperstack-client', file: 'docs/hyper-operation.md',  allow_edit: true },
-        # { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
-        # { id: 6, name: 'dummy', repo: 'hyperstack-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     def load_installation_section
-      section_name = "installation"
-      display_name = "Installation & Setup"
+      section_name = 'installation'
+      display_name = 'Installation & Setup'
 
       pages = [
-        { id: 0, name: 'installation', repo: 'hyperstack-website', file: 'app/markdown/installation/overview.md',  allow_edit: true }
+        { id: 0, name: 'installation', repo: 'hyperstack-website', file: 'app/docs/installation/overview.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
     def load_tools_section
-      section_name = "tools"
-      display_name = "Tools"
+      section_name = 'tools'
+      display_name = 'Tools'
 
       pages = [
-        { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/markdown/tools/tools.md',  allow_edit: true }
+        { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/docs/tools/tools.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
@@ -97,7 +95,7 @@ class SiteStore < Hyperloop::Store
     #   display_name = "Tutorials"
     #
     #   pages = [
-    #     { id: 0, name: 'helloworld', repo: 'hyperstack-website', file: 'app/markdown/tutorial/helloworld.md',  allow_edit: true },
+    #     { id: 0, name: 'helloworld', repo: 'hyperstack-website', file: 'app/docs/tutorial/helloworld.md',  allow_edit: true },
     #     { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
     #
     #   ]
