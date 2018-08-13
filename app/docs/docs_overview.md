@@ -1,6 +1,6 @@
 # Welcome to Hyperstack!
 
-Hyperstack, previously known as RubyHyperloop, has been renamed and moved to a new website as we move towards our 2.0 release.
+Hyperstack, previously known as RubyHyperloop, has been renamed and moved to a new website as we move towards our 1.0 release.
 
 First off, why are we renaming to Hyperstack?  We love the Hyperloop name, as we hope Hyperloop is the "Ruby on Rails" of the future, and it speaks to the full circle loop connecting client to server and back again, as well as plays on the famous React "Flux Loop".  So why change?  The biggest reason is simply that the name too heavily conflicts with Hyperloop (the train) especially when it comes to getting domain names, or doing web searches.  Secondarily there is the notion that we are providing a "full stack" framework in the truest sense of the word, and thus it is a Hyperstack.   
 
