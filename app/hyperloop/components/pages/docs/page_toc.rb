@@ -35,7 +35,7 @@ class PageToc < Hyperloop::Component
        scrollTop: 0
      }, :slow)
     # SiteStore.section_stores[params.section_name].set_current_page page
-    NavigationStore.mutate.slug ""
+    # NavigationStore.mutate.slug ""
     params.history.push "/docs/#{params.section_name}/#{page[:name]}"
     force_update!
   end
@@ -45,7 +45,7 @@ class PageToc < Hyperloop::Component
     slug = "#{heading[:slug]}"
     params.history.push "/docs/#{params.section_name}/#{page[:name]}##{slug}"
     force_update!
-    NavigationStore.mutate.slug slug
+    # NavigationStore.mutate.slug slug
   end
 
   def accordion

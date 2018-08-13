@@ -4,21 +4,33 @@ class PageBody < Hyperloop::Component
 
   param :section_name
   param page_name: ''
+  param goto_hash: ''
 
   before_mount do
     mutate.needs_refresh false
   end
 
   after_update do
-    unless NavigationStore.slug.empty?
-      element = Element["##{NavigationStore.slug}"]
+    # unless NavigationStore.slug.empty?
+    #   element = Element["##{NavigationStore.slug}"]
+    #   if element.offset()
+    #     anchorchapter_position = element.offset().top
+    #     Element['html, body'].animate({
+    #           scrollTop: anchorchapter_position
+    #         }, 500)
+    #   end
+    # end
+
+    unless params.goto_hash.empty?
+      element = Element["#{params.goto_hash}"]
       if element.offset()
         anchorchapter_position = element.offset().top
         Element['html, body'].animate({
               scrollTop: anchorchapter_position
-            }, 500)
+            }, 0)
       end
     end
+
     # convert_runable_code_blocks
   end
 

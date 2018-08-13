@@ -50,8 +50,12 @@ class DocsPage < Hyperloop::Router::Component
   def render_correct_page
     puts "section_name: #{params.match.params[:section_name]}"
     puts "page_name: #{params.match.params[:page_name]}"
+    puts "hash: #{history.location.hash}"
     if params.match.params[:section_name]
-      PageBody(section_name: params.match.params[:section_name], page_name: params.match.params[:page_name] || '')
+      PageBody(section_name: params.match.params[:section_name],
+        page_name: params.match.params[:page_name] || '',
+        goto_hash: history.location.hash || ''
+      )
     else
       PageBody(section_name: 'docs_overview')
     end
