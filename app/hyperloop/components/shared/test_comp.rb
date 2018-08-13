@@ -1,8 +1,8 @@
-class TestComp < Hyperloop::Component
-
-  render(DIV) {
-    puts "rubyglobalIndex : #{TestStore.rubyglobalIndex}"
-    H1() {"RESULT : #{TestStore.rubyglobalIndex}"}
-  }
-
-end
+# class TestComp < Hyperloop::Component
+#
+#   render(DIV) {
+#     puts "rubyglobalIndex : #{TestStore.rubyglobalIndex}"
+#     H1() {"RESULT : #{TestStore.rubyglobalIndex}"}
+#   }
+#
+# end
