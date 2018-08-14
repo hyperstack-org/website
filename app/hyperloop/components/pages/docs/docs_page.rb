@@ -13,7 +13,7 @@ class DocsPage < Hyperloop::Router::Component
         AppMenu(section: 'docs', history: history, location: location)
         DIV(class: 'page-wrap') do
           main_content
-          loader unless SiteStore.loaded?
+          # loader unless SiteStore.loaded?
           # AppFooter()
           SearchResultModal(history: history)
         end
