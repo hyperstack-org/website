@@ -21,8 +21,8 @@ class PageToc < Hyperloop::Component
     # end
   end
 
-  def display_title page, index
-    Sem.AccordionTitle(className: 'item accordion-section-heading0', index: index, active: (page[:name] == params.page_name ? true : false)) do
+  def display_title page, index, is_active
+    Sem.AccordionTitle(className: 'item accordion-section-heading0', index: index, active: is_active) do
       I(class: 'dropdown icon')
       B() { page[:headings][0][:text] }
     end
@@ -52,12 +52,12 @@ class PageToc < Hyperloop::Component
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
       SiteStore.section_stores[params.section_name].pages.each_with_index do |page, index|
-        display_title(page, index).on(:click) do
+        is_active = page[:name] == params.page_name ? true : false
+        display_title(page, index, is_active).on(:click) do
           navigate_to_page(page, index)
         end
 
-        Sem.AccordionContent(className: '',
-          active: (page[:name] == params.page_name ? true : false)) do
+        Sem.AccordionContent(className: '', active: is_active) do
           page[:headings].drop(1).each do |heading|
             if (heading[:level] < 4)
               A(class: "item accordion-section-item #{'accordion-section-subitem' if (heading[:level]==3)}") { heading[:text] }
