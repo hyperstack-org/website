@@ -44,20 +44,9 @@ class DocsPage < Hyperloop::Router::Component
 
   end
 
-  def render_side_bar_with_all_sections
-    Sem.Rail(close: true, dividing: false, position: 'left') do
-      ReactYahooSticky(enable: true, top: 50) do
-        DIV(class: 'ui sticky visible transition') do
-          accordion
-        end
-      end
-    end
-  end
-
   def render_correct_page
-    puts "section_name: #{params.match.params[:section_name]}"
-    puts "page_name: #{params.match.params[:page_name]}"
-    puts "hash: #{history.location.hash}"
+    # puts "section_name: #{params.match.params[:section_name]}"
+    # puts "page_name: #{params.match.params[:page_name]}"
     if params.match.params[:section_name]
       PageBody(section_name: params.match.params[:section_name],
         page_name: params.match.params[:page_name] || '',
@@ -68,19 +57,31 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
+  def render_side_bar_with_all_sections
+    Sem.Rail(close: true, dividing: false, position: 'left') do
+      ReactYahooSticky(enable: true, top: 50) do
+        DIV(class: 'ui sticky visible transition') do
+          accordion
+        end
+      end
+    end
+  end
+
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu main-accordion-container') do
-      SiteStore.section_stores.each_with_index do |section, index|
-        # puts section[1]
-        unless section[1].exclude_from_toc?
-          display_title(section, index).on(:click) do
-            # newindex = (NavigationStore.main_accordion_index === index) ? -1 : index
-            # NavigationStore.mutate.main_accordion_index newindex
-            history.push "/docs/#{section[0]}"
+      SiteStore.section_stores.each_with_index do |section_hash, index|
+        section_name = section_hash[0] #key
+        section_store = section_hash[1] #value
+        is_active = params.match.params[:section_name] == section_name ? true : false
+
+        unless section_store.exclude_from_toc?
+          display_title(section_store.display_name, index, is_active).on(:click) do
+            history.push "/docs/#{section_name}"
           end
+
           Sem.AccordionContent(className: 'accordion-section-container',
-            active: (params.match.params[:section_name] == section[0] ? true : false)) do
-              PageToc(history: params.history, location: params.location, section_name: section[0],
+            active: is_active) do
+              PageToc(history: params.history, location: params.location, section_name: section_name,
                 page_name: params.match.params[:page_name] || ''
               )
           end
@@ -89,10 +90,10 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
-  def display_title section, index
-    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: true) do
+  def display_title display_name, index, is_active
+    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: is_active) do
       I(class: 'dropdown icon')
-      B() { section[1].display_name }
+      B() { display_name }
     end
   end
 

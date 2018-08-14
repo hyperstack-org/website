@@ -22,19 +22,23 @@ This project is work in progress, not complete yet!
 
 ## Data Structure
 
-+ All the pages are loaded into a store `SiteStore` which is initialised once on startup. This store is structured like this:
++ All the pages are loaded into a store `SiteStore` singleton which is initialised once on startup.
 
-+ Basic data structure: `Site` has_many `sections` has_many `pages`
-+ Each `page` has a TOC and a Body
++ Basic data structure: `SiteStore` has_many `SectionStores` has_many `pages`
 
 + `SiteStore` which is a singleton `SiteStore` store
-+ `.section_stores` which is a hash of SectionStores accessed through `:section_name`
-+ `.section` which is a `SectionStore` store
++ `.section_stores` which is a hash of SectionStores {'docs' => SectionStore}
 + `.pages` which is an array of hashes
 
-So to get the friendly_doc_name of the first page in the 'start' section:
+So to get the friendly_doc_name of the first page in the 'dsl' section:
 
-+ `SiteStore.section_stores[:start].section.pages.first[:firendly_doc_name]`
++ `SiteStore.section_stores['dsl'].pages.first['friendly_doc_name']`
+
+To get the HTML of that page:
+
++ `SiteStore.section_stores['dsl'].pages.first['html']`
+
+When working with the hash of `section_stores`, we sometimes do not know their key names, so you see things like  `SiteStore.section_stores.first[0]` to get the key name of the first section store. This can be a little ugly.
 
 # Deploy
 
