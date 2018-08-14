@@ -82,10 +82,12 @@ class SiteStore < Hyperloop::Store
 
     def load_tools_section
       section_name = 'tools'
-      display_name = 'Tools'
+      display_name = 'Tools, Tips & Debugging'
 
       pages = [
-        { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/docs/tools/tools.md',  allow_edit: true }
+        { id: 0, name: 'tools', repo: 'hyperstack-website', file: 'app/docs/tools/tools.md',  allow_edit: true },
+        { id: 1, name: 'tips', repo: 'hyperstack-website', file: 'app/docs/tools/tips.md',  allow_edit: true },
+        { id: 2, name: 'debugging', repo: 'hyperstack-website', file: 'app/docs/tools/debugging.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
