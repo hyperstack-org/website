@@ -27,7 +27,7 @@ class SiteStore < Hyperloop::Store
       load_dsl_section
       load_installation_section
       load_tools_section
-      # load_tutorials_section
+      load_tutorials_section
     end
 
     def load_overview_section
@@ -92,17 +92,18 @@ class SiteStore < Hyperloop::Store
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
 
-    # def load_tutorials_section
-    #   section_name = "tutorials"
-    #   display_name = "Tutorials"
-    #
-    #   pages = [
-    #     { id: 0, name: 'helloworld', repo: 'hyperstack-website', file: 'app/docs/tutorial/helloworld.md',  allow_edit: true },
-    #     { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
-    #
-    #   ]
-    #   @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
-    # end
+    def load_tutorials_section
+      section_name = "tutorials"
+      display_name = "Tutorials"
+
+      pages = [
+        { id: 0, name: 'helloworld', repo: 'hyperstack-website', file: 'app/docs/tutorial/helloworld.md',  allow_edit: true },
+        { id: 1, name: 'todo', repo: 'hyperstack-website', file: 'app/docs/tutorial/todo.md',  allow_edit: true },
+        { id: 3, name: 'community', repo: 'hyperstack-website', file: 'app/docs/tutorial/community.md',  allow_edit: true }
+
+      ]
+      @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
+    end
   end
 
 end
