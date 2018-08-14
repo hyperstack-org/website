@@ -5,15 +5,15 @@ class PageLayout < Hyperloop::Router::Component
   param :loaded
   param :section
 
-  before_mount do
-      SidebarStore.hide
-  end
-
-  after_mount do
-    Element['.bm-overlay'].on(:click) {
-      SidebarStore.hide
-    }
-  end
+  # before_mount do
+  #     SidebarStore.hide
+  # end
+  #
+  # after_mount do
+  #   Element['.bm-overlay'].on(:click) {
+  #     SidebarStore.hide
+  #   }
+  # end
 
   render do
     DIV(id: 'example', class: 'index') do

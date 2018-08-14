@@ -76,7 +76,7 @@ class SectionStore < Hyperloop::Store
     @promises += 1
 
     HTTP.get( raw_url(page) ) do |response|
-      puts "got page #{page}"
+      # puts "got page #{page}"
       if response.ok?
         converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
         page[:headings] = converted.headings

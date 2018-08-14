@@ -10,27 +10,12 @@ class PageBody < Hyperloop::Component
     mutate.needs_refresh false
   end
 
+  after_mount do
+    navigate_to_slug
+  end
+
   after_update do
-    # unless NavigationStore.slug.empty?
-    #   element = Element["##{NavigationStore.slug}"]
-    #   if element.offset()
-    #     anchorchapter_position = element.offset().top
-    #     Element['html, body'].animate({
-    #           scrollTop: anchorchapter_position
-    #         }, 500)
-    #   end
-    # end
-
-    unless params.page_anchor.empty?
-      element = Element["#{params.page_anchor}"]
-      if element.offset()
-        anchorchapter_position = element.offset().top
-        Element['html, pagebody'].animate({
-              scrollTop: anchorchapter_position
-            }, 0)
-      end
-    end
-
+    navigate_to_slug
     # convert_runable_code_blocks
   end
 
@@ -54,6 +39,18 @@ class PageBody < Hyperloop::Component
         html = page[:html].to_s
 
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
+      end
+    end
+  end
+
+  def navigate_to_slug
+    unless params.page_anchor.empty?
+      element = Element["#{params.page_anchor}"]
+      if element.offset()
+        anchorchapter_position = element.offset().top
+        Element['html, pagebody'].animate({
+              scrollTop: anchorchapter_position
+            }, 0)
       end
     end
   end

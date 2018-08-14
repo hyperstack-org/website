@@ -5,36 +5,15 @@ class SearchResultBody < Hyperloop::Router::Component
   param :location
   param :section
 
-
-  def gotoslug slug, sectionname, pageid
-
-    # NavigationStore.mutate.slug ""
-    pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
-    SiteStore.section_stores[sectionname].set_current_page pagetogo
-
-    # NavigationStore.mutate.accordionindex pageid
-    # NavigationStore.mutate.slug slug
-
-    history.push "/#{sectionname}/#{pagetogo[:name]}/#{slug}"
-
+  after_mount do
+    puts "search results body after mount"
+    Element['html, body'].animate({
+      scrollTop: 0
+    }, :slow)
   end
-
-  def highlight(text, search_string)
-    keywords = search_string.strip.split(" ").compact.uniq
-    #matcher = Regexp.new( '(' + keywords.join("|") + ')' )
-    matcher = Regexp.new('\\b(' + keywords.join("|") + ')\\b')
-    highlighted = text.gsub(matcher) { |match| "<a class='ui teal label'>#{match}</a>" }
-    return highlighted
-  end
-
-
 
   render do
-
     DIV(class: 'searchresultcontent') do
-
-
-
       SearchEngineStore.all_results.each_with_index do |result, index|
 
         resulthtmlparagraph = ""
@@ -56,15 +35,12 @@ class SearchResultBody < Hyperloop::Router::Component
               resulthtmlparagraph = heading[:paragraphs].join(' ')
             end
           end
-
         end
-
 
         H2(class: 'ui header') do
           #IMG(src: 'dist/images/icons/gear.png')
           Sem.Icon(name: 'chevron right')
           DIV(class: 'content') do
-
             A() do
               DIV(dangerously_set_inner_HTML:
                 { __html:
@@ -83,19 +59,35 @@ class SearchResultBody < Hyperloop::Router::Component
 
         end
 
-
-
         DIV(dangerously_set_inner_HTML: { __html: highlight(resulthtmlparagraph, result[:matchingwords]) })
-
         BR()
       end
-
     end
+  end
 
+  def gotoslug slug, sectionname, pageid
+
+    # NavigationStore.mutate.slug ""
+    pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
+    # SiteStore.section_stores[sectionname].set_current_page pagetogo
+
+    # NavigationStore.mutate.accordionindex pageid
+    # NavigationStore.mutate.slug slug
+
+    # history.push "/docs/#{params.section_name}/#{page[:name]}"
+    # force_update!
+
+    history.push "/docs/#{sectionname}/#{pagetogo[:name]}##{slug}"
+    # force_update!
 
   end
 
-
-
+  def highlight(text, search_string)
+    keywords = search_string.strip.split(" ").compact.uniq
+    #matcher = Regexp.new( '(' + keywords.join("|") + ')' )
+    matcher = Regexp.new('\\b(' + keywords.join("|") + ')\\b')
+    highlighted = text.gsub(matcher) { |match| "<a class='ui teal label'>#{match}</a>" }
+    return highlighted
+  end
 
 end

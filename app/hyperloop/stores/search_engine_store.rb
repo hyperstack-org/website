@@ -1,7 +1,5 @@
 class SearchEngineStore < Hyperloop::Store
 
-
-
   class << self
 
     state querystring: "", scope: :shared, reader: true
@@ -10,16 +8,8 @@ class SearchEngineStore < Hyperloop::Store
     state nbresults: 0, scope: :shared, reader: true
     state lunr_section_searchindex: Hash.new { |h, k| h[k] = '' }, scope: :shared, reader: true
 
-    def build_lunr_section_searchindex section
-        `lunrsectionindex=[]`
-        SiteStore.section_stores[section].pages.each do |page|
-            `lunrsectionindex = lunrsectionindex.concat(#{page[:lunrsearchindex]});`
-        end
-        SearchEngineStore.mutate.lunr_section_searchindex[section] = `lunrsectionindex`
-    end
-
     def search_withlunr section
-
+      puts "search_withlunr: section= #{section}"
       if SearchEngineStore.lunr_section_searchindex[section].empty?
         build_lunr_section_searchindex(section)
       end
@@ -28,19 +18,25 @@ class SearchEngineStore < Hyperloop::Store
       jssearchresults = `Searchquery(Lunrindex(#{globalIndex}), #{globalIndex}, #{state.querystring})`
       searchresults = jssearchresults.map{|element| Hash.new(element)}
 
-
       nbresults = 0
       searchresults.each do |searchresult|
         nbresults += searchresult[:nbresults]
       end
+
       SearchEngineStore.mutate.nbresults nbresults
 
       sortedresults =  searchresults.sort_by { |hsh| hsh[:ref] }
       mutate.all_results sortedresults
-
     end
 
-
+    def build_lunr_section_searchindex section
+      puts 'build_lunr_section_searchindex section'
+        `lunrsectionindex=[]`
+        SiteStore.section_stores[section].pages.each do |page|
+            `lunrsectionindex = lunrsectionindex.concat(#{page[:lunrsearchindex]});`
+        end
+        SearchEngineStore.mutate.lunr_section_searchindex[section] = `lunrsectionindex`
+    end
 
     # def search_content sectionname
 

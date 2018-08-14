@@ -9,7 +9,7 @@ class SiteSearch < Hyperloop::Router::Component
   param onChange: nil
 
   param section_options: [
-    { key: 'docs', text: 'In Documentation', value: 'dsl_docs' },
+    { key: 'docs', text: 'In Documentation', value: 'docs' },
     { key: 'start', text: 'In Get started', value: 'start' },
     { key: 'tutorials', text: 'In Tutorials', value: 'tutorials' }
   ]
@@ -29,10 +29,10 @@ class SiteSearch < Hyperloop::Router::Component
       end
 
       Sem.Icon(name: 'search')
-      Sem.Select(compact: false, options: params.section_options.to_n).on :change do |e|
-
-        mutate.section_selection Hash.new(e.to_n)['value']
-      end
+      # Sem.Select(compact: false, options: params.section_options.to_n).on :change do |e|
+      #
+      #   mutate.section_selection Hash.new(e.to_n)['value']
+      # end
 
       Sem.Button() {'Search'}.on(:click) do
         if (state.search_input_value.length > 1)
@@ -43,7 +43,13 @@ class SiteSearch < Hyperloop::Router::Component
                 SearchEngineStore.mutate.previous_section_query params.section
                 SearchEngineStore.mutate.all_results nil
 
-            SearchEngineStore.search_withlunr(params.section)
+            # SearchEngineStore.search_withlunr(params.section)
+            # this is a hack to only search thr dsl section
+            SearchEngineStore.mutate.querystring state.search_input_value
+            SearchEngineStore.mutate.previous_section_query 'dsl'
+            SearchEngineStore.mutate.all_results nil
+            SearchEngineStore.search_withlunr('dsl')
+
           end
 
           if (SearchEngineStore.all_results.empty?)
