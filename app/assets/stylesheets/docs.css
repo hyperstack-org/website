@@ -1377,12 +1377,12 @@ body.progress.animated .ui.progress .bar {
 }
 
 #example .following.menu > .title.item {
-  font-size: 1em !important;
+  font-size: 1.2em !important;
 }
 
 #example .following.menu > .active.title.item {
-  border-color: #e81176 !important;
-  color: #e81176 !important;
+  border-color: #149c8e !important;
+  color: #149c8e !important;
 }
 
 #example .following.menu > .content.active.menu > .item {
