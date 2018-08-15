@@ -76,14 +76,14 @@ class SectionStore < Hyperloop::Store
     @promises += 1
 
     HTTP.get( raw_url(page) ) do |response|
-      # puts "got page #{page}"
       if response.ok?
+        puts "Success getting page #{page}"
         converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
         page[:headings] = converted.headings
         page[:friendly_doc_name] = converted.headings[0][:text]
         page[:code_blocks] = converted.code_blocks
         page[:html] = converted.html
-        #page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
+        # page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
         page[:edit_url] = edit_url page
         page[:lunrsearchindex] = build_lunr_page_searchindex(page)
 
