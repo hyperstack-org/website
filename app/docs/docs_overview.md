@@ -1,8 +1,6 @@
 # Welcome to Hyperstack!
 
-Hyperstack, previously known as RubyHyperloop, has been renamed and moved to a new website as we move towards our 1.0 release.
-
-First off, why are we renaming to Hyperstack?  We love the Hyperloop name, as we hope Hyperloop is the "Ruby on Rails" of the future, and it speaks to the full circle loop connecting client to server and back again, as well as plays on the famous React "Flux Loop".  So why change?  The biggest reason is simply that the name too heavily conflicts with Hyperloop (the train) especially when it comes to getting domain names, or doing web searches.  Secondarily there is the notion that we are providing a "full stack" framework in the truest sense of the word, and thus it is a Hyperstack.   
+Hyperstack 1.0 is work-in-progress. Please consider everything in this repo as ALPHA.
 
 ### Hyperstack 1.0 Goals
 
@@ -61,3 +59,5 @@ Most everything above has been proven already, and we are really just doing a lo
 3. The current "WIP" HyperSpec is not 100% compatible with current HyperSpec so it will be released directly to the Hyperstack repo.  As there is no dependency between HyperSpec and the rest of Hyperloop/Hyperstack you can just keep using the currently released hyperspec if you want.
 4. HyperComponent and HyperModel will only run on the client, so eventually these could be directly built as NPM modules.
 5. HyperOperation is based largely on trailblazer Operations, and thus developers may wish to use them on the Server as well as the client.  The base Operation class has no ability to deal with remotely invoking or responding to an Operation hosted on the Server.   This functionality is provided by the ServerOp subclass.  The new HyperOperation gem will only include the client side code for the ServerOp, and the push receiver will be stubbed somehow to allow for multiple push technologies (See note #2 above)
+6. Hyperstack, previously known as RubyHyperloop, has been renamed and moved to a new website as we move towards our 1.0 release. First off, why are we renaming to Hyperstack?  We love the Hyperloop name, as we hope Hyperloop is the "Ruby on Rails" of the future, and it speaks to the full circle loop connecting client to server and back again, as well as plays on the famous React "Flux Loop".  So why change?  The biggest reason is simply that the name too heavily conflicts with Hyperloop (the train) especially when it comes to getting domain names, or doing web searches.  Secondarily there is the notion that we are providing a "full stack" framework in the truest sense of the word, and thus it is a Hyperstack.   
+
