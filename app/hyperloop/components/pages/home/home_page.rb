@@ -74,12 +74,31 @@ class HomePage < Hyperloop::Router::Component
            Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true)
          end
       end
-      Sem.GridRow(columns: 6, class: 'no-padding') do
+      Sem.GridRow(columns: 8, class: 'no-padding') do
         Sem.GridColumn() { }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/images/rack.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/images/rails.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/images/roda.png', size: :medium, centered: true) }
-        Sem.GridColumn(verticalAlign: :middle) { Sem.Image(src: '/images/sinatra.png', size: :medium, centered: true) }
+        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+          Sem.Image(src: '/images/rack.png', size: :medium, centered: true, disabled: true)
+          DIV { 'Coming Soon' }
+        end
+        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+           Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
+         end
+        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+           Sem.Image(src: '/images/roda.png', size: :medium, centered: true, disabled: true)
+           DIV { 'Coming Soon' }
+         end
+        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+           Sem.Image(src: '/images/sinatra.png', size: :medium, centered: true, disabled: true)
+           DIV { 'Coming Soon' }
+         end
+         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+            Sem.Image(src: '/images/amber.png', size: :medium, centered: true, disabled: true)
+            DIV { 'Coming Soon' }
+          end
+          Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+             Sem.Image(src: '/images/lucky.png', size: :medium, centered: true, disabled: true)
+             DIV { 'Coming Soon' }
+           end
         Sem.GridColumn() { }
       end
     end
@@ -88,6 +107,7 @@ class HomePage < Hyperloop::Router::Component
       DIV(class: 'fifteen wide column centered') do
         Sem.Header(size: :huge, textAlign: :center) do
           DIV {"Hyperstack integrates with your favourage back-end to sunchronize data between any ActiveRecord based ORM and the front-end."}
+          BR()
           DIV {"We even include a fast, hot-loading build environment for pure programmer joy."}
         end
         BR()
@@ -129,7 +149,8 @@ class HomePage < Hyperloop::Router::Component
       DIV(class: 'fifteen wide column centered') do
         BR()
         Sem.Header(size: :huge, textAlign: :center) do
-          SPAN() {"Think JavaScript rules the front-end? Think again."}
+          DIV { "Think JavaScript is your only option for the front-end?" }
+          DIV { "Think again." }
         end
         BR()
         BR()
