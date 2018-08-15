@@ -1,5 +1,9 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
+    Element['html, body'].scrollTop(0);
+    # puts "#{Window.view.height}"
+    # Element["#navigation-sidebar"].css('height', "#{Window.view.height}px")
+    # puts "#{Element["#navigation-sidebar"].height}"
     # @section_name = 'docs'
     # @sidebar_component = PageToc(history: params.history, location: params.location, section_name: @section_name).as_node
     # # sidebar = TestMe().as_node
@@ -59,9 +63,11 @@ class DocsPage < Hyperloop::Router::Component
 
   def render_side_bar_with_all_sections
     Sem.Rail(close: true, dividing: false, position: 'left') do
-      ReactYahooSticky(enable: true, top: 50) do
-        DIV(class: 'ui sticky visible transition') do
-          accordion
+      ReactYahooSticky(enable: false, top: 100) do
+        PerfectScrollbar.ScrollBar() do
+          DIV(id: "navigation-sidebar", class: '') do
+            accordion
+          end
         end
       end
     end
@@ -93,7 +99,9 @@ class DocsPage < Hyperloop::Router::Component
   def display_title display_name, index, is_active
     Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: is_active) do
       I(class: 'dropdown icon')
-      B() { display_name }
+      B() { display_name }.on(:click) do
+        Element['html, body'].scrollTop(0);
+      end
     end
   end
 

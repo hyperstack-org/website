@@ -4,10 +4,12 @@ class PageToc < Hyperloop::Component
   param :section_name
   param page_name: ''
 
-  before_mount do
+  after_update do
     # if (NavigationStore.accordionindex < 0)
       # NavigationStore.mutate.accordionindex(-1)
     # end
+    
+    
   end
 
   render do
@@ -19,6 +21,7 @@ class PageToc < Hyperloop::Component
       #   end
       # end
     # end
+
   end
 
   def display_title page, index, is_active
@@ -32,10 +35,14 @@ class PageToc < Hyperloop::Component
     puts "navigate_to_page"
     # newindex = (NavigationStore.accordionindex === index) ? -1 : index
     # NavigationStore.mutate.accordionindex newindex
-     Element['html, body'].animate({
-       scrollTop: 0
-     }, :slow)
-    # SiteStore.section_stores[params.section_name].set_current_page page
+
+     # Element['html, body'].animate({
+     #   scrollTop: 0
+     # }, :slow)
+    
+    Element['html, body'].scrollTop(0);
+
+        # SiteStore.section_stores[params.section_name].set_current_page page
     # NavigationStore.mutate.slug ""
     params.history.push "/docs/#{params.section_name}/#{page[:name]}"
     force_update!
@@ -54,20 +61,33 @@ class PageToc < Hyperloop::Component
       SiteStore.section_stores[params.section_name].pages.each_with_index do |page, index|
         is_active = page[:name] == params.page_name ? true : false
         display_title(page, index, is_active).on(:click) do
+          
           navigate_to_page(page, index)
         end
 
+         
         Sem.AccordionContent(className: '', active: is_active) do
           page[:headings].drop(1).each do |heading|
             if (heading[:level] < 4)
-              A(class: "item accordion-section-item #{'accordion-section-subitem' if (heading[:level]==3)}") { heading[:text] }
+              subitem_before = ""
+              if (heading[:level]==3) 
+                subitemclass = "accordion-section-subitem"
+                subitem_before = ""
+              end
+              link_id = "#{params.section_name}_#{page[:name]}_#{heading[:slug]}"
+              A(id: "#{link_id}", class: "item accordion-section-item #{subitemclass}") { "#{subitem_before}#{heading[:text]}" }
                 .on(:click) do
                   navigate_to_heading page, heading
+                  Element["a.item"].removeClass("active-link-item")
+                  Element["##{link_id}"].addClass("active-link-item")
+                  
+                  
                 end
             end
           end
         end
       end
     end
+
   end
 end

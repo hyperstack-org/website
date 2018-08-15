@@ -11,15 +11,53 @@
   top: 0;
 }
 
+
+.improve-page-container {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+}
+
+.main.container .rail {
+  padding:50px 1em 0 0 !important;
+}
+
+#navigation-sidebar {
+  position: relative;
+  width: 306px;
+  height: 600px;
+}
+
+#navigation-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 0px !important;
+  background-color: rgba(229, 17, 107, 0.1) !important;
+}
+
+#navigation-sidebar::-webkit-scrollbar {
+  width: 8px !important;
+  
+  
+}
+
+   /* &::-webkit-scrollbar {
+      width: 5px !important;
+    }*/
+
+.accordion {
+  border-right-color: rgba(34,36,38,0) !important;
+}
+
 .main-accordion-container {
   border: 0px !important;
 }
 
 .main-accordion-title {
-  background-color: #E5116B;
-  color: white !important;
+  background-color: rgba(200,200,200,0.1);
+  color: #E5116B !important;
   font-size: 1.4em !important;
-  padding: 1em !important;
+  padding-bottom: 1em !important;
+  border-bottom: 1px solid rgba(229, 17, 107, 0.2);
+  /*padding: 1em !important;*/
 }
 
 .accordion-section-container {
@@ -31,16 +69,33 @@
   color: black !important;
 }
 
+
+
+
 .accordion-section-item {
   color: #149c8e !important;
+  font-weight: bold !important;
+  font-size: 0.9em !important;
 }
 
 .accordion-section-subitem {
   color: rgba(0,0,0,.5) !important;
+  font-weight: normal !important;
+  margin-left: 20px !important;
+  font-size: 0.8em !important;
 }
 
 .accordion-section-subitem:hover {
   color: black !important;
+}
+
+.active-link-item {
+  color: white !important;
+  background-color: rgba(229, 17, 107, 0.6) !important;
+}
+
+.active-link-item:hover {
+  color: white !important;
 }
 
 #example.index .pusher > .page {

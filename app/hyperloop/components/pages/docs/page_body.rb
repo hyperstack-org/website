@@ -65,7 +65,7 @@ class PageBody < Hyperloop::Component
   end
 
   def edit_button
-    button = SPAN(class: '') do
+    button = DIV(class: 'improve-page-container') do
       if state.needs_refresh
         Sem.Message(positive: true) {
           Sem.MessageHeader { "Thank you! Your edits are on edge." }
