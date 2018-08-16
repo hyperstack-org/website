@@ -1,13 +1,6 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
     Element['html, body'].scrollTop(0);
-    # puts "#{Window.view.height}"
-    # Element["#navigation-sidebar"].css('height', "#{Window.view.height}px")
-    # puts "#{Element["#navigation-sidebar"].height}"
-    # @section_name = 'docs'
-    # @sidebar_component = PageToc(history: params.history, location: params.location, section_name: @section_name).as_node
-    # # sidebar = TestMe().as_node
-    # @body_component = PageBody(section_name: @section_name).as_node
   end
 
   render(DIV) do
@@ -32,25 +25,13 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def main_content
-      # DIV(class: 'header segment') do
-      #   DIV(class: 'container') do
-      #     DIV(class: 'introductiontitle') do
-      #       DIV(class: 'ui huge header') { "Hyperstack Docs" }
-      #       P() { 'A modern web stack for people who love Ruby' }
-      #     end
-      #   end
-      # end
-
       DIV(class: 'main container') do
         render_side_bar_with_all_sections
         render_correct_page
       end
-
   end
 
   def render_correct_page
-    # puts "section_name: #{params.match.params[:section_name]}"
-    # puts "page_name: #{params.match.params[:page_name]}"
     if params.match.params[:section_name]
       PageBody(section_name: params.match.params[:section_name],
         page_name: params.match.params[:page_name] || '',
