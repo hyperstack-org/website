@@ -6,13 +6,12 @@ class DocsPage < Hyperloop::Router::Component
 
   render(DIV) do
     DIV(id: 'example', class: 'index') do
-      # SidebarMenu()
       DIV(class: 'full height') do
         AppMenu(section: 'docs', history: history, location: location)
         DIV(class: 'page-wrap') do
           main_content
           # loader unless SiteStore.loaded?
-          # AppFooter()
+          AppFooter()
           SearchResultModal(history: history)
         end
       end
@@ -26,10 +25,10 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def main_content
-      DIV(class: 'main container') do
-        render_side_bar_with_all_sections
-        render_correct_page
-      end
+    DIV(class: 'main container') do
+      render_side_bar_with_all_sections
+      render_correct_page
+    end
   end
 
   def render_correct_page
