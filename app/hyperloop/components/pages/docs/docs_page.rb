@@ -1,6 +1,7 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
     Element['html, body'].scrollTop(0);
+    @inverted_active = false
   end
 
   render(DIV) do
@@ -59,10 +60,12 @@ class DocsPage < Hyperloop::Router::Component
       SiteStore.section_stores.each_with_index do |section_hash, index|
         section_name = section_hash[0] #key
         section_store = section_hash[1] #value
+
         is_active = params.match.params[:section_name] == section_name ? true : false
+        is_active = !is_active if @inverted_active && params.match.params[:section_name] == section_name
 
         unless section_store.exclude_from_toc?
-          display_title(section_store.display_name, index, is_active).on(:click) do
+          display_title(section_name, section_store.display_name, index, is_active).on(:click) do
             history.push "/docs/#{section_name}"
           end
 
@@ -77,10 +80,15 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
-  def display_title display_name, index, is_active
+  def display_title section_name, display_name, index, is_active
     Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: is_active) do
       I(class: 'dropdown icon')
       B() { display_name }.on(:click) do
+        if params.match.params[:section_name] == section_name
+          @inverted_active = !@inverted_active
+        else
+          @inverted_active = false
+        end
         Element['html, body'].scrollTop(0);
       end
     end
