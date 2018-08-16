@@ -76,26 +76,26 @@ class HomePage < Hyperloop::Router::Component
         Sem.GridColumn() { }
         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
           Sem.Image(src: '/images/rack.png', size: :medium, centered: true, disabled: true)
-          DIV { 'Coming Soon' }
+          DIV { 'Coming very soon' }
         end
         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
            Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
          end
         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
            Sem.Image(src: '/images/roda.png', size: :medium, centered: true, disabled: true)
-           DIV { 'Coming Soon' }
+           DIV { 'Coming soon' }
          end
         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
            Sem.Image(src: '/images/sinatra.png', size: :medium, centered: true, disabled: true)
-           DIV { 'Coming Soon' }
+           DIV { 'Coming soon' }
          end
          Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
             Sem.Image(src: '/images/amber.png', size: :medium, centered: true, disabled: true)
-            DIV { 'Coming Soon' }
+            DIV { 'Coming later' }
           end
           Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
              Sem.Image(src: '/images/lucky.png', size: :medium, centered: true, disabled: true)
-             DIV { 'Coming Soon' }
+             DIV { 'Coming later' }
            end
         Sem.GridColumn() { }
       end
