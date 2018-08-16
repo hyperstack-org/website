@@ -11,7 +11,7 @@ class DocsPage < Hyperloop::Router::Component
         DIV(class: 'page-wrap') do
           main_content
           # loader unless SiteStore.loaded?
-          AppFooter()
+          # AppFooter()
           SearchResultModal(history: history)
         end
       end
@@ -47,7 +47,12 @@ class DocsPage < Hyperloop::Router::Component
       ReactYahooSticky(enable: false, top: 100) do
         PerfectScrollbar.ScrollBar() do
           DIV(id: "navigation-sidebar", class: '') do
-            accordion
+            Filter()
+            if TocFilterStore.show_filter_list
+              FilterList(history: history)
+            else
+              accordion
+            end
           end
         end
       end

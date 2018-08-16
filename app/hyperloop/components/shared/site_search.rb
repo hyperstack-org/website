@@ -23,7 +23,7 @@ class SiteSearch < Hyperloop::Router::Component
   end
 
   def search_control
-    Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
+    Sem.Input(iconPosition: 'left', placeholder: 'Search DSL docs...', action: true) do
       INPUT(){}.on(:change) do |e|
        mutate.search_input_value e.target.value
       end
