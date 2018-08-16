@@ -65,7 +65,10 @@ class DocsPage < Hyperloop::Router::Component
         is_active = !is_active if @inverted_active && params.match.params[:section_name] == section_name
 
         unless section_store.exclude_from_toc?
-          display_title(section_name, section_store.display_name, index, is_active).on(:click) do
+          Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: is_active) do
+            display_title(section_name, section_store.display_name, index, is_active)
+          end
+          .on(:click) do
             history.push "/docs/#{section_name}"
           end
 
@@ -81,16 +84,14 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def display_title section_name, display_name, index, is_active
-    Sem.AccordionTitle(className: 'main-accordion-title', index: index, active: is_active) do
-      I(class: 'dropdown icon')
-      B() { display_name }.on(:click) do
-        if params.match.params[:section_name] == section_name
-          @inverted_active = !@inverted_active
-        else
-          @inverted_active = false
-        end
-        Element['html, body'].scrollTop(0);
+    I(class: 'dropdown icon')
+    B() { display_name }.on(:click) do
+      if params.match.params[:section_name] == section_name
+        @inverted_active = !@inverted_active
+      else
+        @inverted_active = false
       end
+      Element['html, body'].scrollTop(0);
     end
   end
 
