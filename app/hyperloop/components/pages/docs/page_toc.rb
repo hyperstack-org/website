@@ -4,6 +4,10 @@ class PageToc < Hyperloop::Component
   param :section_name
   param page_name: ''
 
+  before_mount do
+    @inverted_active = false
+  end
+
   render do
     accordion if SiteStore.section_stores[params.section_name] && SiteStore.section_stores[params.section_name].loaded?
   end
@@ -16,23 +20,26 @@ class PageToc < Hyperloop::Component
   end
 
   def navigate_to_page page, index
-    # puts "navigate_to_page"
     Element['html, body'].scrollTop(0);
     params.history.push "/docs/#{params.section_name}/#{page[:name]}"
-    force_update!
+    if params[:page_name] == page[:name]
+      @inverted_active = !@inverted_active
+    else
+      @inverted_active = false
+    end
   end
 
   def navigate_to_heading page, heading
-    # puts "navigate_to_heading"
+    puts "navigate_to_heading"
     slug = "#{heading[:slug]}"
     params.history.push "/docs/#{params.section_name}/#{page[:name]}##{slug}"
-    force_update!
   end
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
       SiteStore.section_stores[params.section_name].pages.each_with_index do |page, index|
         is_active = page[:name] == params.page_name ? true : false
+        is_active = !is_active if @inverted_active && page[:name] == params.page_name
 
         display_title(page, index, is_active).on(:click) do
           navigate_to_page(page, index)
