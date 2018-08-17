@@ -1,25 +1,23 @@
-# class Filter < Hyperloop::Component
-#   render(DIV) do
-#     Sem.Input(iconPosition: 'left', placeholder: 'Find...', action: true, fluid: true,
-#               defaultValue: TocFilterStore.filter) do
-#       INPUT().on(:change) do |e|
-#         TocFilterStore.filter = e.target.value
-#       end
-#     end
-#     Sem.Button { "X" }.on(:click) do
-#       TocFilterStore.filter = ''
-#     end unless TocFilterStore.filter.empty?
-#   end
-# end
-
 class Filter < Hyperloop::Component
   render(DIV) do
-    Sem.Input(icon:'search', iconPosition: 'left', placeholder: 'Find...', fluid: true,
-              defaultValue: TocFilterStore.filter).on(:change) do |e|
-        TocFilterStore.filter = e.target.value
+    Sem.Grid() do
+      Sem.GridRow do
+        Sem.GridColumn(width: width) do
+          Sem.Input(icon:'search', iconPosition: 'left', placeholder: 'Find...', fluid: true,
+                    value: TocFilterStore.filter).on(:change) do |e|
+              TocFilterStore.filter = e.target.value
+          end
+        end
+        Sem.GridColumn(width: 2, textAlign: :center) do
+          Sem.Button(circular: true, icon: true) { Sem.Icon(name: :close) }.on(:click) do
+            TocFilterStore.filter = ''
+          end
+        end unless TocFilterStore.filter.empty?
       end
     end
-    Sem.Button { "X" }.on(:click) do
-      TocFilterStore.filter = ''
-    end # unless TocFilterStore.filter.empty?
+  end
+
+  def width
+    TocFilterStore.filter.empty? ? 16 : 11
+  end
 end

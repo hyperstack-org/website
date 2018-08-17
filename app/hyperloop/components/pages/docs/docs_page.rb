@@ -49,6 +49,7 @@ class DocsPage < Hyperloop::Router::Component
           DIV(id: "navigation-sidebar", class: '') do
             Filter()
             if TocFilterStore.show_filter_list
+              BR()
               FilterList(history: history)
             else
               accordion
