@@ -43,6 +43,10 @@
       width: 5px !important;
     }*/
 
+.filter-input-hack > input {
+  border-right-color: black !important;
+}
+
 .accordion {
   border-right-color: rgba(34,36,38,0) !important;
 }

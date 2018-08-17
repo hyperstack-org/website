@@ -14,7 +14,7 @@
 
 class Filter < Hyperloop::Component
   render(DIV) do
-    Sem.Input(iconPosition: 'left', placeholder: 'Find...', action: true, fluid: true,
+    Sem.Input(icon:'search', iconPosition: 'left', placeholder: 'Find...', fluid: true,
               defaultValue: TocFilterStore.filter).on(:change) do |e|
         TocFilterStore.filter = e.target.value
       end
