@@ -54,7 +54,8 @@ class SectionStore < Hyperloop::Store
 
   def raw_url(page)
     branch = is_edge? ? 'edge' : 'master'
-    "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+    # "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+    "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
   end
 
   def edit_url(page)
