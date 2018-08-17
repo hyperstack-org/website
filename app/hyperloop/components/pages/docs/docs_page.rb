@@ -1,8 +1,17 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
+    puts "before mount"
     Element['html, body'].scrollTop(0);
     @inverted_active = false
   end
+
+  after_mount do
+    puts "after mount"
+  end
+
+  # after_update do
+  #   puts "after update"
+  # end
 
   render(DIV) do
     DIV(id: 'example', class: 'index') do

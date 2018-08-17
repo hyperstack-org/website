@@ -44,13 +44,19 @@ class PageBody < Hyperloop::Component
   end
 
   def navigate_to_slug
+    puts "navigate to slug"
     unless params.page_anchor.empty?
       element = Element["#{params.page_anchor}"]
       if element.offset()
         anchorchapter_position = element.offset().top
-        Element['html, pagebody'].animate({
-              scrollTop: anchorchapter_position
-            }, 0)
+        if @current_page_section == "#{params.section_name}-#{params.page_name}"
+          Element['html, pagebody'].animate({
+                scrollTop: anchorchapter_position
+              }, 0)
+        else
+          Element['html, body'].scrollTop(anchorchapter_position);
+        end
+        @current_page_section = "#{params.section_name}-#{params.page_name}"
       end
     end
   end

@@ -1,7 +1,14 @@
 # class NavigationStore < Hyperloop::Store
+#   # receives Hyperloop::Application::Boot do
+#   # end
 #
-#   state accordionindex: -1, scope: :shared, reader: true
-#   state main_accordion_index: -1, scope: :shared, reader: true
-#   state slug: "", scope: :shared, reader: true
+#   class << self
+#     def current_page_name=(page_name)
+#       @current_page_name = page_name
+#     end
 #
+#     def current_page_name
+#       @current_page_name
+#     end
+#   end
 # end

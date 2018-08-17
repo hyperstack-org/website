@@ -13,12 +13,10 @@ class FilterList < Hyperloop::Component
     SiteStore.section_stores.each do |section_hash|
       section_name = section_hash[0] #key
       section_store = section_hash[1] #value
-      render_item section_store.display_name, "/docs/#{section_name}", section_name
+      render_item section_store.display_name, "/docs/#{section_name}##{section_name}", section_name
 
       SiteStore.section_stores[section_name].pages.each do |page|
-        render_item page[:headings][0][:text], "/docs/#{section_name}/#{page[:name]}", "#{section_name}/#{page[:name]}"
-
-        page[:headings].drop(1).each do |heading|
+        page[:headings].drop.each do |heading|
           slug = "#{heading[:slug]}"
           render_item heading[:text], "/docs/#{section_name}/#{page[:name]}##{slug}", "#{section_name}/#{page[:name]}"
         end
@@ -32,6 +30,7 @@ class FilterList < Hyperloop::Component
         Sem.ListHeader do
           A { item }
           .on(:click) do
+            puts path
             params.history.push path
           end
         end
