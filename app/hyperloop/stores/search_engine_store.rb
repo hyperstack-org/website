@@ -32,7 +32,7 @@ class SearchEngineStore < Hyperloop::Store
     def build_lunr_section_searchindex section
       puts 'build_lunr_section_searchindex section'
         `lunrsectionindex=[]`
-        SiteStore.section_stores[section].pages.each do |page|
+        AppStore.section_stores[section].pages.each do |page|
             `lunrsectionindex = lunrsectionindex.concat(#{page[:lunrsearchindex]});`
         end
         SearchEngineStore.mutate.lunr_section_searchindex[section] = `lunrsectionindex`
@@ -47,7 +47,7 @@ class SearchEngineStore < Hyperloop::Store
     #   a[:name] = sectionname
 
     #   a[:results] = []
-    #   pages = SiteStore.section_stores[sectionname].pages
+    #   pages = AppStore.section_stores[sectionname].pages
 
     #     pages.each do |page|
     #       a[:results].concat( match_content(state.inputvalue, page) )

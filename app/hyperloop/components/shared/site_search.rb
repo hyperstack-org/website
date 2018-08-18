@@ -76,20 +76,20 @@ end
   #     categoryRenderer: lambda { |obj| render_category(obj) },
   #     results: state.results,
   #     value: state.value,
-  #     loading: !SiteStore.loaded?
+  #     loading: !AppStore.loaded?
   #   ) { }
   #   .on(:searchChange) do |e|
   #     mutate.value e.target.value
   #     if (e.target.value.length > 4)
-  #       #mutate.results SiteStore.search_content(state.value, params.section).to_n
-  #       resultat = SiteStore.search_content(state.value, params.section)
+  #       #mutate.results AppStore.search_content(state.value, params.section).to_n
+  #       resultat = AppStore.search_content(state.value, params.section)
   #       puts "RESULTS: #{resultat[0][:results][0][:text]}"
   #     end
   #   end
   #   .on(:resultSelect) do |e, data|
   #     puts data.result.text
   #     mutate.value data.result.text
-  #     SiteStore.section_stores[params.section].set_current_page data.result.page
+  #     AppStore.section_stores[params.section].set_current_page data.result.page
   #         #params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
   #     #force_update!
   #     #{}"/#{params.section}/#{data.result.repo}/#{data.result.file}"

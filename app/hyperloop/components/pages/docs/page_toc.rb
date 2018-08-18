@@ -9,12 +9,12 @@ class PageToc < Hyperloop::Component
   end
 
   render do
-    accordion if SiteStore.section_stores[params.section_name] && SiteStore.section_stores[params.section_name].loaded?
+    accordion if AppStore.section_stores[params.section_name] && AppStore.section_stores[params.section_name].loaded?
   end
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu') do
-      SiteStore.section_stores[params.section_name].pages.each_with_index do |page, index|
+      AppStore.section_stores[params.section_name].pages.each_with_index do |page, index|
         is_active = page[:name] == params.page_name ? true : false
         is_active = !is_active if @inverted_active && page[:name] == params.page_name
 

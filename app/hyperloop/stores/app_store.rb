@@ -1,4 +1,4 @@
-class SiteStore < Hyperloop::Store
+class AppStore < Hyperloop::Store
 
   receives Hyperloop::Application::Boot do
     init

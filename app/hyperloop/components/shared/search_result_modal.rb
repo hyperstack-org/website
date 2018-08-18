@@ -19,8 +19,8 @@ class SearchResultModal < Hyperloop::Component
   def gotoslug slug, sectionname, pageid
 
     # NavigationStore.mutate.slug ""
-    pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
-    SiteStore.section_stores[sectionname].set_current_page pagetogo
+    pagetogo = AppStore.section_stores[sectionname].pages[pageid]
+    AppStore.section_stores[sectionname].set_current_page pagetogo
 
     params.history.push "/#{sectionname}/#{pagetogo[:name]}/#{slug}"
     # NavigationStore.mutate.accordionindex pageid

@@ -19,7 +19,7 @@ class DocsPage < Hyperloop::Router::Component
         AppMenu(section: 'docs', history: history, location: location)
         DIV(class: 'page-wrap') do
           main_content
-          # loader unless SiteStore.loaded?
+          # loader unless AppStore.loaded?
           # AppFooter()
           SearchResultModal(history: history)
         end
@@ -71,7 +71,7 @@ class DocsPage < Hyperloop::Router::Component
 
   def accordion
     Sem.Accordion(fluid: true, className: 'large pointing secondary vertical following menu main-accordion-container') do
-      SiteStore.section_stores.each_with_index do |section_hash, index|
+      AppStore.section_stores.each_with_index do |section_hash, index|
         section_name = section_hash[0] #key
         section_store = section_hash[1] #value
 

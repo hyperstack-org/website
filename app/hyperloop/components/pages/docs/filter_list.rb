@@ -10,12 +10,12 @@ class FilterList < Hyperloop::Component
   end
 
   def render_all_items
-    SiteStore.section_stores.each do |section_hash|
+    AppStore.section_stores.each do |section_hash|
       section_name = section_hash[0] #key
       section_store = section_hash[1] #value
       render_item section_store.display_name, "/docs/#{section_name}##{section_name}", section_name
 
-      SiteStore.section_stores[section_name].pages.each do |page|
+      AppStore.section_stores[section_name].pages.each do |page|
         page[:headings].drop.each do |heading|
           slug = "#{heading[:slug]}"
           render_item heading[:text], "/docs/#{section_name}/#{page[:name]}##{slug}", "#{section_name}/#{page[:name]}"

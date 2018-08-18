@@ -21,19 +21,19 @@ class PageBody < Hyperloop::Component
 
   render(DIV) do
     Sem.Segment(class: 'page-container') do
-      if SiteStore.section_stores[params.section_name].loaded?
+      if AppStore.section_stores[params.section_name].loaded?
         if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { 'edge' }
         else
           Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
         end
 
-        edit_button if SiteStore.section_stores[params.section_name].current_page[:allow_edit]
+        edit_button if AppStore.section_stores[params.section_name].current_page[:allow_edit]
 
         if params.page_name.empty?
-          page = SiteStore.section_stores[params.section_name].pages.first
+          page = AppStore.section_stores[params.section_name].pages.first
         else
-          page = SiteStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
+          page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
         end
 
         html = page[:html].to_s
@@ -82,7 +82,7 @@ class PageBody < Hyperloop::Component
 
         }.on(:click) do
           mutate.needs_refresh true
-          `window.open(#{SiteStore.section_stores[params.section_name].current_page[:edit_url]}, "_blank");`
+          `window.open(#{AppStore.section_stores[params.section_name].current_page[:edit_url]}, "_blank");`
         end
       end
     end.as_node

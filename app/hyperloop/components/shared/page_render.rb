@@ -16,7 +16,7 @@
 #               body_component: body,
 #               page_title: params.display_title,
 #               section: params.section_name,
-#               loaded: SiteStore.section_stores[params.section_name].loaded?,
+#               loaded: AppStore.section_stores[params.section_name].loaded?,
 #               history: params.history,
 #               location: params.location)
 #   end

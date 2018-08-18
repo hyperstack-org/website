@@ -23,7 +23,7 @@ class SearchResultBody < Hyperloop::Router::Component
         resultsectionname = ""
         resultpageid = ""
 
-        SiteStore.section_stores[SearchEngineStore.previous_section_query].pages.each_with_index do |page, index|
+        AppStore.section_stores[SearchEngineStore.previous_section_query].pages.each_with_index do |page, index|
 
           page[:headings].each do |heading|
             if (heading[:id] == result[:ref])
@@ -68,8 +68,8 @@ class SearchResultBody < Hyperloop::Router::Component
   def gotoslug slug, sectionname, pageid
 
     # NavigationStore.mutate.slug ""
-    pagetogo = SiteStore.section_stores[sectionname].pages[pageid]
-    # SiteStore.section_stores[sectionname].set_current_page pagetogo
+    pagetogo = AppStore.section_stores[sectionname].pages[pageid]
+    # AppStore.section_stores[sectionname].set_current_page pagetogo
 
     # NavigationStore.mutate.accordionindex pageid
     # NavigationStore.mutate.slug slug
