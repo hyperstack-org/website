@@ -1,18 +1,6 @@
 class HomePage < Hyperloop::Router::Component
-
-  before_mount do
-    SidebarStore.hide
-  end
-
-  after_mount do
-    Element['.bm-overlay'].on(:click) {
-      SidebarStore.hide
-    }
-  end
-
   render do
     DIV(id: 'example', class: 'index') do
-      # SidebarMenu()
       DIV(class: 'page_wrap full height') do
         AppMenu(section: 'home')
         mast_head

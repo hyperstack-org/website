@@ -10,24 +10,37 @@ class AppStore < Hyperloop::Store
       @section_stores
     end
 
+    def loading_error!
+      @loading_error = true
+    end
+
+    def errors?
+      @loading_error
+    end
+
     def loaded?
-      ret = true
-      @section_stores.each do |section|
-        ret = false unless section[1].loaded?
-      end
-      ret
+      are_all_stores_loaded?
     end
 
     private
 
     def init
       @section_stores = {}
+      @loading_error = false
+      mutate.stores_all_loaded false
       load_overview_section
       load_start_section
       load_dsl_section
       load_installation_section
       load_tools_section
       load_tutorials_section
+    end
+
+    def are_all_stores_loaded?
+      @section_stores.each do |section_hash|
+        return false unless section_hash[1].loaded?
+      end
+      true
     end
 
     def load_overview_section

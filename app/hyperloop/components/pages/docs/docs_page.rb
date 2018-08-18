@@ -1,17 +1,8 @@
 class DocsPage < Hyperloop::Router::Component
   before_mount do
-    puts "before mount"
     Element['html, body'].scrollTop(0);
     @inverted_active = false
   end
-
-  after_mount do
-    puts "after mount"
-  end
-
-  # after_update do
-  #   puts "after update"
-  # end
 
   render(DIV) do
     DIV(id: 'example', class: 'index') do
@@ -19,7 +10,7 @@ class DocsPage < Hyperloop::Router::Component
         AppMenu(section: 'docs', history: history, location: location)
         DIV(class: 'page-wrap') do
           main_content
-          # loader unless AppStore.loaded?
+          page_dimmer
           # AppFooter()
           SearchResultModal(history: history)
         end
@@ -27,8 +18,8 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
-  def loader
-    Sem.Dimmer(active: true, inverted: true) do
+  def page_dimmer
+    Sem.Dimmer(active: !(AppStore.loaded? || AppStore.errors?), inverted: true) do
       Sem.Loader(size: :large) {'Loading pages...'}
     end
   end

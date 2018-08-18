@@ -68,7 +68,38 @@ class AppRouter < Hyperloop::Router
 end
 ```
 
-### Store Structure
+### The HomePage Component
+
+Our root route `/` renders a Component called `HomePage`. If you are brand new to HYperstack, this is a good first component to look at as it is dead simple - it renders a static HTML page. You will find it at `/app/hyperloop/components/home/home_page.rb`
+
+Note the Component structure and then have a look at the `render` macro.
+
+```ruby
+# /app/hyperloop/components/home/home_page.rb
+render do
+  DIV(id: 'example', class: 'index') do
+    DIV(class: 'page_wrap full height') do
+      AppMenu(section: 'home')
+      mast_head
+      stack_overview
+      three_columns_of_text
+      SearchResultModal(history: history)
+    end
+    AppFooter()
+  end
+end
+```
+
+In the code above, note the following:
+
++ Our HTML tags `DIV`, `INPUT`, `A`, etc are always in capitals. This is purely a convention which we believe makes the code more readable, after-all, this code is rendering a HTML page. If this hurts your eyes (as a Ruby purist), you can use the lower case form which works just the same.
++ Every Component must implement a `render` block which must return just one DOM node. In this case it is returning a `DIV`. You will see `render(DIV)` elsewhere in the code which is shorthand.
++ Components render child Components and data is passed in one direction, from parent to child. React constantly re-renders the page based on the current state of the data. This is the simple, beautiful secret to React. Once you fully grasp this one simple point. all of React design and thinking will make sense. We will speak about Stores, which are a way of passing data between components, a little later.
++ In the render block above, we render a combination of Components and methods in the class. As a general rule of thumb, its best to keep the render block as readable as possible (for example the `mast_head` method renders all the messy mast head HTML) and move code that is likely to be shared into its own Component. A perfect example is the `AppMenu` Component which is obviously needed on all pages on this site.
+
+### AppStore behind the scenes
+
+Stores hold data and components watch for changes (we call them mutations) of that data and re-render when state data held in a Store changes.
 
 When this application starts, the Hyperstack Stores get initialised and start their work. The `AppStore` singleton goes about loading and converting all the pages from Github. Basic data structure: `AppStore` has_many `SectionStores` has_many `pages`.
 

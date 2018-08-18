@@ -21,14 +21,12 @@ class PageBody < Hyperloop::Component
 
   render(DIV) do
     Sem.Segment(class: 'page-container') do
-      if AppStore.section_stores[params.section_name].loaded?
+      if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
         if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { 'edge' }
         else
           Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
         end
-
-        edit_button if AppStore.section_stores[params.section_name].current_page[:allow_edit]
 
         if params.page_name.empty?
           page = AppStore.section_stores[params.section_name].pages.first
@@ -36,15 +34,15 @@ class PageBody < Hyperloop::Component
           page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
         end
 
-        html = page[:html].to_s
+        edit_button if page[:allow_edit]
 
+        html = page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
     end
   end
 
   def navigate_to_slug
-    puts "navigate to slug"
     unless params.page_anchor.empty?
       element = Element["#{params.page_anchor}"]
       if element.offset()
