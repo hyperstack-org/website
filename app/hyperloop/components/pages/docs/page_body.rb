@@ -34,7 +34,7 @@ class PageBody < Hyperloop::Component
           page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
         end
 
-        edit_button if page[:allow_edit]
+        edit_button(page) if page[:allow_edit]
 
         html = page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
@@ -68,19 +68,23 @@ class PageBody < Hyperloop::Component
      end
   end
 
-  def edit_button
+  def edit_button(page)
     button = DIV(class: 'improve-page-container') do
       if state.needs_refresh
         Sem.Message(positive: true) {
-          Sem.MessageHeader { "Thank you! Your edits are on edge." }
-          P { "Github can take up to 5 mins to refresh, you will need to reload this page." }
+          Sem.MessageHeader { "Thank you! Your edits (or PR) are on edge." }
+          if (is_edge?)
+            P { "Github can take up to 5 mins to refresh their CDN, you will need to reload this page." }
+          else
+            P { "Your changed will appear on this site when edge is next merged to master." }
+          end
         }
       else
         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
 
         }.on(:click) do
           mutate.needs_refresh true
-          `window.open(#{AppStore.section_stores[params.section_name].current_page[:edit_url]}, "_blank");`
+          `window.open(#{page[:edit_url]}, "_blank");`
         end
       end
     end.as_node
