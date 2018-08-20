@@ -69,4 +69,53 @@ end
 
 --------------------------
 
+## Policy example
+
+You have a Model with the name: `Post`
+```ruby
+class Post < ApplicationRecord
+  # Attributes
+  # name
+  # user_id
+  # message
+  # secret_one
+  # secret_two
+end
+```
+
+Defining a policy for this `Post` you can create a Policy named: `PostPolicy`
+```ruby
+class PostPolicy
+
+  # This limits if a Model can be read by the user
+  # In case it is a public model and can be seen by anyone you can configure it like this:
+  regulate_all_broadcasts { |policy| policy.send_all }
+  
+  # If it is linked to a specific user you can use:
+  regulate_broadcast do |policy|
+    policy.send_all.to(User) # This is a other Policy: UserPolicy that contains the desired policy
+  end
+  
+  # If you want to regulate fields that should not be broadcasted.
+  # It accepts an array so you could write this:
+  regulate_all_broadcasts do |policy|
+    policy.send_all_but(:secret_one, :secret_two)
+    # OR
+    policy.send_all_but(:secret_one, :secret_two).to(User)
+  end
+  
+  # Example below is there is a logged-in user
+  allow_create { acting_user.id == self.user_id }
+  allow_update { acting_user.id == self.user_id }
+  allow_destroy { acting_user.id == self.user_id }
+  
+  # If there are anonimous actions to be allowed you can just write:
+  allow_create
+  allow_update
+  allow_destroy
+end
+```
+
+--------------------------
+
 That concludes this introduction to Hyperloop, but before you go on to our Tutorials or Docs, please read the next section where we describe our pragmatic approach to architecture.
