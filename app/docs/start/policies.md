@@ -110,9 +110,9 @@ class PostPolicy
   allow_destroy { acting_user.id == self.user_id }
   
   # If there are anonimous actions to be allowed you can just write:
-  allow_create
-  allow_update
-  allow_destroy
+  allow_create {true}
+  allow_update {true}
+  allow_destroy {true}
 end
 ```
 
