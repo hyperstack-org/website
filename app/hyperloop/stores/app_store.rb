@@ -74,11 +74,11 @@ class AppStore < Hyperloop::Store
       display_name = 'Hyperstack DSL'
 
       pages = [
-        { id: 0, name: 'components', repo: 'hs1',     file: 'hyper-client/docs/hyper-component.md',  allow_edit: true },
-        { id: 1, name: 'stores', repo: 'hs1',     file: 'hyper-client/docs/hyper-store.md',  allow_edit: true },
-        { id: 2, name: 'models', repo: 'hs1',      file: 'hyper-client/docs/hyper-model.md',  allow_edit: true },
-        { id: 3, name: 'router', repo: 'hs1',    file: 'hyper-client/docs/hyper-router.md',  allow_edit: true },
-        { id: 4, name: 'operations', repo: 'hs1', file: 'hyper-client/docs/hyper-operation.md',  allow_edit: true },
+        { id: 0, name: 'components', repo: 'hs1',     file: 'docs/dsl/hyper-component.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hs1',     file: 'docs/dsl/hyper-store.md',  allow_edit: true },
+        { id: 2, name: 'models', repo: 'hs1',      file: 'docs/dsl/hyper-model.md',  allow_edit: true },
+        { id: 3, name: 'router', repo: 'hs1',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
+        { id: 4, name: 'operations', repo: 'hs1', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
       ]
       @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
     end
