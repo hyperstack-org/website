@@ -28,7 +28,7 @@ class FilterList < Hyperloop::Component
       Sem.ListHeader do
         A { item }
         .on(:click) do
-          params.history.push path
+          params.history.push "/#{AppStore.version}/path"
         end
       end
       Sem.ListDescription { description }

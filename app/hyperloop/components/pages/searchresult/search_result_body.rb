@@ -77,7 +77,7 @@ class SearchResultBody < Hyperloop::Router::Component
     # history.push "/docs/#{params.section_name}/#{page[:name]}"
     # force_update!
 
-    history.push "/docs/#{sectionname}/#{pagetogo[:name]}##{slug}"
+    history.push "/#{AppStore.version}/docs/#{sectionname}/#{pagetogo[:name]}##{slug}"
     # force_update!
 
   end

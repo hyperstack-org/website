@@ -74,7 +74,7 @@ class DocsPage < Hyperloop::Router::Component
             display_title(section_name, section_store.display_name, index, is_active)
           end
           .on(:click) do
-            history.push "/docs/#{section_name}"
+            history.push "/#{AppStore.version}/docs/#{section_name}"
           end
 
           Sem.AccordionContent(className: 'accordion-section-container',

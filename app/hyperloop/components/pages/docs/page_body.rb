@@ -1,4 +1,4 @@
-require 'helpers/is_edge'
+require 'helpers/helpers'
 
 class PageBody < Hyperloop::Component
 
@@ -23,9 +23,9 @@ class PageBody < Hyperloop::Component
     Sem.Segment(class: 'page-container') do
       if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
         if is_edge?
-          Sem.Label(color: 'red', ribbon: :right, size: :large) { 'edge' }
+          Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version} edge" }
         else
-          Sem.Label(color: 'blue', ribbon: :right, size: :large) { 'master' }
+          Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version} master" }
         end
 
         if params.page_name.empty?

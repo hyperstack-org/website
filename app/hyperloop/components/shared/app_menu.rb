@@ -1,4 +1,4 @@
-require 'helpers/is_edge'
+require 'helpers/helpers'
 
 class AppMenu < Hyperloop::Router::Component
   param :section
@@ -26,7 +26,7 @@ class AppMenu < Hyperloop::Router::Component
     DIV(class: 'ui logo shape') do
       DIV(class: 'sides') do
         DIV(class: 'active learn side') do
-          Link('/') {
+          Link("/#{AppStore.version}") {
             IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
           }
         end
@@ -35,7 +35,7 @@ class AppMenu < Hyperloop::Router::Component
   end
 
   def docs_menu_item
-    Link('/docs', class: 'additional item visible') { 'Docs' }
+    Link("/#{AppStore.version}/docs", class: 'additional item visible') { 'Docs' }
   end
 
   def github_menu_item
@@ -62,10 +62,10 @@ class AppMenu < Hyperloop::Router::Component
   end
 
   def edge_or_master_menu_item
-    if is_edge?
-      A(href: 'https://hyperstack.org', 'data-site': 'ui', class: 'additional item visible') { 'Go to master' }
+    if AppStore.version == 'hs1'
+      A(href: 'https://hyperstack.org/hs2', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS2' }
     else
-      A(href: 'https://edge.hyperstack.org', 'data-site': 'ui', class: 'additional item visible') { 'Go to edge' }
+      A(href: 'https://hyperstack.org/hs1', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS1' }
     end
   end
 

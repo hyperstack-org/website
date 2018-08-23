@@ -30,7 +30,7 @@ class HomePage < Hyperloop::Router::Component
             end
 
             DIV(class: 'ui hidden divider')
-            Link('/docs', class: 'ui big basic inverted pink view-ui button getstartedbutton') do
+            Link("/#{AppStore.version}/docs", class: 'ui big basic inverted pink view-ui button getstartedbutton') do
               I(class: 'sidebar icon')
               "\n          Get Started\n        "
             end

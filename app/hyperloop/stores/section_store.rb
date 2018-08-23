@@ -1,4 +1,4 @@
-require 'helpers/is_edge'
+require 'helpers/helpers'
 
 class SectionStore < Hyperloop::Store
 

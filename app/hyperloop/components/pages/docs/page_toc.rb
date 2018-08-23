@@ -68,7 +68,7 @@ class PageToc < Hyperloop::Component
 
   def navigate_to_page page, index
     Element['html, body'].scrollTop(0);
-    params.history.push "/docs/#{params.section_name}/#{page[:name]}"
+    params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}"
     if params[:page_name] == page[:name]
       @inverted_active = !@inverted_active
     else
@@ -78,6 +78,6 @@ class PageToc < Hyperloop::Component
 
   def navigate_to_heading page, heading
     slug = "#{heading[:slug]}"
-    params.history.push "/docs/#{params.section_name}/#{page[:name]}##{slug}"
+    params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}##{slug}"
   end
 end
