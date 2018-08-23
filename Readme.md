@@ -40,7 +40,7 @@
 ## Deploy
 
 + Deployments are all through Travis
-+ You can see the deploy history here: `https://travis-ci.org/hyperstack-org/hyperstack-website/builds`
++ You can see the deploy history here: https://travis-ci.org/hyperstack-org/hyperstack-website/builds
 + Any push to edge or master triggers a deployment
 
 ## How the code works
