@@ -29,7 +29,6 @@
   </head>
 
   <body>
-    <%= hyper_script_tag(current_user_id: current_user.id, session_id: session.id, form_authenticity_token: form_authenticity_token) %>
     <%= yield %>
   </body>
 </html>

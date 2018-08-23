@@ -368,6 +368,7 @@ DEPENDENCIES
   hyper-transport-store-redis!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  oj
   opal!
   opal-autoloader!
   opal-webpack-compile-server!
