@@ -1,28 +1,28 @@
 GIT
   remote: https://github.com/janbiedermann/hyper-business.git
-  revision: 8a651e3c8719f9251aa92075a5bf6ddb1a676024
+  revision: aa9fa0695daa053680bb474f4331a4102c41e43e
   branch: ulysses
   specs:
     hyper-business (0.0.1)
       hyper-react (~> 1.0.0.lap0)
       hyper-transport (~> 0.0.1)
-      oj
+      oj (~> 3.6.0)
       opal (~> 0.11.0)
       opal-activesupport (~> 0.3.1)
 
 GIT
   remote: https://github.com/janbiedermann/hyper-gate.git
-  revision: 45d6496ec58d2fb15d998d9f5bce76ade3bba500
+  revision: 35bbe01badaea7487e184801209176a3ddccb61e
   branch: ulysses
   specs:
     hyper-gate (0.0.1)
       hyper-transport (~> 0.0.1)
-      oj
+      oj (~> 3.6.0)
       opal (~> 0.11.0)
 
 GIT
   remote: https://github.com/janbiedermann/hyper-react.git
-  revision: 7494599bed3d7b9e8218682446d1be1c9a035126
+  revision: e0b5cc3ecc4c4d9715e0bcf445e4738dabd45dda
   branch: ulysses
   specs:
     hyper-react (1.0.0.lap28)
@@ -34,12 +34,13 @@ GIT
 
 GIT
   remote: https://github.com/janbiedermann/hyper-resource.git
-  revision: ffb48c4be829c98f5092b70b5bc885862410d9a5
+  revision: a6030e132a34f4ec1155dfb94ec91fa026b264bb
   branch: ulysses
   specs:
     hyper-resource (1.1.0.lap0)
       hyper-react (~> 1.0.0.lap27)
       hyper-transport (~> 0.0.1)
+      oj (~> 3.6.0)
       opal (~> 0.11.0)
       opal-activesupport (~> 0.3.1)
 

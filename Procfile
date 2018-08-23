@@ -1,1 +1,2 @@
-rails: bundle exec rails server -p 3000
+web:         bundle exec puma
+webpack_dev: yarn run start

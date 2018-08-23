@@ -23,6 +23,7 @@
 
 /node_modules
 /yarn-error.log
+/.owl_cache
 
 /public/assets
 .byebug_history
