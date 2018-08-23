@@ -1,9 +1,3 @@
-// process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-//
-// const environment = require('./environment')
-//
-// module.exports = environment.toWebpackConfig()
-
 // require requirements used below
 const path = require('path');
 const webpack = require('webpack');
@@ -31,7 +25,7 @@ module.exports = {
     entry: {
         app: ['./app/javascript/app.js'], // entrypoint for hyperloop
         // have to add 'webpack-hot-client/client' for each additional entry point for hot reloading to work
-        website: ['webpack-hot-client/client', './app/javascript/website.js'] // entrypoint for website
+        website: ['webpack-hot-client/client'] // entrypoint for website
     },
     output: {
         // webpack-serve keeps the output in memory
@@ -120,7 +114,7 @@ module.exports = {
     },
     // configuration for webpack serve
     serve: {
-        dev: {
+        devMiddleware: {
             publicPath: '/packs/',
             headers: {
                 'Access-Control-Allow-Origin': '*'
@@ -129,22 +123,22 @@ module.exports = {
 
             }
         },
-        hot: {
+        hotClient: {
             host: 'localhost',
-            port: '8081',
-            allEntries: true, // this doesn't seem to work
+            port: 8081,
+            allEntries: true,
             hmr: true
         },
         host: "localhost",
         port: 3035,
+        logLevel: 'debug',
         content: path.resolve(__dirname, '../../public/packs'),
-        clipboard: false, // dont copy url to clipboard
-        open: false, // dont open browser
+        clipboard: false,
+        open: false,
         on: {
-            // this configuration is for hot reloading app/views
             "listening": function (server) {
                 const socket = new WebSocket('ws://localhost:8081');
-                const watchPath = path.resolve(__dirname, '../../app/views'); // adjust path here if needed
+                const watchPath = path.resolve(__dirname, '../../app/views');
                 const options = {};
                 const watcher = chokidar.watch(watchPath, options);
 
