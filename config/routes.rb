@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'hyperloop#AppRouter'
-  match '*all', to: 'hyperloop#AppRouter', via: [:get]
+  root 'home#index'
+  match '*all', to: 'home#index', via: [:get]
 end

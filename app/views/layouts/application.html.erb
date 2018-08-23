@@ -13,7 +13,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
     <!-- javascript_pack_tag must come first -->
-    <%= javascript_pack_tag 'application' %>
+    <!-- <%= javascript_pack_tag 'application' %> -->
+    <%= owl_include_tag '/packs/application.js' %>
     <%= javascript_include_tag 'application' %>
 
     <!-- Favicons -->
@@ -28,6 +29,7 @@
   </head>
 
   <body>
+    <%= hyper_script_tag(current_user_id: current_user.id, session_id: session.id, form_authenticity_token: form_authenticity_token) %>
     <%= yield %>
   </body>
 </html>
