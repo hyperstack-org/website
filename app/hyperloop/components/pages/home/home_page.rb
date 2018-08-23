@@ -60,33 +60,8 @@ class HomePage < Hyperloop::Router::Component
            Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true)
          end
       end
-      Sem.GridRow(columns: 8, class: 'no-padding') do
-        Sem.GridColumn() { }
-        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-          Sem.Image(src: '/images/rack.png', size: :medium, centered: true, disabled: true)
-          DIV { 'Coming very soon' }
-        end
-        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-           Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
-         end
-        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-           Sem.Image(src: '/images/roda.png', size: :medium, centered: true, disabled: true)
-           DIV { 'Coming soon' }
-         end
-        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-           Sem.Image(src: '/images/sinatra.png', size: :medium, centered: true, disabled: true)
-           DIV { 'Coming soon' }
-         end
-         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-            Sem.Image(src: '/images/amber.png', size: :medium, centered: true, disabled: true)
-            DIV { 'Coming later' }
-          end
-          Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-             Sem.Image(src: '/images/lucky.png', size: :medium, centered: true, disabled: true)
-             DIV { 'Coming later' }
-           end
-        Sem.GridColumn() { }
-      end
+      hs1_stacks if AppStore.version == 'hs1'
+      hs2_stacks if AppStore.version == 'hs2'
     end
 
     DIV(class: 'ui page grid') do
@@ -99,6 +74,38 @@ class HomePage < Hyperloop::Router::Component
         BR()
         BR()
       end
+    end
+  end
+
+  def hs1_stacks
+    Sem.GridRow(columns: 3, class: 'no-padding') do
+      Sem.GridColumn() { }
+      Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+         Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
+       end
+      Sem.GridColumn() { }
+    end
+  end
+
+  def hs2_stacks
+    Sem.GridRow(columns: 6, class: 'no-padding') do
+      Sem.GridColumn() { }
+      Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+         Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
+       end
+      Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+         Sem.Image(src: '/images/roda.png', size: :medium, centered: true, disabled: true)
+         DIV { 'Coming soon' }
+       end
+       Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+          Sem.Image(src: '/images/amber.png', size: :medium, centered: true, disabled: true)
+          DIV { 'Coming later' }
+        end
+        Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+           Sem.Image(src: '/images/lucky.png', size: :medium, centered: true, disabled: true)
+           DIV { 'Coming later' }
+         end
+      Sem.GridColumn() { }
     end
   end
 
