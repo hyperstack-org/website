@@ -1,6 +1,6 @@
-class TocFilterStore < Hyperloop::Store
+class TocFilterStore < Hyperstack::Store
 
-  receives Hyperloop::Application::Boot do
+  receives Hyperstack::Application::Boot do
     init
   end
 

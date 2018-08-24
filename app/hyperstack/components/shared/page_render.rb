@@ -1,4 +1,4 @@
-# class PageRender < Hyperloop::Component
+# class PageRender < Hyperstack::Component
 #   param :section_name
 #   param :display_title
 #   param :history

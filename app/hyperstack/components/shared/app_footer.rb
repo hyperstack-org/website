@@ -1,4 +1,4 @@
-class AppFooter < Hyperloop::Router::Component
+class AppFooter < Hyperstack::Router::Component
 
   render do
     

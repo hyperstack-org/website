@@ -1,4 +1,4 @@
-class AppStore < Hyperloop::Store
+class AppStore < Hyperstack::Store
 
   # we would normally use this to init the store, but we need control over when it is initialized
   # receives Hyperloop::Application::Boot do

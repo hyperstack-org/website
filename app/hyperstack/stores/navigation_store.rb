@@ -1,4 +1,4 @@
-# class NavigationStore < Hyperloop::Store
+# class NavigationStore < Hyperstack::Store
 #   # receives Hyperloop::Application::Boot do
 #   # end
 #

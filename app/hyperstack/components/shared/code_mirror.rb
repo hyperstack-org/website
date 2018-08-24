@@ -1,9 +1,9 @@
-class ReactCodeMirror < Hyperloop::Component
+class ReactCodeMirror < Hyperstack::Component
   imports 'CodeMirror'
 end
 
 
-class CodeMirror < Hyperloop::Component
+class CodeMirror < Hyperstack::Component
   param :code
   state code: ""
 
@@ -76,7 +76,7 @@ class CodeMirror < Hyperloop::Component
 
   def component_name
     elements = state.code.split ' '
-    elements[ (elements.index('Hyperloop::Component') -2) ]
+    elements[ (elements.index('Hyperstack::Component') -2) ]
   end
 
   def mirror

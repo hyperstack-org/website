@@ -1,4 +1,4 @@
-class AppRouter < Hyperloop::Router
+class AppRouter < Hyperstack::Router
   history :browser
 
   route do

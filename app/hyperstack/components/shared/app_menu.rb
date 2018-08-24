@@ -1,6 +1,6 @@
 require 'helpers/helpers'
 
-class AppMenu < Hyperloop::Router::Component
+class AppMenu < Hyperstack::Router::Component
   param :section
 
   render do

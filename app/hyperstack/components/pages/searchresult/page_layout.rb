@@ -1,4 +1,4 @@
-class PageLayout < Hyperloop::Router::Component
+class PageLayout < Hyperstack::Router::Component
   param :sidebar_component
   param :body_component
   param :page_title

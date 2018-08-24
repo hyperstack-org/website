@@ -1,3 +1,3 @@
-class ReactYahooSticky < Hyperloop::Component
+class ReactYahooSticky < Hyperstack::Component
   imports 'YahooSticky'
 end

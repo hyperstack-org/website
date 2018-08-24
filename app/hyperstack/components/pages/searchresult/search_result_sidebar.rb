@@ -1,9 +1,9 @@
 
-class ReactYahooSticky < Hyperloop::Component
+class ReactYahooSticky < Hyperstack::Component
   imports 'YahooSticky'
 end
 
-class SearchResultSidebar < Hyperloop::Component
+class SearchResultSidebar < Hyperstack::Component
 
   param :history
   param :location

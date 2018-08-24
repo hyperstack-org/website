@@ -1,5 +1,5 @@
 
-class SearchResultBody < Hyperloop::Router::Component
+class SearchResultBody < Hyperstack::Router::Component
 
   param :history
   param :location

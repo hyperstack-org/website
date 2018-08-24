@@ -1,4 +1,4 @@
-class SidebarStore < Hyperloop::Store
+class SidebarStore < Hyperstack::Store
 
   class << self
     state visible: false, scope: :shared, reader: true

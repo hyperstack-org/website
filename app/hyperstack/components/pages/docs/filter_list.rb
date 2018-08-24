@@ -1,4 +1,4 @@
-class FilterList < Hyperloop::Component
+class FilterList < Hyperstack::Component
   param :history
 
   render(DIV) do

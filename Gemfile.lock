@@ -119,6 +119,14 @@ GIT
       parser (= 2.5.1.0)
       sourcemap (~> 0.1.0)
 
+GIT
+  remote: https://github.com/opal/opal-jquery.git
+  revision: d15ca70f53cb323245c54842587b874945e1083e
+  branch: master
+  specs:
+    opal-jquery (0.4.2)
+      opal (>= 0.10.0, < 0.12.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -369,9 +377,9 @@ DEPENDENCIES
   hyper-transport-store-redis!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  oj
   opal!
   opal-autoloader!
+  opal-jquery!
   opal-webpack-compile-server!
   pg
   puma (~> 3.11)

@@ -1,4 +1,4 @@
-class SearchEngineStore < Hyperloop::Store
+class SearchEngineStore < Hyperstack::Store
 
   class << self
 

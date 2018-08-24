@@ -1,4 +1,4 @@
-class HomePage < Hyperloop::Router::Component
+class HomePage < Hyperstack::Router::Component
   render do
     DIV(id: 'example', class: 'index') do
       DIV(class: 'page_wrap full height') do

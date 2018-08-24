@@ -15,6 +15,7 @@
     "actioncable": "^5.2.1",
     "codemirror-one-dark-theme": "^1.1.1",
     "history": "^4.7.2",
+    "jquery": "^3.3.1",
     "marked": "^0.4.0",
     "opal-webpack-loader": "^0.2.0",
     "opal-webpack-resolver-plugin": "^0.1.0",

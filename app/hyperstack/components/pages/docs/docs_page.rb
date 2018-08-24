@@ -1,4 +1,4 @@
-class DocsPage < Hyperloop::Router::Component
+class DocsPage < Hyperstack::Router::Component
   before_mount do
     Element['html, body'].scrollTop(0);
     @inverted_active = false
