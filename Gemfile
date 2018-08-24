@@ -62,7 +62,7 @@ gem 'opal-webpack-compile-server', github: 'janbiedermann/opal-webpack-compile-s
 # gem 'opal_hot_reloader', git: 'https://github.com/fkchang/opal-hot-reloader.git'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.3.1', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
