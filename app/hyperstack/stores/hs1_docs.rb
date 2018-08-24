@@ -53,7 +53,7 @@ module HS1Docs
     display_name = 'Installation & Setup'
 
     pages = [
-      { id: 0, name: 'installation', repo: 'hs1', file: 'docs/installation/overview.md',  allow_edit: true }
+      { id: 0, name: 'installation', repo: 'hs1', file: 'docs/installation/installation.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
