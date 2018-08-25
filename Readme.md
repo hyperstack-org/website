@@ -16,7 +16,7 @@
 + Full text search is also dynamic, with the indexes created in the client as the pages are loaded
 + Each page has an 'Improve this Page' button which will result in a PR against the correct page, in the correct repo on the correct branch (edge)
 
-## Technology
+## Technology 
 
 + Hyperloop from edge branch (this will change to Hyperstack soon)
 + Multiple JS libraries used (for markdown conversion and full text indexing)
@@ -45,7 +45,7 @@
 
 ## How the code works
 
-### Routing 
+### Routing
 
 All Rails routes go to a Hyperstack created Controller and View `match '*all', to: 'hyperloop#AppRouter', via: [:get]` which loads and renders the AppRouter Component, which happens to be a router (actually ReactRouter under the covers).
 
