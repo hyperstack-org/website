@@ -23,9 +23,7 @@ module.exports = {
     // devtool: 'inline-source-map', // slowest
     // devtool: 'inline-cheap-source-map',
     entry: {
-        app: ['./app/javascript/app.js'], // entrypoint for hyperloop
-        // have to add 'webpack-hot-client/client' for each additional entry point for hot reloading to work
-        // website: ['webpack-hot-client/client'] // entrypoint for website
+        app: ['./app/javascript/app.js'] // entrypoint for hyperstack
     },
     output: {
         // webpack-serve keeps the output in memory
