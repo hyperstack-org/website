@@ -35,7 +35,6 @@ gem 'jbuilder', '~> 2.5'
 
 
 # HS2 gems
-gem "opal-jquery", git: "https://github.com/opal/opal-jquery.git", branch: "master"
 gem 'opal', github: 'janbiedermann/opal', branch: 'es6_import_export'
 gem 'opal-autoloader', github: 'janbiedermann/opal-autoloader', branch: 'master'
 gem 'hyper-business', github: 'janbiedermann/hyper-business', branch: 'ulysses'
