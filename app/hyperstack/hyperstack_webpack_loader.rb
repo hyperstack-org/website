@@ -16,7 +16,7 @@ require 'hyper-business'
 require 'react/auto-import'
 
 require_tree 'stores'
-require_tree 'models'
+# require_tree 'models'
 require_tree 'operations'
 require_tree 'helpers'
 require_tree 'components'
