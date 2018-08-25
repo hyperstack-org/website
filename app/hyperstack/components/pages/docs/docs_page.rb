@@ -1,8 +1,10 @@
+require 'helpers/scroll'
+
 class DocsPage < Hyperstack::Router::Component
   before_mount do
-    Element['html, body'].scrollTop(0);
     @inverted_active = false
   end
+
 
   render(DIV) do
     DIV(id: 'example', class: 'index') do
@@ -96,7 +98,7 @@ class DocsPage < Hyperstack::Router::Component
       else
         @inverted_active = false
       end
-      Element['html, body'].scrollTop(0);
+      # Element['html, body'].scrollTop(0);
     end
   end
 

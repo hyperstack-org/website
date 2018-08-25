@@ -40,7 +40,7 @@ import * as ReactRouter from 'react-router';
 import * as ReactRouterDOM from 'react-router-dom';
 import * as ReactRailsUJS from 'react_ujs';
 import ActionCable from 'actioncable';
-
+// import jQuery from 'jquery';
 import * as Sem from 'semantic-ui-react';
 import BurgerMenu from 'react-burger-menu';
 import YahooSticky from 'react-stickynode';
@@ -48,11 +48,15 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import Marked from 'marked';
 import CodeMirror from 'react-codemirror';
 import CodeMirrorRuby from 'codemirror/mode/ruby/ruby';
+import * as Scroll from 'react-scroll';
 
-import jQuery from 'jquery';
-global.jQuery = jQuery;
-global.$ = jQuery;
-
+// we do not need all of these
+global.RsLink       = Scroll.Link;
+global.RsElement    = Scroll.Element;
+global.RsEvents     = Scroll.Events;
+global.RsScroll     = Scroll.animateScroll;
+global.RsScroller    = Scroll.scroller;
+global.RsScrollSpy  = Scroll.scrollSpy;
 
 global.React = React;
 global.ReactDOM = ReactDOM;
@@ -61,7 +65,8 @@ global.ReactRouter = ReactRouter;
 global.ReactRouterDOM = ReactRouterDOM;
 global.ReactRailsUJS = ReactRailsUJS;
 global.ActionCable = ActionCable;
-
+// global.jQuery = jQuery;
+// global.$ = jQuery;
 global.Sem = Sem;
 global.BurgerMenu = BurgerMenu;
 global.YahooSticky = YahooSticky;

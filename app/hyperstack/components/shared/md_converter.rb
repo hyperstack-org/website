@@ -28,8 +28,6 @@ class MdConverter
     @headings
   end
 
-
-
   def process
     `var renderer = new Marked.Renderer()`
     `renderer.heading = #{lambda {|text, level| on_heading(text, level)} }`
@@ -88,16 +86,20 @@ class MdConverter
     heading[:text] = text
     heading[:level] = level
     heading[:slug] = text.downcase.gsub(/[^\w]+/, '-')
+    heading[:slug] = heading[:slug].chop if heading[:slug].end_with?('-')
     heading[:paragraphs] = []
+    @headings << heading
     @headings_index += 1
 
     levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
     leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
     leveliconhtml = "" if level==1
 
-
-    @headings << heading
-    "<p class='ptopmargin-#{level}'></p><h#{level} class='doc_h#{level} chapteranchor' id='#{heading[:slug]}'>#{leveliconhtml}#{text}</h#{level}>"
+    %Q(<div class='scrollto-div' id='#{heading[:slug]}'></div>
+       <p class='ptopmargin-#{level}'></p>
+       <h#{level} class='doc_h#{level} chapteranchor''>
+       #{leveliconhtml}#{text}</h#{level}>
+      )
   end
 
   def on_paragraph text

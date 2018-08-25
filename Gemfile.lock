@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/janbiedermann/hyper-transport.git
-  revision: ddc63b7705fe93ca8fa465fa6089e02e835e0da7
+  revision: a22014d956e9c938e53c35d3e5573bc7b939e209
   branch: ulysses
   specs:
     hyper-transport (0.0.1)

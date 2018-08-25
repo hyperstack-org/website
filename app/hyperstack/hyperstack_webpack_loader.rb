@@ -1,7 +1,7 @@
 require 'opal'
 require 'browser' # CLIENT ONLY
 require 'browser/delay' # CLIENT ONLY
-require 'browser/http'
+# require 'browser/http'
 require 'opal-autoloader'
 # require 'jquery'
 # require 'opal-jquery'

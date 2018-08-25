@@ -66,10 +66,10 @@ class SectionStore < Hyperstack::Store
 
   def get_and_convert! page
     @promises += 1
-    puts "about to get"
+    # puts "about to get"
     Hyperstack::Transport::HTTP.get( raw_url(page), csrf: false).then do |response|
       if response.ok?
-        puts "Success getting page #{page}"
+        # puts "Success getting page #{page}"
         converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
         if converted
           page[:headings] = converted.headings

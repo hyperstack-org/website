@@ -53,8 +53,9 @@ class PageToc < Hyperstack::Component
           A(id: "#{link_id}", class: "item accordion-section-item #{subitemclass}") { "#{subitem_before}#{heading[:text]}" }
           .on(:click) do
             navigate_to_heading page, heading
-            Element["a.item"].removeClass("active-link-item")
-            Element["##{link_id}"].addClass("active-link-item")
+            #  FRED - we cant use no more jQuery!
+            # Element["a.item"].removeClass("active-link-item")
+            # Element["##{link_id}"].addClass("active-link-item")
           end
         end
       end
@@ -67,7 +68,7 @@ class PageToc < Hyperstack::Component
   end
 
   def navigate_to_page page, index
-    Element['html, body'].scrollTop(0);
+    # Element['html, body'].scrollTop(0);
     params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}"
     if params[:page_name] == page[:name]
       @inverted_active = !@inverted_active

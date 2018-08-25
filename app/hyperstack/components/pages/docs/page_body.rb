@@ -1,5 +1,9 @@
 require 'helpers/helpers'
 
+`document.addEventListener("DOMContentLoaded", function(event) {
+  console.log('here now');
+});`
+
 class PageBody < Hyperstack::Component
 
   param :section_name
@@ -8,15 +12,26 @@ class PageBody < Hyperstack::Component
 
   before_mount do
     mutate.needs_refresh false
+    @element_anchors_created = {}
   end
 
   after_mount do
-    navigate_to_slug
+    # navigate_to_slug
+    # `RsScroll.scrollToTop({duration: 1});`
+    # create_element_anchors
   end
 
   after_update do
-    navigate_to_slug
+    # navigate_to_slug
+    # `RsScroll.scrollToTop({duration: 1});`
+    # `window.scroll({
+    #   top: 0
+    # });`
+    # `var d = document.getElementById("page-body");
+    # d.scrollIntoView(true);`
     # convert_runable_code_blocks
+    create_element_anchors
+    navigate_to_slug
   end
 
   render(DIV) do
@@ -29,34 +44,63 @@ class PageBody < Hyperstack::Component
         end
 
         if params.page_name.empty?
-          page = AppStore.section_stores[params.section_name].pages.first
+          @page = AppStore.section_stores[params.section_name].pages.first
         else
-          page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
+          @page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
         end
 
-        edit_button(page) if page[:allow_edit]
+        edit_button(@page) if @page[:allow_edit]
 
-        html = page[:html].to_s
-        DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
+        html = @page[:html].to_s
+        DIV(class: 'pagebody', id: 'page-body', dangerously_set_inner_HTML: { __html: html } )
       end
     end
   end
 
   def navigate_to_slug
-    unless params.page_anchor.empty?
-      element = Element["#{params.page_anchor}"]
-      if element.offset()
-        anchorchapter_position = element.offset().top
-        if @current_page_section == "#{params.section_name}-#{params.page_name}"
-          Element['html, pagebody'].animate({
-                scrollTop: anchorchapter_position
-              }, 0)
-        else
-          Element['html, body'].scrollTop(anchorchapter_position);
-        end
-        @current_page_section = "#{params.section_name}-#{params.page_name}"
-      end
+    #  this works:
+    # `RsScroller.scrollTo('components', {smooth: "easeInOutQuint", offset: -120})`
+
+    if params.page_anchor.empty?
+      slug = @page[:headings][0][:slug]
+    else
+      slug = params.page_anchor
+      slug = slug.tr('#','')
     end
+
+    puts "navigate to slug '#{slug}'"
+
+    `RsScroller.scrollTo(slug, {smooth: "easeInOutQuint", offset: -50, isDynamic: true})`
+
+    unless params.page_anchor.empty?
+      # element = Element["#{params.page_anchor}"]
+      # anchor = params.page_anchor
+      # element = `document.getElementById(anchor)`
+      # `element.scrollIntoView();` if element
+      # if element.offset()
+      #   anchorchapter_position = element.offset().top
+      #   if @current_page_section == "#{params.section_name}-#{params.page_name}"
+      #     Element['html, pagebody'].animate({
+      #           scrollTop: anchorchapter_position
+      #         }, 0)
+      #   else
+      #     Element['html, body'].scrollTop(anchorchapter_position);
+      #   end
+      #   @current_page_section = "#{params.section_name}-#{params.page_name}"
+      # end
+    end
+  end
+
+  def create_element_anchors
+    `var x = document.getElementsByClassName("scrollto-div");
+      var i;
+      for (i = 0; i < x.length; i++) {
+          ReactDOM.render(React.createElement(RsElement, {name: x[i].id}, null),
+            document.getElementById(x[i].id))
+    };`
+    # RsScroller.scrollTo('stylish-components', {smooth: "easeInOutQuint", offset: -120})
+    # RsScroll.scrollToTop({duration: 1});
+
   end
 
   def convert_runable_code_blocks
