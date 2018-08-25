@@ -45,7 +45,7 @@
 
 ## How the code works
 
-### Routing
+### Routing 
 
 All Rails routes go to a Hyperstack created Controller and View `match '*all', to: 'hyperloop#AppRouter', via: [:get]` which loads and renders the AppRouter Component, which happens to be a router (actually ReactRouter under the covers).
 
