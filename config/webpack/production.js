@@ -15,7 +15,7 @@ module.exports = {
         maxEntrypointSize: 20000000
     },
     entry: {
-        app_packs: './app/javascript/app.js'
+        app: './app/javascript/app.js'
     },
     plugins: [
         new CompressionPlugin({ test: /\.js/ }),
