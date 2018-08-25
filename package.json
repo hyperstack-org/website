@@ -31,11 +31,11 @@
     "react_ujs": "^2.4.4",
     "semantic-ui-react": "^0.82.2",
     "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
     "webpack-manifest-plugin": "^2.0.3"
   },
   "devDependencies": {
     "babel-loader": "^7.1.5",
-    "webpack-cli": "^3.1.0",
     "webpack-serve": "^2.0.2",
     "opal-webpack-loader": "^0.2.0",
     "opal-webpack-resolver-plugin": "^0.1.0"
