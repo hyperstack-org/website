@@ -6,7 +6,7 @@
 ## Goals
 
 + Firstly, it is the main documentation site for Hyperstack.org https://hyperstack.org
-+ Secondly, it stands as showcase for Hyperstack. Please clone this repo, learn from how it works, and if you can improve anything we would love to see a PR!
++ Secondly, it stands as showcase for Hyperstack. Please clone this repo, learn from how it works, and if you can improve anything we would love to see a PR! 
 
 ## Website functionality
 
@@ -16,7 +16,7 @@
 + Full text search is also dynamic, with the indexes created in the client as the pages are loaded
 + Each page has an 'Improve this Page' button which will result in a PR against the correct page, in the correct repo on the correct branch (edge)
 
-## Technology 
+## Technology
 
 + Hyperloop from edge branch (this will change to Hyperstack soon)
 + Multiple JS libraries used (for markdown conversion and full text indexing)
