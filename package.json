@@ -14,6 +14,7 @@
     "@rails/webpacker": "3.5",
     "actioncable": "^5.2.1",
     "codemirror-one-dark-theme": "^1.1.1",
+    "compression-webpack-plugin": "^1.1.11",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
     "marked": "^0.4.0",
@@ -30,6 +31,7 @@
     "react_ujs": "^2.4.4",
     "semantic-ui-react": "^0.82.2",
     "webpack": "^4.17.1",
+    "webpack-manifest-plugin": "^2.0.3",
     "webpack-serve": "^2.0.2"
   },
   "devDependencies": {
