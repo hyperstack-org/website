@@ -11,14 +11,12 @@
     "build": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --config=config/webpack/production.js; bundle exec opal-webpack-compile-server kill"
   },
   "dependencies": {
+    "@rails/webpacker": "3.5",
     "actioncable": "^5.2.1",
     "codemirror-one-dark-theme": "^1.1.1",
     "compression-webpack-plugin": "^1.1.11",
     "history": "^4.7.2",
-    "jquery": "^3.3.1",
     "marked": "^0.4.0",
-    "opal-webpack-loader": "^0.2.0",
-    "opal-webpack-resolver-plugin": "^0.1.0",
     "react": "^16.4.2",
     "react-burger-menu": "^2.5.2",
     "react-codemirror": "^1.0.0",
@@ -30,12 +28,13 @@
     "react_ujs": "^2.4.4",
     "semantic-ui-react": "^0.82.2",
     "webpack": "^4.17.1",
-    "webpack-manifest-plugin": "^2.0.3",
-    "webpack-serve": "^2.0.2"
+    "webpack-manifest-plugin": "^2.0.3"
   },
   "devDependencies": {
     "babel-loader": "^7.1.5",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "2.11.2"
+    "webpack-serve": "^2.0.2",
+    "opal-webpack-loader": "^0.2.0",
+    "opal-webpack-resolver-plugin": "^0.1.0"
   }
 }
