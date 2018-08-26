@@ -6,7 +6,7 @@
 ## Goals
 
 + Firstly, it is the main documentation site for Hyperstack.org https://hyperstack.org
-+ Secondly, it stands as showcase for Hyperstack. Please clone this repo, learn from how it works, and if you can improve anything we would love to see a PR! 
++ Secondly, it stands as showcase for Hyperstack. Please clone this repo, learn from how it works, and if you can improve anything we would love to see a PR!
 
 ## Website functionality
 
@@ -18,9 +18,9 @@
 
 ## Technology
 
-+ Hyperloop from edge branch (this will change to Hyperstack soon)
++ Hyperstack (HS2) from Jan Biedermann repos
 + Multiple JS libraries used (for markdown conversion and full text indexing)
-+ All JS libraries added via `Yarn` and imported via `webpacker`
++ All JS libraries added via `Yarn` 
 + Reactivity from React, ReactRouter
 + Semantic UI React as the main stylesheet
 + Latest version of Rails
