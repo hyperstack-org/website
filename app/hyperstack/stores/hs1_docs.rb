@@ -13,7 +13,7 @@ module HS1Docs
     display_name = 'Overview'
 
     pages = [
-      { id: 0, name: 'overview', repo: 'hs1', file: 'docs/docs_overview.md',  allow_edit: true },
+      { id: 0, name: 'overview', repo: 'hyperstack', file: 'docs/docs_overview.md',  allow_edit: true },
     ]
     @section_stores[section_name] = SectionStore.new(exclude_from_toc: true, pages: pages,
                                                     section_name: section_name, display_name: display_name)
@@ -24,12 +24,12 @@ module HS1Docs
     display_name = 'Getting Started'
 
     pages = [
-      { id: 0, name: 'components', repo: 'hs1',     file: 'docs/start/components.md',  allow_edit: true },
-      { id: 1, name: 'stores', repo: 'hs1',     file: 'docs/start/stores.md',  allow_edit: true },
-      { id: 2, name: 'models', repo: 'hs1',     file: 'docs/start/models.md',  allow_edit: true },
-      { id: 3, name: 'operations', repo: 'hs1',     file: 'docs/start/operations.md',  allow_edit: true },
-      { id: 4, name: 'policies', repo: 'hs1',     file: 'docs/start/policies.md',  allow_edit: true },
-      { id: 5, name: 'pradgmatic', repo: 'hs1',     file: 'docs/start/pradgmatic.md',  allow_edit: true }
+      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/start/components.md',  allow_edit: true },
+      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/start/stores.md',  allow_edit: true },
+      { id: 2, name: 'models', repo: 'hyperstack',     file: 'docs/start/models.md',  allow_edit: true },
+      { id: 3, name: 'operations', repo: 'hyperstack',     file: 'docs/start/operations.md',  allow_edit: true },
+      { id: 4, name: 'policies', repo: 'hyperstack',     file: 'docs/start/policies.md',  allow_edit: true },
+      { id: 5, name: 'pradgmatic', repo: 'hyperstack',     file: 'docs/start/pradgmatic.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -39,11 +39,11 @@ module HS1Docs
     display_name = 'Hyperstack DSL'
 
     pages = [
-      { id: 0, name: 'components', repo: 'hs1',     file: 'docs/dsl/hyper-component.md',  allow_edit: true },
-      { id: 1, name: 'stores', repo: 'hs1',     file: 'docs/dsl/hyper-store.md',  allow_edit: true },
-      { id: 2, name: 'models', repo: 'hs1',      file: 'docs/dsl/hyper-model.md',  allow_edit: true },
-      { id: 3, name: 'router', repo: 'hs1',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
-      { id: 4, name: 'operations', repo: 'hs1', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
+      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/dsl/hyper-component.md',  allow_edit: true },
+      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl/hyper-store.md',  allow_edit: true },
+      { id: 2, name: 'models', repo: 'hyperstack',      file: 'docs/dsl/hyper-model.md',  allow_edit: true },
+      { id: 3, name: 'router', repo: 'hyperstack',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
+      { id: 4, name: 'operations', repo: 'hyperstack', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -53,7 +53,7 @@ module HS1Docs
     display_name = 'Installation & Setup'
 
     pages = [
-      { id: 0, name: 'installation', repo: 'hs1', file: 'docs/installation/installation.md',  allow_edit: true }
+      { id: 0, name: 'installation', repo: 'hyperstack', file: 'docs/installation/installation.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -63,9 +63,9 @@ module HS1Docs
     display_name = 'Tools, Tips & Debugging'
 
     pages = [
-      { id: 0, name: 'tools', repo: 'hs1', file: 'docs/tools/tools.md',  allow_edit: true },
-      { id: 1, name: 'tips', repo: 'hs1', file: 'docs/tools/tips.md',  allow_edit: true },
-      { id: 2, name: 'debugging', repo: 'hs1', file: 'docs/tools/debugging.md',  allow_edit: true }
+      { id: 0, name: 'tools', repo: 'hyperstack', file: 'docs/tools/tools.md',  allow_edit: true },
+      { id: 1, name: 'tips', repo: 'hyperstack', file: 'docs/tools/tips.md',  allow_edit: true },
+      { id: 2, name: 'debugging', repo: 'hyperstack', file: 'docs/tools/debugging.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -75,9 +75,9 @@ module HS1Docs
     display_name = "Tutorials"
 
     pages = [
-      { id: 0, name: 'helloworld', repo: 'hs1', file: 'docs/tutorial/helloworld.md',  allow_edit: true },
-      { id: 1, name: 'todo', repo: 'hs1', file: 'docs/tutorial/todo.md',  allow_edit: true },
-      { id: 3, name: 'community', repo: 'hs1', file: 'docs/tutorial/community.md',  allow_edit: true }
+      { id: 0, name: 'helloworld', repo: 'hyperstack', file: 'docs/tutorial/helloworld.md',  allow_edit: true },
+      { id: 1, name: 'todo', repo: 'hyperstack', file: 'docs/tutorial/todo.md',  allow_edit: true },
+      { id: 3, name: 'community', repo: 'hyperstack', file: 'docs/tutorial/community.md',  allow_edit: true }
 
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)

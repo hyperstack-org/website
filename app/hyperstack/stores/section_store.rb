@@ -43,15 +43,27 @@ class SectionStore < Hyperstack::Store
     mutate.current_anchor anchor
   end
 
+  # these are for when we are using edge and master branches
+  # def raw_url(page)
+  #   branch = is_edge? ? 'edge' : 'master'
+  #   # "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+  #   "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+  # end
+  #
+  # def edit_url(page)
+  #   # all PRs against edge
+  #   "https://github.com/hyperstack-org/#{page[:repo]}/edit/edge/#{page[:file]}"
+  # end
+
   def raw_url(page)
-    branch = is_edge? ? 'edge' : 'master'
+    branch = "#{AppStore.version}-edge"
     # "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
     "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
   end
 
   def edit_url(page)
-    # all PRs against edge
-    "https://github.com/hyperstack-org/#{page[:repo]}/edit/edge/#{page[:file]}"
+    branch = "#{AppStore.version}-edge"
+    "https://github.com/hyperstack-org/#{page[:repo]}/edit/#{branch}/#{page[:file]}"
   end
 
   private
