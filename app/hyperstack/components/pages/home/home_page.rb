@@ -25,7 +25,7 @@ class HomePage < Hyperstack::Router::Component
             H2(class: 'ui header') do
               Sem.Header(class: 'inverted') do
                 DIV { "Think JavaScript is your only option for the front-end?" }
-                DIV { "Think again." }
+                DIV { "Think again. XX" }
               end
             end
 
