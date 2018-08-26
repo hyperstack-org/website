@@ -7,8 +7,6 @@ rvm:
   - 2.4.4
   - 2.5.1
   - ruby-head
-node_js:
-  - 10
 env:
   - DRIVER=google-chrome TZ=Europe/Berlin
 
