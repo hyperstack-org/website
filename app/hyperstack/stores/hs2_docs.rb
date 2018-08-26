@@ -48,10 +48,11 @@ module HS2Docs
 
   def load_installation_section
     section_name = 'installation'
-    display_name = 'Installation & Setup'
+    display_name = 'Setup and Upgrading'
 
     pages = [
-      { id: 0, name: 'installation', repo: 'hyperstack', file: 'docs/installation/installation.md',  allow_edit: true }
+      { id: 0, name: 'installation', repo: 'hyperstack', file: 'docs/installation/installation.md',  allow_edit: true },
+      { id: 1, name: 'upgrading', repo: 'hyperstack', file: 'docs/installation/upgrading.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
