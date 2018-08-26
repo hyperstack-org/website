@@ -2,7 +2,8 @@ dist: trusty
 language: ruby
 cache:
   bundler: true
-  yarn: true
+  directories:
+  - node_modules # NPM packages
 rvm:
   - 2.4.4
   - 2.5.1
