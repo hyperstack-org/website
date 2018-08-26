@@ -9,22 +9,27 @@ rvm:
   - ruby-head
 env:
   - DRIVER=google-chrome TZ=Europe/Berlin
-
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb http://dl.yarnpkg.com/debian/ stable main'
+        key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
+      - sourceline: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
+        key_url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+      - sourceline: 'deb https://deb.nodesource.com/node_10.x trusty main'
+        key_url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+    packages:
+      - google-chrome-stable
+      - nodejs
+      - yarn
 matrix:
     fast_finish: true
     allow_failures:
       - rvm: ruby-head
 before_install:
-  - if [[ "$DRIVER" == "google-chrome" ]]; then wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -; fi
-  - if [[ "$DRIVER" == "google-chrome" ]]; then echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list; fi
-  - if [[ "$DRIVER" == "google-chrome" ]]; then sudo apt-get update -qq && sudo apt-get install -qq -y google-chrome-stable; fi
   # yarn is in /usr/local/bin/yarn version 1.3.2 and is not a package
   # must remove this zombie for new yarn to work
   - sudo rm -f /usr/local/bin/yarn
-  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn=1.9.4-1
   - gem install bundler
 before_script:
   - bundle install --jobs=3 --retry=3
