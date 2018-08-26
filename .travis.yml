@@ -16,8 +16,6 @@ addons:
         key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
     packages:
       - google-chrome-stable
-      - node-
-      - nodejs
       - yarn
 matrix:
     fast_finish: true
