@@ -14,8 +14,6 @@ addons:
     sources:
       - sourceline: 'deb http://dl.yarnpkg.com/debian/ stable main'
         key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
-      - sourceline: 'deb https://deb.nodesource.com/node_10.x trusty main'
-        key_url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
     packages:
       - google-chrome-stable
       - node-
@@ -26,10 +24,8 @@ matrix:
     allow_failures:
       - rvm: ruby-head
 before_install:
-  - node --version
-  - nodejs --version
-  - ruby --version
   - gem install bundler
+  - nvm install 10
 before_script:
   - bundle install --jobs=3 --retry=3
   - /usr/bin/yarn install
