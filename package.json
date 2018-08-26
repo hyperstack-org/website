@@ -5,8 +5,8 @@
   "author": "Barrie Hadield, Frederic Zingg",
   "license": "MIT",
   "engines": {
-    "node": "^10.0.0",
-    "yarn": "^1.7.0"
+    "node": ">=10.0.0",
+    "yarn": ">=1.7.0"
   },
   "scripts": {
     "test": "bundle exec opal-webpack-compile-server kill; bundle exec opal-webpack-compile-server && webpack --config=config/webpack/test.js; bundle exec opal-webpack-compile-server kill",
