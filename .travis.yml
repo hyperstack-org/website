@@ -25,10 +25,11 @@ matrix:
     allow_failures:
       - rvm: ruby-head
 before_install:
+  - node --version
+  - nodejs --version
+  - ruby --version
   - gem install bundler
 before_script:
-  - node --version
-  - ruby --version
   - bundle install --jobs=3 --retry=3
   - /usr/bin/yarn install
   - bundle exec rails db:setup
