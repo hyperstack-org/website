@@ -18,6 +18,7 @@ addons:
         key_url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
     packages:
       - google-chrome-stable
+      - node-
       - nodejs
       - yarn
 matrix:
