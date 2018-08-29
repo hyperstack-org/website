@@ -35,8 +35,8 @@ class AppStore < Hyperstack::Store
       @loading_error = false
       mutate.stores_all_loaded false
 
-      extend HS1Docs if @version == 'hs1'
-      extend HS2Docs if @version == 'hs2'
+      # extend HS1Docs if @version == 'hs1'
+      extend EdgeDocs if @version == 'edge'
 
       load_all_docs
     end

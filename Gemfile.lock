@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/janbiedermann/hyper-business.git
-  revision: aa9fa0695daa053680bb474f4331a4102c41e43e
+  revision: 551e17b02804ac9172c6f1a4d2293cbbaaa18e66
   branch: ulysses
   specs:
     hyper-business (0.0.1)
@@ -12,17 +12,19 @@ GIT
 
 GIT
   remote: https://github.com/janbiedermann/hyper-gate.git
-  revision: 35bbe01badaea7487e184801209176a3ddccb61e
+  revision: 5a99cca20f51e672578134ca38f359f9b2e481d6
   branch: ulysses
   specs:
     hyper-gate (0.0.1)
+      hyper-react (~> 1.0.0.lap0)
       hyper-transport (~> 0.0.1)
       oj (~> 3.6.0)
       opal (~> 0.11.0)
+      opal-activesupport (~> 0.3.1)
 
 GIT
   remote: https://github.com/janbiedermann/hyper-react.git
-  revision: e0b5cc3ecc4c4d9715e0bcf445e4738dabd45dda
+  revision: 68e0a70df9a5541e6122723f0533a31b91a02958
   branch: ulysses
   specs:
     hyper-react (1.0.0.lap28)
@@ -34,10 +36,11 @@ GIT
 
 GIT
   remote: https://github.com/janbiedermann/hyper-resource.git
-  revision: a6030e132a34f4ec1155dfb94ec91fa026b264bb
+  revision: d1de61e2085e5634e210bd4d5670d0738c8f163b
   branch: ulysses
   specs:
     hyper-resource (1.1.0.lap0)
+      activesupport (~> 5.0)
       hyper-react (~> 1.0.0.lap27)
       hyper-transport (~> 0.0.1)
       oj (~> 3.6.0)
@@ -82,13 +85,12 @@ GIT
 
 GIT
   remote: https://github.com/janbiedermann/hyper-transport.git
-  revision: a22014d956e9c938e53c35d3e5573bc7b939e209
+  revision: a742d6a56c6e09276618072d8f1b02eecfe5ce78
   branch: ulysses
   specs:
     hyper-transport (0.0.1)
       hyper-react (~> 1.0.0.lap0)
       opal (~> 0.11.0)
-      redis (~> 4.0.1)
 
 GIT
   remote: https://github.com/janbiedermann/opal-autoloader.git
@@ -239,7 +241,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    oj (3.6.6)
+    oj (3.6.7)
     opal-activesupport (0.3.1)
       opal (>= 0.5.0, < 1.0.0)
     opal-browser (0.2.0)
@@ -248,7 +250,7 @@ GEM
     paggio (0.2.6)
     parser (2.5.1.0)
       ast (~> 2.4.0)
-    pg (1.1.0)
+    pg (1.1.2)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)

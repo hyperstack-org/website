@@ -60,8 +60,8 @@ class HomePage < Hyperstack::Router::Component
            Sem.Image(src: '/images/webpack_opal.png', size: :medium, centered: true)
          end
       end
-      hs1_stacks if AppStore.version == 'hs1'
-      hs2_stacks if AppStore.version == 'hs2'
+      # hs1_stacks if AppStore.version == 'hs1'
+      hs2_stacks # if AppStore.version == 'hs2'
     end
 
     DIV(class: 'ui page grid') do
@@ -77,15 +77,15 @@ class HomePage < Hyperstack::Router::Component
     end
   end
 
-  def hs1_stacks
-    Sem.GridRow(columns: 3, class: 'no-padding') do
-      Sem.GridColumn() { }
-      Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-         Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
-       end
-      Sem.GridColumn() { }
-    end
-  end
+  # def hs1_stacks
+  #   Sem.GridRow(columns: 3, class: 'no-padding') do
+  #     Sem.GridColumn() { }
+  #     Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
+  #        Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
+  #      end
+  #     Sem.GridColumn() { }
+  #   end
+  # end
 
   def hs2_stacks
     Sem.GridRow(columns: 6, class: 'no-padding') do

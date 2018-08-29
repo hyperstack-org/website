@@ -1,4 +1,4 @@
-module HS2Docs
+module EdgeDocs
   def load_all_docs
     load_overview_section
     load_start_section

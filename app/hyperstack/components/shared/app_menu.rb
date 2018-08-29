@@ -15,7 +15,7 @@ class AppMenu < Hyperstack::Router::Component
             search_control
             # github_stars
             # edge_badge
-            edge_or_master_menu_item
+            # edge_or_master_menu_item
           end
         end
       end
@@ -61,13 +61,13 @@ class AppMenu < Hyperstack::Router::Component
     end
   end
 
-  def edge_or_master_menu_item
-    if AppStore.version == 'hs1'
-      A(href: 'https://hyperstack.org/hs2', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS2' }
-    else
-      A(href: 'https://hyperstack.org/hs1', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS1' }
-    end
-  end
+  # def edge_or_master_menu_item
+  #   if AppStore.version == 'hs1'
+  #     A(href: 'https://hyperstack.org/hs2', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS2' }
+  #   else
+  #     A(href: 'https://hyperstack.org/hs1', 'data-site': 'ui', class: 'additional item visible') { 'Go to HS1' }
+  #   end
+  # end
 
   # def edge_badge
   #   Sem.MenuItem {

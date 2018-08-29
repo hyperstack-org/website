@@ -37,11 +37,11 @@ class PageBody < Hyperstack::Component
   render(DIV) do
     Sem.Segment(class: 'page-container') do
       if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
-        if is_edge?
-          Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version} edge" }
-        else
-          Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version} master" }
-        end
+        # if is_edge?
+          Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
+        # else
+          # Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version}" }
+        # end
 
         if params.page_name.empty?
           @page = AppStore.section_stores[params.section_name].pages.first

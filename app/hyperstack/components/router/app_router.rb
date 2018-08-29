@@ -3,7 +3,7 @@ class AppRouter < Hyperstack::Router
 
   route do
     unless @store_booted
-      version = location.pathname.downcase.include?('hs2') ? 'hs2' : 'hs1'
+      version = location.pathname.downcase.include?('edge') ? 'edge' : 'edge'
       AppStore.boot version
       @store_booted = true
     end

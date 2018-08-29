@@ -56,13 +56,13 @@ class SectionStore < Hyperstack::Store
   # end
 
   def raw_url(page)
-    branch = "#{AppStore.version}-edge"
+    branch = "#{AppStore.version}"
     # "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
     "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
   end
 
   def edit_url(page)
-    branch = "#{AppStore.version}-edge"
+    branch = "#{AppStore.version}"
     "https://github.com/hyperstack-org/#{page[:repo]}/edit/#{branch}/#{page[:file]}"
   end
 
