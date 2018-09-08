@@ -20,7 +20,7 @@
 
 + Hyperstack (HS2) from Jan Biedermann repos
 + Multiple JS libraries used (for markdown conversion and full text indexing)
-+ All JS libraries added via `Yarn` 
++ All JS libraries added via `Yarn`
 + Reactivity from React, ReactRouter
 + Semantic UI React as the main stylesheet
 + Latest version of Rails
@@ -40,7 +40,7 @@
 ## Deploy
 
 + Deployments are all through Travis
-+ You can see the deploy history here: https://travis-ci.org/hyperstack-org/hyperstack-website/builds
++ You can see the deploy history here: https://travis-ci.org/hyperstack-org
 + Any push to edge or master triggers a deployment
 
 ## How the code works
