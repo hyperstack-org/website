@@ -18,7 +18,6 @@
 
 ## Technology
 
-+ Hyperstack (HS2) from Jan Biedermann repos
 + Multiple JS libraries used (for markdown conversion and full text indexing)
 + All JS libraries added via `Yarn`
 + Reactivity from React, ReactRouter
@@ -35,7 +34,7 @@
 ## Run
 
 + `foreman start`
-+ `http://localhost:3000/`
++ `http://localhost:5000/`
 
 ## Deploy
 
