@@ -44,17 +44,20 @@ module EdgeDocs
       { id: 3, name: 'router', repo: 'hyperstack',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
       { id: 4, name: 'operations', repo: 'hyperstack', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
       { id: 5, name: 'policies', repo: 'hyperstack', file: 'docs/dsl/hyper-policy.md',  allow_edit: true },
+      { id: 6, name: 'i18n', repo: 'hyperstack', file: 'docs/dsl/hyper-i18n.md',  allow_edit: true },
+      { id: 7, name: 'specs', repo: 'hyperstack', file: 'docs/dsl/hyper-spec.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
 
   def load_installation_section
     section_name = 'installation'
-    display_name = 'Installation & Setup'
+    display_name = 'Setup & Config'
 
     pages = [
       { id: 0, name: 'installation', repo: 'hyperstack', file: 'install/readme.md',  allow_edit: true },
-      { id: 1, name: 'upgrading', repo: 'hyperstack', file: 'docs/installation/upgrading.md',  allow_edit: true }
+      { id: 1, name: 'upgrading', repo: 'hyperstack', file: 'docs/installation/upgrading.md',  allow_edit: true },
+      { id: 1, name: 'config', repo: 'hyperstack', file: 'docs/installation/config.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
