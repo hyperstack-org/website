@@ -12,7 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
 //= require jquery_ujs
 //= require hyperloop-loader
+//= require_tree .
 
 console.log('application.js has loaded');

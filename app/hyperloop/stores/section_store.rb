@@ -79,7 +79,7 @@ class SectionStore < Hyperloop::Store
   def get_and_convert! page
     @promises += 1
     # puts "about to get"
-    Hyperloop::Transport::HTTP.get( raw_url(page), csrf: false).then do |response|
+    HTTP.get( raw_url(page), csrf: false) do |response|
       if response.ok?
         # puts "Success getting page #{page}"
         converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
