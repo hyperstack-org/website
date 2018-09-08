@@ -4,8 +4,8 @@ module EdgeDocs
     load_start_section
     load_dsl_section
     load_installation_section
-    # load_tools_section
-    # load_tutorials_section
+    load_tools_section
+    load_tutorials_section
   end
 
   def load_overview_section
@@ -28,6 +28,7 @@ module EdgeDocs
       { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/start/stores.md',  allow_edit: true },
       { id: 2, name: 'models', repo: 'hyperstack',     file: 'docs/start/models.md',  allow_edit: true },
       { id: 3, name: 'operations', repo: 'hyperstack',     file: 'docs/start/operations.md',  allow_edit: true },
+      { id: 4, name: 'policies', repo: 'hyperstack',     file: 'docs/start/policies.md',  allow_edit: true },
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -41,7 +42,8 @@ module EdgeDocs
       { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl/hyper-store.md',  allow_edit: true },
       { id: 2, name: 'models', repo: 'hyperstack',      file: 'docs/dsl/hyper-model.md',  allow_edit: true },
       { id: 3, name: 'router', repo: 'hyperstack',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
-      # { id: 4, name: 'operations', repo: 'hyperstack', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
+      { id: 4, name: 'operations', repo: 'hyperstack', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
+      { id: 5, name: 'policies', repo: 'hyperstack', file: 'docs/dsl/hyper-policy.md',  allow_edit: true },
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
