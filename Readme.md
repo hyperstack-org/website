@@ -53,7 +53,7 @@ The router then simply looks at the path and renders the correct Component, pass
 
 ```ruby
 # /app/hyperloop/router/app_router.rb
-class AppRouter < Hyperstack::Router
+class AppRouter < Hyperloop::Router
   history :browser
 
   route do

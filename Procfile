@@ -1,2 +1,2 @@
-web:         bundle exec puma
-webpack_dev: yarn run start
+web: bundle exec puma
+hot: opal-hot-reloader -p 25222 -d app/hyperloop/
