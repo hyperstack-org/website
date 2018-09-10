@@ -1,14 +1,94 @@
 class HomePage < Hyperloop::Router::Component
   render do
     DIV(id: 'example', class: 'index') do
-      DIV(class: 'page_wrap full height') do
+      # DIV(class: 'page_wrap full height') do
         AppMenu(section: 'home')
         mast_head
-        stack_overview
+        # stack_overview
+        introduction
+        Sem.Container do
+          simple_components
+          stylish_components
+          stateful_components
+          javascript_universe
+        end
+        isomorphic
+        Sem.Divider(hidden: true)
         three_columns_of_text
+        friendly_community
         SearchResultModal(history: history)
       end
-      AppFooter()
+      # AppFooter()
+    # end
+  end
+
+  def introduction
+    DIV(class: 'ui page grid') do
+      DIV(class: 'fifteen wide column centered') do
+        BR()
+        Sem.Header(size: :huge, textAlign: :center) do
+          DIV() {"Hyperstack's user-interface is written in Ruby, compiled by Opal" }
+          DIV() { 'and powered by React' }
+        end
+        BR()
+      end
+    end
+  end
+
+  def simple_components
+    content = DIV do
+      Sem.Header(as: :h1) { "Simple Components" }
+      P { "A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements." }
+      # P { "As with React, there are no templates in Hyperstack. Unlike React, where you code in JSX and JavaScript, all your code in Ruby!" }
+      P { "Under the covers, we use Opal to compile your Ruby code into JavaScript then hand it to React to mount as a regular JavaScript React Component." }
+    end.as_node
+
+    CodeMirror(content: content, code: HELLO_WORLD_EXAMPLE)
+  end
+
+  def stylish_components
+    content = DIV do
+      Sem.Header(as: :h1) { "Stylish Components" }
+      P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
+      P { "You simply specify the CSS class on any HTML element." }
+      P { "We think the Ruby DSL is a lot nicer to work with than ERB or JSX!" }
+      P { "You will notice that the HTML elements (BUTTON, H1, etc) are in CAPS. We know this is bending the Ruby rules slightly, but we think it reads better this way." }
+    end.as_node
+
+    CodeMirror(content: content, code: STYLISH_COMPONENT  )
+  end
+
+  def stateful_components
+    content = DIV do
+      Sem.Header(as: :h1) { "Stateful Components" }
+      P { "As with React, in Hyperstack you write code in a declarative way with Components that manage their own state." }
+      P { "As state changes, React works out how to render the user interface without you having to worry about the DOM - the user interface re-renders itself when state changes." }
+      P { "To reference state we use state.foo and to mutate (change it) we use mutate.foo(true)" }
+      P { "Components manage their own State. To share State between Components we use Stores, which you can read about in the DSL docs." }
+    end.as_node
+
+    CodeMirror(content: content, code: STATE_EXAMPLE)
+  end
+
+  def javascript_universe
+    content = DIV do
+      Sem.Header(as: :h1) { "JavaScript Universe" }
+      P { "Hyperstack gives you full access to all JavaScript libraries and components from directly within your Ruby code." }
+      P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
+    end.as_node
+
+    CodeMirror(content: content, code: JAVASCRIPT_UNIVERSE)
+  end
+
+  def isomorphic
+    DIV(class: 'ui page grid') do
+      DIV(class: 'fifteen wide column centered') do
+        BR()
+        Sem.Header(size: :huge, textAlign: :center) do
+          DIV() { 'Real magic happens when you combine this with Isomorphic models' }
+        end
+        BR()
+      end
     end
   end
 
@@ -20,7 +100,6 @@ class HomePage < Hyperloop::Router::Component
             H1(class: 'ui inverted header') do
               SPAN(class: 'library') { 'Build spectacular Web applications in Ruby' }
             end
-
             DIV(class: 'ui hidden divider')
             H2(class: 'ui header') do
               Sem.Header(class: 'inverted') do
@@ -28,13 +107,11 @@ class HomePage < Hyperloop::Router::Component
                 DIV { "Think again." }
               end
             end
-
             DIV(class: 'ui hidden divider')
             Link("/#{AppStore.version}/docs", class: 'ui big basic inverted pink view-ui button getstartedbutton') do
               I(class: 'sidebar icon')
               "\n          Get Started\n        "
             end
-
           end
         end
       end
@@ -137,7 +214,9 @@ class HomePage < Hyperloop::Router::Component
         end
       end
     end
+  end
 
+  def friendly_community
     DIV(class: 'ui page grid') do
       DIV(class: 'fifteen wide column centered') do
         BR()
@@ -152,4 +231,5 @@ class HomePage < Hyperloop::Router::Component
       end
     end
   end
+
 end

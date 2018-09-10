@@ -1,14 +1,18 @@
 class CodeMirror < Hyperloop::Component
+  param :content
   param :code
 
   before_mount do
     mutate.ruby_code params.code
   end
 
-  render do
-    Sem.Grid(columns: 2) do
-      Sem.GridColumn(width: 10) { code_mirror_editor }
-      Sem.GridColumn(width: 6) do
+  render(DIV) do
+    Sem.Divider(hidden: true)
+
+    Sem.Grid(columns: 3) do
+      Sem.GridColumn(width: 5) { params.content }
+      Sem.GridColumn(width: 8) { code_mirror_editor }
+      Sem.GridColumn(width: 3) do
         unless compile && evaluate && render_component
           Sem.Message(negative: true) {
             H3 { state.compile_error_heading }
