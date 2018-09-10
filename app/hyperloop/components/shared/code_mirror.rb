@@ -6,13 +6,15 @@ class CodeMirror < Hyperloop::Component
   end
 
   render do
-    DIV(class: 'runable_code_block') do
-      code_mirror_editor
-      unless compile && evaluate && render_component
-        Sem.Message(negative: true) {
-          H3 { state.compile_error_heading }
-          P { state.compile_error_message }
-        }
+    Sem.Grid(columns: 2) do
+      Sem.GridColumn(width: 10) { code_mirror_editor }
+      Sem.GridColumn(width: 6) do
+        unless compile && evaluate && render_component
+          Sem.Message(negative: true) {
+            H3 { state.compile_error_heading }
+            P { state.compile_error_message }
+          }
+        end
       end
     end
   end
@@ -52,12 +54,10 @@ class CodeMirror < Hyperloop::Component
 
   def render_component
     begin
-      Sem.Message {
-        DIV(id: 'result') {
-          # TODO this needs to throw an exception
-          React.create_element( Module.const_get(component_name), {key: rand(2**256).to_s(36)[0..7]})
-        }
-      }
+      DIV(id: 'result') do
+        # TODO this needs to throw an exception
+        React.create_element( Module.const_get(component_name), {key: rand(2**256).to_s(36)[0..7]})
+      end
     rescue Exception => e
       mutate.compile_error_heading "Invalid component error"
       mutate.compile_error_message e.message
