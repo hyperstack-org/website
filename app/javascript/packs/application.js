@@ -38,5 +38,5 @@ global.BurgerMenu = BurgerMenu;
 global.YahooSticky = YahooSticky;
 global.PerfectScrollbar = PerfectScrollbar;
 global.Marked = Marked;
-global.CodeMirror = CodeMirror;
+global.ReactCodeMirror = CodeMirror;
 global.CodeMirrorRuby = CodeMirrorRuby;

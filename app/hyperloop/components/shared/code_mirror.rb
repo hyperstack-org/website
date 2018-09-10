@@ -1,7 +1,3 @@
-class ReactCodeMirror < Hyperloop::Component
-  imports 'CodeMirror'
-end
-
 class CodeMirror < Hyperloop::Component
   param :code
 
