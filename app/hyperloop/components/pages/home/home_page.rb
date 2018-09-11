@@ -29,11 +29,13 @@ class HomePage < Hyperloop::Router::Component
         Sem.Divider(hidden: true)
         Sem.Container(textAlign: :center) { friendly_community }
 
-        SearchResultModal(history: history)
+        Sem.Divider(hidden: true)
+        Sem.Container(textAlign: :center) { get_started }
 
         Sem.Divider(hidden: true)
         Sem.Divider(hidden: true)
         AppFooter()
+        SearchResultModal(history: history)
       end
     end
   end
@@ -129,6 +131,12 @@ class HomePage < Hyperloop::Router::Component
     Sem.Header(size: :huge) do
       DIV {"Hyperstack is open-source and supported by a friendly commuinity" }
       DIV { 'Reach out in the Gitter chat, we will be happy to help you get onboarded!' }
+    end
+  end
+
+  def get_started
+    Sem.Button(primary: true, size: :huge) { "Get installed in under 5 minutes!" }.on(:click) do
+      history.push '/edge/docs/installation/installation'
     end
   end
 

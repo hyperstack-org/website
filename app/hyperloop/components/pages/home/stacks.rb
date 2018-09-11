@@ -8,17 +8,17 @@ class Stacks < Hyperloop::Component
 
   def stack_diagram
     Sem.Grid(celled: true) do
-      Sem.GridRow(columns: 1, class: 'no-padding') do
+      Sem.GridRow(columns: 1) do
         Sem.GridColumn() do
            Sem.Image(src: '/images/hyperstack_react.png', size: :large, centered: true)
         end
       end
-      Sem.GridRow(columns: 1, class: 'no-padding') do
+      Sem.GridRow(columns: 1) do
         Sem.GridColumn() do
            Sem.Image(src: '/images/webpack_opal.png', size: :small, centered: true)
          end
       end
-      Sem.GridRow(columns: 1, class: 'no-padding') do
+      Sem.GridRow(columns: 1) do
         Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
            Sem.Image(src: '/images/rails.png', size: :small, centered: true)
          end
