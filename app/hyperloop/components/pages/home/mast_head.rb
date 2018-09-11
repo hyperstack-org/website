@@ -1,10 +1,10 @@
 class MastHead < Hyperloop::Component
   render(DIV) do
-    DIV(class: 'ui inverted vertical masthead aligned segment') do
+    DIV(class: 'ui inverted vertical masthead aligned segment hyperstack-background') do
       Sem.Grid(columns: 2) do
         Sem.GridColumn(width: 4) { DIV(class: 'hyperlooplogo') }
         Sem.GridColumn(width: 12) do
-          Sem.Header(as: :h1, inverted: true) { "Hyperstack" }
+          Sem.Header(as: :h4, inverted: true, class: 'project-name') { "Hyperstack" }
            Sem.Header(as: :h2, inverted: true) { "Build spectacular, full-stack, interactive web applications in Ruby" }
          end
       end
