@@ -4,10 +4,6 @@
   "description": "Hyperstack website V1",
   "author": "Barrie Hadield, Frederic Zingg",
   "license": "MIT",
-  "engines": {
-    "node": ">=10.0.0",
-    "yarn": ">=1.7.0"
-  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "actioncable": "^5.2.1",
