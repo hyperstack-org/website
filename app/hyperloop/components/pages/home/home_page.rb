@@ -5,7 +5,12 @@ class HomePage < Hyperloop::Router::Component
         # AppMenu(section: 'home')
 
         MastHead()
+        Sem.Divider(hidden: true)
+        Sem.Divider(hidden: true)
+        Sem.Container(textAlign: :center) { three_columns_of_text }
 
+        Sem.Divider()
+        Sem.Divider(hidden: true)
         Sem.Container(textAlign: :center) { introduction }
         Sem.Divider(hidden: true)
 
@@ -165,7 +170,7 @@ class HomePage < Hyperloop::Router::Component
             IMG(class: 'ui icon image', src: 'images/icons/code-signs-in-rounded-square-interface-symbol.png')
             'Fast'
           end
-          P() { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value.' }
+          P() { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
         end
 
         DIV(class: 'column') do
@@ -173,7 +178,7 @@ class HomePage < Hyperloop::Router::Component
             IMG(class: 'ui icon image', src: 'images/icons/code.png')
             'Isomorphic'
           end
-          P() { 'One language. One model. One set of tests. The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperstack lets you build beautiful interactive user interfaces in Ruby.' }
+          P() { 'One language. One model. One set of tests. The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code.' }
         end
 
         DIV(class: 'column') do
