@@ -1,4 +1,4 @@
-class CodeMirror < Hyperloop::Component
+class LiveCodeSegment < Hyperloop::Component
   param :content
   param :code
 
