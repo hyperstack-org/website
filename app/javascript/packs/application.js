@@ -29,6 +29,9 @@ global.RsScroll     = Scroll.animateScroll;
 global.RsScroller    = Scroll.scroller;
 global.RsScrollSpy  = Scroll.scrollSpy;
 
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
 // for opal/hyperloop modules to find React and others they must explicitly be saved
 // to the global space, otherwise webpack will encapsulate them locally here
 global.React = React;
@@ -40,3 +43,5 @@ global.PerfectScrollbar = PerfectScrollbar;
 global.Marked = Marked;
 global.ReactCodeMirror = CodeMirror;
 global.CodeMirrorRuby = CodeMirrorRuby;
+global.DatePicker = DatePicker
+global.moment = moment

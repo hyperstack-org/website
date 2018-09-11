@@ -1,16 +1,17 @@
 class HomePage < Hyperloop::Router::Component
   render do
-    DIV(id: 'example', class: 'index') do
+    DIV() do
       # DIV(class: 'page_wrap full height') do
+      Sem.Container(fluid: true) do
         AppMenu(section: 'home')
         mast_head
         # stack_overview
         introduction
-        Sem.Container do
+        Sem.Container() do
           simple_components
           stylish_components
           stateful_components
-          javascript_universe
+          javascript_components
         end
         isomorphic
         Sem.Divider(hidden: true)
@@ -19,7 +20,7 @@ class HomePage < Hyperloop::Router::Component
         SearchResultModal(history: history)
       end
       # AppFooter()
-    # end
+    end
   end
 
   def introduction
@@ -37,7 +38,7 @@ class HomePage < Hyperloop::Router::Component
 
   def simple_components
     content = DIV do
-      Sem.Header(as: :h1) { "Simple Components" }
+      Sem.Header(as: :h2) { "Simple Components" }
       P { "A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements." }
       # P { "As with React, there are no templates in Hyperstack. Unlike React, where you code in JSX and JavaScript, all your code in Ruby!" }
       P { "Under the covers, we use Opal to compile your Ruby code into JavaScript then hand it to React to mount as a regular JavaScript React Component." }
@@ -48,7 +49,7 @@ class HomePage < Hyperloop::Router::Component
 
   def stylish_components
     content = DIV do
-      Sem.Header(as: :h1) { "Stylish Components" }
+      Sem.Header(as: :h2) { "Stylish Components" }
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
       P { "You simply specify the CSS class on any HTML element." }
       P { "We think the Ruby DSL is a lot nicer to work with than ERB or JSX!" }
@@ -60,7 +61,7 @@ class HomePage < Hyperloop::Router::Component
 
   def stateful_components
     content = DIV do
-      Sem.Header(as: :h1) { "Stateful Components" }
+      Sem.Header(as: :h2) { "Stateful Components" }
       P { "As with React, in Hyperstack you write code in a declarative way with Components that manage their own state." }
       P { "As state changes, React works out how to render the user interface without you having to worry about the DOM - the user interface re-renders itself when state changes." }
       P { "To reference state we use state.foo and to mutate (change it) we use mutate.foo(true)" }
@@ -70,14 +71,15 @@ class HomePage < Hyperloop::Router::Component
     CodeMirror(content: content, code: STATE_EXAMPLE)
   end
 
-  def javascript_universe
+  def javascript_components
     content = DIV do
-      Sem.Header(as: :h1) { "JavaScript Universe" }
+      Sem.Header(as: :h2) { "JavaScript Components" }
       P { "Hyperstack gives you full access to all JavaScript libraries and components from directly within your Ruby code." }
-      P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
+      # P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
+      P { "Notice how we used DatePicker (which is a React.JS compomnent) as if it were a Ruby class and alsop see how we used `backticks` to juimp into native Javascript.)" }
     end.as_node
 
-    CodeMirror(content: content, code: JAVASCRIPT_UNIVERSE)
+    CodeMirror(content: content, code: JAVASCRIPT_COMPONENTS)
   end
 
   def isomorphic

@@ -9,9 +9,9 @@ class CodeMirror < Hyperloop::Component
   render(DIV) do
     Sem.Divider(hidden: true)
 
-    Sem.Grid(columns: 3) do
-      Sem.GridColumn(width: 5) { params.content }
-      Sem.GridColumn(width: 8) { code_mirror_editor }
+    Sem.Grid(columns: 3, relaxed: false, padded: false) do
+      Sem.GridColumn(width: 4) { params.content }
+      Sem.GridColumn(width: 9) { code_mirror_editor }
       Sem.GridColumn(width: 3) do
         unless compile && evaluate && render_component
           Sem.Message(negative: true) {

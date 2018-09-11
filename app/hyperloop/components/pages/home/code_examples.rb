@@ -14,6 +14,7 @@ class Greater < Hyperloop::Component
 end
 )
 
+
 STYLISH_COMPONENT = %q(
 class StylishComponent < Hyperloop::Component
   render(DIV) do
@@ -71,9 +72,20 @@ class StateExample < Hyperloop::Component
 end
 )
 
-JAVASCRIPT_UNIVERSE = %q(
-class ImportingJavascript < Hyperloop::Component
+
+JAVASCRIPT_COMPONENTS = %q(
+class SelectDate < Hyperloop::Component
   render(DIV) do
+    DatePicker(selected: `moment()`,
+               todayButton: "Today",
+               onChange: lambda { |date| mutate.date date }
+    )
+
+    selected_date = `moment(#{state.date}).format('LL')`
+    state.date ? ( H3 { selected_date } ) : (H3 { "Select a date" })
+
+    time_now = `moment().format('LLLL')`
+    P { "Time now is #{time_now}" }
   end
 end
 )
