@@ -31,7 +31,7 @@
 + `bundle`
 + `yarn`
 
-## Run
+## Run 
 
 + `foreman start`
 + `http://localhost:5000/`
