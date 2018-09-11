@@ -1,38 +1,39 @@
 class HomePage < Hyperloop::Router::Component
   render do
     DIV() do
-      # DIV(class: 'page_wrap full height') do
       Sem.Container(fluid: true) do
-        AppMenu(section: 'home')
-        mast_head
-        # stack_overview
-        introduction
+        # AppMenu(section: 'home')
+
+        MastHead()
+
+        Sem.Container(textAlign: :center) { introduction }
+        Sem.Divider(hidden: true)
+
         Sem.Container() do
           simple_components
           stylish_components
           stateful_components
           javascript_components
         end
-        isomorphic
+
+        Sem.Container(textAlign: :center) { isomorphic }
         Sem.Divider(hidden: true)
-        three_columns_of_text
-        friendly_community
+
+        Sem.Container do
+          three_columns_of_text
+          friendly_community
+        end
+
         SearchResultModal(history: history)
+        AppFooter()
       end
-      # AppFooter()
     end
   end
 
   def introduction
-    DIV(class: 'ui page grid') do
-      DIV(class: 'fifteen wide column centered') do
-        BR()
-        Sem.Header(size: :huge, textAlign: :center) do
-          DIV() {"Hyperstack's user-interface is written in Ruby, compiled by Opal" }
-          DIV() { 'and powered by React' }
-        end
-        BR()
-      end
+    Sem.Header(size: :huge) do
+      DIV {"Hyperstack's user-interface is written in Ruby, compiled by Opal" }
+      DIV { 'and powered by React' }
     end
   end
 
@@ -83,40 +84,8 @@ class HomePage < Hyperloop::Router::Component
   end
 
   def isomorphic
-    DIV(class: 'ui page grid') do
-      DIV(class: 'fifteen wide column centered') do
-        BR()
-        Sem.Header(size: :huge, textAlign: :center) do
-          DIV() { 'Real magic happens when you combine this with Isomorphic models' }
-        end
-        BR()
-      end
-    end
-  end
-
-  def mast_head
-    DIV(class: 'masthead segment stopped') do
-      DIV(class: 'ui page grid') do
-        DIV(class: 'fourteen wide column centered') do
-          DIV(class: 'introduction') do
-            H1(class: 'ui inverted header') do
-              SPAN(class: 'library') { 'Build spectacular Web applications in Ruby' }
-            end
-            DIV(class: 'ui hidden divider')
-            H2(class: 'ui header') do
-              Sem.Header(class: 'inverted') do
-                DIV { "Think JavaScript is your only option for the front-end?" }
-                DIV { "Think again." }
-              end
-            end
-            DIV(class: 'ui hidden divider')
-            Link("/#{AppStore.version}/docs", class: 'ui big basic inverted pink view-ui button getstartedbutton') do
-              I(class: 'sidebar icon')
-              "\n          Get Started\n        "
-            end
-          end
-        end
-      end
+    Sem.Header(size: :huge) do
+      DIV() { 'Real magic happens when you combine this with Isomorphic models' }
     end
   end
 
