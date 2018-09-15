@@ -4,11 +4,10 @@ class RenderComponent < Hyperloop::Component
 
   before_update { @errors = false }
   after_error { |error, info| puts "error = #{error}"; puts "info = #{info}"; @errors = true }
+  # we would like to be able to set state here, but there ias a bug which will keep re-rendering
 
   render do
-    puts "create"
     React.create_element( Module.const_get(params.component_name), {key: params.random_key}) unless @errors
-    # Module.const_get(params.component_name).render
   end
 end
 
@@ -73,9 +72,7 @@ class LiveCodeSegment < Hyperloop::Component
   def render_component
     begin
       DIV(id: 'result') do
-        # TODO this needs to throw an exception
-        # React.create_element( Module.const_get(component_name), {key: rand(2**256).to_s(36)[0..7]}) unless state.errors
-        RenderComponent(component_name: component_name, key: rand(2**256).to_s(36)[0..7])
+        RenderComponent(component_name: component_name, random_key: rand(2**256).to_s(36)[0..7])
       end
     rescue Exception => e
       mutate.compile_error_heading "Invalid component error"
