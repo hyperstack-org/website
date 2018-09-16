@@ -1,5 +1,5 @@
 class Stacks < Hyperloop::Component
-  render(DIV) do
+  render(DIV, class: 'block') do
     Sem.Grid(columns: 2, relaxed: false, padded: false) do
       Sem.GridColumn(width: 4) { content }
       Sem.GridColumn(width: 12) { stack_diagram }

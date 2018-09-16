@@ -16,10 +16,10 @@ end
 
 
 STYLISH_COMPONENT = %q(
-class StylishComponent < Hyperloop::Component
+class SomeExamples < Hyperloop::Component
   render(DIV) do
     DIV(class: 'ui info message') do
-      H3 { "Well done!" }
+      H3 { "Information!" }
     end
 
     TABLE(class: 'ui celled table') do
@@ -38,36 +38,37 @@ class StylishComponent < Hyperloop::Component
         end
       end
     end
+
+    UL do
+      10.times { |n| LI { "Number #{n}" }}
+    end
   end
 end
 )
 
 
 STATE_EXAMPLE = %q(
-class StateExample < Hyperloop::Component
+class UsingState < Hyperloop::Component
   render(DIV) do
-    show_hide_button
-    DIV do
-      show_example
-    end if state.show
+    button.on(:click) { mutate.show !state.show }
+    DIV { example } if state.show
   end
 
-  def show_hide_button
+  def button
     BUTTON(class: 'ui primary button') do
       state.show ? "Hide" : "Show"
-    end.on(:click) { mutate.show !state.show }
+    end
   end
 
-  def show_example
+  def example
     BR()
     DIV(class: 'ui input') do
       INPUT(type: :text).on(:change) do |e|
-        mutate.field_value e.target.value
+        mutate.value e.target.value
       end
     end
-    5.times do
-      H3 { "#{state.field_value}" }
-    end
+
+    H3 { "#{state.value}" }
   end
 end
 )
@@ -81,11 +82,7 @@ class SelectDate < Hyperloop::Component
                onChange: lambda { |date| mutate.date date }
     )
 
-    selected_date = `moment(#{state.date}).format('LL')`
-    state.date ? ( H3 { selected_date } ) : (H3 { "Select a date" })
-
-    time_now = `moment().format('LLLL')`
-    P { "Time now is #{time_now}" }
+    H3 { `moment(#{state.date}).format('LL')` }
   end
 end
 )

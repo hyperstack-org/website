@@ -19,7 +19,7 @@ class LiveCodeSegment < Hyperloop::Component
     mutate.ruby_code params.code
   end
 
-  render(DIV) do
+  render(DIV, class: 'block') do
     Sem.Divider(hidden: true)
 
     Sem.Grid(columns: 3, relaxed: false, padded: false) do
