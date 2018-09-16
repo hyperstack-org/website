@@ -34,21 +34,29 @@ class HomePage < Hyperloop::Router::Component
 
   def think_again
     Sem.Header(size: :huge) do
-      DIV {"Think JavaScript is the only option for the front end?" }
-      DIV { 'Think again.' }
+      SPAN {'Think ' }
+      SPAN(class: 'blue-text') {'JavaScript'}
+      SPAN {' is your only option for the front end?' }
+      DIV(class: 'pink-text') { 'Think again.' }
     end
   end
 
 
   def introduction
     Sem.Header(size: :huge) do
-      DIV {"Ruby code, compiled by Opal, bundled by Webpack, powered by React." }
+      SPAN(class: 'pink-text') {'Ruby' }
+      SPAN { ' code, compiled by ' }
+      SPAN(class: 'green-text') { 'Opal' }
+      SPAN {', bundled by ' }
+      SPAN(class: 'purple-text') {'Webpack' }
+      SPAN {', powered by ' }
+      SPAN(class: 'blue-text') { 'React' }
     end
   end
 
   def simple_components
     content = DIV do
-      Sem.Header(as: :h2) { "Simple Components" }
+      Sem.Header(as: :h2, class: 'pink-text') { "Simple Components" }
       P { "As with React, a Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements." }
       P { "Under the covers, we use Opal to compile your Ruby code into JavaScript then hand it to React to mount as a regular JavaScript React Component." }
     end.as_node
@@ -58,7 +66,7 @@ class HomePage < Hyperloop::Router::Component
 
   def html_dsl
     content = DIV do
-      Sem.Header(as: :h2) { "HTML DSL" }
+      Sem.Header(as: :h2, class: 'pink-text') { "HTML DSL" }
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
       P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the Ruby rules slightly, but we think it reads better this way." }
       P { "You can specify the CSS class on any HTML element." }
@@ -70,7 +78,7 @@ class HomePage < Hyperloop::Router::Component
 
   def stateful_components
     content = DIV do
-      Sem.Header(as: :h2) { "Stateful Components" }
+      Sem.Header(as: :h2, class: 'pink-text') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own State." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
       P { "To reference State we use state.foo and to mutate (change it) we use mutate.foo(true)" }
@@ -82,7 +90,7 @@ class HomePage < Hyperloop::Router::Component
 
   def javascript_in_ruby
     content = DIV do
-      Sem.Header(as: :h2) { "JavaScript in Ruby" }
+      Sem.Header(as: :h2, class: 'pink-text') { "JavaScript in Ruby" }
       P { "Hyperstack gives you full access to all JavaScript libraries and components from directly within your Ruby code." }
       # P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
       P { "Notice how we used DatePicker (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript." }

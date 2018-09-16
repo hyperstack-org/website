@@ -52,3 +52,23 @@ p {
     padding-top: 25px;
     padding-bottom: 25px;
 }
+
+.pink-text {
+  color: #D53475 !important;
+}
+
+.blue-text {
+  color: #73AEEA;
+}
+
+.green-text {
+  color: #6D9069;
+}
+
+.purple-text {
+  color: #BB7ED7;
+}
+
+.gray-background {
+  background-color: #292C33 !important;
+}

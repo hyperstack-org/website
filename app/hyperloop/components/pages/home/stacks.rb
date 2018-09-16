@@ -27,7 +27,7 @@ class Stacks < Hyperloop::Component
   end
 
   def content
-    Sem.Header(as: :h2) { "Modern tooling" }
+    Sem.Header(as: :h2, class: 'pink-text') { "Modern tooling" }
     P { "Hyperstack integrates with your favourite back-end (*) to synchronize data between any ActiveRecord based ORM and the front-end." }
     P { "We even include a fast, hot-loading build environment for pure programmer joy!" }
     P { "* Rails today, but watch this space and see the Roadmap." }
