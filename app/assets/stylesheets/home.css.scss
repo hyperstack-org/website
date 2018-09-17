@@ -4,34 +4,47 @@
   width: 150px;
   height: 145px;
   margin: 0 auto 0 auto !important;
-  background-image: url(image_path("logo/hyperloop-logo-medium-white.png"));
+  background: url(image_path("logo/hyperloop-logo-medium-pink.png"));
   background-repeat: no-repeat;
   background-position: center;
   /*background-size: 184px 178px;*/
-  background-size: 140px 125px;
+  background-size: 150px 134px;
   /*background-size: 66px 65px;*/
 }
 
-.hyperlooplogo:after {
+.hyperlooplogo::after {
   content: '';
   width: 150px;
   height: 145px;
   position: absolute;
-  background-image: url(image_path("logo/hyperloop-logo-atom-medium-white.png"));
+  background: url(image_path("logo/hyperloop-logo-atom-medium-pink.png"));
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 140px 125px;
+  background-size: 150px 134px;
 
   -webkit-animation-name: rotate;
-  -webkit-animation-duration:15s;
+  -webkit-animation-duration:8s;
   -webkit-animation-iteration-count:infinite;
   -webkit-animation-timing-function: ease-in-out;
 
   -moz-animation-name: rotate;
-  -moz-animation-duration:15s;
+  -moz-animation-duration:8s;
   -moz-animation-iteration-count:infinite;
   -moz-animation-timing-function: ease-in-out;
  }
+
+ @-webkit-keyframes rotate {
+    0% {-webkit-transform:rotate(0deg); opacity: 0.3;}
+    20% {-webkit-transform:rotate(0deg); opacity: 0.4;}
+    50% {opacity: 1;}
+    100% {  -webkit-transform:rotate(360deg); opacity: 0.4;}
+  }
+  
+  @-moz-keyframes rotate {
+    0% { -moz-transform:rotate(0deg);}
+    20% {  -moz-transform:rotate(0deg);}
+    100% {  -moz-transform:rotate(360deg);}
+  }
 
  .project-header {
    font-size: 4em;
