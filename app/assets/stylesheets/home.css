@@ -69,6 +69,12 @@ p {
   color: #BB7ED7;
 }
 
+/* lighter */
 .gray-background {
   background-color: #3c4248 !important;
 }
+
+/* darker */
+/* .gray-background {
+  background-color: #282c33 !important;
+} */
