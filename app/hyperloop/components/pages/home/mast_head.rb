@@ -7,7 +7,7 @@ class MastHead < Hyperloop::Component
           Sem.GridColumn(width: 3) { Sem.Image(src: 'images/logo/hyperloop-logo-large-pink.png', size: :small, centered: true) }
           Sem.GridColumn(width: 9) do
             P(class: 'project-header') { "Hyperstack" }
-            P(class: 'project-tagline') { "Full-stack, interactive, web applications in Ruby" }
+            P(class: 'project-tagline') { "Build full-stack, interactive, web applications in Ruby" }
            end
           Sem.GridColumn(width: 2)
         end

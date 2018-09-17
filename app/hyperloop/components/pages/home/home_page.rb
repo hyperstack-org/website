@@ -36,7 +36,7 @@ class HomePage < Hyperloop::Router::Component
     Sem.Header(size: :huge) do
       SPAN {'Think ' }
       SPAN(class: 'blue-text') {'JavaScript'}
-      SPAN {' is your only option for the front end?' }
+      SPAN {' is your only option for the front end? ' }
       DIV(class: 'pink-text') { 'Think again.' }
     end
   end
