@@ -1,13 +1,15 @@
+
+
 .hyperlooplogo {
   width: 150px;
   height: 145px;
   margin: 0 auto 0 auto !important;
-  background: url("logo/hyperloop-logo-medium-white.png");
+  background-image: url(image_path("logo/hyperloop-logo-medium-white.png"));
   background-repeat: no-repeat;
   background-position: center;
-  //background-size: 184px 178px;
+  /*background-size: 184px 178px;*/
   background-size: 140px 125px;
-  //background-size: 66px 65px;
+  /*background-size: 66px 65px;*/
 }
 
 .hyperlooplogo:after {
@@ -15,7 +17,7 @@
   width: 150px;
   height: 145px;
   position: absolute;
-  background: url("logo/hyperloop-logo-atom-medium-white.png");
+  background-image: url(image_path("logo/hyperloop-logo-atom-medium-white.png"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 140px 125px;

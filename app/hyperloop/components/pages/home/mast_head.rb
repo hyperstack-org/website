@@ -4,7 +4,7 @@ class MastHead < Hyperloop::Component
       DIV(class: 'block') do
         Sem.Grid(columns: 4, padded: true) do
           Sem.GridColumn(width: 2)
-          Sem.GridColumn(width: 3) { Sem.Image(src: 'images/logo/hyperloop-logo-large-pink.png', size: :small, centered: true) }
+          Sem.GridColumn(width: 3) { DIV(class: 'hyperlooplogo') }
           Sem.GridColumn(width: 9) do
             P(class: 'project-header') { "Hyperstack" }
             P(class: 'project-tagline') { "Build full-stack, interactive, web applications in Ruby" }
