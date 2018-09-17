@@ -31,7 +31,7 @@
 + `bundle`
 + `yarn`
 
-## Run 
+## Run
 
 + `foreman start`
 + `http://localhost:5000/`
@@ -41,6 +41,16 @@
 + Deployments are all through Travis
 + You can see the deploy history here: https://travis-ci.org/hyperstack-org
 + Any push to edge or master triggers a deployment
+
+## Semantic-UI
+
+The website uses Semantic-UI CSS and Rect-Semantic-UI. The CSS is built from the `vendor\semantic` folder using gulp.
+
++ Change any of the global site variables https://semantic-ui.com/usage/theming.html
++ Navigate to `vendor\semantic`
++ `gulp build-css`
+
+The copy `semantic.css` to `app\assets\stylesheets`
 
 ## How the code works
 

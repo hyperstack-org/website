@@ -29,6 +29,8 @@
 /public/packs
 .byebug_history
 
+/vendor/semantic/dist
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /public/packs-test
