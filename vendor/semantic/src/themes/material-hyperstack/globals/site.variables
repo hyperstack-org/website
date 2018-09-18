@@ -56,17 +56,18 @@
       Site Colors
 --------------------*/
 
-/*---  Colors  ---*/
+/*---  Colors - have been modified to fit with onedark stylesheet ---*/
+
 @black            : #1B1C1D;
-@blue             : #2196F3;
-@green            : #4CAF50;
+@blue             : #61afef;
+@green            : #98c379;
 @grey             : #9E9E9E;
-@orange           : #FF9800;
-@pink             : #E91E63;
-@purple           : #9C27B0;
-@red              : #F44336;
+@orange           : #d19a66;
+@pink             : #D53475;
+@purple           : #c678dd;
+@red              : #e06c75;
 @teal             : #1de9b6;
-@yellow           : #FFEB3B;
+@yellow           : #e5c07b;
 
 /*---  Light Colors  ---*/
 @lightBlack       : #333333;
