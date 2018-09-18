@@ -22,6 +22,7 @@
     "react-scroll": "^1.7.10",
     "react-stickynode": "^2.0.1",
     "react_ujs": "^2.4.4",
+    "sass-loader": "^7.1.0",
     "semantic-ui": "^2.4.0",
     "semantic-ui-react": "^0.82.2",
     "webpack": "^3.11.0",
