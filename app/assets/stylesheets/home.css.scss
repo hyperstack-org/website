@@ -39,7 +39,7 @@
     50% {opacity: 1;}
     100% {  -webkit-transform:rotate(360deg); opacity: 0.4;}
   }
-  
+
   @-moz-keyframes rotate {
     0% { -moz-transform:rotate(0deg);}
     20% {  -moz-transform:rotate(0deg);}
@@ -58,10 +58,6 @@
    margin-bottom: 0px;
    color: #cabfbf !important;
  }
-
-p {
-    font-size: 15px;
-}
 
 .block {
     padding-top: 25px;
