@@ -7645,22 +7645,6 @@ i.icon.exposure:before {
   content: '\e3ca';
 }
 
-i.icon.exposure.neg.1:before {
-  content: '\e3cb';
-}
-
-i.icon.exposure.neg.2:before {
-  content: '\e3cc';
-}
-
-i.icon.exposure.plus.1:before {
-  content: '\e3cd';
-}
-
-i.icon.exposure.plus.2:before {
-  content: '\e3ce';
-}
-
 i.icon.exposure.zero:before {
   content: '\e3cf';
 }
