@@ -7,11 +7,8 @@ class HomePage < Hyperloop::Router::Component
         MastHead()
 
         Sem.Divider(hidden: true)
-        Sem.Container(textAlign: :center, class: 'block') { think_again }
         Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
         Sem.Divider()
-
-        Sem.Container(textAlign: :center, class: 'block') { introduction }
 
         Sem.Container() do
           simple_components
@@ -29,26 +26,6 @@ class HomePage < Hyperloop::Router::Component
         AppFooter()
         SearchResultModal(history: history)
       end
-    end
-  end
-
-  def think_again
-    Sem.Header(size: :huge, class: 'pink') do
-      SPAN {'Think JavaScript is your only option for the front end? ' }
-      DIV { 'Think again.' }
-    end
-  end
-
-
-  def introduction
-    Sem.Header(size: :large) do
-      SPAN(class: 'pink-text') {'Ruby' }
-      SPAN { ' code, compiled by ' }
-      SPAN(class: 'green-text') { 'Opal' }
-      SPAN {', bundled by ' }
-      SPAN(class: 'purple-text') {'Webpack' }
-      SPAN {', powered by ' }
-      SPAN(class: 'blue-text') { 'React' }
     end
   end
 
@@ -112,7 +89,7 @@ class HomePage < Hyperloop::Router::Component
           'Isomorphic'
         end
         P do
-          STRONG { 'One language. One model. One set of tests.' }
+          SPAN { 'One language. One model. One set of tests.' }
           SPAN { 'The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code.' }
         end
       end
