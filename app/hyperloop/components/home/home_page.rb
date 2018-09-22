@@ -25,7 +25,7 @@ class HomePage < Hyperloop::Router::Component
 
   def simple_components
     content = DIV do
-      Sem.Header(size: :medium, class: 'pink') { "Simple Components" }
+      Sem.Header(as: :h2, class: 'pink') { "Simple Components" }
       P { "As with React, a Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements." }
       P { "Under the covers, we use Opal to compile your Ruby code into JavaScript then hand it to React to mount as a regular JavaScript React Component." }
     end.as_node
@@ -35,7 +35,7 @@ class HomePage < Hyperloop::Router::Component
 
   def html_dsl
     content = DIV do
-      Sem.Header(size: :medium, class: 'pink') { "HTML DSL" }
+      Sem.Header(as: :h2, class: 'pink') { "HTML DSL" }
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
       P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the standard Ruby style rules slightly, but we think it reads better this way." }
       P { "You can specify the CSS class on any HTML element." }
@@ -47,7 +47,7 @@ class HomePage < Hyperloop::Router::Component
 
   def stateful_components
     content = DIV do
-      Sem.Header(size: :medium, class: 'pink') { "Stateful Components" }
+      Sem.Header(as: :h2, class: 'pink') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own State." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
       P { "To reference State we use state.foo and to mutate (change it) we use mutate.foo" }
@@ -59,7 +59,7 @@ class HomePage < Hyperloop::Router::Component
 
   def javascript_in_ruby
     content = DIV do
-      Sem.Header(size: :medium, class: 'pink') { "Bridging Ruby and JavaScript" }
+      Sem.Header(as: :h2, class: 'pink') { "Bridging Ruby and JavaScript" }
       P { "Hyperstack gives you full access to the entire universe of JavaScript libraries and components directly within your Ruby code." }
       # P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
       P { "Notice how we used DatePicker (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript." }
@@ -114,7 +114,7 @@ class HomePage < Hyperloop::Router::Component
       end
       Sem.GridRow do
         Sem.GridColumn(textAlign: :center) do
-          Sem.Button(primary: true, size: :large, basic: true) { "Create a Hyperstack Rails app in under 5 minutes!" }.on(:click) do
+          Sem.Button(primary: true, size: :huge, basic: true) { "Get started with Hyperstack on Rails in under 5 minutes" }.on(:click) do
             # params.history.push '/edge/docs/installation/installation'
             `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");`
           end
