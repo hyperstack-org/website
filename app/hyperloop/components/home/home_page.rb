@@ -59,8 +59,8 @@ class HomePage < Hyperloop::Router::Component
 
   def javascript_in_ruby
     content = DIV do
-      Sem.Header(size: :medium, class: 'pink') { "JavaScript in Ruby" }
-      P { "Hyperstack gives you full access to all JavaScript libraries and components from directly within your Ruby code." }
+      Sem.Header(size: :medium, class: 'pink') { "Bridging Ruby and JavaScript" }
+      P { "Hyperstack gives you full access to the entire universe of JavaScript libraries and components directly within your Ruby code." }
       # P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
       P { "Notice how we used DatePicker (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript." }
     end.as_node
@@ -92,7 +92,8 @@ class HomePage < Hyperloop::Router::Component
 
       Sem.GridColumn do
         H2(class: 'ui icon header') do
-          IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
+          # IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
+          Sem.Icon(name: 'code branch')
           'Open Source'
         end
         BR()

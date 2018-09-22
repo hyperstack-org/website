@@ -21,6 +21,9 @@ import CodeMirror from 'react-codemirror';
 import CodeMirrorRuby from 'codemirror/mode/ruby/ruby';
 import * as Scroll from 'react-scroll';
 
+// Semantic CSS built with gulp (see readme)
+require('../../../vendor/semantic/dist/semantic.css');
+
 // we do not need all of these
 global.RsLink       = Scroll.Link;
 global.RsElement    = Scroll.Element;
