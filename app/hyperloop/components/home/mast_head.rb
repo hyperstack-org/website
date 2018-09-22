@@ -20,9 +20,9 @@ class MastHead < Hyperloop::Component
     SPAN(class: 'red-text') { 'JavaScript' }
     SPAN { ' is your only option for the front-end? ' }
     SPAN(class: 'yellow-text') {'Think again. ' }
-    SPAN { ' Code in ' }
-    SPAN(class: 'pink-text') {'Ruby' }
-    SPAN { ', compiled by ' }
+    SPAN { 'Hyperstack is a ' }
+    SPAN(class: 'pink-text') { STRONG { 'Ruby'  } }
+    SPAN { ' DSL, compiled by ' }
     SPAN(class: 'green-text') { 'Opal' }
     SPAN {', bundled by ' }
     SPAN(class: 'purple-text') {'Webpack' }

@@ -1,4 +1,6 @@
-class Stacks < Hyperloop::Component
+class Stacks < Hyperloop::Router::Component
+  param :history
+
   render(DIV, class: 'block') do
     Sem.Grid(columns: 2, relaxed: false, padded: false) do
       Sem.GridColumn(width: 4) { content }
@@ -7,9 +9,19 @@ class Stacks < Hyperloop::Component
   end
 
   def stack_diagram
-    Sem.Grid(celled: false) do
-      Sem.GridColumn() do
-         Sem.Image(src: '/images/logos-min.png', size: :huge, centered: true)
+    Sem.Grid(celled: false, columns: 1) do
+      Sem.GridRow { }
+      Sem.GridRow do
+        Sem.GridColumn do
+           Sem.Image(src: '/images/logos.png', size: :large, centered: false)
+        end
+      end
+      Sem.GridRow do
+        Sem.GridColumn do
+          Sem.Button(primary: true, size: :large, basic: true) { "Create a 'Hello World' Rails app in under 5 minutes!" }.on(:click) do
+            params.history.push '/edge/docs/installation/installation'
+          end
+        end
       end
     end
   end
@@ -21,49 +33,3 @@ class Stacks < Hyperloop::Component
     P { "* Rails today, but watch this space and see the Roadmap." }
   end
 end
-
-
-# Sem.Grid do
-#   Sem.GridRow(columns: 6, class: 'no-padding') do
-#     Sem.GridColumn() { }
-#     Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-#        Sem.Image(src: '/images/rails.png', size: :medium, centered: true)
-#      end
-#     Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-#        Sem.Image(src: '/images/roda.png', size: :medium, centered: true, disabled: true)
-#        DIV { 'Coming soon' }
-#      end
-#      Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-#         Sem.Image(src: '/images/amber.png', size: :medium, centered: true, disabled: true)
-#         DIV { 'Coming later' }
-#       end
-#       Sem.GridColumn(verticalAlign: :middle, textAlign: :center) do
-#          Sem.Image(src: '/images/lucky.png', size: :medium, centered: true, disabled: true)
-#          DIV { 'Coming later' }
-#        end
-#     Sem.GridColumn() { }
-#   end
-# end
-
-
-
-# DIV(class: 'ui page grid') do
-#   DIV(class: 'fifteen wide column centered') do
-#     BR()
-#     Sem.Header(size: :huge, textAlign: :center) { "Full-stack modern Web tooling with everything you need to build stunning, interactive single-page Web applications quickly in a language you love - Ruby." }
-#     BR()
-#   end
-# end
-
-
-# DIV(class: 'ui page grid') do
-#   DIV(class: 'fifteen wide column centered') do
-#     Sem.Header(size: :huge, textAlign: :center) do
-#       DIV {"Hyperstack integrates with your favourite back-end to synchronize data between any ActiveRecord based ORM and the front-end."}
-#       BR()
-#       DIV {"We even include a fast, hot-loading build environment for pure programmer joy!"}
-#     end
-#     BR()
-#     BR()
-#   end
-# end

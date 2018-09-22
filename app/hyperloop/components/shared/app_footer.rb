@@ -1,45 +1,54 @@
-class AppFooter < Hyperloop::Router::Component
+class AppFooter < Hyperloop::Component
 
-  render do
-
-    DIV(class: 'ui vertical inverted black footer segment') do
-        DIV(class: 'container') do
-          BR()
-          BR()
-        #   DIV(class: 'ui stackable inverted divided relaxed grid') do
-        #     DIV(class: 'eight wide column') do
-        #       H3(class: 'ui inverted header') { '' }
-        #       P() { '' }
-        #       FORM(action: '', method: 'post', target: '_top') do
-        #         INPUT(type: 'hidden', name: 'cmd', value: '_s-xclick')
-        #         INPUT(type: 'hidden', name: 'hosted_button_id', value: '7ZAF2Q8DBZAQL')
-        #         BUTTON(type: 'submit', class: 'ui pink hyperlooppinkbutton button') { 'Hyperstack' }
-        #       end
-        #     end
-        #     DIV(class: 'four wide column') do
-        #       #H3(class: 'ui pink inverted header hyperlooppink') { 'Contribute' }
-        #       DIV(class: 'ui inverted link list') do
-        #         A(class: 'item', href: 'https://github.com/hyperstack-org') { 'Github' }
-        #         A(class: 'item', href: 'https://gitter.im/ruby-hyperloop/chat', target: '_blank') { 'Chat' }
-        #         # A(class: 'item', href: '', target: '_blank') { 'CLA' }
-        #         # A(class: 'disabled item') { 'others' }
-        #       end
-        #     end
-        #     # DIV(class: 'four wide column') do
-        #     #   H5(class: 'ui pink inverted header hyperlooppink') { 'Hyperloop Network' }
-        #     #   DIV(class: 'ui inverted link list') do
-        #     #     A(class: 'item', href: '', target: '_blank') { 'Gitter' }
-        #     #     A(href: '', class: 'item') { '' }
-        #     #     A(href: '', class: 'item') { '' }
-        #     #     A(class: 'disabled item') { '' }
-        #     #   end
-        #     # end
-        #   end
+  render(DIV) do
+    Sem.Segment(inverted: true, class: 'gray-background') do
+      Sem.Container(class: :block) do
+        Sem.Grid(columns: 2, relaxed: false, padded: false) do
+          Sem.GridColumn(width: 12) { slogan }
+          Sem.GridColumn(width: 4) { links }
         end
       end
-
-
+    end
   end
 
+  def slogan
+    P(class: 'project-tagline') do
+      SPAN { 'Hyperstack is ' }
+      SPAN(class: 'green-text') { 'open source' }
+      SPAN { ' and supported by a '}
+      SPAN(class: 'blue-text') { 'friendly commuinity' }
+    end
+    P(class: 'gray-text') { 'Reach out in Gitter and we will be happy to help get you onboarded.' }
+  end
 
+  def links
+    A { 'Github' }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+    BR()
+    A { 'Gitter chat' }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+    BR()
+    A { 'License' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/LICENSE', "_blank");` }
+    BR()
+    A { 'Code of Conduct' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CODE_OF_CONDUCT.md', "_blank");` }
+    BR()
+  end
 end
+
+# Sem.Container(textAlign: :center, class: 'block') { friendly_community }
+# Sem.Container(textAlign: :center, class: 'block') { get_started }
+
+
+
+# def friendly_community
+#   Sem.Header(size: :large, class: :pink) { "Hyperstack is open source and supported by a friendly commuinity." }
+#   P { 'Reach out in the Gitter chat, we will be happy to help you get onboarded!' }
+# end
+#
+# def get_started
+#   Sem.Grid(columns: 2) do
+#     Sem.GridColumn do
+#       Sem.Button(primary: true, basic: true, size: :huge) { "Join the chat on Gitter" }.on(:click) do
+#         `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");`
+#       end
+#     end
+#   end
+# end

@@ -15,14 +15,10 @@ class HomePage < Hyperloop::Router::Component
           html_dsl
           stateful_components
           javascript_in_ruby
-          Stacks()
+          Stacks(history: history)
         end
 
         # Sem.Container(textAlign: :center) { isomorphic }
-
-        Sem.Container(textAlign: :center, class: 'block') { friendly_community }
-        Sem.Container(textAlign: :center, class: 'block') { get_started }
-
         AppFooter()
         SearchResultModal(history: history)
       end
@@ -105,24 +101,23 @@ class HomePage < Hyperloop::Router::Component
       Sem.GridColumn do
         H2(class: 'ui icon header') do
           IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
-          'Thorough'
+          'Open Source'
         end
-        P { 'Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state.' }
+        BR()
+        SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
+        A { 'Contributing Guildlines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
+        SPAN { ' and ' }
+        A { 'ROADMAP' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
+        SPAN { ' for ways in which you can help.' }
       end
+
+      # Sem.GridColumn do
+      #   H2(class: 'ui icon header') do
+      #     IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
+      #     'Thorough'
+      #   end
+      #   P { 'Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state.' }
+      # end
     end
   end
-
-  def friendly_community
-    Sem.Header(size: :large, class: :pink) do
-      DIV {"Hyperstack is open-source and supported by a friendly commuinity" }
-      DIV { 'Reach out in the Gitter chat, we will be happy to help you get onboarded' }
-    end
-  end
-
-  def get_started
-    Sem.Button(primary: true, size: :huge) { "Get started in under 5 minutes!" }.on(:click) do
-      history.push '/edge/docs/installation/installation'
-    end
-  end
-
 end

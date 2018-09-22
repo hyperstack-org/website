@@ -95,7 +95,6 @@ class UsingState < Hyperloop::Component
 end
 )
 
-
 JAVASCRIPT_COMPONENTS = %q(
 class SelectDate < Hyperloop::Component
 
@@ -110,11 +109,13 @@ class SelectDate < Hyperloop::Component
     # Notice the lambda to pass a Ruby method as a callback
     DatePicker(selected: state.date,
                todayButton: "Today",
-               onChange: lambda { |date| mutate.date date }
+               onChange: ->(date) { mutate.date date }
     )
 
-    # see how we use `` and #{} to jump between JS and Ruby
+    # see how we use `` and #{} to b ridger JS and Ruby
     H3 { `moment(#{state.date}).format('LL')` }
+    #  or if you prefer..
+    # H3 { Native(`moment`).call(state.date).format('LL') }
   end
 end
 )
