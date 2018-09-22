@@ -72,9 +72,9 @@ class HomePage < Hyperloop::Router::Component
     Sem.Grid(columns: 3, textAlign: :center) do
 
       Sem.GridColumn do
-        H2(class: 'ui icon header') do
-          IMG(class: 'ui icon image', src: 'images/icons/code.png')
-          'Isomorphic'
+        H2(class: 'pink-text') do
+          Sem.Icon(name: 'diamond', size: :big)
+          DIV { 'Isomorphic' }
         end
         P do
           SPAN { 'One language. One model. One set of tests.' }
@@ -83,20 +83,18 @@ class HomePage < Hyperloop::Router::Component
       end
 
       Sem.GridColumn do
-        H2(class: 'ui icon header') do
-          IMG(class: 'ui icon image', src: 'images/icons/code-signs-in-rounded-square-interface-symbol.png')
-          'Fast'
+        H2(class: 'green-text') do
+          Sem.Icon(name: 'code', size: :big)
+          DIV { 'Fast' }
         end
         P { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
       end
 
       Sem.GridColumn do
-        H2(class: 'ui icon header') do
-          # IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
-          Sem.Icon(name: 'code branch')
-          'Open Source'
+        H2(class: 'blue-text') do
+          Sem.Icon(name: 'code branch', size: :big)
+          DIV { 'Open Source' }
         end
-        BR()
         SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
         A { 'Contributing Guildlines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
         SPAN { ' and ' }
