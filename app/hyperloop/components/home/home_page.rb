@@ -3,7 +3,6 @@ class HomePage < Hyperloop::Router::Component
     DIV() do
       Sem.Container(fluid: true) do
         # AppMenu(section: 'home')
-
         MastHead()
 
         Sem.Divider(hidden: true)
@@ -15,10 +14,9 @@ class HomePage < Hyperloop::Router::Component
           html_dsl
           stateful_components
           javascript_in_ruby
-          Stacks(history: history)
+          get_started
         end
 
-        # Sem.Container(textAlign: :center) { isomorphic }
         AppFooter()
         SearchResultModal(history: history)
       end
@@ -70,12 +68,6 @@ class HomePage < Hyperloop::Router::Component
     LiveCodeSegment(content: content, code: JAVASCRIPT_COMPONENTS)
   end
 
-  def isomorphic
-    Sem.Header(size: :large, class: :pink) do
-      DIV { 'Real magic happens when you combine this with Isomorphic models' }
-    end
-  end
-
   def three_columns_of_text
     Sem.Grid(columns: 3, textAlign: :center) do
 
@@ -110,14 +102,27 @@ class HomePage < Hyperloop::Router::Component
         A { 'ROADMAP' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
         SPAN { ' for ways in which you can help.' }
       end
-
-      # Sem.GridColumn do
-      #   H2(class: 'ui icon header') do
-      #     IMG(class: 'ui icon image', src: 'images/icons/molecule.png')
-      #     'Thorough'
-      #   end
-      #   P { 'Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state.' }
-      # end
     end
+  end
+
+  def get_started
+    Sem.Grid(celled: false, columns: 1) do
+      Sem.GridRow { }
+      Sem.GridRow do
+        Sem.GridColumn do
+           Sem.Image(src: '/images/logos.png', size: :huge, centered: true)
+        end
+      end
+      Sem.GridRow do
+        Sem.GridColumn(textAlign: :center) do
+          Sem.Button(primary: true, size: :large, basic: true) { "Create a Hyperstack Rails app in under 5 minutes!" }.on(:click) do
+            # params.history.push '/edge/docs/installation/installation'
+            `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");`
+          end
+        end
+      end
+    end
+    Sem.Divider(hidden: true)
+    Sem.Divider(hidden: true)
   end
 end
