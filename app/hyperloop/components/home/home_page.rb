@@ -2,7 +2,7 @@ class HomePage < Hyperloop::Router::Component
   render do
     DIV() do
       Sem.Container(fluid: true) do
-        # AppMenu(section: 'home')
+        AppMenu(section: 'home', history: history)
         MastHead()
 
         Sem.Divider(hidden: true)
@@ -98,7 +98,7 @@ class HomePage < Hyperloop::Router::Component
         SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
         A { 'Contributing Guildlines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
         SPAN { ' and ' }
-        A { 'ROADMAP' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
+        A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
         SPAN { ' for ways in which you can help.' }
       end
     end

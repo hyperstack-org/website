@@ -1,26 +1,46 @@
 require 'helpers/helpers'
 
-class AppMenu < Hyperloop::Router::Component
-  param :section
+class AppMenu < Hyperloop::Component
+  param section: ''
+  param :history
 
-  render do
-    DIV(class: 'following bar fixed') do
-      DIV(class: 'ui page grid') do
-        DIV(class: 'column') do
-          logo_menu_item
-          DIV(class: 'ui large secondary network menu') do
-            docs_menu_item
-            github_menu_item
-            chat_menu_item
-            search_control
-            # github_stars
-            # edge_badge
-            # edge_or_master_menu_item
-          end
+  render(DIV) do
+    Sem.Container do
+      Sem.Menu(secondary: true) do
+        Sem.MenuItem do
+          A { 'Home' }.on(:click) { params.history.push "/#{AppStore.version}" }
         end
+        Sem.MenuItem do
+           A { 'Docs' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/docs', "_blank");` }
+         end
+        Sem.MenuItem do
+          A { 'Github' }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+        end
+        Sem.MenuItem do
+           A { 'Chat' }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+         end
       end
     end
   end
+
+  # render do
+  #   DIV(class: 'following bar fixed') do
+  #     DIV(class: 'ui page grid') do
+  #       DIV(class: 'column') do
+  #         logo_menu_item
+  #         DIV(class: 'ui large secondary network menu') do
+  #           docs_menu_item
+  #           github_menu_item
+  #           chat_menu_item
+  #           search_control
+  #           # github_stars
+  #           # edge_badge
+  #           # edge_or_master_menu_item
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
 
   def logo_menu_item
     DIV(class: 'ui logo shape') do

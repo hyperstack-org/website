@@ -9,7 +9,7 @@ class DocsPage < Hyperloop::Router::Component
   render(DIV) do
     DIV(id: 'example', class: 'index') do
       DIV(class: 'full height') do
-        AppMenu(section: 'docs', history: history, location: location)
+        AppMenu(section: 'docs', history: history)
         DIV(class: 'page-wrap') do
           main_content
           page_dimmer
