@@ -109,12 +109,12 @@ class HomePage < Hyperloop::Router::Component
       Sem.GridRow { }
       Sem.GridRow do
         Sem.GridColumn do
-           Sem.Image(src: '/images/logos.png', size: :huge, centered: true)
+           Sem.Image(src: '/images/logos.png', size: :large, centered: true)
         end
       end
       Sem.GridRow do
         Sem.GridColumn(textAlign: :center) do
-          Sem.Button(primary: true, size: :huge, basic: true) { "Get started with Hyperstack on Rails in under 5 minutes" }.on(:click) do
+          Sem.Button(primary: true, size: :huge, basic: false) { "Get started with Hyperstack on Rails in under 5 minutes" }.on(:click) do
             # params.history.push '/edge/docs/installation/installation'
             `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");`
           end
