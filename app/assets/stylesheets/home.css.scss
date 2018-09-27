@@ -44,6 +44,27 @@
     100% {  -moz-transform:rotate(360deg);}
   }
 
+.main-page {
+  background-color: #F6F6F6
+}
+
+.white-background {
+  background-color: white;
+}
+
+.tight-box {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.outline-box {
+    outline-style: outset;
+    outline-width: thin;
+    outline-color: gray;
+}
+
 .project-header {
   font-size: 4em;
   font-weight: bold;

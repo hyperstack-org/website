@@ -122,7 +122,7 @@ class HomePage < Hyperloop::Router::Component
       Sem.GridRow { }
       Sem.GridRow do
         Sem.GridColumn do
-           Sem.Image(src: '/images/logos.png', size: :large, centered: true)
+           Sem.Image(src: '/images/logos-gray.png', size: :large, centered: true)
         end
       end
       Sem.GridRow do

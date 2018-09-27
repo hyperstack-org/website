@@ -80,7 +80,7 @@ class UsingState < Hyperloop::Component
   end
 
   def input
-    DIV(class: 'ui input block') do
+    DIV(class: 'ui input fluid block') do
       INPUT(type: :text).on(:change) do |evt|
         # we are updating the value per keypress
         mutate.input_value evt.target.value

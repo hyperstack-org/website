@@ -22,15 +22,21 @@ class LiveCodeSegment < Hyperloop::Component
   render(DIV, class: 'block') do
     Sem.Divider(hidden: true)
 
-    Sem.Grid(columns: 3, relaxed: false, padded: false) do
+    Sem.Grid(columns: 2, relaxed: false, padded: false) do
       Sem.GridColumn(width: 4) { params.content }
-      Sem.GridColumn(width: 9) { code_mirror_editor }
-      Sem.GridColumn(width: 3) do
-        unless compile && evaluate && render_component
-          Sem.Message(negative: true) {
-            H3 { state.compile_error_heading }
-            P { state.compile_error_message }
-          }
+      Sem.GridColumn(width: 12) do
+        Sem.Container(className: 'white-background outline-box') do
+          Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
+            Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
+            Sem.GridColumn(width: 4) do
+              unless compile && evaluate && render_component
+                Sem.Message(negative: true) do
+                  H3 { state.compile_error_heading }
+                  P { state.compile_error_message }
+                end
+              end
+            end
+          end
         end
       end
     end
