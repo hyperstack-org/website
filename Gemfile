@@ -34,14 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #  Hyperloop gems
-gem "opal-jquery", git: "https://github.com/opal/opal-jquery.git", branch: "master"
-gem 'hyperloop', git: 'https://github.com/ruby-hyperloop/hyperloop', branch: 'edge'
-gem 'hyper-react', git: 'https://github.com/ruby-hyperloop/hyper-react', branch: 'edge'
-gem 'hyper-component', git: 'https://github.com/ruby-hyperloop/hyper-component', branch: 'edge'
-gem 'hyper-router', git: 'https://github.com/ruby-hyperloop/hyper-router', branch: 'edge'
-gem 'hyper-store', git: 'https://github.com/ruby-hyperloop/hyper-store', branch: 'edge'
-gem 'hyperloop-config', git: 'https://github.com/ruby-hyperloop/hyperloop-config', branch: 'edge'
-gem 'opal_hot_reloader', git: 'https://github.com/fkchang/opal-hot-reloader.git'
+gem 'hyperloop', ">=0.9.1", "<1.0.0"
+gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.3.1', require: false
