@@ -116,6 +116,14 @@ class SelectDate < Hyperloop::Component
     H3 { `moment(#{state.date}).format('LL')` }
     #  or if you prefer..
     # H3 { Native(`moment`).call(state.date).format('LL') }
+
+    # In this example, Sem is an imported JS library
+    # type 'Sem.' on your JavaScript console...
+    button = Sem.Button { 'Open Modal' }.as_node
+    Sem.Modal(trigger: button.to_n) do
+      Sem.ModalHeader { 'heading' }
+      Sem.ModalContent { 'content' }
+    end
   end
 end
 )

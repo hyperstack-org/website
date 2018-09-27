@@ -1,7 +1,7 @@
 # Hyperstack Website
 
-[![Build Status](https://travis-ci.org/hyperstack-org/hyperstack-website.svg?branch=master)](https://travis-ci.org/hyperstack-org/hyperstack-website)
-[![Coverage Status](https://coveralls.io/repos/github/hyperstack-org/hyperstack-website/badge.svg?branch=master)](https://coveralls.io/github/hyperstack-org/hyperstack-website?branch=master)
+[![Build Status](https://travis-ci.org/hyperstack-org/website.svg?branch=master)](https://travis-ci.org/hyperstack-org/website)
+[![Coverage Status](https://coveralls.io/repos/github/hyperstack-org/website/badge.svg?branch=master)](https://coveralls.io/github/hyperstack-org/website?branch=master)
 
 ## Goals
 
@@ -10,6 +10,7 @@
 
 ## Website functionality
 
++ Runnable code samples, using a JS build of Opal Compiler to compile Ruby to JS on each keypress
 + All pages are dynamically loaded from Github
 + Conversion from Markdown to HTML is done on the fly on the client (using a JS component called Marked.js)
 + The table of contents (TOC) is dynamically created from the markdown an all of the site navigation is dynamically created
@@ -40,19 +41,11 @@
 
 + Deployments are all through Travis
 + You can see the deploy history here: https://travis-ci.org/hyperstack-org
-+ Any push to edge or master triggers a deployment
++ Any push to `edge` or `master` triggers a deployment
 
-## Semantic-UI
+## Contributing
 
-The website uses Semantic-UI CSS and Rect-Semantic-UI. The CSS is built from the `vendor\semantic` folder using gulp. We modify the Semantic less variables instead of overriding CSS elements. 
-
-+ Change any of the global site variables (see docs) https://semantic-ui.com/usage/theming.html
-+ Change site variables here `/vendor/semantic/src/themes/hyperstack/globals/site.variables`
-+ Navigate to `vendor\semantic`
-+ `gulp build-css`
-+ `cp dist/semantic.css ../../app/assets/stylesheets/semantic.css`
-
-The copy `semantic.css` to `app\assets\stylesheets`
+We would really love help in evolving this project. Please see the issue list for a great place to start.
 
 ## How the code works
 
@@ -123,3 +116,15 @@ So to get the friendly_doc_name of the first page in the 'dsl' section:
 + `AppStore.section_stores['dsl'].pages.first['friendly_doc_name']`
 
 Once the stores are loaded (and the pages converted) the rest of the site is ready to render.
+
+### Semantic-UI
+
+The website uses Semantic-UI CSS and Rect-Semantic-UI. The CSS is built from the `vendor\semantic` folder using gulp. We modify the Semantic less variables instead of overriding CSS elements.
+
++ Change any of the global site variables (see docs) https://semantic-ui.com/usage/theming.html
++ Change site variables here `/vendor/semantic/src/themes/hyperstack/globals/site.variables`
++ Navigate to `vendor\semantic`
++ `gulp build-css`
++ `cp dist/semantic.css ../../app/assets/stylesheets/semantic.css`
+
+The copy `semantic.css` to `app\assets\stylesheets`
