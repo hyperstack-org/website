@@ -61,8 +61,21 @@ class HomePage < Hyperloop::Router::Component
     content = DIV do
       Sem.Header(as: :h2, class: 'pink') { "Bridging Ruby and JavaScript" }
       P { "Hyperstack gives you full access to the entire universe of JavaScript libraries and components directly within your Ruby code." }
-      # P { "Everything you can do in JavaScript is simple to do in Ruby, this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks!" }
-      P { "Notice how we used DatePicker (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript." }
+      P { "Everything you can do in JavaScript is simple to do in Ruby; this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks." }
+      STRONG { 'There is no need to learn JavaScript' }
+      SPAN {', all you need to understand is how to bridge between JS and Ruby.'}
+      BR()
+      BR()
+      SPAN { "Notice how we used " }
+      SPAN { A(href: 'https://www.npmjs.com/package/react-datepicker', target: "_blank") { 'React DatePicker' } }
+      SPAN { " (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript to use " }
+      A(href: 'https://momentjs.com/', target: "_blank") { 'moment.js' }
+      BR()
+      BR()
+      SPAN { "This website is built with " }
+      SPAN { A(href: 'https://react.semantic-ui.com/', target: "_blank") { 'Semantic UI React' } }
+      SPAN { ' which we import as our Sem object.' }
+
     end.as_node
 
     LiveCodeSegment(content: content, code: JAVASCRIPT_COMPONENTS)

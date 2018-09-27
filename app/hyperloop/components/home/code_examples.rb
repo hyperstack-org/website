@@ -121,8 +121,8 @@ class SelectDate < Hyperloop::Component
     # type 'Sem.' on your JavaScript console...
     button = Sem.Button { 'Open Modal' }.as_node
     Sem.Modal(trigger: button.to_n) do
-      Sem.ModalHeader { 'heading' }
-      Sem.ModalContent { 'content' }
+      Sem.ModalHeader { 'Heading' }
+      Sem.ModalContent { 'Content' }
     end
   end
 end

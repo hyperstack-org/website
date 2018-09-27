@@ -122,9 +122,8 @@ Once the stores are loaded (and the pages converted) the rest of the site is rea
 The website uses Semantic-UI CSS and Rect-Semantic-UI. The CSS is built from the `vendor\semantic` folder using gulp. We modify the Semantic less variables instead of overriding CSS elements.
 
 + Change any of the global site variables (see docs) https://semantic-ui.com/usage/theming.html
+
 + Change site variables here `/vendor/semantic/src/themes/hyperstack/globals/site.variables`
 + Navigate to `vendor\semantic`
-+ `gulp build-css`
-+ `cp dist/semantic.css ../../app/assets/stylesheets/semantic.css`
-
-The copy `semantic.css` to `app\assets\stylesheets`
++ `gulp build`
++ Webpack will import the output CSS as a part of the build process

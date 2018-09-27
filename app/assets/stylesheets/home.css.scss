@@ -22,7 +22,7 @@
   background-size: 150px 134px;
 
   -webkit-animation-name: rotate;
-  -webkit-animation-duration:8s;
+  -webkit-animation-duration:15s;
   -webkit-animation-iteration-count:infinite;
   -webkit-animation-timing-function: ease-in-out;
 
@@ -52,6 +52,13 @@
 
 .project-tagline {
   font-size: 1.5em;
+  font-weight: normal;
+  margin-bottom: 0px;
+  color: #cabfbf !important;
+}
+
+.project-tagline-footer {
+  font-size: 1.25em;
   font-weight: normal;
   margin-bottom: 0px;
   color: #cabfbf !important;

@@ -12,7 +12,7 @@ class AppFooter < Hyperloop::Component
   end
 
   def slogan
-    P(class: 'project-tagline') do
+    P(class: 'project-tagline-footer') do
       SPAN { 'Hyperstack is ' }
       SPAN(class: 'green-text') { 'open source' }
       SPAN { ' and supported by a '}
