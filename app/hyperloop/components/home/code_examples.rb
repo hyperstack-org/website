@@ -1,35 +1,34 @@
 HELLO_WORLD_EXAMPLE = %q(
 class HelloWorld < Hyperloop::Component
-  # try changing 'world' to your own name
-  # and see what happens...
 
   render(DIV) do
-    # a Component must render just one HTML element
-    # Components are composed of Components
+    # try changing 'world' to your own name
+    # see what happens...
     Greeter(greet: 'world')
   end
 end
 
 class Greeter < Hyperloop::Component
+  # Components are composed of Components
   # paramaters are passed downward
   param :greet
 
   render(DIV) do
     # and accessed like this...
-    H1 { "Hello #{params.greet}" }
+    H1 { "Hello #{params.greet}!" }
   end
 end
 )
 
 
 STYLISH_COMPONENT = %q(
-class HtmlDslExamples < Hyperloop::Component
+class HtmlDslExample < Hyperloop::Component
   # Notice that HTML elements are in CAPS
   # You can specify the CSS class on any HTML element
 
   render(DIV) do
     DIV(class: 'ui info message') do
-      H3 { "Information!" }
+      H3 { "Blue Box" }
     end
 
     TABLE(class: 'ui celled table') do
