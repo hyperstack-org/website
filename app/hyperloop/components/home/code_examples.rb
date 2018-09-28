@@ -1,25 +1,12 @@
 HELLO_WORLD_EXAMPLE = %q(
 class HelloWorld < Hyperloop::Component
-
   render(DIV) do
     # try changing 'world' to your own name
-    # see what happens...
-    Greeter(greet: 'world')
-  end
-end
-
-class Greeter < Hyperloop::Component
-  # Components are composed of Components
-  # paramaters are passed downward
-  param :greet
-
-  render(DIV) do
-    # and accessed like this...
-    H1 { "Hello #{params.greet}!" }
+    H1 { 'Hello world' }
+    P(class: 'green-text') { 'Lets gets started!' }
   end
 end
 )
-
 
 STYLISH_COMPONENT = %q(
 class HtmlDslExample < Hyperloop::Component
@@ -28,22 +15,22 @@ class HtmlDslExample < Hyperloop::Component
 
   render(DIV) do
     DIV(class: 'ui info message') do
-      H3 { "Blue Box" }
+      H3 { 'Blue Box' }
     end
 
     TABLE(class: 'ui celled table') do
       THEAD do
         TR do
-          TH { "One" }
-          TH { "Two" }
-          TH { "Three" }
+          TH { 'One' }
+          TH { 'Two' }
+          TH { 'Three' }
         end
       end
       TBODY do
         TR do
-          TD { "A" }
-          TD(class: 'negative') { "B" }
-          TD { "C" }
+          TD { 'A' }
+          TD(class: 'negative') { 'B' }
+          TD { 'C' }
         end
       end
     end
@@ -69,12 +56,13 @@ class UsingState < Hyperloop::Component
     DIV do
       input
       output
+      easter_egg
     end if state.show
   end
 
   def button
     BUTTON(class: 'ui primary button') do
-      state.show ? "Hide" : "Show"
+      state.show ? 'Hide' : 'Show'
     end
   end
 
@@ -91,12 +79,36 @@ class UsingState < Hyperloop::Component
     # this will re-render whenever input_value changes
 	P { "#{state.input_value}" }
   end
+
+  def easter_egg
+    H2 {'you found it!'} if state.input_value == 'egg'
+  end
 end
 )
 
 JAVASCRIPT_COMPONENTS = %q(
-class SelectDate < Hyperloop::Component
+class JSExamples < Hyperloop::Component
+  render(DIV) do
+    # Notice how Components are composed of Components
+    MyModal()
+    Sem.Divider(hidden: true) # Sem is a JS library
+    SelectDate()
+  end
+end
 
+class MyModal < Hyperloop::Component
+  render(DIV) do
+    # Sem is Semnatic UI React (imported)
+    # type 'Sem.' on your JavaScript console...
+    button = Sem.Button { 'Open Modal' }.as_node
+    Sem.Modal(trigger: button.to_n) do
+      Sem.ModalHeader { 'Heading' }
+      Sem.ModalContent { 'Content' }
+    end
+  end
+end
+
+class SelectDate < Hyperloop::Component
   before_mount do
     # before_mount will run only once
     # moment is a JS function so we use ``
@@ -110,19 +122,10 @@ class SelectDate < Hyperloop::Component
                todayButton: "Today",
                onChange: ->(date) { mutate.date date }
     )
-
     # see how we use `` and #{} to b ridger JS and Ruby
     H3 { `moment(#{state.date}).format('LL')` }
     #  or if you prefer..
     # H3 { Native(`moment`).call(state.date).format('LL') }
-
-    # In this example, Sem is an imported JS library
-    # type 'Sem.' on your JavaScript console...
-    button = Sem.Button { 'Open Modal' }.as_node
-    Sem.Modal(trigger: button.to_n) do
-      Sem.ModalHeader { 'Heading' }
-      Sem.ModalContent { 'Content' }
-    end
   end
 end
 )

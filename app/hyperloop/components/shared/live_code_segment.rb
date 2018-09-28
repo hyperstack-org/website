@@ -22,8 +22,8 @@ class LiveCodeSegment < Hyperloop::Component
   render(DIV, class: 'block') do
     Sem.Divider(hidden: true)
 
-    Sem.Grid(columns: 2, relaxed: false, padded: false) do
-      Sem.GridColumn(width: 4) { params.content }
+    Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
+      Sem.GridColumn(width: 4, className: 'tight-box') { params.content }
       Sem.GridColumn(width: 12) do
         Sem.Container(className: 'white-background outline-box') do
           Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do

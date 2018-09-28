@@ -26,8 +26,12 @@ class HomePage < Hyperloop::Router::Component
   def simple_components
     content = DIV do
       Sem.Header(as: :h2, class: 'pink') { "Simple Components" }
-      P { "As with React, a Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements." }
-      P { "Under the covers, we use Opal to compile your Ruby code into JavaScript then hand it to React to mount as a regular JavaScript React Component." }
+      P { 'A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements.' }
+      SPAN { 'Under the covers, we use '}
+      A(href: 'https://opalrb.com/', target: "_blank") { 'Opal' }
+      SPAN { ' to compile your Ruby code into ' }
+      A(href: 'https://reactjs.org/', target: "_blank") { 'React' }
+      SPAN {' Components.' }
     end.as_node
 
     LiveCodeSegment(content: content, code: HELLO_WORLD_EXAMPLE)
@@ -66,15 +70,15 @@ class HomePage < Hyperloop::Router::Component
       SPAN {', all you need to understand is how to bridge between JS and Ruby.'}
       BR()
       BR()
+      SPAN { "This website is built with " }
+      SPAN { A(href: 'https://react.semantic-ui.com/', target: "_blank") { 'Semantic UI React' } }
+      SPAN { ' which we import as our Sem object.' }
+      BR()
+      BR()
       SPAN { "Notice how we used " }
       SPAN { A(href: 'https://www.npmjs.com/package/react-datepicker', target: "_blank") { 'React DatePicker' } }
       SPAN { " (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript to use " }
       A(href: 'https://momentjs.com/', target: "_blank") { 'moment.js' }
-      BR()
-      BR()
-      SPAN { "This website is built with " }
-      SPAN { A(href: 'https://react.semantic-ui.com/', target: "_blank") { 'Semantic UI React' } }
-      SPAN { ' which we import as our Sem object.' }
 
     end.as_node
 
@@ -82,7 +86,7 @@ class HomePage < Hyperloop::Router::Component
   end
 
   def three_columns_of_text
-    Sem.Grid(columns: 3, textAlign: :center) do
+    Sem.Grid(columns: 3, textAlign: :center, container: true) do
 
       Sem.GridColumn do
         H2(class: 'pink-text') do
