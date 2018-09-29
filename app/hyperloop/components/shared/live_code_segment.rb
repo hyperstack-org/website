@@ -11,7 +11,12 @@ class RenderComponent < Hyperloop::Component
    end
 
   render do
-    React.create_element( Module.const_get(params.component_name), {key: params.random_key}) unless @errors
+    begin
+      React.create_element( Module.const_get(params.component_name), {key: params.random_key}) unless @errors
+    rescue Exception => e
+      puts "caught it but cant do anything about it"
+      puts "error = #{e.message}"
+    end
   end
 end
 
