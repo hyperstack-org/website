@@ -3,8 +3,12 @@ class RenderComponent < Hyperloop::Component
   param :random_key
 
   before_update { @errors = false }
-  after_error { |error, info| puts "error = #{error}"; puts "info = #{info}"; @errors = true }
-  # we would like to be able to set state here, but there ias a bug which will keep re-rendering
+
+  after_error do |error, info|
+    puts "error = #{error}"
+    puts "info = #{info}"
+    @errors = true
+   end
 
   render do
     React.create_element( Module.const_get(params.component_name), {key: params.random_key}) unless @errors
