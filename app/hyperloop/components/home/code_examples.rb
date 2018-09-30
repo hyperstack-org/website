@@ -138,7 +138,7 @@ class FaaS < Hyperloop::Component
     end
     DIV(class: :block) do
       P { state.hello['function_response'].to_s }
-      P { "in #{state.hello['execution_time']} ms" }
+      P { "executed in #{state.hello['execution_time']} ms" }
     end if state.hello
   end
 
