@@ -129,3 +129,22 @@ class SelectDate < Hyperloop::Component
   end
 end
 )
+
+SERVERLESS = %q(
+class FaaS < Hyperloop::Component
+  render(DIV) do
+    BUTTON { 'faastruby.io' }.on(:click) do
+      faast_ruby
+    end
+    P(class: :block) { state.faastruby_hello.to_s }
+  end
+
+  def faast_ruby
+    HTTP.get('https://api.faastruby.io/paulo/hello-world',
+      data: {time: true}
+    ) do |response|
+      mutate.faastruby_hello(response.json) if response.ok?
+    end
+  end
+end
+)

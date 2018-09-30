@@ -14,6 +14,7 @@ class HomePage < Hyperloop::Router::Component
           html_dsl
           stateful_components
           javascript_in_ruby
+          serverless
           get_started
         end
 
@@ -83,6 +84,22 @@ class HomePage < Hyperloop::Router::Component
     end.as_node
 
     LiveCodeSegment(content: content, code: JAVASCRIPT_COMPONENTS)
+  end
+
+  def serverless
+    content = DIV do
+      Sem.Header(as: :h2, class: 'pink') { "Serverless & RPC" }
+      P { "Making HTTP requests is straightforward in Hyperstack." }
+      SPAN { "In this example, we are calling a function on " }
+      SPAN { A(href: 'https://react.semantic-ui.com/', target: "_blank") { 'FaaStRuby' } }
+      SPAN { ' which is a new serverless platform built for Ruby developers.' }
+      BR()
+      BR()
+      P { 'Calling any REST-based API is precisely the same process (although you are likely to put your HTTP calls in a before_mount lifecycle method).' }
+      P { 'Notice how HTTP.get returns a promise which executes the block only when it returns.' }
+    end.as_node
+
+    LiveCodeSegment(content: content, code: SERVERLESS)
   end
 
   def three_columns_of_text
