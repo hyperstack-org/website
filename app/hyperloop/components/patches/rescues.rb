@@ -174,28 +174,44 @@ module Hyperloop
       def component_will_receive_props(next_props)
         # need to rethink how this works in opal-react, or if its actually that useful within the react.rb environment
         # for now we are just using it to clear processed_params
-        React::State.set_state_context_to(self) { run_callback(:before_receive_props, next_props) }
-        @_receiving_props = true
+        begin
+          React::State.set_state_context_to(self) { run_callback(:before_receive_props, next_props) }
+          @_receiving_props = true
+        rescue Exception
+          # barrie
+        end
       end
 
       def component_will_update(next_props, next_state)
-        React::State.set_state_context_to(self) { run_callback(:before_update, next_props, next_state) }
-        params._reset_all_others_cache if @_receiving_props
-        @_receiving_props = false
+        begin
+          React::State.set_state_context_to(self) { run_callback(:before_update, next_props, next_state) }
+          params._reset_all_others_cache if @_receiving_props
+          @_receiving_props = false
+        rescue Exception
+          # barrie
+        end
       end
 
       def component_did_update(prev_props, prev_state)
-        React::State.set_state_context_to(self) do
-          run_callback(:after_update, prev_props, prev_state)
-          React::State.update_states_to_observe
+        begin
+          React::State.set_state_context_to(self) do
+            run_callback(:after_update, prev_props, prev_state)
+            React::State.update_states_to_observe
+          end
+        rescue Exception
+          # barrie
         end
       end
 
       def component_will_unmount
-        React::State.set_state_context_to(self) do
-          run_callback(:before_unmount)
-          React::State.remove
-          Hyperloop::Component.mounted_components.delete self
+        begin
+          React::State.set_state_context_to(self) do
+            run_callback(:before_unmount)
+            React::State.remove
+            Hyperloop::Component.mounted_components.delete self
+          end
+        rescue Exception
+          # barrie
         end
       end
 
