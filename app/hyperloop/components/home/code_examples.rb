@@ -136,14 +136,18 @@ class FaaS < Hyperloop::Component
     BUTTON { 'faastruby.io' }.on(:click) do
       faast_ruby
     end
-    P(class: :block) { state.faastruby_hello.to_s }
+    DIV(class: :block) do
+      P { state.hello['function_response'].to_s }
+      P { "in #{state.hello['execution_time']} ms" }
+    end if state.hello
   end
 
   def faast_ruby
     HTTP.get('https://api.faastruby.io/paulo/hello-world',
       data: {time: true}
     ) do |response|
-      mutate.faastruby_hello(response.json) if response.ok?
+      # this code executes when the promise resolves
+      mutate.hello(response.json) if response.ok?
     end
   end
 end
