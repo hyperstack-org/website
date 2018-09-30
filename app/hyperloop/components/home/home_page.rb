@@ -91,7 +91,7 @@ class HomePage < Hyperloop::Router::Component
       Sem.Header(as: :h2, class: 'pink') { "Serverless & RPC" }
       P { "Making HTTP requests is straightforward in Hyperstack." }
       SPAN { "In this example, we are calling a function on " }
-      SPAN { A(href: 'https://react.semantic-ui.com/', target: "_blank") { 'FaaStRuby' } }
+      SPAN { A(href: 'https://faastruby.io/', target: "_blank") { 'FaaStRuby' } }
       SPAN { ' which is a new serverless platform built for Ruby developers.' }
       BR()
       BR()
