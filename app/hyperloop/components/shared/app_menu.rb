@@ -4,14 +4,14 @@ class AppMenu < Hyperloop::Component
   param section: ''
   param :history
 
-  render(DIV) do
+  render do
     Sem.Container do
       Sem.Menu(secondary: true) do
         Sem.MenuItem do
-          A { 'Home' }.on(:click) { params.history.push "/#{AppStore.version}" }
+          A { 'Overview' }.on(:click) { params.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
-           A { 'Docs' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/docs', "_blank");` }
+           A { 'Docs' }.on(:click) { params.history.push "/#{AppStore.version}/docs" }
          end
         Sem.MenuItem do
           A { 'Github' }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }

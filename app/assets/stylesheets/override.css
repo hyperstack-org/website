@@ -12,7 +12,7 @@ a:hover {
   cursor: pointer;
 }
 
-.searchresultcontent {
+/* .searchresultcontent {
   min-height: 40vh;
 }
 
@@ -22,7 +22,7 @@ a:hover {
 
 .page-wrap {
     padding-top: 50px;
-}
+} */
 
 .edit-github-button {
   position: absolute;
@@ -30,12 +30,12 @@ a:hover {
   right: 0px;
 }
 
-.pagebody {
+/* .pagebody {
   font-size: 18px;
-}
+} */
 
 
-.pagebody h1 {
+/* .pagebody h1 {
   font-size: 2.5rem !important;
   color: #e81176;
   margin-bottom: 2em;
@@ -142,4 +142,4 @@ a:hover {
   border: 1px solid black;
   padding: 0em;
   background-color: white;
-}*/
+}*/ */

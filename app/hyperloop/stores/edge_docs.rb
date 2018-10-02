@@ -1,7 +1,6 @@
 module EdgeDocs
   def load_all_docs
     load_overview_section
-    load_start_section
     load_dsl_section
     load_installation_section
     load_tools_section
@@ -13,24 +12,10 @@ module EdgeDocs
     display_name = 'Overview'
 
     pages = [
-      { id: 0, name: 'overview', repo: 'hyperstack', file: 'docs/docs_overview.md',  allow_edit: true },
+      { id: 0, name: 'overview', repo: 'hyperstack', file: 'docs/readme.md',  allow_edit: true },
     ]
     @section_stores[section_name] = SectionStore.new(exclude_from_toc: true, pages: pages,
                                                     section_name: section_name, display_name: display_name)
-  end
-
-  def load_start_section
-    section_name = 'start'
-    display_name = 'Getting Started'
-
-    pages = [
-      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/start/components.md',  allow_edit: true },
-      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/start/stores.md',  allow_edit: true },
-      { id: 2, name: 'models', repo: 'hyperstack',     file: 'docs/start/models.md',  allow_edit: true },
-      { id: 3, name: 'operations', repo: 'hyperstack',     file: 'docs/start/operations.md',  allow_edit: true },
-      { id: 4, name: 'policies', repo: 'hyperstack',     file: 'docs/start/policies.md',  allow_edit: true },
-    ]
-    @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
 
   def load_dsl_section
