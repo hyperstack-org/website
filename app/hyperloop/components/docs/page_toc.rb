@@ -9,13 +9,12 @@ class PageToc < Hyperloop::Component
   end
 
   render(DIV) do
-    accordion #if AppStore.section_stores[params.section_name] &&
-        # AppStore.section_stores[params.section_name].loaded? &&
-        # AppStore.section_stores[params.section_name].pages.any?
+    accordion if AppStore.section_stores[params.section_name] &&
+         AppStore.section_stores[params.section_name].loaded? &&
+         AppStore.section_stores[params.section_name].pages.any?
   end
 
   def accordion
-    # Sem.Accordion(fluid: true) do
       AppStore.section_stores[params.section_name].pages.each_with_index do |page, index|
         if page[:processed]
           is_active = page[:name] == params.page_name ? true : false
@@ -29,39 +28,38 @@ class PageToc < Hyperloop::Component
           `console.warn(message);`
         end
       end
-    # end
   end
 
   def accordion_title page, index, is_active
     # Sem.AccordionTitle(index: index, active: is_active) do
       # display_title(page, index, is_active)
-    A do display_title(page, index, is_active)
-    end.on(:click) do
+    A do
+      display_title(page, index, is_active)
+    end
+    .on(:click) do
       navigate_to_page(page, index)
     end
   end
 
   def accordion_content page, index, is_active
-    # Sem.AccordionContent(active: is_active) do
-    A do
+    Sem.List(bulleted: true) do
       page[:headings].drop(1).each do |heading|
         if (heading[:level] < 3)
           link_id = "#{params.section_name}_#{page[:name]}_#{heading[:slug]}"
-          A(id: "#{link_id}") { "#{heading[:text]}" }
-          .on(:click) do
-            navigate_to_heading page, heading
-            # Element["a.item"].removeClass("active-link-item")
-            # Element["##{link_id}"].addClass("active-link-item")
+          Sem.ListItem do
+            A(class: 'dark-gray-text', id: "#{link_id}") { "#{heading[:text]}" }
+            .on(:click) do
+              navigate_to_heading page, heading
+              # Element["a.item"].removeClass("active-link-item")
+              # Element["##{link_id}"].addClass("active-link-item")
+            end
           end
-          BR()
         end
       end
     end
   end
 
   def display_title page, index, is_active
-    # I(class: 'dropdown icon')
-    Sem.Divider() 
     DIV { page[:headings][0][:text] }
   end
 

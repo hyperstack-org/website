@@ -41,10 +41,9 @@ class DocsPage < Hyperloop::Router::Component
   def render_side_bar_with_all_sections
       Filter()
       if TocFilterStore.show_filter_list
-        BR()
-        FilterList(history: history)
+        DIV(class: :block) { FilterList(history: history) }
       else
-        accordion
+        DIV(class: :block) { accordion }
       end
   end
 
@@ -76,8 +75,10 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def display_title section_name, display_name, index, is_active
-    I(class: 'dropdown icon')
-    B() { display_name }.on(:click) do
+    A(class: 'dark-gray-text') do
+      I(class: 'dropdown icon')
+      SPAN { display_name }
+    end.on(:click) do
       if params.match.params[:section_name] == section_name
         @inverted_active = !@inverted_active
       else
