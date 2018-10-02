@@ -2,7 +2,8 @@ module EdgeDocs
   def load_all_docs
     load_overview_section
     load_installation_section
-    load_dsl_section
+    load_dsl_core
+    load_dsl_advanced
     load_tools_section
     load_tutorials_section
   end
@@ -18,19 +19,26 @@ module EdgeDocs
                                                     section_name: section_name, display_name: display_name)
   end
 
-  def load_dsl_section
-    section_name = 'dsl'
+  def load_dsl_core
+    section_name = 'dsl-core'
     display_name = 'Core DSL Concepts'
 
     pages = [
-      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/dsl/hyper-component.md',  allow_edit: true },
-      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl/hyper-store.md',  allow_edit: true },
-      { id: 2, name: 'router', repo: 'hyperstack',    file: 'docs/dsl/hyper-router.md',  allow_edit: true },
-      { id: 3, name: 'models', repo: 'hyperstack',      file: 'docs/dsl/hyper-model.md',  allow_edit: true },
-      { id: 4, name: 'operations', repo: 'hyperstack', file: 'docs/dsl/hyper-operation.md',  allow_edit: true },
-      { id: 5, name: 'policies', repo: 'hyperstack', file: 'docs/dsl/hyper-policy.md',  allow_edit: true },
-      { id: 6, name: 'specs', repo: 'hyperstack', file: 'docs/dsl/hyper-spec.md',  allow_edit: true },
-      { id: 7, name: 'i18n', repo: 'hyperstack', file: 'docs/dsl/hyper-i18n.md',  allow_edit: true }
+      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/dsl-core/hyper-component.md',  allow_edit: true },
+      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl-core/hyper-store.md',  allow_edit: true },
+      { id: 2, name: 'router', repo: 'hyperstack',    file: 'docs/dsl-core/hyper-router.md',  allow_edit: true }
+    ]
+    @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
+  end
+
+  def load_dsl_advanced
+    section_name = 'dsl-advanced'
+    display_name = 'Advanced Concepts'
+
+    pages = [
+      { id: 1, name: 'models', repo: 'hyperstack',      file: 'docs/dsl-advanced/hyper-model.md',  allow_edit: true },
+      { id: 2, name: 'operations', repo: 'hyperstack', file: 'docs/dsl-advanced/hyper-operation.md',  allow_edit: true },
+      { id: 3, name: 'policies', repo: 'hyperstack', file: 'docs/dsl-advanced/hyper-policy.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -42,19 +50,21 @@ module EdgeDocs
     pages = [
       { id: 0, name: 'installation', repo: 'hyperstack', file: 'install/readme.md',  allow_edit: true },
       { id: 1, name: 'upgrading', repo: 'hyperstack', file: 'docs/installation/upgrading.md',  allow_edit: true },
-      { id: 1, name: 'config', repo: 'hyperstack', file: 'docs/installation/config.md',  allow_edit: true }
+      { id: 2, name: 'config', repo: 'hyperstack', file: 'docs/installation/config.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
 
   def load_tools_section
     section_name = 'tools'
-    display_name = 'Tools, Tips & Debugging'
+    display_name = 'Tools, Testing & Debugging'
 
     pages = [
       { id: 0, name: 'tools', repo: 'hyperstack', file: 'docs/tools/tools.md',  allow_edit: true },
       { id: 1, name: 'tips', repo: 'hyperstack', file: 'docs/tools/tips.md',  allow_edit: true },
-      { id: 2, name: 'debugging', repo: 'hyperstack', file: 'docs/tools/debugging.md',  allow_edit: true }
+      { id: 2, name: 'debugging', repo: 'hyperstack', file: 'docs/tools/debugging.md',  allow_edit: true },
+      { id: 3, name: 'specs', repo: 'hyperstack', file: 'docs/tools/hyper-spec.md',  allow_edit: true },
+      { id: 4, name: 'i18n', repo: 'hyperstack', file: 'docs/tools/hyper-i18n.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
@@ -66,7 +76,7 @@ module EdgeDocs
     pages = [
       { id: 0, name: 'helloworld', repo: 'hyperstack', file: 'docs/tutorial/helloworld.md',  allow_edit: true },
       { id: 1, name: 'todo', repo: 'hyperstack', file: 'docs/tutorial/todo.md',  allow_edit: true },
-      { id: 3, name: 'community', repo: 'hyperstack', file: 'docs/tutorial/community.md',  allow_edit: true }
+      { id: 2, name: 'community', repo: 'hyperstack', file: 'docs/tutorial/community.md',  allow_edit: true }
 
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
