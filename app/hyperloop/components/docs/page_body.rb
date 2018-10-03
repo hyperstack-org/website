@@ -1,9 +1,5 @@
 require 'helpers/helpers'
 
-`document.addEventListener("DOMContentLoaded", function(event) {
-  console.log('here now');
-});`
-
 class PageBody < Hyperloop::Component
 
   param :section_name
@@ -30,7 +26,7 @@ class PageBody < Hyperloop::Component
     # `var d = document.getElementById("page-body");
     # d.scrollIntoView(true);`
     # convert_runable_code_blocks
-    create_element_anchors
+    # create_element_anchors
     navigate_to_slug
   end
 
@@ -58,59 +54,61 @@ class PageBody < Hyperloop::Component
   end
 
   def navigate_to_slug
-    #  this works:
-    # `RsScroller.scrollTo('components', {smooth: "easeInOutQuint", offset: -120})`
-
     if params.page_anchor.empty?
-      slug = @page[:headings][0][:slug]
+      # slug = @page[:headings][0][:slug]
+      `window.scrollTo(0,0);`
     else
       slug = params.page_anchor
       slug = slug.tr('#','')
+      element = `document.getElementById(slug)`
+      `element.scrollIntoView();` if element
     end
 
-    puts "navigate to slug '#{slug}'"
 
-    `RsScroller.scrollTo(slug, {smooth: "easeInOutQuint", offset: -50, isDynamic: true})`
+    # `RsScroller.scrollTo(slug, {smooth: "easeInOutQuint", offset: -50, isDynamic: true})`
 
-    unless params.page_anchor.empty?
-      # element = Element["#{params.page_anchor}"]
-      # anchor = params.page_anchor
-      # element = `document.getElementById(anchor)`
-      # `element.scrollIntoView();` if element
-      # if element.offset()
-      #   anchorchapter_position = element.offset().top
-      #   if @current_page_section == "#{params.section_name}-#{params.page_name}"
-      #     Element['html, pagebody'].animate({
-      #           scrollTop: anchorchapter_position
-      #         }, 0)
-      #   else
-      #     Element['html, body'].scrollTop(anchorchapter_position);
-      #   end
-      #   @current_page_section = "#{params.section_name}-#{params.page_name}"
-      # end
-    end
+    # unless params.page_anchor.empty?
+    #   element = Element["#{params.page_anchor}"]
+    #   puts "doing it"
+    #   anchor = params.page_anchor
+    #   puts anchor
+    #   element = `document.getElementById(anchor)`
+    #   puts "got element" if element
+    #   `element.scrollIntoView();` if element
+    #   if element.offset()
+    #     anchorchapter_position = element.offset().top
+    #     if @current_page_section == "#{params.section_name}-#{params.page_name}"
+    #       Element['html, pagebody'].animate({
+    #             scrollTop: anchorchapter_position
+    #           }, 0)
+    #     else
+    #       Element['html, body'].scrollTop(anchorchapter_position);
+    #     end
+    #     @current_page_section = "#{params.section_name}-#{params.page_name}"
+    #   end
+    # end
   end
 
-  def create_element_anchors
-    `var x = document.getElementsByClassName("scrollto-div");
-      var i;
-      for (i = 0; i < x.length; i++) {
-          ReactDOM.render(React.createElement(RsElement, {name: x[i].id}, null),
-            document.getElementById(x[i].id))
-    };`
-    # RsScroller.scrollTo('stylish-components', {smooth: "easeInOutQuint", offset: -120})
-    # RsScroll.scrollToTop({duration: 1});
+  # def create_element_anchors
+  #   `var x = document.getElementsByClassName("scrollto-div");
+  #     var i;
+  #     for (i = 0; i < x.length; i++) {
+  #         ReactDOM.render(React.createElement(RsElement, {name: x[i].id}, null),
+  #           document.getElementById(x[i].id))
+  #   };`
+  #   # RsScroller.scrollTo('stylish-components', {smooth: "easeInOutQuint", offset: -120})
+  #   # RsScroll.scrollToTop({duration: 1});
+  #
+  # end
 
-  end
-
-  def convert_runable_code_blocks
-    raise 'convert_runable_code_blocks not working'
-    Element.find('code.lang-ruby-runable').each do |mount_point|
-      code = mount_point.text
-      element = React.create_element(CodeMirror, { code: code } )
-      React.render(element, mount_point.parent)
-     end
-  end
+  # def convert_runable_code_blocks
+  #   raise 'convert_runable_code_blocks not working'
+  #   Element.find('code.lang-ruby-runable').each do |mount_point|
+  #     code = mount_point.text
+  #     element = React.create_element(CodeMirror, { code: code } )
+  #     React.render(element, mount_point.parent)
+  #    end
+  # end
 
   def edit_button(page)
     button = DIV(class: 'improve-page-container') do
