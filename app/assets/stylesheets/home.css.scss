@@ -1,3 +1,14 @@
+@-webkit-keyframes rotate {
+  0% {-webkit-transform:rotate(0deg); opacity: 0.3;}
+  20% {-webkit-transform:rotate(0deg); opacity: 0.4;}
+  50% {opacity: 1;}
+  100% {  -webkit-transform:rotate(360deg); opacity: 0.4;}
+}
+@-moz-keyframes rotate {
+  0% { -moz-transform:rotate(0deg);}
+  20% {  -moz-transform:rotate(0deg);}
+  100% {  -moz-transform:rotate(360deg);}
+}
 
 .hyperlooplogo {
   width: 150px;
@@ -10,6 +21,7 @@
   background-size: 150px 134px;
   /*background-size: 66px 65px;*/
 }
+
 
 .hyperlooplogo:after {
   content: '';
@@ -31,120 +43,3 @@
   -moz-animation-iteration-count:infinite;
   -moz-animation-timing-function: ease-in-out;
  }
-
- @-webkit-keyframes rotate {
-    0% {-webkit-transform:rotate(0deg); opacity: 0.3;}
-    20% {-webkit-transform:rotate(0deg); opacity: 0.4;}
-    50% {opacity: 1;}
-    100% {  -webkit-transform:rotate(360deg); opacity: 0.4;}
-  }
-  @-moz-keyframes rotate {
-    0% { -moz-transform:rotate(0deg);}
-    20% {  -moz-transform:rotate(0deg);}
-    100% {  -moz-transform:rotate(360deg);}
-  }
-
-.main-page {
-  background-color: #F6F6F6
-}
-
-.white-background {
-  background-color: white;
-}
-
-.tight-box {
-    padding-top: 0px !important;
-    padding-right: 0px !important;
-    padding-left: 0px !important;
-    padding-bottom: 0px !important;
-}
-
-.outline-box {
-    outline-style: outset;
-    outline-width: thin;
-    outline-color: gray;
-}
-
-.project-header {
-  font-size: 4em;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.project-tagline {
-  font-size: 1.5em;
-  font-weight: normal;
-  margin-bottom: 0px;
-  color: #cabfbf !important;
-}
-
-.project-tagline-footer {
-  font-size: 1.25em;
-  font-weight: normal;
-  margin-bottom: 0px;
-  color: #cabfbf !important;
-}
-
-.block {
-   padding-top: 25px;
-   padding-bottom: 25px;
-}
-
-.dark-gray-text {
-  color: #3c4248 !important;
-}
-
-.gray-text {
-  color: #cabfbf !important;
-}
-
-.orange-text {
- color: #d19a66 !important;
-}
-
-.yellow-text {
- color: #e5c07b !important;
-}
-
-.pink-text {
- color: #D53475 !important;
-}
-
-.blue-text {
- color: #61afef;
-}
-
-.red-text {
- color: #e06c75;
-}
-
-.green-text {
- color: #98c379;
-}
-
-.purple-text {
- color: #c678dd;
-}
-
-.gray-background {
- background-color: #3c4248 !important;
-}
-
-.hyperlooppink { color: #e81176;}
-.hyperloopgreen { color: #149c8e;}
-
-a {
-  color: #e81176 !important;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #149c8e !important;
-  cursor: pointer;
-}
-
-.edit-github-button {
-  position: absolute;
-  top: 90px;
-  right: 0px;
-}
