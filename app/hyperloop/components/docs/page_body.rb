@@ -31,7 +31,9 @@ class PageBody < Hyperloop::Component
   end
 
   render(DIV) do
+    DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
+
       if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
         # if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
@@ -46,7 +48,6 @@ class PageBody < Hyperloop::Component
         end
 
         edit_button(@page) if @page[:allow_edit]
-
         html = @page[:html].to_s
         DIV(class: 'pagebody', id: 'page-body', dangerously_set_inner_HTML: { __html: html } )
       end
@@ -56,9 +57,11 @@ class PageBody < Hyperloop::Component
   def navigate_to_slug
     if params.page_anchor.empty?
       # this is a new page
-      slug = @page[:headings][0][:slug]
+      slug = 'very-top-of-page-body'
       element = `document.getElementById(slug)`
-      `element.scrollIntoView();` if element
+      if element
+        `element.scrollIntoView(true);`
+      end
     else
       # scrolling on the same page
       slug = params.page_anchor
