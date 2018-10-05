@@ -11,22 +11,7 @@ class PageBody < Hyperloop::Component
     @element_anchors_created = {}
   end
 
-  after_mount do
-    # navigate_to_slug
-    # `RsScroll.scrollToTop({duration: 1});`
-    # create_element_anchors
-  end
-
   after_update do
-    # navigate_to_slug
-    # `RsScroll.scrollToTop({duration: 1});`
-    # `window.scroll({
-    #   top: 0
-    # });`
-    # `var d = document.getElementById("page-body");
-    # d.scrollIntoView(true);`
-    # convert_runable_code_blocks
-    # create_element_anchors
     navigate_to_slug
   end
 
@@ -58,57 +43,18 @@ class PageBody < Hyperloop::Component
     if params.page_anchor.empty?
       # this is a new page
       slug = 'very-top-of-page-body'
-      element = `document.getElementById(slug)`
-      if element
-        `element.scrollIntoView(true);`
-      end
     else
       # scrolling on the same page
       slug = params.page_anchor
       slug = slug.tr('#','')
-      element = `document.getElementById(slug)`
-      `element.scrollIntoView();` if element
     end
+
+    element = `document.getElementById(slug)`
+    `element.scrollIntoView();` if element
 
     #  this is used to accomidate the topbar
     `window.scrollBy(0, -500);`
-
-
-    # `RsScroller.scrollTo(slug, {smooth: "easeInOutQuint", offset: -50, isDynamic: true})`
-
-    # unless params.page_anchor.empty?
-    #   element = Element["#{params.page_anchor}"]
-    #   puts "doing it"
-    #   anchor = params.page_anchor
-    #   puts anchor
-    #   element = `document.getElementById(anchor)`
-    #   puts "got element" if element
-    #   `element.scrollIntoView();` if element
-    #   if element.offset()
-    #     anchorchapter_position = element.offset().top
-    #     if @current_page_section == "#{params.section_name}-#{params.page_name}"
-    #       Element['html, pagebody'].animate({
-    #             scrollTop: anchorchapter_position
-    #           }, 0)
-    #     else
-    #       Element['html, body'].scrollTop(anchorchapter_position);
-    #     end
-    #     @current_page_section = "#{params.section_name}-#{params.page_name}"
-    #   end
-    # end
   end
-
-  # def create_element_anchors
-  #   `var x = document.getElementsByClassName("scrollto-div");
-  #     var i;
-  #     for (i = 0; i < x.length; i++) {
-  #         ReactDOM.render(React.createElement(RsElement, {name: x[i].id}, null),
-  #           document.getElementById(x[i].id))
-  #   };`
-  #   # RsScroller.scrollTo('stylish-components', {smooth: "easeInOutQuint", offset: -120})
-  #   # RsScroll.scrollToTop({duration: 1});
-  #
-  # end
 
   # def convert_runable_code_blocks
   #   raise 'convert_runable_code_blocks not working'
