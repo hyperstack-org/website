@@ -8,7 +8,7 @@ class Filter < Hyperloop::Component
               TocFilterStore.filter = e.target.value
           end
         end
-        Sem.GridColumn(width: 2, textAlign: :center) do
+        Sem.GridColumn(width: 4, textAlign: :right) do
           Sem.Button(circular: true, icon: true) { Sem.Icon(name: :close) }.on(:click) do
             TocFilterStore.filter = ''
           end
@@ -18,6 +18,6 @@ class Filter < Hyperloop::Component
   end
 
   def width
-    TocFilterStore.filter.empty? ? 16 : 11
+    TocFilterStore.filter.empty? ? 16 : 12
   end
 end

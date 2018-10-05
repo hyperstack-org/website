@@ -25,7 +25,7 @@ class FilterList < Hyperloop::Component
 
   def render_item_if_filtered(item, path, description)
     Sem.ListItem do
-      Sem.ListHeader do
+      Sem.ListDescription do
         A { item }
         .on(:click) do
           params.history.push "/#{AppStore.version}#{path}"
