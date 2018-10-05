@@ -66,7 +66,7 @@ class MdConverter
   end
 
   def on_codespan code
-    "<code class='inline-codespan'>#{ code }</code>"
+    "<code class='inline-codepsan'>#{ code }</code>"
   end
 
   def highlight code, lang=nil
@@ -74,7 +74,7 @@ class MdConverter
   end
 
   def on_blockquote quote
-    "<div class='ui cards'><div class='ui card fluid'><div class='content'>#{quote}</div></div></div>"
+    "<div class='ui cards'><div class='ui card fluid'><div class='content'>#{quote}</div></div></div></br>"
   end
 
   def on_heading text, level
@@ -91,14 +91,14 @@ class MdConverter
     @headings << heading
     @headings_index += 1
 
-    levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
-    leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
-    leveliconhtml = "" if level==1
+    # levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
+    # leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
+    # leveliconhtml = "" #if level==1
 
     %Q(<div class='scrollto-div' id='#{heading[:slug]}'></div>
        <p class='ptopmargin-#{level}'></p>
-       <h#{level} class='doc_h#{level} chapteranchor''>
-       #{leveliconhtml}#{text}</h#{level}>
+       <h#{level} class='doc_h#{level}''>
+       #{text}</h#{level}>
       )
   end
 
