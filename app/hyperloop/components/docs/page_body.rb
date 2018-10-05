@@ -55,14 +55,20 @@ class PageBody < Hyperloop::Component
 
   def navigate_to_slug
     if params.page_anchor.empty?
-      # slug = @page[:headings][0][:slug]
-      `window.scrollTo(0,0);`
+      # this is a new page
+      slug = @page[:headings][0][:slug]
+      element = `document.getElementById(slug)`
+      `element.scrollIntoView();` if element
     else
+      # scrolling on the same page
       slug = params.page_anchor
       slug = slug.tr('#','')
       element = `document.getElementById(slug)`
       `element.scrollIntoView();` if element
     end
+
+    #  this is used to accomidate the topbar
+    `window.scrollBy(0, -500);`
 
 
     # `RsScroller.scrollTo(slug, {smooth: "easeInOutQuint", offset: -50, isDynamic: true})`
