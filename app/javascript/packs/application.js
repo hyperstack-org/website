@@ -13,24 +13,12 @@ console.log('Hello World from Webpacker')
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sem from 'semantic-ui-react';
-import BurgerMenu from 'react-burger-menu';
-import YahooSticky from 'react-stickynode';
-import PerfectScrollbar from 'react-perfect-scrollbar'
 import Marked from 'marked';
 import CodeMirror from 'react-codemirror';
 import CodeMirrorRuby from 'codemirror/mode/ruby/ruby';
-import * as Scroll from 'react-scroll';
 
 // Semantic CSS built with gulp (see readme)
 require('../../../vendor/semantic/dist/semantic.css');
-
-// we do not need all of these
-global.RsLink       = Scroll.Link;
-global.RsElement    = Scroll.Element;
-global.RsEvents     = Scroll.Events;
-global.RsScroll     = Scroll.animateScroll;
-global.RsScroller    = Scroll.scroller;
-global.RsScrollSpy  = Scroll.scrollSpy;
 
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -40,9 +28,6 @@ import moment from 'moment';
 global.React = React;
 global.ReactDOM = ReactDOM;
 global.Sem = Sem;
-global.BurgerMenu = BurgerMenu;
-global.YahooSticky = YahooSticky;
-global.PerfectScrollbar = PerfectScrollbar;
 global.Marked = Marked;
 global.ReactCodeMirror = CodeMirror;
 global.CodeMirrorRuby = CodeMirrorRuby;

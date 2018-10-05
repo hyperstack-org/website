@@ -1,7 +1,4 @@
 
-class ReactYahooSticky < Hyperloop::Component
-  imports 'YahooSticky'
-end
 
 class SearchResultSidebar < Hyperloop::Component
 
