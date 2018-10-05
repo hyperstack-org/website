@@ -126,12 +126,25 @@
  color: #c678dd;
 }
 
-/* lighter */
 .gray-background {
  background-color: #3c4248 !important;
 }
 
-/* darker */
-/* .gray-background {
- background-color: #282c33 !important;
-} */
+.hyperlooppink { color: #e81176;}
+.hyperloopgreen { color: #149c8e;}
+
+a {
+  color: #e81176 !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #149c8e !important;
+  cursor: pointer;
+}
+
+.edit-github-button {
+  position: absolute;
+  top: 90px;
+  right: 0px;
+}

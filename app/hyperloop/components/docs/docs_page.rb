@@ -11,9 +11,9 @@ class DocsPage < Hyperloop::Router::Component
     Sem.Divider(hidden: true)
     page_dimmer
     Sem.Container(fluid: false) do
-      Sem.Grid(columns: 2, padded: false, container: false) do
-        Sem.GridColumn(width: 5) { render_side_bar_with_all_sections }
-        Sem.GridColumn(width: 11) { render_correct_page }
+      DIV(class: 'Container') do
+        render_side_bar_with_all_sections
+        render_correct_page
       end
     end
     Sem.Divider(hidden: true)
@@ -28,23 +28,27 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def render_correct_page
-    if params.match.params[:section_name]
-      PageBody(section_name: params.match.params[:section_name],
-        page_name: params.match.params[:page_name] || '',
-        page_anchor: history.location.hash || ''
-      )
-    else
-      PageBody(section_name: 'docs_overview')
+    DIV(class: 'Middle') do
+      if params.match.params[:section_name]
+        PageBody(section_name: params.match.params[:section_name],
+          page_name: params.match.params[:page_name] || '',
+          page_anchor: history.location.hash || ''
+        )
+      else
+        PageBody(section_name: 'docs_overview')
+      end
     end
   end
 
   def render_side_bar_with_all_sections
+    DIV(class: 'Left') do
       Filter()
       if TocFilterStore.show_filter_list
         DIV(class: :block) { FilterList(history: history) }
       else
         DIV(class: :block) { accordion }
       end
+    end
   end
 
   def accordion

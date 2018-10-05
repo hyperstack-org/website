@@ -4,11 +4,11 @@ class AppMenu < Hyperloop::Component
   param section: ''
   param :history
 
-  render do
-    Sem.Container do
-      Sem.Menu(secondary: true) do
+  render(DIV, class: 'gray-background') do
+    Sem.Container(className: 'Top') do
+      Sem.Menu(secondary: true, className: 'gray-background') do
         Sem.MenuItem do
-          A { 'Overview' }.on(:click) { params.history.push "/#{AppStore.version}" }
+          A { 'Start' }.on(:click) { params.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
            A { 'Docs' }.on(:click) { params.history.push "/#{AppStore.version}/docs" }
