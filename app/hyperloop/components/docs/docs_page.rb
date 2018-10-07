@@ -1,10 +1,7 @@
-require 'helpers/scroll'
-
 class DocsPage < Hyperloop::Router::Component
   before_mount do
     @inverted_active = false
   end
-
 
   render(DIV) do
     AppMenu(section: 'docs', history: history)
@@ -24,19 +21,6 @@ class DocsPage < Hyperloop::Router::Component
   def page_dimmer
     Sem.Dimmer(active: !(AppStore.loaded? || AppStore.errors?), inverted: true) do
       Sem.Loader(size: :large) {'Loading pages...'}
-    end
-  end
-
-  def render_correct_page
-    DIV(class: 'Middle') do
-      if params.match.params[:section_name]
-        PageBody(section_name: params.match.params[:section_name],
-          page_name: params.match.params[:page_name] || '',
-          page_anchor: history.location.hash || ''
-        )
-      else
-        PageBody(section_name: 'docs_overview')
-      end
     end
   end
 
@@ -62,7 +46,7 @@ class DocsPage < Hyperloop::Router::Component
 
         unless section_store.exclude_from_toc?
           Sem.AccordionTitle(index: index, active: is_active) do
-            display_title(section_name, section_store.display_name, index, is_active)
+            accordion_display_title(section_name, section_store.display_name, index, is_active)
           end
           .on(:click) do
             history.push "/#{AppStore.version}/docs/#{section_name}"
@@ -78,18 +62,30 @@ class DocsPage < Hyperloop::Router::Component
     end
   end
 
-  def display_title section_name, display_name, index, is_active
+  def accordion_display_title section_name, display_name, index, is_active
     A(class: 'dark-gray-text') do
       I(class: 'dropdown icon')
       SPAN { display_name }
-    end.on(:click) do
+    end
+    .on(:click) do
       if params.match.params[:section_name] == section_name
         @inverted_active = !@inverted_active
       else
         @inverted_active = false
       end
-      # Element['html, body'].scrollTop(0);
     end
   end
 
+  def render_correct_page
+    DIV(class: 'Middle') do
+      if params.match.params[:section_name]
+        PageBody(section_name: params.match.params[:section_name],
+          page_name: params.match.params[:page_name] || '',
+          page_anchor: history.location.hash || ''
+        )
+      else
+        PageBody(section_name: 'docs_overview')
+      end
+    end
+  end
 end
