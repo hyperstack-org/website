@@ -8,16 +8,16 @@ class AppMenu < Hyperloop::Component
     Sem.Container(className: 'Top') do
       Sem.Menu(secondary: true, className: 'gray-background') do
         Sem.MenuItem do
-          A { 'Start' }.on(:click) { params.history.push "/#{AppStore.version}" }
+          A { SPAN(class: 'top-nav') {'Start'} }.on(:click) { params.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
-           A { 'Docs' }.on(:click) { params.history.push "/#{AppStore.version}/docs" }
+           A { SPAN(class: 'top-nav') {'Docs'} }.on(:click) { params.history.push "/#{AppStore.version}/docs" }
          end
         Sem.MenuItem do
-          A { 'Github' }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+          A { SPAN(class: 'top-nav') {'Github'} }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
         end
         Sem.MenuItem do
-           A { 'Chat' }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+           A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
          end
       end
     end
