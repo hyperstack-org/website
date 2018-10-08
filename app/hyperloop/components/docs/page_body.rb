@@ -1,3 +1,4 @@
+
 require 'helpers/helpers'
 
 class PageBody < Hyperloop::Component
@@ -11,6 +12,10 @@ class PageBody < Hyperloop::Component
     @element_anchors_created = {}
   end
 
+  after_mount do
+    create_doc_headings unless @doc_headings_done
+  end
+
   after_update do
     navigate_to_slug
   end
@@ -18,7 +23,6 @@ class PageBody < Hyperloop::Component
   render(DIV) do
     DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
-
       if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
         # if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
@@ -63,6 +67,39 @@ class PageBody < Hyperloop::Component
   #     element = React.create_element(CodeMirror, { code: code } )
   #     React.render(element, mount_point.parent)
   #    end
+  # end
+
+  def create_doc_headings
+    @doc_headings_done = true
+    puts "create_doc_headings"
+    Element.find('.scrollto-div').each do |mount_point|
+      puts "found #{mount_point.id}"
+      React.create_element(DocHeading, { id: mount_point.id } )
+      # React.render(element, mount_point)
+     end
+  end
+
+  # def create_doc_headings
+  #   puts "create_doc_headings"
+  #   doc_heading = Module.const_get('DocHeading')
+  #   `var x = document.getElementsByClassName("scrollto-div");
+  #     var i;
+  #     for (i = 0; i < x.length; i++) {
+  #         console.log(x.length);
+  #         ReactDOM.render(React.createElement(#{doc_heading}, {id: x[i].id}, null),
+  #           document.getElementById(x[i].id));
+  #   };`
+  # end
+
+
+  # def create_doc_headings
+  #   puts "create_doc_headings"
+  #   `var x = document.getElementsByClassName("scrollto-div");
+  #     var i;
+  #     for (i = 0; i < x.length; i++) {
+  #         ReactDOM.render(React.createElement('DocHeading', {id: x[i].id}, null),
+  #           document.getElementById(x[i].id));
+  #   };`
   # end
 
   def edit_button(page)

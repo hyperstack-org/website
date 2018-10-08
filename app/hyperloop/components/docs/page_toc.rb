@@ -42,7 +42,7 @@ class PageToc < Hyperloop::Component
   def section_content page, index, is_active
     Sem.List(bulleted: true) do
       page[:headings].drop(1).each do |heading|
-        if (heading[:level] < 3)
+        if (heading[:level] < 4)
           link_id = "#{params.section_name}_#{page[:name]}_#{heading[:slug]}"
           Sem.ListItem do
             A(class: 'dark-gray-text', id: "#{link_id}") { "#{heading[:text]}" }
