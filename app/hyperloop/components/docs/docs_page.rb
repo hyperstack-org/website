@@ -81,7 +81,8 @@ class DocsPage < Hyperloop::Router::Component
       if params.match.params[:section_name]
         PageBody(section_name: params.match.params[:section_name],
           page_name: params.match.params[:page_name] || '',
-          page_anchor: history.location.hash || ''
+          page_anchor: history.location.hash || '',
+          history: history
         )
       else
         PageBody(section_name: 'docs_overview')

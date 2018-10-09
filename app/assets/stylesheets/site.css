@@ -112,3 +112,7 @@ a:hover {
 .inline-codepsan {
   background-color: #F6F6F6 !important;
 }
+
+.cursor-pointer {
+   cursor:pointer;
+ }

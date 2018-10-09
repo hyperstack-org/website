@@ -6,10 +6,10 @@ class PageBody < Hyperloop::Component
   param :section_name
   param page_name: ''
   param page_anchor: ''
+  param :history
 
   before_mount do
     mutate.needs_refresh false
-    @element_anchors_created = {}
   end
 
   after_mount do
@@ -55,9 +55,7 @@ class PageBody < Hyperloop::Component
 
     element = `document.getElementById(slug)`
     `element.scrollIntoView();` if element
-
-    #  this is used to accomidate the topbar
-    `window.scrollBy(0, -500);`
+    `window.scrollBy(0, -500);` # to accomidate topbar
   end
 
   # def convert_runable_code_blocks
@@ -70,37 +68,13 @@ class PageBody < Hyperloop::Component
   # end
 
   def create_doc_headings
-    @doc_headings_done = true
-    puts "create_doc_headings"
     Element.find('.scrollto-div').each do |mount_point|
-      puts "found #{mount_point.id}"
-      React.create_element(DocHeading, { id: mount_point.id } )
-      # React.render(element, mount_point)
-     end
+      path = "/#{AppStore.version}/docs/#{params.section_name}/#{params.page_name}##{mount_point.id}"
+      element = React.create_element(DocHeading, { text: mount_point.text, path: path, history: params.history } )
+      React.render(element, mount_point)
+    end
+    @doc_headings_done = true
   end
-
-  # def create_doc_headings
-  #   puts "create_doc_headings"
-  #   doc_heading = Module.const_get('DocHeading')
-  #   `var x = document.getElementsByClassName("scrollto-div");
-  #     var i;
-  #     for (i = 0; i < x.length; i++) {
-  #         console.log(x.length);
-  #         ReactDOM.render(React.createElement(#{doc_heading}, {id: x[i].id}, null),
-  #           document.getElementById(x[i].id));
-  #   };`
-  # end
-
-
-  # def create_doc_headings
-  #   puts "create_doc_headings"
-  #   `var x = document.getElementsByClassName("scrollto-div");
-  #     var i;
-  #     for (i = 0; i < x.length; i++) {
-  #         ReactDOM.render(React.createElement('DocHeading', {id: x[i].id}, null),
-  #           document.getElementById(x[i].id));
-  #   };`
-  # end
 
   def edit_button(page)
     button = DIV(class: 'improve-page-container') do
@@ -125,5 +99,4 @@ class PageBody < Hyperloop::Component
 
     Sem.Popup(trigger: button.to_n, content: 'Click to submit a PR against edge. Your contribution is most welcome.')
   end
-
 end

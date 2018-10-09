@@ -91,15 +91,7 @@ class MdConverter
     @headings << heading
     @headings_index += 1
 
-    # levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
-    # leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
-    # leveliconhtml = "" #if level==1
-
-    %Q(<div class='scrollto-div' id='#{heading[:slug]}'></div>
-       <p class='ptopmargin-#{level}'></p>
-       <h#{level} class='doc_h#{level}''>
-       #{text}</h#{level}>
-      )
+    %Q(<h#{level} class='cursor-pointer scrollto-div doc_h#{level}' id='#{heading[:slug]}'>#{text}</h#{level}>)
   end
 
   def on_paragraph text

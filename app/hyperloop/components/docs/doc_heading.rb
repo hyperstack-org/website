@@ -1,7 +1,9 @@
 class DocHeading < Hyperloop::Component
-  param :id
+  param :history
+  param :text
+  param :path
 
-  render(DIV) do
+  render do
     # Sem.Visibility(
     #   onTopVisible: -> {  puts "onTopVisible #{params.id}" },
     #   continuous: true
@@ -9,6 +11,8 @@ class DocHeading < Hyperloop::Component
     # ) do
     #   P { "render doc heding #{params.id}"}
     # end
-    P { "DocHerading I am #{params.id}"}
+    SPAN { params.text.to_s }.on(:click) do
+      params.history.push params.path
+    end
   end
 end
