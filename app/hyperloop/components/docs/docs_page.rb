@@ -77,7 +77,7 @@ class DocsPage < Hyperloop::Router::Component
   end
 
   def render_correct_page
-    DIV(class: 'Middle') do
+    DIV(class: 'Middle', id: 'docs-page-content') do
       if params.match.params[:section_name]
         PageBody(section_name: params.match.params[:section_name],
           page_name: params.match.params[:page_name] || '',

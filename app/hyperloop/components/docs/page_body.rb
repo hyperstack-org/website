@@ -12,12 +12,13 @@ class PageBody < Hyperloop::Component
     mutate.needs_refresh false
   end
 
-  after_mount do
-    create_doc_headings unless @doc_headings_done
-  end
+  # after_mount do
+  #   create_doc_headings
+  # end
 
   after_update do
     navigate_to_slug
+    create_doc_headings
   end
 
   render(DIV) do
@@ -73,7 +74,6 @@ class PageBody < Hyperloop::Component
       element = React.create_element(DocHeading, { text: mount_point.text, path: path, history: params.history } )
       React.render(element, mount_point)
     end
-    @doc_headings_done = true
   end
 
   def edit_button(page)
