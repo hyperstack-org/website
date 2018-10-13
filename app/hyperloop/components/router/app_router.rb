@@ -4,7 +4,8 @@ class AppRouter < Hyperloop::Router
   route do
     unless @store_booted
       version = location.pathname.downcase.include?('edge') ? 'edge' : 'edge'
-      AppStore.boot version
+      local_docs = ( `window.location.search.slice(1)`.include?('local_docs') ? true : false )
+      AppStore.boot version, local_docs
       @store_booted = true
     end
 

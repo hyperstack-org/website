@@ -56,9 +56,12 @@ class SectionStore < Hyperloop::Store
   # end
 
   def raw_url(page)
-    branch = "#{AppStore.version}"
-    # "https://raw.githubusercontent.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
-    "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+    if AppStore.local_docs?
+      "/local_docs?file=#{page[:file]}"
+    else
+      branch = "#{AppStore.version}"
+      "https://rawgit.com/hyperstack-org/#{page[:repo]}/#{branch}/#{page[:file]}"
+    end
   end
 
   def edit_url(page)

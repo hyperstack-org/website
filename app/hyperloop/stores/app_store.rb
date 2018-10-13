@@ -23,16 +23,21 @@ class AppStore < Hyperloop::Store
       @version
     end
 
+    def local_docs?
+      @local_docs
+    end
+
     def loaded?
       are_all_stores_loaded?
     end
 
     private
 
-    def boot version
+    def boot version, local_docs
       @version = version
       @section_stores = {}
       @loading_error = false
+      @local_docs = local_docs
       mutate.stores_all_loaded false
 
       # extend HS1Docs if @version == 'hs1'
