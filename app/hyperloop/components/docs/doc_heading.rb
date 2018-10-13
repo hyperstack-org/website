@@ -2,10 +2,12 @@ class DocHeading < Hyperloop::Component
   param :history
   param :text
   param :path
+  param :id
+  param :classes
 
   render do
     Sem.Visibility(
-      onTopVisible: -> {  puts "#{params.text} - entered" }, #onOnScreen or onTopVisible
+      onPassing: -> { update_store }, #onOnScreen or onTopVisible
       continuous: false,
       once: false,
       fireOnMount: false,
@@ -16,4 +18,9 @@ class DocHeading < Hyperloop::Component
       end
     end
   end
+
+  def update_store
+    TocStore.visible_id = params.id if params.classes.include?('doc_h2')
+  end
+
 end

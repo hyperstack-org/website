@@ -85,7 +85,7 @@ class DocsPage < Hyperloop::Router::Component
           history: history
         )
       else
-        PageBody(section_name: 'docs_overview')
+        PageBody(section_name: 'docs_overview', history: history)
       end
     end
   end

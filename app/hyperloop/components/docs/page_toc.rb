@@ -42,10 +42,12 @@ class PageToc < Hyperloop::Component
   def section_content page, index, is_active
     Sem.List(bulleted: true) do
       page[:headings].drop(1).each do |heading|
-        if (heading[:level] < 4)
+        if (heading[:level] < 3)
           link_id = "#{params.section_name}_#{page[:name]}_#{heading[:slug]}"
+          selected_class = (TocStore.visible_id == heading[:slug] ? 'toc-scrollspy' : '')
+          # puts "#{TocStore.visible_id} == #{heading[:slug]}"
           Sem.ListItem do
-            A(class: 'dark-gray-text', id: "#{link_id}") { "#{heading[:text]}" }
+            A(class: "dark-gray-text #{selected_class}", id: "#{link_id}") { "#{heading[:text]}" }
             .on(:click) do
               navigate_to_heading page, heading
             end
@@ -70,6 +72,8 @@ class PageToc < Hyperloop::Component
 
   def navigate_to_heading page, heading
     slug = "#{heading[:slug]}"
+    puts "navigate_to_heading #{slug}"
+    TocStore.visible_id = slug
     params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}##{slug}"
   end
 end

@@ -113,6 +113,11 @@ a:hover {
   background-color: #F6F6F6 !important;
 }
 
+.toc-scrollspy {
+  font-weight: bold; !important;
+}
+
+
 .cursor-pointer {
    cursor:pointer;
  }

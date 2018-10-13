@@ -21,6 +21,7 @@ class PageBody < Hyperloop::Component
     create_doc_headings
   end
 
+
   render(DIV) do
     DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
@@ -71,8 +72,15 @@ class PageBody < Hyperloop::Component
   def create_doc_headings
     Element.find('.scrollto-div').each do |mount_point|
       path = "/#{AppStore.version}/docs/#{params.section_name}/#{params.page_name}##{mount_point.id}"
-      element = React.create_element(DocHeading, { text: mount_point.text, path: path, history: params.history } )
+      element = React.create_element(DocHeading, {
+        text: mount_point.text,
+        path: path,
+        history: params.history,
+        id: mount_point.id,
+        classes: mount_point.class_name
+       } )
       React.render(element, mount_point)
+      # puts "class_name #{mount_point.class_name}"
     end
   end
 
