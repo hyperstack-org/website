@@ -62,6 +62,15 @@ class LiveCodeSegment < Hyperloop::Component
     ReactCodeMirror(options: options.to_n, value: state.ruby_code.to_n, onChange: lambda { |value| mutate.ruby_code value })
   end
 
+  def opal_code_html
+    html_code = `hljs.highlightAuto(#{@compiled_code}).value` if @compiled_code
+    PRE(class: 'code pre-md-code') do
+      CODE(class: 'lang-javascript hljs small-code-font') do
+         DIV( dangerously_set_inner_HTML: { __html: html_code } )
+       end
+    end
+  end
+
   def compile
     begin
       @compiled_code = Opal::Compiler.new(state.ruby_code).compile

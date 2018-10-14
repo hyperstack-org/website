@@ -40,6 +40,10 @@
   color: #cabfbf !important;
 }
 
+.small-code-font {
+  font-size: 0.9em !important;
+}
+
 .block {
    padding-top: 25px;
    padding-bottom: 25px;
