@@ -19,6 +19,11 @@ class AppMenu < Hyperloop::Component
         Sem.MenuItem do
            A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
          end
+         Sem.MenuItem(position: 'right') do
+           IFRAME(class: 'github',
+             src: 'http://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
+             frameBorder: '0', scrolling: '0', width: '100', height: '20')
+         end
       end
     end
   end
