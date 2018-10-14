@@ -1,3 +1,11 @@
+class CompiledJS < Hyperloop::Component
+  param :html
+
+  render do
+    params.html.render
+  end
+end
+
 class RenderComponent < Hyperloop::Component
   param :component_name
   param :random_key
@@ -35,20 +43,36 @@ class LiveCodeSegment < Hyperloop::Component
       Sem.GridColumn(width: 4, className: 'tight-box') { params.content }
       Sem.GridColumn(width: 12) do
         Sem.Container(className: 'white-background outline-box') do
-          Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
-            Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
-            Sem.GridColumn(width: 4) do
-              unless compile && evaluate && render_component
-                Sem.Message(negative: true) do
-                  H3 { state.compile_error_heading }
-                  P { state.compile_error_message }
-                end
-              end
-            end
+          tab
+        end
+      end
+    end
+  end
+
+  def code_editor_and_results
+    Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
+      Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
+      Sem.GridColumn(width: 4) do
+        unless compile && evaluate && render_component
+          Sem.Message(negative: true) do
+            H3 { state.compile_error_heading }
+            P { state.compile_error_message }
           end
         end
       end
     end
+  end
+
+  def tab
+    live_code = code_editor_and_results.as_node
+    compiled_js = CompiledJS(html: opal_code_html.as_node).as_node
+
+    panes = []
+    panes.concat [ { menuItem: 'Live Ruby',   render: -> { live_code.to_n } },
+                   { menuItem: 'JavaScript', render: -> { compiled_js.to_n } }
+    ]
+    menu = { secondary: false, pointing: true }
+    Sem.Tab(menu: menu.to_n, panes: panes.to_n )
   end
 
   def code_mirror_editor
@@ -63,16 +87,24 @@ class LiveCodeSegment < Hyperloop::Component
   end
 
   def opal_code_html
-    html_code = `hljs.highlightAuto(#{@compiled_code}).value` if @compiled_code
-    PRE(class: 'code pre-md-code') do
-      CODE(class: 'lang-javascript hljs small-code-font') do
-         DIV( dangerously_set_inner_HTML: { __html: html_code } )
-       end
+    if @compiled_code
+      html_code = `hljs.highlightAuto(#{@compiled_code}).value`
+      PRE(class: 'code pre-md-code') do
+        CODE(class: 'lang-javascript hljs small-code-font') do
+           DIV( dangerously_set_inner_HTML: { __html: html_code } )
+         end
+      end
+    else
+      Sem.Message(negative: true) do
+        H3 { state.compile_error_heading }
+        P { state.compile_error_message }
+      end
     end
   end
 
   def compile
     begin
+      @compiled_code = nil
       @compiled_code = Opal::Compiler.new(state.ruby_code).compile
     rescue Exception => e
       mutate.compile_error_heading "Compile error"
@@ -86,6 +118,7 @@ class LiveCodeSegment < Hyperloop::Component
     begin
       `eval(#{@compiled_code})`
     rescue Exception => e
+      @compiled_code = nil
       mutate.compile_error_heading "Evaluation error"
       mutate.compile_error_message e.message
       return false
