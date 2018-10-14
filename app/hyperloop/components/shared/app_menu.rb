@@ -21,7 +21,7 @@ class AppMenu < Hyperloop::Component
          end
          Sem.MenuItem(position: 'right') do
            IFRAME(class: 'github',
-             src: 'http://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
+             src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
              frameBorder: '0', scrolling: '0', width: '100', height: '20')
          end
       end
