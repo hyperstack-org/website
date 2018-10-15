@@ -8,7 +8,7 @@ class AppMenu < Hyperloop::Component
     Sem.Container(className: 'Top') do
       Sem.Menu(secondary: true, className: 'gray-background') do
         Sem.MenuItem do
-          A { SPAN(class: 'top-nav') {'Start'} }.on(:click) { params.history.push "/#{AppStore.version}" }
+          A { SPAN(class: 'top-nav') {'Hyperstack'} }.on(:click) { params.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
            A { SPAN(class: 'top-nav') {'Docs'} }.on(:click) { params.history.push "/#{AppStore.version}/docs" }
@@ -47,44 +47,44 @@ class AppMenu < Hyperloop::Component
   #   end
   # end
 
-  def logo_menu_item
-    DIV(class: 'ui logo shape') do
-      DIV(class: 'sides') do
-        DIV(class: 'active learn side') do
-          Link("/#{AppStore.version}") {
-            IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
-          }
-        end
-      end
-    end
-  end
-
-  def docs_menu_item
-    Link("/#{AppStore.version}/docs", class: 'additional item visible') { 'Docs' }
-  end
-
-  def github_menu_item
-    A(href: 'https://github.com/hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
-  end
-
-  def chat_menu_item
-    A(href: 'https://gitter.im/ruby-hyperloop/chat', 'data-site': 'ui', class: 'additional item visible') { 'Chat' }
-  end
-
-  def search_control
-    if (params.section != 'home')
-      Sem.MenuItem {
-        SiteSearch(section: params.section, history: history, location: location)
-      }
-      Sem.MenuItem {
-        if (!(SearchEngineStore.querystring.empty?) && !(location.pathname == "/searchresult"))
-          Sem.Button(color: 'red') {"See results for: { #{SearchEngineStore.querystring} }"}.on(:click) do
-            params.history.push "/searchresult"
-          end
-        end
-      }
-    end
-  end
+  # def logo_menu_item
+  #   DIV(class: 'ui logo shape') do
+  #     DIV(class: 'sides') do
+  #       DIV(class: 'active learn side') do
+  #         Link("/#{AppStore.version}") {
+  #           IMG(class: 'ui image', src: '/images/hyperloop-logo-small-pink.png')
+  #         }
+  #       end
+  #     end
+  #   end
+  # end
+  #
+  # def docs_menu_item
+  #   Link("/#{AppStore.version}/docs", class: 'additional item visible') { 'Docs' }
+  # end
+  #
+  # def github_menu_item
+  #   A(href: 'https://github.com/hyperstack-org', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
+  # end
+  #
+  # def chat_menu_item
+  #   A(href: 'https://gitter.im/ruby-hyperloop/chat', 'data-site': 'ui', class: 'additional item visible') { 'Chat' }
+  # end
+  #
+  # def search_control
+  #   if (params.section != 'home')
+  #     Sem.MenuItem {
+  #       SiteSearch(section: params.section, history: history, location: location)
+  #     }
+  #     Sem.MenuItem {
+  #       if (!(SearchEngineStore.querystring.empty?) && !(location.pathname == "/searchresult"))
+  #         Sem.Button(color: 'red') {"See results for: { #{SearchEngineStore.querystring} }"}.on(:click) do
+  #           params.history.push "/searchresult"
+  #         end
+  #       end
+  #     }
+  #   end
+  # end
 
   # def edge_or_master_menu_item
   #   if AppStore.version == 'hs1'
@@ -101,11 +101,11 @@ class AppMenu < Hyperloop::Component
   #   }
   # end
 
-  def github_stars
-    Sem.MenuItem {
-      IFRAME(class: 'github',
-        src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true',
-        frameBorder: '0', scrolling: '0', width: '100', height: '20')
-    }
-  end
+  # def github_stars
+  #   Sem.MenuItem {
+  #     IFRAME(class: 'github',
+  #       src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyper-react&type=watch&count=true',
+  #       frameBorder: '0', scrolling: '0', width: '100', height: '20')
+  #   }
+  # end
 end
