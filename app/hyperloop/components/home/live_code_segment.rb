@@ -4,6 +4,7 @@ class LiveCodeSegment < Hyperloop::Component
 
   before_mount do
     mutate.ruby_code params.code
+    @random = random_key
   end
 
   render(DIV, class: 'block') do
@@ -36,14 +37,17 @@ class LiveCodeSegment < Hyperloop::Component
   def tabs
     live_code = code_editor_and_results.as_node
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
+    html_output = HtmlOutputTab(element_id: "result-#{@random}" ).as_node
 
     panes = []
     panes.concat [ { menuItem: 'Live Ruby',   render: -> { live_code.to_n } },
-                   { menuItem: 'Generated JavaScript', render: -> { compiled_js.to_n } }
+                   { menuItem: 'Generated JS', render: -> { compiled_js.to_n } },
+                   { menuItem: 'HTML output', render: -> { html_output.to_n } }
     ]
 
     menu = { secondary: false, pointing: true }
     Sem.Tab(menu: menu.to_n, panes: panes.to_n )
+
   end
 
   def code_mirror_editor
@@ -83,8 +87,8 @@ class LiveCodeSegment < Hyperloop::Component
 
   def render_component
     begin
-      DIV(id: 'result') do
-        RenderComponent(component_name: component_name, random_key: rand(2**256).to_s(36)[0..7])
+      DIV(id: "result-#{@random}") do
+        RenderComponent(component_name: component_name, random_key: random_key)
       end
     rescue Exception => e
       mutate.compile_error_heading "Invalid component error"
@@ -92,6 +96,10 @@ class LiveCodeSegment < Hyperloop::Component
       return false
     end
     true
+  end
+
+  def random_key
+    rand(2**256).to_s(36)[0..7].to_s
   end
 
   def component_name
