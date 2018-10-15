@@ -37,7 +37,9 @@ class LiveCodeSegment < Hyperloop::Component
   def tabs
     live_code = code_editor_and_results.as_node
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
-    html_output = HtmlOutputTab(element_id: "result-#{@random}" ).as_node
+    html_output = HtmlOutputTab(element_id: "result-#{@random}",
+                                last_html: Element.find("#result-#{@random}").html 
+    ).as_node
 
     panes = []
     panes.concat [ { menuItem: 'Live Ruby',   render: -> { live_code.to_n } },
