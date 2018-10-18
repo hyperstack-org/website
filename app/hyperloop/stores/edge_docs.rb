@@ -20,7 +20,7 @@ module EdgeDocs
   end
 
   def load_dsl_client
-    section_name = 'dsl-client'
+    section_name = 'dsl-client' 
     display_name = 'Client-side DSL Concepts'
 
     pages = [
