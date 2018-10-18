@@ -2,8 +2,8 @@ module EdgeDocs
   def load_all_docs
     load_overview_section
     load_installation_section
-    load_dsl_core
-    load_dsl_advanced
+    load_dsl_client
+    load_dsl_isomorphic
     load_tools_section
     load_tutorials_section
   end
@@ -19,26 +19,26 @@ module EdgeDocs
                                                     section_name: section_name, display_name: display_name)
   end
 
-  def load_dsl_core
-    section_name = 'dsl-core'
-    display_name = 'Core DSL Concepts'
+  def load_dsl_client
+    section_name = 'dsl-client'
+    display_name = 'Client-side DSL Concepts'
 
     pages = [
-      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/dsl-core/hyper-component.md',  allow_edit: true },
-      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl-core/hyper-store.md',  allow_edit: true },
-      { id: 2, name: 'router', repo: 'hyperstack',    file: 'docs/dsl-core/hyper-router.md',  allow_edit: true }
+      { id: 0, name: 'components', repo: 'hyperstack',     file: 'docs/dsl-client/hyper-component.md',  allow_edit: true },
+      { id: 1, name: 'stores', repo: 'hyperstack',     file: 'docs/dsl-client/hyper-store.md',  allow_edit: true },
+      { id: 2, name: 'router', repo: 'hyperstack',    file: 'docs/dsl-client/hyper-router.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
 
-  def load_dsl_advanced
-    section_name = 'dsl-advanced'
-    display_name = 'Advanced Concepts'
+  def load_dsl_isomorphic
+    section_name = 'dsl-isomorphic'
+    display_name = 'Isomorphic DSL Concepts'
 
     pages = [
-      { id: 1, name: 'models', repo: 'hyperstack',      file: 'docs/dsl-advanced/hyper-model.md',  allow_edit: true },
-      { id: 2, name: 'operations', repo: 'hyperstack', file: 'docs/dsl-advanced/hyper-operation.md',  allow_edit: true },
-      { id: 3, name: 'policies', repo: 'hyperstack', file: 'docs/dsl-advanced/hyper-policy.md',  allow_edit: true }
+      { id: 1, name: 'models', repo: 'hyperstack',      file: 'docs/dsl-isomorphic/hyper-model.md',  allow_edit: true },
+      { id: 2, name: 'operations', repo: 'hyperstack', file: 'docs/dsl-isomorphic/hyper-operation.md',  allow_edit: true },
+      { id: 3, name: 'policies', repo: 'hyperstack', file: 'docs/dsl-isomorphic/hyper-policy.md',  allow_edit: true }
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)
   end
