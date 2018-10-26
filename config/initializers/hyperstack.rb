@@ -1,4 +1,4 @@
-Hyperloop.configuration do |config|
+Hyperstack.configuration do |config|
   # helper = Webpacker::Helper
   # config.transport = :action_cable
   config.import 'reactrb/auto-import'

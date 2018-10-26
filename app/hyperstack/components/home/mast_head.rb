@@ -1,4 +1,4 @@
-class MastHead < Hyperloop::Component
+class MastHead < HyperComponent
   render(DIV) do
     Sem.Segment(inverted: true, class: 'gray-background', basic: true) do
       Sem.Grid(columns: 4, padded: true) do

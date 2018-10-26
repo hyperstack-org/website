@@ -1,4 +1,6 @@
-class DocHeading < Hyperloop::Component
+class DocHeading
+  include Hyperstack::Component
+  
   param :history
   param :text
   param :path

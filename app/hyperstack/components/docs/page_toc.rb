@@ -1,4 +1,4 @@
-class PageToc < Hyperloop::Component
+class PageToc < HyperComponent
   param :history
   param :location
   param :section_name

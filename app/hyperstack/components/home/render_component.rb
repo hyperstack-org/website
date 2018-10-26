@@ -1,4 +1,4 @@
-class RenderComponent < Hyperloop::Component
+class RenderComponent < HyperComponent
   param :component_name
   param :random_key
 

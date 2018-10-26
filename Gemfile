@@ -36,8 +36,21 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #  Hyperloop gems
-gem 'hyperloop', ">=0.9.1", "<1.0.0"
-gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader'
+# gem 'hyperloop', ">=0.9.1", "<1.0.0"
+gem 'jquery-rails'
+gem 'opal-rails'
+
+# gem 'hyper-component', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+# gem 'hyper-state', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+# gem 'hyper-router', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+# gem 'hyperloop-config', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+
+gem 'hyper-component', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+gem 'hyper-state', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+gem 'hyper-router', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+gem 'hyperloop-config', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+
+gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader', branch: 'hyperstack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.3.1', require: false

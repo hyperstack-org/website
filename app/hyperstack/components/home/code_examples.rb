@@ -1,5 +1,5 @@
 HELLO_WORLD_EXAMPLE = %q(
-class HelloWorld < Hyperloop::Component
+class HelloWorld < HyperComponent
   render(DIV) do
     # try changing 'world' to your own name
     H1 { 'Hello world' }
@@ -9,7 +9,7 @@ end
 )
 
 STYLISH_COMPONENT = %q(
-class HtmlDslExample < Hyperloop::Component
+class HtmlDslExample < HyperComponent
   # Notice that HTML elements are in CAPS
   # You can specify the CSS class on any HTML element
 
@@ -44,7 +44,7 @@ end
 
 
 STATE_EXAMPLE = %q(
-class UsingState < Hyperloop::Component
+class UsingState < HyperComponent
 
   state :show # if show is true then show the stuff
   state :input_value # changes to state cause a re-render
@@ -87,7 +87,7 @@ end
 )
 
 JAVASCRIPT_COMPONENTS = %q(
-class JSExamples < Hyperloop::Component
+class JSExamples < HyperComponent
   render(DIV) do
     # Notice how Components are composed of Components
     MyModal()
@@ -96,7 +96,7 @@ class JSExamples < Hyperloop::Component
   end
 end
 
-class MyModal < Hyperloop::Component
+class MyModal < HyperComponent
   render(DIV) do
     # Sem is Semnatic UI React (imported)
     # type 'Sem.' on your JavaScript console...
@@ -108,7 +108,7 @@ class MyModal < Hyperloop::Component
   end
 end
 
-class SelectDate < Hyperloop::Component
+class SelectDate < HyperComponent
   before_mount do
     # before_mount will run only once
     # moment is a JS function so we use ``
@@ -131,7 +131,7 @@ end
 )
 
 SERVERLESS = %q(
-class FaaS < Hyperloop::Component
+class FaaS < HyperComponent
   render(DIV) do
     BUTTON { 'faastruby.io' }.on(:click) do
       faast_ruby

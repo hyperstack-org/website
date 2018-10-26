@@ -1,4 +1,4 @@
-class CompiledJsTab < Hyperloop::Component
+class CompiledJsTab < HyperComponent
   param :opal_code
 
   render(DIV) do

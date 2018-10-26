@@ -1,4 +1,4 @@
-class LiveCodeSegment < Hyperloop::Component
+class LiveCodeSegment < HyperComponent
   param :content
   param :code
 
@@ -38,7 +38,7 @@ class LiveCodeSegment < Hyperloop::Component
     live_code = code_editor_and_results.as_node
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
     html_output = HtmlOutputTab(element_id: "result-#{@random}",
-                                last_html: Element.find("#result-#{@random}").html 
+                                last_html: Element.find("#result-#{@random}").html
     ).as_node
 
     panes = []
@@ -106,7 +106,7 @@ class LiveCodeSegment < Hyperloop::Component
 
   def component_name
     elements = state.ruby_code.split ' '
-    elements[ (elements.index('Hyperloop::Component') -2) ]
+    elements[ (elements.index('HyperComponent') -2) ]
   end
 
 end

@@ -1,4 +1,4 @@
-class AppFooter < Hyperloop::Component
+class AppFooter < HyperComponent
 
   render(DIV) do
     Sem.Segment(inverted: true, class: 'gray-background') do

@@ -1,6 +1,6 @@
 require 'helpers/helpers'
 
-class AppMenu < Hyperloop::Component
+class AppMenu < HyperComponent
   param section: ''
   param :history
 
