@@ -14,10 +14,18 @@ class HtmlDslExample < Hyperloop::Component
   # You can specify the CSS class on any HTML element
 
   render(DIV) do
+    box
+    table
+    list
+  end
+
+  def box
     DIV(class: 'ui info message') do
       H3 { 'Blue Box' }
     end
+  end
 
+  def table
     TABLE(class: 'ui celled table') do
       THEAD do
         TR do
@@ -34,7 +42,9 @@ class HtmlDslExample < Hyperloop::Component
         end
       end
     end
+  end
 
+  def list
     UL do
       10.times { |n| LI { "Number #{n}" }}
     end
