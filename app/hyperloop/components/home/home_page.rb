@@ -132,7 +132,7 @@ class HomePage < Hyperloop::Router::Component
           DIV { 'Open Source' }
         end
         SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
-        A { 'Contributing Guildlines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
+        A { 'Contributing Guidelines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
         SPAN { ' and ' }
         A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
         SPAN { ' for ways in which you can help.' }
