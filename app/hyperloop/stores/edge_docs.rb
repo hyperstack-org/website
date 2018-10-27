@@ -74,9 +74,9 @@ module EdgeDocs
     display_name = "Tutorials"
 
     pages = [
-      { id: 0, name: 'helloworld', repo: 'hyperstack', file: 'docs/tutorial/helloworld.md',  allow_edit: true },
-      { id: 1, name: 'todo', repo: 'hyperstack', file: 'docs/tutorial/todo.md',  allow_edit: true },
-      { id: 2, name: 'community', repo: 'hyperstack', file: 'docs/tutorial/community.md',  allow_edit: true }
+      # { id: 0, name: 'helloworld', repo: 'hyperstack', file: 'docs/tutorial/helloworld.md',  allow_edit: true },
+      { id: 0, name: 'todo', repo: 'hyperstack', file: 'docs/tutorial/todo.md',  allow_edit: true },
+      { id: 1, name: 'community', repo: 'hyperstack', file: 'docs/tutorial/community.md',  allow_edit: true }
 
     ]
     @section_stores[section_name] = SectionStore.new(pages: pages, section_name: section_name, display_name: display_name)

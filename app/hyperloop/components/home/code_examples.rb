@@ -14,10 +14,18 @@ class HtmlDslExample < Hyperloop::Component
   # You can specify the CSS class on any HTML element
 
   render(DIV) do
+    box
+    table
+    list
+  end
+
+  def box
     DIV(class: 'ui info message') do
       H3 { 'Blue Box' }
     end
+  end
 
+  def table
     TABLE(class: 'ui celled table') do
       THEAD do
         TR do
@@ -34,7 +42,9 @@ class HtmlDslExample < Hyperloop::Component
         end
       end
     end
+  end
 
+  def list
     UL do
       10.times { |n| LI { "Number #{n}" }}
     end
@@ -98,7 +108,7 @@ end
 
 class MyModal < Hyperloop::Component
   render(DIV) do
-    # Sem is Semnatic UI React (imported)
+    # Sem is Semantic UI React (imported)
     # type 'Sem.' on your JavaScript console...
     button = Sem.Button { 'Open Modal' }.as_node
     Sem.Modal(trigger: button.to_n) do
@@ -122,7 +132,7 @@ class SelectDate < Hyperloop::Component
                todayButton: "Today",
                onChange: ->(date) { mutate.date date }
     )
-    # see how we use `` and #{} to b ridger JS and Ruby
+    # see how we use `` and #{} to bridge JS and Ruby
     H3 { `moment(#{state.date}).format('LL')` }
     #  or if you prefer..
     # H3 { Native(`moment`).call(state.date).format('LL') }
