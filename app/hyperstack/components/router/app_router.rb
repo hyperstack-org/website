@@ -1,4 +1,4 @@
-class AppRouter < HyperRouter
+class AppRouter < HyperComponent
   history :browser
 
   route do

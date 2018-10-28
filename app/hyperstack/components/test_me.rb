@@ -1,7 +1,3 @@
-# class HyperComponent
-#   include Hyperstack::Component
-# end
-
 
 class TestMe
   include Hyperstack::Component

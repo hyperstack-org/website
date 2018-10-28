@@ -1,4 +1,4 @@
-class SiteSearch < Hyperloop::Router::Component
+class SiteSearch < HyperComponent
 
   param :history
   param :section

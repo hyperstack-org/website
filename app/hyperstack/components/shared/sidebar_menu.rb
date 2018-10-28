@@ -1,4 +1,4 @@
-# class SidebarMenu < Hyperloop::Router::Component
+# class SidebarMenu < HyperComponent
 #
 #
 #   render do

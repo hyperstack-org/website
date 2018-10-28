@@ -1,4 +1,4 @@
-class HomePage < Hyperloop::Router::Component
+class HomePage < HyperComponent
   render do
     DIV() do
       Sem.Container(fluid: true) do

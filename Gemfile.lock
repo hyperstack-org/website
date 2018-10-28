@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hyperstack-org/hyperstack.git
-  revision: babefe31020c46e356a8bda0d92e0f45bbeb7f87
+  revision: b18382406b4dd5094b4ec42a1ff99eaac7641cab
   branch: edge
   glob: ruby/*/*.gemspec
   specs:
@@ -12,6 +12,10 @@ GIT
       opal (>= 0.11.0, < 0.12.0)
       opal-activesupport (~> 0.3.1)
       react-rails (>= 2.4.0, < 2.5.0)
+    hyper-router (0.1)
+      hyper-component (= 0.1)
+      hyper-state (= 0.1)
+      opal-browser (~> 0.2.0)
     hyper-state (0.1)
       hyperstack-config (= 0.1)
       opal (>= 0.11.0, < 0.12.0)
@@ -310,6 +314,7 @@ DEPENDENCIES
   coveralls
   foreman
   hyper-component!
+  hyper-router!
   hyper-state!
   hyperstack-config!
   jbuilder (~> 2.5)
