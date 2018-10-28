@@ -108,7 +108,7 @@
 #
 #     module Mixin
 #       def self.included(base)
-#         base.include(Hyperstack::Store::Mixin)
+#         base.include(HyperStore::Mixin)
 #         base.include(React::Component::API)
 #         base.include(React::Callbacks)
 #         base.include(React::Component::Tags)

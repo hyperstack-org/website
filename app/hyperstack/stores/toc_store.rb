@@ -1,4 +1,4 @@
-class TocStore < Hyperloop::Store
+class TocStore < HyperStore
   class << self
 
     def visible_id=(id)

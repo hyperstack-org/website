@@ -19,6 +19,10 @@ GIT
     hyper-state (0.1)
       hyperstack-config (= 0.1)
       opal (>= 0.11.0, < 0.12.0)
+    hyper-store (0.1)
+      hyper-state (= 0.1)
+      hyperstack-config (= 0.1)
+      opal (>= 0.11.0, < 0.12.0)
     hyperstack-config (0.1)
       libv8 (~> 6.3.0)
       listen (~> 3.0)
@@ -316,6 +320,7 @@ DEPENDENCIES
   hyper-component!
   hyper-router!
   hyper-state!
+  hyper-store!
   hyperstack-config!
   jbuilder (~> 2.5)
   jquery-rails

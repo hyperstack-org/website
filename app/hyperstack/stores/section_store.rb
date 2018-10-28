@@ -1,6 +1,6 @@
 require 'helpers/helpers'
 
-class SectionStore < Hyperloop::Store
+class SectionStore < HyperStore
 
   state loaded: false
 

@@ -44,6 +44,6 @@ class PageLayout < HyperComponent
     end
 
     AppFooter()
-    SearchResultModal(history: history)
+    # SearchResultModal(history: history)
   end
 end

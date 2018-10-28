@@ -42,13 +42,16 @@ gem 'opal-rails'
 
 gem 'hyper-component', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
 gem 'hyper-state', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+gem 'hyper-store', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
 gem 'hyper-router', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
 gem 'hyperstack-config', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
 
+# Local gems
 # gem 'hyper-component', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
 # gem 'hyper-state', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+# gem 'hyper-store', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
 # gem 'hyper-router', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
-# gem 'hyperloop-config', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
+# gem 'hyperstack-config', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
 
 gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader', branch: 'hyperstack'
 

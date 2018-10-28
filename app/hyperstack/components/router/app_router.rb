@@ -1,4 +1,5 @@
 class AppRouter < HyperComponent
+  include Hyperstack::Router
   history :browser
 
   route do

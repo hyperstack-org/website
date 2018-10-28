@@ -15,7 +15,7 @@ class DocsPage < HyperComponent
     end
     Sem.Divider(hidden: true)
     AppFooter()
-    SearchResultModal(history: history)
+    # SearchResultModal(history: history)
   end
 
   def page_dimmer

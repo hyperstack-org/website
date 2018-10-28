@@ -19,7 +19,7 @@ class HomePage < HyperComponent
               get_started
             end
             AppFooter()
-            SearchResultModal(history: history)
+            # SearchResultModal(history: history)
           end
         end
       # end
