@@ -16,7 +16,7 @@ class AppFooter < HyperComponent
       SPAN { 'Hyperstack is ' }
       SPAN(class: 'green-text') { 'open source' }
       SPAN { ' and supported by a '}
-      SPAN(class: 'blue-text') { 'friendly commuinity' }
+      SPAN(class: 'blue-text') { 'friendly community' }
     end
     P(class: 'gray-text') { 'Reach out in Gitter and we will be happy to help get you onboarded.' }
   end
