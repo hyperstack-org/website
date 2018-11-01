@@ -38,7 +38,7 @@ class LiveCodeSegment < HyperComponent
     live_code = code_editor_and_results.as_node
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
     html_output = HtmlOutputTab(element_id: "result-#{@random}",
-                                last_html: Element.find("#result-#{@random}").html
+                                last_html: ::Element.find("#result-#{@random}").html
     ).as_node
 
     panes = []

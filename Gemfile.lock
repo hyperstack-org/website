@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hyperstack-org/hyperstack.git
-  revision: b18382406b4dd5094b4ec42a1ff99eaac7641cab
+  revision: 55d0275f1bc6b3fb7cfa84891fdc3a455119f63e
   branch: edge
   glob: ruby/*/*.gemspec
   specs:
@@ -341,4 +341,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.16.3
+   1.17.1
