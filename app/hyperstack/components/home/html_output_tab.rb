@@ -3,7 +3,8 @@ class HtmlOutputTab < HyperComponent
   param :last_html # we need this as the element might not be rendered at the moment
 
   render(DIV) do
-    html = Element.find("##{params.element_id}").html
+    puts params.last_html
+    html = ::Element.find("##{params.element_id}").html
     html = params.last_html if html == ""
     html_code = `hljs.highlightAuto(#{html}).value`
     CODE(class: 'lang-html hljs') do

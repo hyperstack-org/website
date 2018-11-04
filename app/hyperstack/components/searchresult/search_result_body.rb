@@ -7,7 +7,7 @@ class SearchResultBody < HyperComponent
 
   after_mount do
     puts "search results body after mount"
-    Element['html, body'].animate({
+    ::Element['html, body'].animate({
       scrollTop: 0
     }, :slow)
   end

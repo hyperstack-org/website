@@ -64,22 +64,22 @@ class PageBody < HyperComponent
   #   raise 'convert_runable_code_blocks not working'
   #   Element.find('code.lang-ruby-runable').each do |mount_point|
   #     code = mount_point.text
-  #     element = React.create_element(CodeMirror, { code: code } )
-  #     React.render(element, mount_point.parent)
+  #     element = ReactAPI.create_element(CodeMirror, { code: code } )
+  #     ReactAPI.render(element, mount_point.parent)
   #    end
   # end
 
   def create_doc_headings
-    Element.find('.scrollto-div').each do |mount_point|
+    ::Element.find('.scrollto-div').each do |mount_point|
       path = "/#{AppStore.version}/docs/#{params.section_name}/#{params.page_name}##{mount_point.id}"
-      element = React.create_element(DocHeading, {
+      element = ReactAPI.create_element(DocHeading, {
         text: mount_point.text,
         path: path,
         history: params.history,
         id: mount_point.id,
         classes: mount_point.class_name
        } )
-      React.render(element, mount_point)
+      ReactAPI.render(element, mount_point)
       # puts "class_name #{mount_point.class_name}"
     end
   end
