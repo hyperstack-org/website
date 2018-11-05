@@ -1,6 +1,5 @@
-class DocHeading
-  include Hyperstack::Component
-  
+class DocHeading < HyperComponent
+
   param :history
   param :text
   param :path

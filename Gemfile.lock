@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hyperstack-org/hyperstack.git
-  revision: 99711d1d219ea9b38e94434411b47e12f64a594f
+  revision: 7b2ee6e25dd03052b996e730446f31645bccdd4b
   branch: edge
   glob: ruby/*/*.gemspec
   specs:
