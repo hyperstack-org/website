@@ -1,7 +1,6 @@
 
 class SearchResultBody < HyperComponent
 
-  param :history
   param :location
   param :section
 
@@ -74,10 +73,10 @@ class SearchResultBody < HyperComponent
     # NavigationStore.mutate.accordionindex pageid
     # NavigationStore.mutate.slug slug
 
-    # history.push "/docs/#{params.section_name}/#{page[:name]}"
+    # AppStore.history.push "/docs/#{params.section_name}/#{page[:name]}"
     # force_update!
 
-    history.push "/#{AppStore.version}/docs/#{sectionname}/#{pagetogo[:name]}##{slug}"
+    AppStore.history.push "/#{AppStore.version}/docs/#{sectionname}/#{pagetogo[:name]}##{slug}"
     # force_update!
 
   end

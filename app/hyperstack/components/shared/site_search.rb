@@ -1,6 +1,5 @@
 # class SiteSearch < HyperComponent
 #
-#   param :history
 #   param :section
 #
 #   state results: []
@@ -55,7 +54,7 @@
 #           if (SearchEngineStore.all_results.empty?)
 #             alert("Sorry, no result found for { #{state.search_input_value} }")
 #           else
-#             params.history.push "/searchresult"
+#             AppStore.history.push "/searchresult"
 #           end
 #
 #         else
@@ -90,7 +89,7 @@
 #   #     puts data.result.text
 #   #     mutate.value data.result.text
 #   #     AppStore.section_stores[params.section].set_current_page data.result.page
-#   #         #params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
+#   #         #AppStore.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
 #   #     #force_update!
 #   #     #{}"/#{params.section}/#{data.result.repo}/#{data.result.file}"
 #   #     puts data.result.repo

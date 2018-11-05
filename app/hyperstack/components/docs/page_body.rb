@@ -6,7 +6,6 @@ class PageBody < HyperComponent
   param :section_name
   param page_name: ''
   param page_anchor: ''
-  param :history
 
   before_mount do
     mutate.needs_refresh false
@@ -75,7 +74,6 @@ class PageBody < HyperComponent
       element = ReactAPI.create_element(DocHeading, {
         text: mount_point.text,
         path: path,
-        history: params.history,
         id: mount_point.id,
         classes: mount_point.class_name
        } )

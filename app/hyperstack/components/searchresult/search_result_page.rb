@@ -12,15 +12,14 @@ class SearchResultPage < HyperComponent
     section = "docs"
     displaytitle = "Search results for { #{SearchEngineStore.querystring} }"
 
-    sidebar = SearchResultSidebar(history: history, location: location, section: section).as_node
-    body = SearchResultBody(history: history, location: location, section: section).as_node
+    sidebar = SearchResultSidebar(location: location, section: section).as_node
+    body = SearchResultBody(location: location, section: section).as_node
 
     PageLayout(sidebar_component: sidebar,
               body_component: body,
               page_title: displaytitle,
               section: section,
               loaded: true,
-              history: history,
               location: location)
 
   end

@@ -23,6 +23,10 @@ class AppStore < HyperStore
       @version
     end
 
+    def history
+      @history
+    end
+
     def local_docs?
       @local_docs
     end
@@ -33,11 +37,12 @@ class AppStore < HyperStore
 
     private
 
-    def boot version, local_docs
+    def boot version, local_docs, history
       @version = version
       @section_stores = {}
       @loading_error = false
       @local_docs = local_docs
+      @history = history
       mutate.stores_all_loaded false
 
       # extend HS1Docs if @version == 'hs1'

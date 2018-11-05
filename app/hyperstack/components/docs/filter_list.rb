@@ -1,5 +1,4 @@
 class FilterList < HyperComponent
-  param :history
 
   render(DIV) do
     Sem.Segment do
@@ -28,7 +27,7 @@ class FilterList < HyperComponent
       Sem.ListDescription do
         A { item }
         .on(:click) do
-          params.history.push "/#{AppStore.version}#{path}"
+          AppStore.history.push "/#{AppStore.version}#{path}"
         end
       end
       Sem.ListDescription { description }

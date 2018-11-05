@@ -2,7 +2,6 @@
 
 # class SearchResultModal < HyperComponent
 #
-#   param :history
 #
 #   state visible: false, scope: :shared, reader: true
 #
@@ -22,7 +21,7 @@
 #     pagetogo = AppStore.section_stores[sectionname].pages[pageid]
 #     # AppStore.section_stores[sectionname].set_current_page pagetogo
 #
-#     params.history.push "/#{AppStore.version}/#{sectionname}/#{pagetogo[:name]}/#{slug}"
+#     AppStore.history.push "/#{AppStore.version}/#{sectionname}/#{pagetogo[:name]}/#{slug}"
 #     # NavigationStore.mutate.accordionindex pageid
 #     # NavigationStore.mutate.slug slug
 #     SearchResultModal.close

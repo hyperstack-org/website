@@ -26,7 +26,7 @@ class PageLayout < HyperComponent
 
   def main_content
     DIV(class: 'full height') do
-      AppMenu(section: params.section, history: history, location: location)
+      AppMenu(section: params.section, location: location)
 
       DIV(class: 'header segment') do
         DIV(class: 'container') do
@@ -44,6 +44,6 @@ class PageLayout < HyperComponent
     end
 
     AppFooter()
-    # SearchResultModal(history: history)
+    # SearchResultModal()
   end
 end

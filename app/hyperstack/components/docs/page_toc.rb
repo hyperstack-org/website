@@ -1,5 +1,4 @@
 class PageToc < HyperComponent
-  param :history
   param :location
   param :section_name
   param page_name: ''
@@ -62,7 +61,7 @@ class PageToc < HyperComponent
   end
 
   def navigate_to_page page, index
-    params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}"
+    AppStore.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}"
     if params[:page_name] == page[:name]
       @inverted_active = !@inverted_active
     else
@@ -74,6 +73,6 @@ class PageToc < HyperComponent
     slug = "#{heading[:slug]}"
     puts "navigate_to_heading #{slug}"
     TocStore.visible_id = slug
-    params.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}##{slug}"
+    AppStore.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}##{slug}"
   end
 end

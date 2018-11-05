@@ -4,7 +4,7 @@ class DocsPage < HyperComponent
   end
 
   render(DIV) do
-    AppMenu(section: 'docs', history: history)
+    AppMenu(section: 'docs')
     Sem.Divider(hidden: true)
     page_dimmer
     Sem.Container(fluid: false) do
@@ -15,7 +15,7 @@ class DocsPage < HyperComponent
     end
     Sem.Divider(hidden: true)
     AppFooter()
-    # SearchResultModal(history: history)
+    # SearchResultModal()
   end
 
   def page_dimmer
@@ -28,7 +28,7 @@ class DocsPage < HyperComponent
     DIV(class: 'Left') do
       Filter()
       if TocFilterStore.show_filter_list
-        DIV(class: :block) { FilterList(history: history) }
+        DIV(class: :block) { FilterList() }
       else
         DIV(class: :block) { accordion }
       end
@@ -49,11 +49,11 @@ class DocsPage < HyperComponent
             accordion_display_title(section_name, section_store.display_name, index, is_active)
           end
           .on(:click) do
-            history.push "/#{AppStore.version}/docs/#{section_name}"
+            AppStore.history.push "/#{AppStore.version}/docs/#{section_name}"
           end
 
           Sem.AccordionContent(active: is_active) do
-              PageToc(history: params.history, location: params.location, section_name: section_name,
+              PageToc(location: params.location, section_name: section_name,
                 page_name: params.match.params[:page_name] || ''
               )
           end
@@ -81,11 +81,10 @@ class DocsPage < HyperComponent
       if params.match.params[:section_name]
         PageBody(section_name: params.match.params[:section_name],
           page_name: params.match.params[:page_name] || '',
-          page_anchor: history.location.hash || '',
-          history: history
+          page_anchor: AppStore.history.location.hash || ''
         )
       else
-        PageBody(section_name: 'docs_overview', history: history)
+        PageBody(section_name: 'docs_overview')
       end
     end
   end

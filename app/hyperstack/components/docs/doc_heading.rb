@@ -1,6 +1,5 @@
 class DocHeading < HyperComponent
 
-  param :history
   param :text
   param :path
   param :id
@@ -15,7 +14,7 @@ class DocHeading < HyperComponent
       context: `window.document.getElementById('docs-page-content')`
     ) do
       SPAN { params.text.to_s }.on(:click) do
-        params.history.push params.path
+        AppStore.history.push params.path
       end
     end
   end

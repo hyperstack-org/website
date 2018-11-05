@@ -2,7 +2,6 @@
 
 class SearchResultSidebar < HyperComponent
 
-  param :history
   param :location
   param :section
 

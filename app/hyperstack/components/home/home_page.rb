@@ -2,7 +2,7 @@ class HomePage < HyperComponent
   render do
     DIV() do
       Sem.Container(fluid: true) do
-        AppMenu(section: 'home', history: history)
+        AppMenu(section: 'home')
         # DIV(class: 'Container') do
           # DIV(class: 'Middle') do
             MastHead()
@@ -19,7 +19,7 @@ class HomePage < HyperComponent
               get_started
             end
             AppFooter()
-            # SearchResultModal(history: history)
+            # SearchResultModal()
           end
         end
       # end
@@ -151,7 +151,7 @@ class HomePage < HyperComponent
       Sem.GridRow do
         Sem.GridColumn(textAlign: :center) do
           Sem.Button(primary: true, size: :huge, basic: false) { "Get started with Hyperstack on Rails in under 5 minutes" }.on(:click) do
-            # params.history.push '/edge/docs/installation/installation'
+            # AppStore.history.push '/edge/docs/installation/installation'
             `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");`
           end
         end
