@@ -1,7 +1,6 @@
 require 'helpers/helpers'
 
 class AppMenu < HyperComponent
-  param section: ''
 
   render(DIV, class: 'gray-background') do
     Sem.Container(className: 'Top') do

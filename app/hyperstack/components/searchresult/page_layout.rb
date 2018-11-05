@@ -26,7 +26,7 @@ class PageLayout < HyperComponent
 
   def main_content
     DIV(class: 'full height') do
-      AppMenu(section: params.section, location: location)
+      AppMenu()
 
       DIV(class: 'header segment') do
         DIV(class: 'container') do

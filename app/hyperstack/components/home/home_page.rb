@@ -2,7 +2,7 @@ class HomePage < HyperComponent
   render do
     DIV() do
       Sem.Container(fluid: true) do
-        AppMenu(section: 'home')
+        AppMenu()
         # DIV(class: 'Container') do
           # DIV(class: 'Middle') do
             MastHead()

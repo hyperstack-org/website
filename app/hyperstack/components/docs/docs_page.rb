@@ -4,7 +4,7 @@ class DocsPage < HyperComponent
   end
 
   render(DIV) do
-    AppMenu(section: 'docs')
+    AppMenu()
     Sem.Divider(hidden: true)
     page_dimmer
     Sem.Container(fluid: false) do
