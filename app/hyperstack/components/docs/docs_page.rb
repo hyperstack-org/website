@@ -1,7 +1,5 @@
 class DocsPage < HyperComponent
 
-  param_accessor_style :legacy
-
   before_mount do
     @inverted_active = false
   end
@@ -44,8 +42,8 @@ class DocsPage < HyperComponent
         section_name = section_hash[0] #key
         section_store = section_hash[1] #value
 
-        is_active = params.match.params[:section_name] == section_name ? true : false
-        is_active = !is_active if @inverted_active && params.match.params[:section_name] == section_name
+        is_active = match.params[:section_name] == section_name ? true : false
+        is_active = !is_active if @inverted_active && match.params[:section_name] == section_name
 
         unless section_store.exclude_from_toc?
           Sem.AccordionTitle(index: index, active: is_active) do
@@ -56,8 +54,8 @@ class DocsPage < HyperComponent
           end
 
           Sem.AccordionContent(active: is_active) do
-              PageToc(location: params.location, section_name: section_name,
-                page_name: params.match.params[:page_name] || ''
+              PageToc(location: location, section_name: section_name,
+                page_name: match.params[:page_name] || ''
               )
           end
         end
@@ -71,7 +69,7 @@ class DocsPage < HyperComponent
       SPAN { display_name }
     end
     .on(:click) do
-      if params.match.params[:section_name] == section_name
+      if match.params[:section_name] == section_name
         @inverted_active = !@inverted_active
       else
         @inverted_active = false
@@ -81,9 +79,9 @@ class DocsPage < HyperComponent
 
   def render_correct_page
     DIV(class: 'Middle', id: 'docs-page-content') do
-      if params.match.params[:section_name]
-        PageBody(section_name: params.match.params[:section_name],
-          page_name: params.match.params[:page_name] || '',
+      if match.params[:section_name]
+        PageBody(section_name: match.params[:section_name],
+          page_name: match.params[:page_name] || '',
           page_anchor: AppStore.history.location.hash || ''
         )
       else
