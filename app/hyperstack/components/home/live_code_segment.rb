@@ -3,14 +3,14 @@ class LiveCodeSegment < HyperComponent
   param :code
 
   before_mount do
-    mutate.ruby_code params.code
+    mutate.ruby_code @code
     @random = random_key
   end
 
   render(DIV, class: 'block') do
     Sem.Divider(hidden: true)
     Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
-      Sem.GridColumn(width: 4, className: 'tight-box') { params.content }
+      Sem.GridColumn(width: 4, className: 'tight-box') { @content }
       Sem.GridColumn(width: 12, className: 'tight-box') do
         Sem.Container(className: 'white-background outline-box') do
           tabs

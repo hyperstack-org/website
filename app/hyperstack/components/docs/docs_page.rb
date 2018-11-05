@@ -1,4 +1,7 @@
 class DocsPage < HyperComponent
+
+  param_accessor_style :legacy
+
   before_mount do
     @inverted_active = false
   end

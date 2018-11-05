@@ -14,7 +14,7 @@
 #   ]
 #
 #   after_mount do
-#     mutate.section_selection params.section
+#     mutate.section_selection @section
 #   end
 #
 #   render do
@@ -28,7 +28,7 @@
 #       end
 #
 #       Sem.Icon(name: 'search')
-#       # Sem.Select(compact: false, options: params.section_options.to_n).on :change do |e|
+#       # Sem.Select(compact: false, options: @section_options.to_n).on :change do |e|
 #       #
 #       #   mutate.section_selection Hash.new(e.to_n)['value']
 #       # end
@@ -36,13 +36,13 @@
 #       Sem.Button() {'Search'}.on(:click) do
 #         if (state.search_input_value.length > 1)
 #           if ( (SearchEngineStore.querystring != state.search_input_value) ||
-#              (SearchEngineStore.previous_section_query != params.section) )
+#              (SearchEngineStore.previous_section_query != @section) )
 #
 #                 SearchEngineStore.mutate.querystring state.search_input_value
-#                 SearchEngineStore.mutate.previous_section_query params.section
+#                 SearchEngineStore.mutate.previous_section_query @section
 #                 SearchEngineStore.mutate.all_results nil
 #
-#             # SearchEngineStore.search_withlunr(params.section)
+#             # SearchEngineStore.search_withlunr(@section)
 #             # this is a hack to only search thr dsl section
 #             SearchEngineStore.mutate.querystring state.search_input_value
 #             SearchEngineStore.mutate.previous_section_query 'dsl'
@@ -80,18 +80,18 @@
 #   #   .on(:searchChange) do |e|
 #   #     mutate.value e.target.value
 #   #     if (e.target.value.length > 4)
-#   #       #mutate.results AppStore.search_content(state.value, params.section).to_n
-#   #       resultat = AppStore.search_content(state.value, params.section)
+#   #       #mutate.results AppStore.search_content(state.value, @section).to_n
+#   #       resultat = AppStore.search_content(state.value, @section)
 #   #       puts "RESULTS: #{resultat[0][:results][0][:text]}"
 #   #     end
 #   #   end
 #   #   .on(:resultSelect) do |e, data|
 #   #     puts data.result.text
 #   #     mutate.value data.result.text
-#   #     AppStore.section_stores[params.section].set_current_page data.result.page
-#   #         #AppStore.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
+#   #     AppStore.section_stores[@section].set_current_page data.result.page
+#   #         #AppStore.history.push "/#{@section}/#{page[:repo]}/#{page[:file]}"
 #   #     #force_update!
-#   #     #{}"/#{params.section}/#{data.result.repo}/#{data.result.file}"
+#   #     #{}"/#{@section}/#{data.result.repo}/#{data.result.file}"
 #   #     puts data.result.repo
 #   #     puts data.result.file
 #   #     puts data.result.slug

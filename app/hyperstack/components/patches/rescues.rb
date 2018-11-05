@@ -185,7 +185,7 @@
 #       def component_will_update(next_props, next_state)
 #         begin
 #           React::State.set_state_context_to(self) { run_callback(:before_update, next_props, next_state) }
-#           params._reset_all_others_cache if @_receiving_props
+#           @_reset_all_others_cache if @_receiving_props
 #           @_receiving_props = false
 #         rescue Exception
 #           # barrie

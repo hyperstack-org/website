@@ -8,16 +8,16 @@ class PageToc < HyperComponent
   end
 
   render(DIV) do
-    render_section if AppStore.section_stores[params.section_name] &&
-         AppStore.section_stores[params.section_name].loaded? &&
-         AppStore.section_stores[params.section_name].pages.any?
+    render_section if AppStore.section_stores[@section_name] &&
+         AppStore.section_stores[@section_name].loaded? &&
+         AppStore.section_stores[@section_name].pages.any?
   end
 
   def render_section
-    AppStore.section_stores[params.section_name].pages.each_with_index do |page, index|
+    AppStore.section_stores[@section_name].pages.each_with_index do |page, index|
       if page[:processed]
-        is_active = page[:name] == params.page_name ? true : false
-        is_active = !is_active if @inverted_active && page[:name] == params.page_name
+        is_active = page[:name] == @page_name ? true : false
+        is_active = !is_active if @inverted_active && page[:name] == @page_name
 
         section_title page, index, is_active
         section_content page, index, is_active
@@ -42,7 +42,7 @@ class PageToc < HyperComponent
     Sem.List(bulleted: true) do
       page[:headings].drop(1).each do |heading|
         if (heading[:level] < 3)
-          link_id = "#{params.section_name}_#{page[:name]}_#{heading[:slug]}"
+          link_id = "#{@section_name}_#{page[:name]}_#{heading[:slug]}"
           selected_class = (TocStore.visible_id == heading[:slug] ? 'toc-scrollspy' : '')
           # puts "#{TocStore.visible_id} == #{heading[:slug]}"
           Sem.ListItem do
@@ -61,7 +61,7 @@ class PageToc < HyperComponent
   end
 
   def navigate_to_page page, index
-    AppStore.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}"
+    AppStore.history.push "/#{AppStore.version}/docs/#{@section_name}/#{page[:name]}"
     if params[:page_name] == page[:name]
       @inverted_active = !@inverted_active
     else
@@ -73,6 +73,6 @@ class PageToc < HyperComponent
     slug = "#{heading[:slug]}"
     puts "navigate_to_heading #{slug}"
     TocStore.visible_id = slug
-    AppStore.history.push "/#{AppStore.version}/docs/#{params.section_name}/#{page[:name]}##{slug}"
+    AppStore.history.push "/#{AppStore.version}/docs/#{@section_name}/#{page[:name]}##{slug}"
   end
 end

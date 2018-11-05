@@ -13,8 +13,8 @@ class RenderComponent < HyperComponent
   render do
     return if @errors
     Hyperstack::Component::ReactAPI.create_element(
-      Module.const_get(params.component_name),
-      key: params.random_key
+      Module.const_get(@component_name),
+      key: @random_key
     )
   end
 end

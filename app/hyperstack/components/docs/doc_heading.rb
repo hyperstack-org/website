@@ -13,14 +13,14 @@ class DocHeading < HyperComponent
       fireOnMount: false,
       context: `window.document.getElementById('docs-page-content')`
     ) do
-      SPAN { params.text.to_s }.on(:click) do
-        AppStore.history.push params.path
+      SPAN { @text.to_s }.on(:click) do
+        AppStore.history.push @path
       end
     end
   end
 
   def update_store
-    TocStore.visible_id = params.id if params.classes.include?('doc_h2')
+    TocStore.visible_id = @id if @classes.include?('doc_h2')
   end
 
 end

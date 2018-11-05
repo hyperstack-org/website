@@ -4,7 +4,7 @@
 #   # param :page
 #
 #   # step do
-#     # AppStore.section_stores[params.section].set_current_page params.page
+#     # AppStore.section_stores[@section].set_current_page @page
 #   # end
 #
 # end

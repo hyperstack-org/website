@@ -31,15 +31,15 @@ class PageLayout < HyperComponent
       DIV(class: 'header segment') do
         DIV(class: 'container') do
           DIV(class: 'introductiontitle') do
-            DIV(class: 'ui huge header') { params.page_title }
+            DIV(class: 'ui huge header') { @page_title }
             P() { 'A modern web stack for people who love Ruby' }
           end
         end
       end
 
       DIV(class: 'main container') do
-        params.sidebar_component.render
-        params.body_component.render
+        @sidebar_component.render
+        @body_component.render
       end
     end
 

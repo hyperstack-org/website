@@ -3,5 +3,5 @@ class HyperComponent
   include Hyperstack::Router::Helpers
   include Hyperstack::Legacy::Store
 
-  param_accessor_style :legacy
+  param_accessor_style :hyperstack
 end

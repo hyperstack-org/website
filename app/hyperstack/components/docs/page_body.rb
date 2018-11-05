@@ -24,17 +24,17 @@ class PageBody < HyperComponent
   render(DIV) do
     DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
-      if AppStore.section_stores[params.section_name].loaded? && AppStore.section_stores[params.section_name].pages.any?
+      if AppStore.section_stores[@section_name].loaded? && AppStore.section_stores[@section_name].pages.any?
         # if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
         # else
           # Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version}" }
         # end
 
-        if params.page_name.empty?
-          @page = AppStore.section_stores[params.section_name].pages.first
+        if @page_name.empty?
+          @page = AppStore.section_stores[@section_name].pages.first
         else
-          @page = AppStore.section_stores[params.section_name].pages.select {|p| p[:name] == params.page_name }.first
+          @page = AppStore.section_stores[@section_name].pages.select {|p| p[:name] == @page_name }.first
         end
 
         edit_button(@page) if @page[:allow_edit]
@@ -45,12 +45,12 @@ class PageBody < HyperComponent
   end
 
   def navigate_to_slug
-    if params.page_anchor.empty?
+    if @page_anchor.empty?
       # this is a new page
       slug = 'very-top-of-page-body'
     else
       # scrolling on the same page
-      slug = params.page_anchor
+      slug = @page_anchor
       slug = slug.tr('#','')
     end
 
@@ -70,7 +70,7 @@ class PageBody < HyperComponent
 
   def create_doc_headings
     ::Element.find('.scrollto-div').each do |mount_point|
-      path = "/#{AppStore.version}/docs/#{params.section_name}/#{params.page_name}##{mount_point.id}"
+      path = "/#{AppStore.version}/docs/#{@section_name}/#{@page_name}##{mount_point.id}"
       element = ReactAPI.create_element(DocHeading, {
         text: mount_point.text,
         path: path,

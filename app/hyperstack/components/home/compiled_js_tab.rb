@@ -6,8 +6,8 @@ class CompiledJsTab < HyperComponent
   end
 
   def opal_code_html
-    if params.opal_code
-      html_code = `hljs.highlightAuto(#{params.opal_code}).value`
+    if @opal_code
+      html_code = `hljs.highlightAuto(#{@opal_code}).value`
       PRE(class: 'code pre-md-code') do
         CODE(class: 'lang-javascript hljs small-code-font') do
            DIV( dangerously_set_inner_HTML: { __html: html_code } )

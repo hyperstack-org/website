@@ -70,9 +70,9 @@ class AppMenu < HyperComponent
   # end
   #
   # def search_control
-  #   if (params.section != 'home')
+  #   if (@section != 'home')
   #     Sem.MenuItem {
-  #       SiteSearch(section: params.section, location: location)
+  #       SiteSearch(section: @section, location: location)
   #     }
   #     Sem.MenuItem {
   #       if (!(SearchEngineStore.querystring.empty?) && !(location.pathname == "/searchresult"))
