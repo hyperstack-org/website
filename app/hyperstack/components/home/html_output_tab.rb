@@ -1,4 +1,4 @@
-class HtmlOutputTab < HyperComponent
+class HtmlOutputTab < Hyperloop::Component
   param :element_id
   param :last_html # we need this as the element might not be rendered at the moment
 

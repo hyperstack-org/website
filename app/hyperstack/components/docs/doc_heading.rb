@@ -1,6 +1,6 @@
 class DocHeading
   include Hyperstack::Component
-  
+  param_accessor_style :legacy
   param :history
   param :text
   param :path

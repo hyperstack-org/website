@@ -1,5 +1,8 @@
+def Hyperstack.naming_convention
+  :prefix_params
+end
+
 class HyperComponent
   include Hyperstack::Component
-  include Hyperstack::Router::Helpers
-  include Hyperstack::Legacy::Store
+  include Hyperstack::State::Observable
 end

@@ -1,4 +1,4 @@
-class Filter < HyperComponent
+class Filter < Hyperloop::Component
   render(DIV) do
     Sem.Grid() do
       Sem.GridRow do

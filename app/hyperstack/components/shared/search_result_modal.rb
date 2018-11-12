@@ -1,6 +1,6 @@
 #require '../../operations/search_result_modal_op.rb'
 
-# class SearchResultModal < HyperComponent
+# class SearchResultModal < Hyperloop::Component
 #
 #   param :history
 #

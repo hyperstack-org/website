@@ -1,4 +1,4 @@
-class LiveCodeSegment < HyperComponent
+class LiveCodeSegment < Hyperloop::Component
   param :content
   param :code
 

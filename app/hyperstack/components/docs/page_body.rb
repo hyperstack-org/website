@@ -1,7 +1,7 @@
 
 require 'helpers/helpers'
 
-class PageBody < HyperComponent
+class PageBody < Hyperloop::Component
 
   param :section_name
   param page_name: ''

@@ -1,4 +1,4 @@
-class AppRouter < HyperComponent
+class AppRouter < Hyperloop::Component
   include Hyperstack::Router
   history :browser
 

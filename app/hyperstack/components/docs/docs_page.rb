@@ -1,4 +1,4 @@
-class DocsPage < HyperComponent
+class DocsPage < Hyperloop::Component
   before_mount do
     @inverted_active = false
   end

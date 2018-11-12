@@ -1,6 +1,6 @@
 
 
-class SearchResultSidebar < HyperComponent
+class SearchResultSidebar < Hyperloop::Component
 
   param :history
   param :location

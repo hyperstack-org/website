@@ -1,4 +1,4 @@
-class PageLayout < HyperComponent
+class PageLayout < Hyperloop::Component
   param :sidebar_component
   param :body_component
   param :page_title

@@ -1,5 +1,5 @@
 
-class SearchResultPage < HyperComponent
+class SearchResultPage < Hyperloop::Component
 
   # after_mount do
   #   Element['html, body'].animate({

@@ -56,23 +56,23 @@ end
 STATE_EXAMPLE = %q(
 class UsingState < HyperComponent
 
-  state :show # if show is true then show the stuff
-  state :input_value # changes to state cause a re-render
+  # state :show # if show is true then show the stuff
+  # state :input_value # changes to state cause a re-render
 
   render(DIV) do
     # the button method returns an HTML element
     # .on(:click) is an event handeler
-    button.on(:click) { mutate.show !state.show }
+    button.on(:click) { mutate @show = !@show }
     DIV do
       input
       output
       easter_egg
-    end if state.show
+    end if @show
   end
 
   def button
     BUTTON(class: 'ui primary button') do
-      state.show ? 'Hide' : 'Show'
+      @show ? 'Hide' : 'Show'
     end
   end
 
@@ -80,18 +80,18 @@ class UsingState < HyperComponent
     DIV(class: 'ui input fluid block') do
       INPUT(type: :text).on(:change) do |evt|
         # we are updating the value per keypress
-        mutate.input_value evt.target.value
+        mutate @input_value = evt.target.value
       end
     end
   end
 
   def output
     # this will re-render whenever input_value changes
-	P { "#{state.input_value}" }
+	P { "#{@input_value}" }
   end
 
   def easter_egg
-    H2 {'you found it!'} if state.input_value == 'egg'
+    H2 {'you found it!'} if @input_value == 'egg'
   end
 end
 )
@@ -122,20 +122,20 @@ class SelectDate < HyperComponent
   before_mount do
     # before_mount will run only once
     # moment is a JS function so we use ``
-    mutate.date `moment()`
+    mutate @date = `moment()`
   end
 
   render(DIV) do
     # DatePicker is a JS Component imported with Webpack
     # Notice the lambda to pass a Ruby method as a callback
-    DatePicker(selected: state.date,
+    DatePicker(selected: @date,
                todayButton: "Today",
-               onChange: ->(date) { mutate.date date }
+               onChange: ->(date) { mutate @date = date }
     )
     # see how we use `` and #{} to bridge JS and Ruby
-    H3 { `moment(#{state.date}).format('LL')` }
+    H3 { `moment(#{@date}).format('LL')` }
     #  or if you prefer..
-    # H3 { Native(`moment`).call(state.date).format('LL') }
+    # H3 { Native(`moment`).call(@date).format('LL') }
   end
 end
 )
@@ -147,9 +147,9 @@ class FaaS < HyperComponent
       faast_ruby
     end
     DIV(class: :block) do
-      P { state.hello['function_response'].to_s }
-      P { "executed in #{state.hello['execution_time']} ms" }
-    end if state.hello
+      P { @hello['function_response'].to_s }
+      P { "executed in #{@hello['execution_time']} ms" }
+    end if @hello
   end
 
   def faast_ruby
@@ -157,7 +157,7 @@ class FaaS < HyperComponent
       data: {time: true}
     ) do |response|
       # this code executes when the promise resolves
-      mutate.hello(response.json) if response.ok?
+      mutate @hello = response.json if response.ok?
     end
   end
 end

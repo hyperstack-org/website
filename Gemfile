@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'opal-rails'
 
-gem 'hyper-component', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec' # path: '../hyperstack/ruby/hyper-component' #
+gem 'hyper-component', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec' #  path: '../hyperstack/ruby/hyper-component' #
 gem 'hyper-state', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec' # path: '../hyperstack/ruby/hyper-state' #
 gem 'hyper-store', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec' # path: '../hyperstack/ruby/hyper-store' #
 gem 'hyper-router', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'

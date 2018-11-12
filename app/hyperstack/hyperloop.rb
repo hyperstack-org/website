@@ -1,9 +1,8 @@
-# require 'opal_hot_reloader'
-# OpalHotReloader.listen(25222, false)
-
-# require 'reactrb/auto-import'
-# require 'active_support'
-# require 'browser/interval'
-# require 'browser/delay'
-# require 'browser'
-# require 'opal-jquery'
+module Hyperloop
+  class Component
+    include Hyperstack::Component
+    include Hyperstack::Router::Helpers
+    include Hyperstack::Legacy::Store
+    param_accessor_style :legacy
+  end
+end
