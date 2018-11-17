@@ -2,9 +2,9 @@ require 'helpers/helpers'
 
 class SectionStore < HyperStore
 
-  state loaded: false
-
   def initialize(params)
+
+    observe @loaded = false
 
     @section_name = params[:section_name]
     @display_name = params[:display_name]
@@ -32,15 +32,15 @@ class SectionStore < HyperStore
   end
 
   def loaded?
-    state.loaded
+    @loaded
   end
 
   def current_anchor
-    state.current_anchor
+    @current_anchor
   end
 
   def set_current_anchor anchor
-    mutate.current_anchor anchor
+    @current_anchor = anchor
   end
 
   # these are for when we are using edge and master branches
@@ -84,7 +84,7 @@ class SectionStore < HyperStore
     # puts "about to get"
     HTTP.get( raw_url(page), csrf: false) do |response|
       if response.ok?
-        # puts "Success getting page #{page}"
+        puts "Success getting page #{page}"
         converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
         if converted
           page[:headings] = converted.headings
@@ -93,7 +93,7 @@ class SectionStore < HyperStore
           page[:html] = converted.html
           # page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
           page[:edit_url] = edit_url page
-          page[:lunrsearchindex] = build_lunr_page_searchindex(page)
+          # page[:lunrsearchindex] = build_lunr_page_searchindex(page)
           page[:processed] = true
         else
           message = "FAILURE: Unable to convert #{raw_url(page)}"
@@ -110,7 +110,7 @@ class SectionStore < HyperStore
       end
 
       @promises -= 1
-      mutate.loaded true if @promises == 0
+      mutate @loaded = true if @promises == 0
     end
   end
 
@@ -123,21 +123,21 @@ class SectionStore < HyperStore
     return puretext
   end
 
-  def build_lunr_page_searchindex page
-    `lunrpageindex=[]`
-
-    page[:headings].each_with_index do |heading, index|
-
-      lunrheadingindex = `{
-        "headingid": #{heading[:id]},
-        "headingname": #{purify_text(heading[:text])},
-        "text": #{purify_text(heading[:paragraphs].join(' '))}
-      }`
-
-      `lunrpageindex.push(#{lunrheadingindex});`
-    end
-
-    lunrpageindex =  `lunrpageindex`
-    return lunrpageindex
-  end
+  # def build_lunr_page_searchindex page
+  #   `lunrpageindex=[]`
+  #
+  #   page[:headings].each_with_index do |heading, index|
+  #
+  #     lunrheadingindex = `{
+  #       "headingid": #{heading[:id]},
+  #       "headingname": #{purify_text(heading[:text])},
+  #       "text": #{purify_text(heading[:paragraphs].join(' '))}
+  #     }`
+  #
+  #     `lunrpageindex.push(#{lunrheadingindex});`
+  #   end
+  #
+  #   lunrpageindex =  `lunrpageindex`
+  #   return lunrpageindex
+  # end
 end

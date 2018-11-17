@@ -32,7 +32,8 @@ class AppStore < HyperStore
     end
 
     def loaded?
-      are_all_stores_loaded?
+      return false unless are_all_stores_loaded?
+      true
     end
 
     private
@@ -43,9 +44,8 @@ class AppStore < HyperStore
       @loading_error = false
       @local_docs = local_docs
       @history = history
-      mutate.stores_all_loaded false
+      observe @stores_all_loaded = false
 
-      # extend HS1Docs if @version == 'hs1'
       extend EdgeDocs if @version == 'edge'
 
       load_all_docs
@@ -55,6 +55,7 @@ class AppStore < HyperStore
       @section_stores.each do |section_hash|
         return false unless section_hash[1].loaded?
       end
+      mutate @stores_all_loaded = true
       true
     end
   end

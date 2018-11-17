@@ -7,25 +7,25 @@ class TocFilterStore < HyperStore
   class << self
 
     def init
-      mutate.filter ''
-      mutate.show_filter_list false
+      @filter = ''
+      @show_filter_list = false
     end
 
     def filter=(f)
-      mutate.filter f
-      if state.filter == ''
-        mutate.show_filter_list false
+      mutate @filter = f
+      if @filter == ''
+        mutate @show_filter_list = false
       else
-        mutate.show_filter_list true
+        mutate @show_filter_list = true
       end
     end
 
     def filter
-      state.filter
+      @filter
     end
 
     def show_filter_list
-      state.show_filter_list
+      @show_filter_list
     end
   end
 end

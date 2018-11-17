@@ -8,7 +8,7 @@ class PageBody < HyperComponent
   param page_anchor: ''
 
   before_mount do
-    mutate.needs_refresh false
+    @needs_refresh = false
   end
 
   # after_mount do
@@ -24,17 +24,17 @@ class PageBody < HyperComponent
   render(DIV) do
     DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
-      if AppStore.section_stores[@section_name].loaded? && AppStore.section_stores[@section_name].pages.any?
+      if AppStore.section_stores[@SectionName].loaded? && AppStore.section_stores[@SectionName].pages.any?
         # if is_edge?
           Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
         # else
           # Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version}" }
         # end
 
-        if @page_name.empty?
-          @page = AppStore.section_stores[@section_name].pages.first
+        if @PageName.empty?
+          @page = AppStore.section_stores[@SectionName].pages.first
         else
-          @page = AppStore.section_stores[@section_name].pages.select {|p| p[:name] == @page_name }.first
+          @page = AppStore.section_stores[@SectionName].pages.select {|p| p[:name] == @PageName }.first
         end
 
         edit_button(@page) if @page[:allow_edit]
@@ -45,12 +45,12 @@ class PageBody < HyperComponent
   end
 
   def navigate_to_slug
-    if @page_anchor.empty?
+    if @PageAnchor.empty?
       # this is a new page
       slug = 'very-top-of-page-body'
     else
       # scrolling on the same page
-      slug = @page_anchor
+      slug = @PageAnchor
       slug = slug.tr('#','')
     end
 
@@ -70,7 +70,7 @@ class PageBody < HyperComponent
 
   def create_doc_headings
     ::Element.find('.scrollto-div').each do |mount_point|
-      path = "/#{AppStore.version}/docs/#{@section_name}/#{@page_name}##{mount_point.id}"
+      path = "/#{AppStore.version}/docs/#{@SectionName}/#{@PageName}##{mount_point.id}"
       element = ReactAPI.create_element(DocHeading, {
         text: mount_point.text,
         path: path,
@@ -84,7 +84,7 @@ class PageBody < HyperComponent
 
   def edit_button(page)
     button = DIV(class: 'improve-page-container') do
-      if state.needs_refresh
+      if @needs_refresh
         Sem.Message(positive: true) {
           Sem.MessageHeader { "Thank you! Your edits (or PR) are on edge." }
           if (is_edge?)
@@ -97,7 +97,7 @@ class PageBody < HyperComponent
         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
 
         }.on(:click) do
-          mutate.needs_refresh true
+          mutate @needs_refresh = true
           `window.open(#{page[:edit_url]}, "_blank");`
         end
       end

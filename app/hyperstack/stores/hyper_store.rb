@@ -1,3 +1,3 @@
 class HyperStore
-  include Hyperstack::Legacy::Store
+  include Hyperstack::State::Observable
 end
