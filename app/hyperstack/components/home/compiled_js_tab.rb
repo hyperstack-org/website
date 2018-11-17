@@ -6,8 +6,8 @@ class CompiledJsTab < HyperComponent
   end
 
   def opal_code_html
-    if @opal_code
-      html_code = `hljs.highlightAuto(#{@opal_code}).value`
+    if @OpalCode
+      html_code = `hljs.highlightAuto(#{@OpalCode}).value`
       PRE(class: 'code pre-md-code') do
         CODE(class: 'lang-javascript hljs small-code-font') do
            DIV( dangerously_set_inner_HTML: { __html: html_code } )
@@ -15,8 +15,7 @@ class CompiledJsTab < HyperComponent
       end
     else
       Sem.Message(negative: true) do
-        H3 { state.compile_error_heading }
-        P { state.compile_error_message }
+        H3 { "Compile error" }
       end
     end
   end

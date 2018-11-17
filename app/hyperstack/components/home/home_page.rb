@@ -3,27 +3,24 @@ class HomePage < HyperComponent
     DIV() do
       Sem.Container(fluid: true) do
         AppMenu()
-        # DIV(class: 'Container') do
-          # DIV(class: 'Middle') do
-            MastHead()
-            Sem.Divider(hidden: true)
-            Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
-            Sem.Divider()
+        MastHead()
+        Sem.Divider(hidden: true)
+        Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
+        Sem.Divider()
 
-            Sem.Container() do
-              simple_components
-              html_dsl
-              stateful_components
-              javascript_in_ruby
-              serverless
-              get_started
-            end
-            AppFooter()
-            # SearchResultModal()
-          end
+        Sem.Container() do
+          simple_components
+          html_dsl
+          stateful_components
+          javascript_in_ruby
+          serverless
+          get_started
         end
-      # end
-    # end
+
+        AppFooter()
+        # SearchResultModal()
+      end
+    end
   end
 
   def simple_components
