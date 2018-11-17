@@ -39,9 +39,7 @@ class LiveCodeSegment < HyperComponent
     live_code = code_editor_and_results.as_node
     html = ::Element.find("#result-#{@random}").html
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
-    html_output = HtmlOutputTab(element_id: "result-#{@random}",
-                                last_html: html
-    ).as_node
+    html_output = HtmlOutputTab(element_id: "result-#{@random}").as_node
 
     panes = []
     panes.concat [ { menuItem: 'Live Ruby',   render: -> { live_code.to_n } },
