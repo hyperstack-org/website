@@ -1,5 +1,6 @@
 HELLO_WORLD_EXAMPLE = %q(
 class HelloWorld < HyperComponent
+  
   render(DIV) do
     # try changing 'world' to your own name
     H1 { 'Hello world' }
@@ -59,8 +60,9 @@ class UsingState < HyperComponent
   render(DIV) do
     # the button method returns an HTML element
     # .on(:click) is an event handeler
-    # notice how we use the mutate method to get React's attention
-    # this will cause a rerender
+    # notice how we use the mutate method to get
+    # React's attention. This will cause a
+    # rerender of the Component
     button.on(:click) { mutate(@show = !@show) }
     DIV do
       input
@@ -79,14 +81,14 @@ class UsingState < HyperComponent
     DIV(class: 'ui input fluid block') do
       INPUT(type: :text).on(:change) do |evt|
         # we are updating the value per keypress
-        # using mutate will cause a re-render
+        # using mutate will cause a rerender
         mutate @input_value = evt.target.value
       end
     end
   end
 
   def output
-    # this will re-render whenever input_value changes
+    # rerender whenever input_value changes
 	P { "#{@input_value}" }
   end
 
@@ -127,11 +129,12 @@ class SelectDate < HyperComponent
 
   render(DIV) do
     # DatePicker is a JS Component imported with Webpack
-    # Notice the lambda to pass a Ruby method as a callback
+    # notice the lambda to pass a Ruby method as a callback
     DatePicker(selected: @date,
                todayButton: "Today",
                onChange: ->(date) { mutate @date = date }
     )
+
     # see how we use `` and #{} to bridge JS and Ruby
     H3 { `moment(#{@date}).format('LL')` }
     #  or if you prefer..
@@ -146,6 +149,7 @@ class FaaS < HyperComponent
     BUTTON { 'faastruby.io' }.on(:click) do
       faast_ruby
     end
+
     DIV(class: :block) do
       P { @hello['function_response'].to_s }
       P { "executed in #{@hello['execution_time']} ms" }
