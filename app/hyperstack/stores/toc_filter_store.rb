@@ -6,6 +6,9 @@ class TocFilterStore < HyperStore
 
   class << self
 
+    state_reader :filter
+    state_reader :show_filter_list
+
     def init
       @filter = ''
       @show_filter_list = false
@@ -13,19 +16,7 @@ class TocFilterStore < HyperStore
 
     def filter=(f)
       mutate @filter = f
-      if @filter == ''
-        mutate @show_filter_list = false
-      else
-        mutate @show_filter_list = true
-      end
-    end
-
-    def filter
-      @filter
-    end
-
-    def show_filter_list
-      @show_filter_list
+      mutate @show_filter_list = (@filter == '' ? false : true)
     end
   end
 end

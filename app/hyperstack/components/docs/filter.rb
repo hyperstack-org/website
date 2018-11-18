@@ -1,5 +1,5 @@
 class Filter < HyperComponent
-  
+
   render(DIV) do
     Sem.Grid() do
       Sem.GridRow do
@@ -9,6 +9,7 @@ class Filter < HyperComponent
               TocFilterStore.filter = e.target.value
           end
         end
+
         Sem.GridColumn(width: 4, textAlign: :right) do
           Sem.Button(circular: true, icon: true) { Sem.Icon(name: :close) }.on(:click) do
             TocFilterStore.filter = ''
