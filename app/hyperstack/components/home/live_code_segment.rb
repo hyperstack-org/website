@@ -66,7 +66,8 @@ class LiveCodeSegment < HyperComponent
 
   def compile
     begin
-      @compiled_code = Opal::Compiler.new(@ruby_code).compile
+      # @compiled_code = Opal::Compiler.new(@ruby_code).compile
+      @compiled_code = Opal::compile(@ruby_code)
     rescue Exception => e
       @compile_error_heading = "Compile error"
       @compile_error_message = e.message
