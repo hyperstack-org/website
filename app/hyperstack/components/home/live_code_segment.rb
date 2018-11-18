@@ -1,3 +1,5 @@
+require 'opal/compiler'
+
 class LiveCodeSegment < HyperComponent
 
   param :content
