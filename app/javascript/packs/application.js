@@ -12,6 +12,7 @@ console.log('Hello World from Webpacker')
 // Import all the modules
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, Switch } from 'react-router'
 import * as Sem from 'semantic-ui-react';
 import Marked from 'marked';
 import CodeMirror from 'react-codemirror';
@@ -27,6 +28,9 @@ import moment from 'moment';
 // to the global space, otherwise webpack will encapsulate them locally here
 global.React = React;
 global.ReactDOM = ReactDOM;
+global.Router = Router;
+global.Route = Route;
+global.Switch = Switch;
 global.Sem = Sem;
 global.Marked = Marked;
 global.ReactCodeMirror = CodeMirror;
