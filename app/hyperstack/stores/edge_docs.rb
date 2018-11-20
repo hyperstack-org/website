@@ -45,7 +45,7 @@ module EdgeDocs
 
   def load_installation_section
     section_name = 'installation'
-    display_name = 'Installation'
+    display_name = 'Installation and Configuration'
 
     pages = [
       { id: 0, name: 'installation', repo: 'hyperstack', file: 'install/readme.md',  allow_edit: true },

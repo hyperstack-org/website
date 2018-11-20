@@ -1,6 +1,5 @@
 HELLO_WORLD_EXAMPLE = %q(
 class HelloWorld < HyperComponent
-  
   render(DIV) do
     # try changing 'world' to your own name
     H1 { 'Hello world' }
@@ -11,7 +10,6 @@ end
 
 STYLISH_COMPONENT = %q(
 class HtmlDslExample < HyperComponent
-
   render(DIV) do
     box
     table
@@ -56,7 +54,6 @@ end
 
 STATE_EXAMPLE = %q(
 class UsingState < HyperComponent
-
   render(DIV) do
     # the button method returns an HTML element
     # .on(:click) is an event handeler
@@ -151,9 +148,9 @@ class FaaS < HyperComponent
     end
 
     DIV(class: :block) do
-      P { @hello['function_response'].to_s }
-      P { "executed in #{@hello['execution_time']} ms" }
-    end if @hello
+      P { @hello_response['function_response'].to_s }
+      P { "executed in #{@hello_response['execution_time']} ms" }
+    end if @hello_response
   end
 
   def faast_ruby
@@ -161,8 +158,8 @@ class FaaS < HyperComponent
       data: {time: true}
     ) do |response|
       # this code executes when the promise resolves
-      mutate @hello = response.json if response.ok?
+      # notice that we call mutate when updating the state instance variable
+      mutate @hello_response = response.json if response.ok?
     end
   end
-end
-)
+end)
