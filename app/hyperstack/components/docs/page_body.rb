@@ -25,11 +25,6 @@ class PageBody < HyperComponent
     DIV(id: 'very-top-of-page-body') { }
     Sem.Segment(class: 'page-container') do
       if AppStore.section_stores[@SectionName].loaded? && AppStore.section_stores[@SectionName].pages.any?
-        # if is_edge?
-          Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
-        # else
-          # Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version}" }
-        # end
 
         if @PageName.empty?
           @page = AppStore.section_stores[@SectionName].pages.first
@@ -38,6 +33,13 @@ class PageBody < HyperComponent
         end
 
         edit_button(@page) if @page[:allow_edit]
+
+        if is_edge?
+          Sem.Label(color: 'red', ribbon: :right, size: :large) { "#{AppStore.version}" }
+        else
+          Sem.Label(color: 'blue', ribbon: :right, size: :large) { "#{AppStore.version}" }
+        end
+
         html = @page[:html].to_s
         DIV(class: 'pagebody', id: 'page-body', dangerously_set_inner_HTML: { __html: html } )
       end
