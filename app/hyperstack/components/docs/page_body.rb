@@ -11,11 +11,12 @@ class PageBody < HyperComponent
     @needs_refresh = false
   end
 
-  # after_mount do
-  #   create_doc_headings
-  # end
+  after_mount do
+    create_doc_headings
+  end
 
   after_update do
+    puts "after_update"
     navigate_to_slug
     create_doc_headings
   end
@@ -56,6 +57,8 @@ class PageBody < HyperComponent
       slug = slug.tr('#','')
     end
 
+    puts "navigate_to_slug #{slug}"
+
     element = `document.getElementById(slug)`
     `element.scrollIntoView();` if element
     `window.scrollBy(0, -500);` # to accomidate topbar
@@ -72,6 +75,7 @@ class PageBody < HyperComponent
 
   def create_doc_headings
     ::Element.find('.scrollto-div').each do |mount_point|
+      puts "create_doc_headings #{mount_point.id}"
       path = "/#{AppStore.version}/docs/#{@SectionName}/#{@PageName}##{mount_point.id}"
       element = ReactAPI.create_element(DocHeading, {
         text: mount_point.text,
@@ -79,8 +83,8 @@ class PageBody < HyperComponent
         id: mount_point.id,
         classes: mount_point.class_name
        } )
+       # Mitch - the following line fails intermittently 
       ReactAPI.render(element, mount_point)
-      # puts "class_name #{mount_point.class_name}"
     end
   end
 
