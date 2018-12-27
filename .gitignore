@@ -25,6 +25,8 @@
 /yarn-error.log
 /.owl_cache
 
+/coverage
+
 /public/assets
 /public/packs
 .byebug_history
