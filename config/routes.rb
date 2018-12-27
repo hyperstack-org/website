@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'hyperloop#AppRouter'
-  mount Hyperloop::Engine => '/hyperloop'
+  root 'hyperstack#AppRouter'
+  # root 'hyperstack#TestMe'
+  mount Hyperstack::Engine => '/hyperstack'
   get "/local_docs" => "local_docs#index"
-  match '*all', to: 'hyperloop#AppRouter', via: [:get]
+  match '*all', to: 'hyperstack#AppRouter', via: [:get]
 end

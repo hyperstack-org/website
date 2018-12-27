@@ -86,7 +86,6 @@ render do
       mast_head
       stack_overview
       three_columns_of_text
-      SearchResultModal(history: history)
     end
     AppFooter()
   end
