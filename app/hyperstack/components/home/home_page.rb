@@ -54,7 +54,7 @@ class HomePage < HyperComponent
       Sem.Header(as: :h2, class: 'pink') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own state." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
-      P { "State is helkd in any instance variable. To alert React to a state change we use the mutate method. This will case a rerender of the Component." }
+      P { "State is held in any instance variable. To alert React to a state change we use the mutate method. This will case a rerender of the Component." }
       P { "Components share state via Stores, which you can read about in the DSL docs." }
     end.as_node
 
