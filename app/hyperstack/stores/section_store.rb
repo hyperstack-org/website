@@ -85,7 +85,13 @@ class SectionStore < HyperStore
     HTTP.get( raw_url(page), csrf: false) do |response|
       if response.ok?
         puts "Success getting page #{page}"
-        converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
+        begin
+          converted = MdConverter.new(response.body, @section_name, @section_id, page[:id], page[:name])
+        rescue Exception
+          message = "FAILURE: MdConverter exception (bad markdown) #{raw_url(page)}"
+          `console.warn(message)`
+          AppStore.loading_error!
+        end
         if converted
           page[:headings] = converted.headings
           page[:friendly_doc_name] = converted.headings[0][:text]
@@ -98,7 +104,7 @@ class SectionStore < HyperStore
         else
           message = "FAILURE: Unable to convert #{raw_url(page)}"
           `console.warn(message)`
-          AppStore.loadingError!
+          AppStore.loading_error!
           page = nil
         end
       else

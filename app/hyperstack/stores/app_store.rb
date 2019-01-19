@@ -32,7 +32,7 @@ class AppStore < HyperStore
     end
 
     def loaded?
-      return false unless are_all_stores_loaded?
+      return false unless (are_all_stores_loaded? || @loading_error)
       true
     end
 
