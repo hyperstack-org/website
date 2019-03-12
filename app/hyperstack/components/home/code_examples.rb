@@ -148,8 +148,7 @@ class FaaS < HyperComponent
     end
 
     DIV(class: :block) do
-      P { @hello_response['function_response'].to_s }
-      P { "executed in #{@hello_response['execution_time']} ms" }
+      P { @hello_response.body.to_s }
     end if @hello_response
   end
 
@@ -159,7 +158,7 @@ class FaaS < HyperComponent
     ) do |response|
       # this code executes when the promise resolves
       # notice that we call mutate when updating the state instance variable
-      mutate @hello_response = response.json if response.ok?
+      mutate @hello_response = response if response.ok?
     end
   end
 end)

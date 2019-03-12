@@ -43,7 +43,7 @@ class HomePage < HyperComponent
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
       P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the standard Ruby style rules slightly, but we think it reads better this way." }
       P { "You can specify the CSS class on any HTML element." }
-      P { "We think the Ruby DSL is a lot nicer to work with than ERB or JSX!" }
+      P { "The Hyperstack Component DSL lets you code in Ruby so you don't have to learn a new templating language like ERB or JSX." }
     end.as_node
 
     LiveCodeSegment(content: content, code: STYLISH_COMPONENT  )
@@ -54,8 +54,8 @@ class HomePage < HyperComponent
       Sem.Header(as: :h2, class: 'pink') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own state." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
-      P { "State is held in any instance variable. To alert React to a state change we use the mutate method. This will case a rerender of the Component." }
-      P { "Components share state via Stores, which you can read about in the DSL docs." }
+      P { "State is held in any instance variable. To alert React to a state change we use the mutate method. This will cause a rerender of any component depending on that instance variables.." }
+      P { "Because state is built out of Ruby instance variables, any Ruby class can become a component, removing the need for complex flux loops, reducers, and subscribtions." }
     end.as_node
 
     LiveCodeSegment(content: content, code: STATE_EXAMPLE)
