@@ -38,9 +38,29 @@
 
 ## Deploy
 
-+ Deployments are all through Travis
-+ You can see the deploy history here: https://travis-ci.org/hyperstack-org
-+ Any push to `edge` or `master` triggers a deployment
+Deployment is done directly to Heroku. There are two heroku instances running:
+
+https://hyperstack.org - production instance from master branch
+https://edge.hyperstack.org - staging instance from edge branch
+
+### Setting up a local clone to deploy
+
+**You need to be a member of the Heroku account to be able to deploy, so if you are not then these instructions will not work for you**
+
+#### Setup the staging instance (edge)
++ clone the repo, checkout edge
++ `heroku git:remote -a hyperstack-website-edge` - this will add the remote
++ `git remote rename heroku heroku-staging` - this will rename the heroku remote heroku-edge
+
+#### Setup the production instance (mster)
++ clone the repo, checkout master
++ `heroku git:remote -a hyperstack-website` - this will add the remote
++ `git remote rename heroku heroku-production` - this will rename the heroku remote heroku-edge
+
+### Deploying to edge.hyperstack.org
++ `git push heroku-edge master` - the master is confusing, but basically its saying to deploy to the Heroku master (not the local master branch)
+
+
 
 ## Contributing
 
