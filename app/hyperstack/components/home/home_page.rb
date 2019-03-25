@@ -18,7 +18,6 @@ class HomePage < HyperComponent
         end
 
         AppFooter()
-        H1 { 'master branch' }
         # SearchResultModal()
       end
     end

@@ -57,8 +57,12 @@ https://edge.hyperstack.org - staging instance from edge branch
 + `heroku git:remote -a hyperstack-website` - this will add the remote
 + `git remote rename heroku heroku-production` - this will rename the heroku remote heroku-edge
 
-### Deploying to edge.hyperstack.org
-+ `git push heroku-edge master` - the master is confusing, but basically its saying to deploy to the Heroku master (not the local master branch)
+### Deploying to staging.hyperstack.org
++ `git push heroku-staging master` - the master is confusing, but basically its saying to deploy to the Heroku master (not the local master branch)
+
+### Deploying to hyperstack.org (production)
++ `git push heroku-production master`
+
 
 
 
