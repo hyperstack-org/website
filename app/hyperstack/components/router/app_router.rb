@@ -2,7 +2,7 @@ class AppRouter < HyperComponent
   include Hyperstack::Router
   history :browser
 
-  route do
+  render do
     unless @store_booted
       version = location.pathname.downcase.include?('edge') ? 'edge' : 'edge'
       local_docs = ( `window.location.search.slice(1)`.include?('local_docs') ? true : false )
