@@ -13,14 +13,8 @@ class PageBody < HyperComponent
 
   after_mount do
     create_doc_headings
-  end
-
-  after_update do
-    puts "after_update"
     navigate_to_slug
-    create_doc_headings
   end
-
 
   render(DIV) do
     DIV(id: 'very-top-of-page-body') { }
@@ -60,7 +54,10 @@ class PageBody < HyperComponent
     puts "navigate_to_slug #{slug}"
 
     element = `document.getElementById(slug)`
-    `element.scrollIntoView();` if element
+    if element
+      `element.scrollIntoView();`
+      `element.scrollTop -= 100;`
+    end
     `window.scrollBy(0, -500);` # to accomidate topbar
   end
 
@@ -83,7 +80,7 @@ class PageBody < HyperComponent
         id: mount_point.id,
         classes: mount_point.class_name
        } )
-       # Mitch - the following line fails intermittently 
+       # Mitch - the following line fails intermittently
       ReactAPI.render(element, mount_point)
     end
   end
