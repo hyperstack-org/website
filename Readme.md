@@ -45,26 +45,24 @@ https://edge.hyperstack.org - staging instance from edge branch
 
 ### Setting up a local clone to deploy
 
-**You need to be a member of the Heroku account to be able to deploy, so if you are not then these instructions will not work for you**
+**You need to be a member of the Hyperstack Heroku account to be able to deploy, so if you are not then these instructions will not work for you. If you would like to participate please reach out in Gitter**
 
-#### Setup the staging instance (edge)
-+ clone the repo, checkout edge
-+ `heroku git:remote -a hyperstack-website-edge` - this will add the remote
-+ `git remote rename heroku heroku-staging` - this will rename the heroku remote heroku-edge
+#### Setup the staging instance
++ clone the repo
++ `heroku git:remote -a hyperstack-website-staging` - this will add the remote
++ `git remote rename heroku heroku-staging` - this will rename the heroku remote heroku-staging
 
-#### Setup the production instance (mster)
+#### Setup the production instance
 + clone the repo, checkout master
 + `heroku git:remote -a hyperstack-website` - this will add the remote
-+ `git remote rename heroku heroku-production` - this will rename the heroku remote heroku-edge
++ `git remote rename heroku heroku-production` - this will rename the heroku remote heroku-production
 
 ### Deploying to staging.hyperstack.org
 + `git push heroku-staging master` - the master is confusing, but basically its saying to deploy to the Heroku master (not the local master branch)
 
 ### Deploying to hyperstack.org (production)
 + `git push heroku-production master`
-
-
-
++ Remember - if you break it, you fix it!
 
 ## Contributing
 
