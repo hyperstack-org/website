@@ -40,10 +40,10 @@
 
 Deployment is done directly to Heroku. There are two heroku instances running:
 
-https://hyperstack.org - production instance from master branch
-https://edge.hyperstack.org - staging instance from edge branch
++ https://hyperstack.org - production instance
++ https://staging.hyperstack.org - staging instance
 
-### Setting up a local clone to deploy
+### Deploying to staging or production
 
 **You need to be a member of the Hyperstack Heroku account to be able to deploy, so if you are not then these instructions will not work for you. If you would like to participate please reach out in Gitter**
 
