@@ -1,30 +1,46 @@
 require 'helpers/helpers'
 
 class AppMenu < HyperComponent
-
-  render(DIV, class: 'gray-background') do
-    Sem.Container(className: 'Top') do
-      Sem.Menu(secondary: true, className: 'gray-background') do
-        Sem.MenuItem do
-          A { SPAN(class: 'top-nav') {'Hyperstack'} }.on(:click) { AppStore.history.push "/#{AppStore.version}" }
-        end
-        Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Docs'} }.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
-         end
-        Sem.MenuItem do
-          A { SPAN(class: 'top-nav') {'Github'} }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
-        end
-        Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
-         end
-         Sem.MenuItem(position: 'right') do
-           IFRAME(class: 'github',
+  render(DIV) do
+      Mui.AppBar(position: :static, className: 'gray-background') do
+        Mui.Toolbar() do
+          Mui.Button(color: :secondary ) {'Hyperstack'}.on(:click) { AppStore.history.push "/#{AppStore.version}" }
+          Mui.Button(color: :secondary ) {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+          Mui.Button(color: :secondary ) {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+          Mui.Button(color: :secondary ) {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+          DIV(className: 'right') do
+            IFRAME(class: 'github',
              src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
              frameBorder: '0', scrolling: '0', width: '100', height: '20')
-         end
+          end
+        end
       end
-    end
   end
+####
+  # render(DIV, class: 'gray-background') do
+  #   Sem.Container(className: 'Top') do
+  #     Sem.Menu(secondary: true, className: 'gray-background') do
+  #       Sem.MenuItem do
+  #         A { SPAN(class: 'top-nav') {'Hyperstack'} }.on(:click) { AppStore.history.push "/#{AppStore.version}" }
+  #       end
+  #       Sem.MenuItem do
+  #          A { SPAN(class: 'top-nav') {'Docs'} }.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+  #        end
+  #       Sem.MenuItem do
+  #         A { SPAN(class: 'top-nav') {'Github'} }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+  #       end
+  #       Sem.MenuItem do
+  #          A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+  #        end
+  #        Sem.MenuItem(position: 'right') do
+  #          IFRAME(class: 'github',
+  #            src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
+  #            frameBorder: '0', scrolling: '0', width: '100', height: '20')
+  #        end
+  #     end
+  #   end
+  # end
+#####
 
   # render do
   #   DIV(class: 'following bar fixed') do

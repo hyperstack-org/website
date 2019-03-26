@@ -13,7 +13,10 @@ console.log('Hello World from Webpacker')
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Router, Route, Switch } from 'react-router'
+
 import * as Sem from 'semantic-ui-react';
+import * as Mui from '@material-ui/core';
+
 import Marked from 'marked';
 import CodeMirror from 'react-codemirror';
 import CodeMirrorRuby from 'codemirror/mode/ruby/ruby';
@@ -31,7 +34,10 @@ global.ReactDOM = ReactDOM;
 // global.Router = Router;
 // global.Route = Route;
 // global.Switch = Switch;
+
 global.Sem = Sem;
+global.Mui = Mui;
+
 global.Marked = Marked;
 global.ReactCodeMirror = CodeMirror;
 global.CodeMirrorRuby = CodeMirrorRuby;

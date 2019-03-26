@@ -125,3 +125,7 @@ a:hover {
 .cursor-pointer {
    cursor:pointer;
  }
+
+.right {
+    margin-left: auto
+}

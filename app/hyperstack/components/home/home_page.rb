@@ -1,25 +1,33 @@
 class HomePage < HyperComponent
   render do
     DIV() do
-      Sem.Container(fluid: true) do
-        AppMenu()
-        MastHead()
-        Sem.Divider(hidden: true)
-        Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
-        Sem.Divider()
 
-        Sem.Container() do
-          simple_components
-          html_dsl
-          stateful_components
-          javascript_in_ruby
-          serverless
-          get_started
-        end
+      AppMenu()
+      # Mui.Grid(:container, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 24) do
 
-        AppFooter()
-        # SearchResultModal()
+        # Mui.Grid(:item, xs: 12, className: 'gray-background') do
+        #   Mui.Button(color: :secondary) {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+        # end
       end
+      # Sem.Container(fluid: true) do
+      #   AppMenu()
+      #   MastHead()
+      #   Sem.Divider(hidden: true)
+      #   Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
+      #   Sem.Divider()
+      #
+      #   Sem.Container() do
+      #     simple_components
+      #     html_dsl
+      #     stateful_components
+      #     javascript_in_ruby
+      #     serverless
+      #     get_started
+      #   end
+      #
+      #   AppFooter()
+      #   # SearchResultModal()
+      # end
     end
   end
 
