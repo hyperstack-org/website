@@ -1,14 +1,33 @@
 class HomePage < HyperComponent
   render do
     DIV() do
-
-      AppMenu()
+      Mui.Grid(:container,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40) do
+        BR()
+        Mui.Grid(:item, alignContent: :center, xs: 12) do
+          AppMenu()
+        end
+        BR(){}
+        BR(){}
+        BR(){}
+        BR(){}
+        Mui.Grid(:item, alignContent: :center, xs: 12) do
+          MastHead()
+        end
+      end
+      Sem.Container() do
+        simple_components
+        # html_dsl
+        # stateful_components
+        # javascript_in_ruby
+        # serverless
+        get_started
+      end
       # Mui.Grid(:container, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 24) do
 
         # Mui.Grid(:item, xs: 12, className: 'gray-background') do
         #   Mui.Button(color: :secondary) {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
         # end
-      end
+
       # Sem.Container(fluid: true) do
       #   AppMenu()
       #   MastHead()
