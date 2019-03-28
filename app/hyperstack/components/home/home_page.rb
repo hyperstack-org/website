@@ -135,6 +135,11 @@ class HomePage < HyperComponent
         SPAN { ' for ways in which you can help.' }
       end
     end
+    Sem.Grid(columns: 1, textAlign: :center, container: true) do
+      Sem.Button(primary: true) { 'Persistence and push updates in 2 lines of code! (Blog post by @catmando)' }
+      .on(:click) { `window.open('https://medium.com/@mitch_23203/the-exact-same-app-in-hyperstack-part-ii-5b062074ec20', "_blank");`}
+    end
+
   end
 
   def get_started
