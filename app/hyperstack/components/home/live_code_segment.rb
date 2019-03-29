@@ -10,10 +10,10 @@ class LiveCodeSegment < HyperComponent
     @random = random_key
   end
 
-  render(DIV, class: 'block') do
+  render(DIV, class: 'block gray-text') do
 
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true, xs: 8, sm: 4) do
+      Mui.Grid(item: true, xs: 8, sm: 6) do
         @Content
       end
       Mui.Grid(item: true, xs: 8, sm: 4) do
@@ -34,7 +34,7 @@ class LiveCodeSegment < HyperComponent
         end
       end
 
-      Mui.Grid(item: true, xs: 8) do
+      Mui.Grid(item: true, justify: :center, xs: 8) do
         unless compile && evaluate && render_component
                 Sem.Message(negative: true) do
                   H3 { @compile_error_heading }

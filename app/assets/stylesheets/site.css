@@ -47,7 +47,7 @@
 }
 
 .block {
-   padding-top: 25px;
+   padding-top: 35px;
    padding-bottom: 25px;
 }
 
@@ -169,4 +169,12 @@ a:hover {
 
 .grow {
     flex: 1;
+}
+
+p {
+   color: #cabfbf !important;
+}
+
+a {
+   color: #cabfbf !important;
 }

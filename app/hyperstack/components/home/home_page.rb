@@ -19,11 +19,26 @@ class HomePage < HyperComponent
 
         BR {}
         BR {}
+
+
+        BR {}
+        BR {}
+        BR {}
+        DIV(class: 'text-center') do
+          Mui.Grid(container:true ,alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 40) do
+            three_columns_of_text
+          end
+        end
       end
 
       DIV(class: :grey) do
 
         BR {}
+        BR {}
+        BR {}
+        BR {}
+        BR {}
+
         DIV(class: 'text-center') do
           Mui.Button(variant: :contained, color: :secondary) {"Get started with Hyperstack on Rails in under 5 minutes" }.
               on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");` }
@@ -32,6 +47,11 @@ class HomePage < HyperComponent
         BR {}
 
         simple_components
+        html_dsl
+        stateful_components
+        javascript_in_ruby
+        serverless
+      # get_started
 
       end
       # Mui.Grid(:container, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 24) do
@@ -149,39 +169,37 @@ class HomePage < HyperComponent
   end
 
   def three_columns_of_text
-    Sem.Grid(columns: 3, textAlign: :center, container: true) do
+        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+          H2(class: 'pink-text') do
+            Sem.Icon(name: 'diamond', size: :big)
+            DIV { 'Isomorphic' }
+          end
+          P do
+            SPAN { 'One language. One model. One set of tests.' }
+            SPAN { 'The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code.' }
+          end
+        end
 
-      Sem.GridColumn do
-        H2(class: 'pink-text') do
-          Sem.Icon(name: 'diamond', size: :big)
-          DIV { 'Isomorphic' }
+        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+          H2(class: 'yellow-text') do
+            Sem.Icon(name: 'code', size: :big)
+            DIV { 'Fast' }
+          end
+          P { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
         end
-        P do
-          SPAN { 'One language. One model. One set of tests.' }
-          SPAN { 'The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code.' }
-        end
-      end
 
-      Sem.GridColumn do
-        H2(class: 'green-text') do
-          Sem.Icon(name: 'code', size: :big)
-          DIV { 'Fast' }
-        end
-        P { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
-      end
+        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+          H2(class: 'white-text') do
+            Sem.Icon(name: 'code branch', size: :big)
+            DIV { 'Open Source' }
+          end
 
-      Sem.GridColumn do
-        H2(class: 'blue-text') do
-          Sem.Icon(name: 'code branch', size: :big)
-          DIV { 'Open Source' }
+          SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
+          A { 'Contributing Guidelines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
+          SPAN { ' and ' }
+          A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
+          SPAN { ' for ways in which you can help.' }
         end
-        SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
-        A { 'Contributing Guidelines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
-        SPAN { ' and ' }
-        A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
-        SPAN { ' for ways in which you can help.' }
-      end
-    end
   end
 
   def get_started
