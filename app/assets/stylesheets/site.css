@@ -1,7 +1,6 @@
 
 .main-page {
   /*background-color: #F6F6F6*/
-  background-image: linear-gradient(hsl(220, 13%, 18%), #68333e);
 
 }
 
@@ -68,6 +67,10 @@
  color: #e5c07b !important;
 }
 
+.white-text {
+ color: white !important;
+}
+
 .pink-text {
  color: #D53475 !important;
 }
@@ -93,7 +96,7 @@
 }
 
 .other-background {
-    background: rgb(255, 255, 255) !important;
+    background: rgb(0, 0, 0, 0.2) !important;
 }
 
 .hyperlooppink { color: #e81176;}
@@ -143,4 +146,27 @@ a:hover {
 
 .text-center {
    text-align: center;
+}
+
+.gradient{
+    background-image: linear-gradient(#68333e, hsl(220, 13%, 18%));
+}
+
+.grey{
+   background-color: hsl(220, 13%, 18%);
+}
+
+.paper{
+    paddingTop: 20em;
+    paddingBottom: 20em;
+}
+
+.exercise-type-card {
+    max-width: 400px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.grow {
+    flex: 1;
 }

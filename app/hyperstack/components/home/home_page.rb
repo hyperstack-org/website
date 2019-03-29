@@ -1,26 +1,38 @@
 class HomePage < HyperComponent
   render do
     DIV() do
-      Mui.Grid(:container,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40) do
-        BR()
-        Mui.Grid(:item, alignContent: :center, xs: 12) do
-          AppMenu()
+      DIV(class: :gradient) do
+
+        Mui.Grid(:container,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40) do
+          BR()
+          Mui.Grid(:item, alignContent: :center, xs: 12) do
+            AppMenu()
+          end
         end
+
         BR(){}
         BR(){}
         BR(){}
         BR(){}
-        Mui.Grid(:item, alignContent: :center, xs: 12) do
-          MastHead()
-        end
+
+        MastHead()
+
+        BR {}
+        BR {}
       end
-      Sem.Container() do
+
+      DIV(class: :grey) do
+
+        BR {}
+        DIV(class: 'text-center') do
+          Mui.Button(variant: :contained, color: :secondary) {"Get started with Hyperstack on Rails in under 5 minutes" }.
+              on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");` }
+        end
+        BR {}
+        BR {}
+
         simple_components
-        # html_dsl
-        # stateful_components
-        # javascript_in_ruby
-        # serverless
-        get_started
+
       end
       # Mui.Grid(:container, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 24) do
 
@@ -44,13 +56,21 @@ class HomePage < HyperComponent
       #     get_started
       #   end
       #
-      #   AppFooter()
+        AppFooter()
       #   # SearchResultModal()
       # end
     end
   end
+  def container_default
+    {container:true ,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40}
+  end
+
+  def item(n)
+    {item: true, alignContent: :center, xs: n}
+  end
 
   def simple_components
+
     content = DIV do
       Sem.Header(as: :h2, class: 'pink') { "Simple Components" }
       P { 'A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements.' }

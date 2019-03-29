@@ -11,30 +11,71 @@ class LiveCodeSegment < HyperComponent
   end
 
   render(DIV, class: 'block') do
-    Sem.Divider(hidden: true)
-    Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
-      Sem.GridColumn(width: 4, className: 'tight-box') { @Content }
-      Sem.GridColumn(width: 12, className: 'tight-box') do
-        Sem.Container(className: 'white-background outline-box') do
-          tabs
-        end
-      end
-    end
-    Sem.Divider(hidden: true)
-  end
 
-  def code_editor_and_results
-    Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
-      Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
-      Sem.GridColumn(width: 4) do
-        unless compile && evaluate && render_component
-          Sem.Message(negative: true) do
-            H3 { @compile_error_heading }
-            P { @compile_error_message }
+    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
+      Mui.Grid(item: true, xs: 8, sm: 4) do
+        @Content
+      end
+      Mui.Grid(item: true, xs: 8, sm: 4) do
+        Mui.Card() do
+          Mui.Tabs(value: 0) do
+            Mui.Tab(label: "Live Ruby") {}
+            Mui.Tab(label: "Generated JS") {}
+          end
+
+
+
+          Mui.CardContent() do
+            Mui.Typography(variant: :h5, component: :h3) do
+              # "Simple Component"
+              code_editor_and_results.as_node
+            end
           end
         end
       end
+
+      Mui.Grid(item: true, xs: 8) do
+        unless compile && evaluate && render_component
+                Sem.Message(negative: true) do
+                  H3 { @compile_error_heading }
+                  P { @compile_error_message }
+                end
+        end
+      end
+
     end
+
+    # Sem.Divider(hidden: true)
+    # Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
+    #   Sem.GridColumn(width: 4, className: 'tight-box') { @Content }
+    #   Sem.GridColumn(width: 12, className: 'tight-box') do
+    #     Sem.Container(className: 'white-background outline-box') do
+    #       tabs
+    #     end
+    #   end
+    # end
+    # Sem.Divider(hidden: true)
+  end
+
+  def code_editor_and_results
+    # Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
+    #   Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
+    #   Sem.GridColumn(width: 4) do
+    #     unless compile && evaluate && render_component
+    #       Sem.Message(negative: true) do
+    #         H3 { @compile_error_heading }
+    #         P { @compile_error_message }
+    #       end
+    #     end
+    #   end
+    # end
+
+    # Mui.Grid(container:true, justify: :center, spacing: 24) do
+    #   Mui.Grid(item: true, xs: 24) do
+        code_mirror_editor
+    #   end
+    # end
+
   end
 
   def tabs
