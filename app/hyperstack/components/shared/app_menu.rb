@@ -17,6 +17,9 @@ class AppMenu < HyperComponent
         Sem.MenuItem do
            A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
          end
+         Sem.MenuItem do
+            A { SPAN(class: 'top-nav') {'Ask a Question'} }.on(:click) { `window.open('https://stackoverflow.com/questions/ask?tags=hyperstack+ruby-on-rails+reactjs+ruby+isomorphic', "_blank");` }
+          end
          Sem.MenuItem(position: 'right') do
            IFRAME(class: 'github',
              src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
