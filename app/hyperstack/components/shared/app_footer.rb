@@ -26,6 +26,8 @@ class AppFooter < HyperComponent
     BR()
     A { 'Gitter chat' }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
     BR()
+    A { 'Stack Overflow questions' }.on(:click) { `window.open('https://stackoverflow.com/questions/ask?tags=hyperstack+ruby-on-rails+reactjs+ruby+isomorphic', "_blank");` }
+    BR()
     A { 'Docs' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/docs', "_blank");` }
     BR()
     A { 'License' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/LICENSE', "_blank");` }
