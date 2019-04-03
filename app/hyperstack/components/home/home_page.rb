@@ -45,7 +45,9 @@ class HomePage < HyperComponent
         end
         BR {}
         BR {}
+      end
 
+      DIV(class: 'white-background') do
         simple_components
         html_dsl
         stateful_components
@@ -169,7 +171,7 @@ class HomePage < HyperComponent
   end
 
   def three_columns_of_text
-        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
           H2(class: 'pink-text') do
             Sem.Icon(name: 'diamond', size: :big)
             DIV { 'Isomorphic' }
@@ -180,7 +182,7 @@ class HomePage < HyperComponent
           end
         end
 
-        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
           H2(class: 'yellow-text') do
             Sem.Icon(name: 'code', size: :big)
             DIV { 'Fast' }
@@ -188,7 +190,7 @@ class HomePage < HyperComponent
           P { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
         end
 
-        Mui.Grid(:item, alignContent: :center, xs: 8, sm: 4) do
+        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
           H2(class: 'white-text') do
             Sem.Icon(name: 'code branch', size: :big)
             DIV { 'Open Source' }

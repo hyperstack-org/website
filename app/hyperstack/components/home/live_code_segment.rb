@@ -11,21 +11,21 @@ class LiveCodeSegment < HyperComponent
   end
 
   render(DIV, class: 'block gray-text') do
-
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true, xs: 8, sm: 6) do
+      Mui.Grid(item: true,justify: :center, xs: 8, sm: 8, md: 6) do
         @Content
       end
-      Mui.Grid(item: true, xs: 8, sm: 4) do
+    end
+    BR{}
+
+    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 6) do
+      Mui.Grid(item: true, justify: :center, xs: 10, sm: 10, md: 6) do
         Mui.Card() do
           Mui.Tabs(value: 0) do
             Mui.Tab(label: "Live Ruby") {}
             Mui.Tab(label: "Generated JS") {}
           end
-
-
-
-          Mui.CardContent() do
+          Mui.CardContent(class:'grey') do
             Mui.Typography(variant: :h5, component: :h3) do
               # "Simple Component"
               code_editor_and_results.as_node
@@ -33,17 +33,19 @@ class LiveCodeSegment < HyperComponent
           end
         end
       end
-
-      Mui.Grid(item: true, justify: :center, xs: 8) do
+    end
+    BR{}
+    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
+      Mui.Grid(item: true, justify: :center, xs: 8, sm: 8, md: 6) do
         unless compile && evaluate && render_component
-                Sem.Message(negative: true) do
-                  H3 { @compile_error_heading }
-                  P { @compile_error_message }
-                end
+          Sem.Message(negative: true) do
+            H3 { @compile_error_heading }
+            P { @compile_error_message }
+          end
         end
       end
-
     end
+
 
     # Sem.Divider(hidden: true)
     # Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
