@@ -17,23 +17,24 @@ class MastHead < HyperComponent
 end
 
 def tag_line
-  Mui.Grid(:item, justify: :center, xs: 12) do
-    DIV(class: 'text-center') {'Think JavaScript is your only option for the front-end?'}
-  end
-  Mui.Grid(:item, xs: 12) do
-    DIV(class: 'text-center') { STRONG{'Think again.'}}
-  end
-  Mui.Grid(:item, xs: 12) do
-    DIV(class: 'text-center') do
-      SPAN { 'Hyperstack is a ' }
-      SPAN(class: 'pink-text') { STRONG { 'Ruby' } }
-      SPAN { ' DSL, compiled by ' }
-      SPAN(class: 'yellow-text') { 'Opal' }
-      SPAN {', bundled by ' }
-      SPAN(class: 'yellow-text') {'Webpack' }
-      SPAN {' and powered by ' }
-      SPAN(class: 'yellow-text') { 'React.' }
+  DIV(class: 'text-center space-left space-right') do
+    Mui.Grid(:item, justify: :center, xs: 12) do
+      DIV(class: 'text-center') {'Think JavaScript is your only option for the front-end?'}
+    end
+    Mui.Grid(:item, xs: 12) do
+      DIV(class: 'text-center') { STRONG{'Think again.'}}
+    end
+    Mui.Grid(:item, xs: 12) do
+      DIV(class: 'text-center') do
+        SPAN { 'Hyperstack is a ' }
+        SPAN(class: 'pink-text') { STRONG { 'Ruby' } }
+        SPAN { ' DSL, compiled by ' }
+        SPAN(class: 'yellow-text') { 'Opal' }
+        SPAN {', bundled by ' }
+        SPAN(class: 'yellow-text') {'Webpack' }
+        SPAN {' and powered by ' }
+        SPAN(class: 'yellow-text') { 'React.' }
+      end
     end
   end
-
 end

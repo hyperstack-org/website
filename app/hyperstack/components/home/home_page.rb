@@ -12,6 +12,17 @@ class HomePage < HyperComponent
 
         BR(){}
         BR(){}
+
+        Mui.Toolbar() do
+
+          DIV(className: 'right') do
+            IFRAME(class: 'github',
+                   src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
+                   frameBorder: '0', scrolling: '0', width: '100', height: '20')
+
+          end
+        end
+
         BR(){}
         BR(){}
 
@@ -24,7 +35,7 @@ class HomePage < HyperComponent
         BR {}
         BR {}
         BR {}
-        DIV(class: 'text-center') do
+        DIV(class: 'text-center space-left space-right') do
           Mui.Grid(container:true ,alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 40) do
             three_columns_of_text
           end
@@ -56,33 +67,12 @@ class HomePage < HyperComponent
       # get_started
 
       end
-      # Mui.Grid(:container, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 24) do
 
-        # Mui.Grid(:item, xs: 12, className: 'gray-background') do
-        #   Mui.Button(color: :secondary) {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
-        # end
+      AppFooter()
 
-      # Sem.Container(fluid: true) do
-      #   AppMenu()
-      #   MastHead()
-      #   Sem.Divider(hidden: true)
-      #   Sem.Container(textAlign: :center, class: 'block') { three_columns_of_text }
-      #   Sem.Divider()
-      #
-      #   Sem.Container() do
-      #     simple_components
-      #     html_dsl
-      #     stateful_components
-      #     javascript_in_ruby
-      #     serverless
-      #     get_started
-      #   end
-      #
-        AppFooter()
-      #   # SearchResultModal()
-      # end
     end
   end
+
   def container_default
     {container:true ,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40}
   end
@@ -176,7 +166,7 @@ class HomePage < HyperComponent
             Sem.Icon(name: 'diamond', size: :big)
             DIV { 'Isomorphic' }
           end
-          P do
+          P(class: 'light-grey-text') do
             SPAN { 'One language. One model. One set of tests.' }
             SPAN { 'The same business logic and domain Models are running on the clients and the server. You have unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code.' }
           end
@@ -187,20 +177,21 @@ class HomePage < HyperComponent
             Sem.Icon(name: 'code', size: :big)
             DIV { 'Fast' }
           end
-          P { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
+          P(class: 'light-grey-text') { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
         end
 
         Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
-          H2(class: 'white-text') do
+          H2(class: 'light-grey-text') do
             Sem.Icon(name: 'code branch', size: :big)
             DIV { 'Open Source' }
           end
-
-          SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
-          A { 'Contributing Guidelines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
-          SPAN { ' and ' }
-          A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
-          SPAN { ' for ways in which you can help.' }
+          DIV(class: 'light-grey-text') do
+            SPAN { 'Hyperstack is open source software (MIT license), so not only is it free to use, you can also help make it better. See the ' }
+            A { 'Contributing Guidelines' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/CONTRIBUTING.md', "_blank");` }
+            SPAN { ' and ' }
+            A { 'Roadmap' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/blob/edge/ROADMAP.md', "_blank");` }
+            SPAN { ' for ways in which you can help.' }
+          end
         end
   end
 
