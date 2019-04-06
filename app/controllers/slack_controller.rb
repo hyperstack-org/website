@@ -7,4 +7,7 @@ class SlackController < ActionController::Base
     redirect_to 'https://join.slack.com/t/hyperstack-org/shared_invite/enQtNTg4NTI5NzQyNTYyLTYzYTZhYTE2MGE5ZTQ0OTAyNDVlMzE5OTk5NWNmZmMzYjhkZGY1MDc3MGFjMGZlYzE5ZWJhZDJiMmQyYzAxMjY'
   end
 
+  def join
+    redirect_to 'https://join.slack.com/t/hyperstack-org/shared_invite/enQtNTg4NTI5NzQyNTYyLTYzYTZhYTE2MGE5ZTQ0OTAyNDVlMzE5OTk5NWNmZmMzYjhkZGY1MDc3MGFjMGZlYzE5ZWJhZDJiMmQyYzAxMjY'
+  end
 end
