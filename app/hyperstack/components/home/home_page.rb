@@ -1,11 +1,17 @@
 class HomePage < HyperComponent
+
+  before_mount do
+    @active_example = 0
+    @next_example = "Stylish Components"
+  end
+
   render do
     DIV() do
       DIV(class: :gradient) do
 
         Mui.Grid(:container,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40) do
           BR()
-          Mui.Grid(:item, alignContent: :center, xs: 12) do
+          Mui.Grid(:item, xs: 12) do
             AppMenu()
           end
         end
@@ -47,26 +53,60 @@ class HomePage < HyperComponent
         BR {}
         BR {}
         BR {}
+        DIV(class: 'anchor'){}
+        BR {}
+        BR {}
+        BR {}
+      end
+      DIV(class: 'white-background') do
+
+        case @active_example
+        when 0
+          LiveCodeSegment(key: :HELLO_WORLD_EXAMPLE, content: simple_components, code: HELLO_WORLD_EXAMPLE)
+        when 1
+          LiveCodeSegment(key: :STYLISH_COMPONENT,content: html_dsl, code: STYLISH_COMPONENT)
+        when 2
+          LiveCodeSegment(key: :STATE_EXAMPLE, content: stateful_components, code: STATE_EXAMPLE)
+        when 3
+          LiveCodeSegment(key: :JAVASCRIPT_COMPONENTS,content: javascript_in_ruby, code: JAVASCRIPT_COMPONENTS)
+        when 4
+          LiveCodeSegment(key: :SERVERLESS,content: serverless, code: SERVERLESS)
+        end
+        BR {}
+        DIV(class: 'text-center space-left space-right') do
+          Mui.Button(variant: :contained, color: :secondary) {"Next Example: #{@next_example}"}.on(:click) do
+            `var element_to_scroll_to = $('.anchor')[0];`
+            `element_to_scroll_to.scrollIntoView();`
+            @active_example < 4 ? @active_example +=1 : @active_example = 0
+            case @active_example
+            when 0
+              @next_example = "HTML DSL"
+            when 1
+              @next_example = "STATEFUL components"
+            when 2
+              @next_example = "Bridging Ruby and JavaScript"
+            when 3
+              @next_example = "Serverless & RPC"
+            when 4
+              @next_example = "simple components"
+            end
+            mutate @active_example
+          end
+        end
         BR {}
         BR {}
 
+        Sem.Image(src: '/images/logos-gray.png', size: :large, centered: true)
+
+        BR {}
+        BR {}
         DIV(class: 'text-center') do
           Mui.Button(variant: :contained, color: :secondary) {"Get started with Hyperstack on Rails in under 5 minutes" }.
               on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");` }
         end
         BR {}
-        BR {}
       end
 
-      DIV(class: 'white-background') do
-        simple_components
-        html_dsl
-        stateful_components
-        javascript_in_ruby
-        serverless
-      # get_started
-
-      end
 
       AppFooter()
 
@@ -78,50 +118,47 @@ class HomePage < HyperComponent
   end
 
   def item(n)
-    {item: true, alignContent: :center, xs: n}
+    {item: true, xs: n}
   end
 
   def simple_components
 
-    content = DIV do
+    # LiveCodeSegment(content: content, code: HELLO_WORLD_EXAMPLE)
+    DIV do
       Sem.Header(as: :h2, class: 'pink') { "Simple Components" }
-      P { 'A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements.' }
-      SPAN { 'Under the covers, we use '}
-      A(href: 'https://opalrb.com/', target: "_blank") { 'Opal' }
-      SPAN { ' to compile your Ruby code into ' }
-      A(href: 'https://reactjs.org/', target: "_blank") { 'React' }
-      SPAN {' Components.' }
+        P { 'A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements.' }
+        SPAN { 'Under the covers, we use '}
+        A(href: 'https://opalrb.com/', target: "_blank") { 'Opal' }
+        SPAN { ' to compile your Ruby code into ' }
+        A(href: 'https://reactjs.org/', target: "_blank") { 'React' }
+        SPAN {' Components.' }
     end.as_node
 
-    LiveCodeSegment(content: content, code: HELLO_WORLD_EXAMPLE)
   end
 
   def html_dsl
-    content = DIV do
-      Sem.Header(as: :h2, class: 'pink') { "HTML DSL" }
+    # LiveCodeSegment(content: content, code: STYLISH_COMPONENT  )
+    DIV do
+    Sem.Header(as: :h2, class: 'pink') { "HTML DSL" }
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
       P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the standard Ruby style rules slightly, but we think it reads better this way." }
       P { "You can specify the CSS class on any HTML element." }
       P { "The Hyperstack Component DSL lets you code in Ruby so you don't have to learn a new templating language like ERB or JSX." }
     end.as_node
-
-    LiveCodeSegment(content: content, code: STYLISH_COMPONENT  )
   end
 
   def stateful_components
-    content = DIV do
+    DIV do
       Sem.Header(as: :h2, class: 'pink') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own state." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
       P { "State is held in any instance variable. To alert React to a state change we use the mutate method. This will cause a rerender of any component depending on that instance variables.." }
       P { "Because state is built out of Ruby instance variables, any Ruby class can become a component, removing the need for complex flux loops, reducers, and subscribtions." }
     end.as_node
-
-    LiveCodeSegment(content: content, code: STATE_EXAMPLE)
   end
 
   def javascript_in_ruby
-    content = DIV do
+    DIV do
       Sem.Header(as: :h2, class: 'pink') { "Bridging Ruby and JavaScript" }
       P { "Hyperstack gives you full access to the entire universe of JavaScript libraries and components directly within your Ruby code." }
       P { "Everything you can do in JavaScript is simple to do in Ruby; this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks." }
@@ -138,14 +175,11 @@ class HomePage < HyperComponent
       SPAN { A(href: 'https://www.npmjs.com/package/react-datepicker', target: "_blank") { 'React DatePicker' } }
       SPAN { " (which is a React.JS component) as if it were a Ruby class and also see how we used `backticks` to jump into native Javascript to use " }
       A(href: 'https://momentjs.com/', target: "_blank") { 'moment.js' }
-
     end.as_node
-
-    LiveCodeSegment(content: content, code: JAVASCRIPT_COMPONENTS)
   end
 
   def serverless
-    content = DIV do
+    DIV do
       Sem.Header(as: :h2, class: 'pink') { "Serverless & RPC" }
       P { "Making HTTP requests is straightforward in Hyperstack." }
       SPAN { "In this example, we are calling a function on " }
@@ -156,12 +190,10 @@ class HomePage < HyperComponent
       P { 'Calling any REST-based API is precisely the same process (although you are likely to put your HTTP calls in a before_mount lifecycle method).' }
       P { 'Notice how HTTP.get returns a promise which executes the block only when it returns.' }
     end.as_node
-
-    LiveCodeSegment(content: content, code: SERVERLESS)
   end
 
   def three_columns_of_text
-        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
+        Mui.Grid(:item, xs: 12, sm: 10, md: 4) do
           H2(class: 'pink-text') do
             Sem.Icon(name: 'diamond', size: :big)
             DIV { 'Isomorphic' }
@@ -172,7 +204,7 @@ class HomePage < HyperComponent
           end
         end
 
-        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
+        Mui.Grid(:item, xs: 12, sm: 10, md: 4) do
           H2(class: 'yellow-text') do
             Sem.Icon(name: 'code', size: :big)
             DIV { 'Fast' }
@@ -180,7 +212,7 @@ class HomePage < HyperComponent
           P(class: 'light-grey-text') { 'Build interactive Web applications quickly. Hyperstack encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperstack takes care of much of the hassle of Web development.' }
         end
 
-        Mui.Grid(:item, alignContent: :center, xs: 12, sm: 10, md: 4) do
+        Mui.Grid(:item, xs: 12, sm: 10, md: 4) do
           H2(class: 'light-grey-text') do
             Sem.Icon(name: 'code branch', size: :big)
             DIV { 'Open Source' }

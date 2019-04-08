@@ -8,27 +8,41 @@ class LiveCodeSegment < HyperComponent
   before_mount do
     @ruby_code = @Code
     @random = random_key
+    @tab_value = 0
   end
+
+  # before_receive_props do |next_props|
+    # mutate @ruby_code = next_props[:code]
+    # mutate @tab_value = 0
+    # # alert @ruby_code
+    # mutate @random = random_key
+  # end
 
   render(DIV, class: 'block gray-text') do
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true,justify: :center, xs: 8, sm: 8, md: 6) do
+      Mui.Grid(item: true, xs: 8, sm: 8, md: 6) do
         @Content
       end
     end
     BR{}
 
-    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 6) do
-      Mui.Grid(item: true, justify: :center, xs: 10, sm: 10, md: 6) do
+    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
+      Mui.Grid(item: true, xs: 10, sm: 10, md: 8, lg: 6) do
         Mui.Card() do
-          Mui.Tabs(value: 0) do
+          Mui.Tabs(value: @tab_value) do
             Mui.Tab(label: "Live Ruby") {}
             Mui.Tab(label: "Generated JS") {}
+          end.on(:change) do |evt, value|
+            tab value
           end
+
           Mui.CardContent(class:'grey') do
             Mui.Typography(variant: :h5, component: :h3) do
               # "Simple Component"
-              code_editor_and_results.as_node
+              # code_editor_and_results.as_node
+              # alert @tab_value
+              # tabs[@tab_value]
+              tab_content
             end
           end
         end
@@ -36,7 +50,7 @@ class LiveCodeSegment < HyperComponent
     end
     BR{}
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true, justify: :center, xs: 8, sm: 8, md: 6) do
+      Mui.Grid(item: true, xs: 8, sm: 8, md: 6) do
         unless compile && evaluate && render_component
           Sem.Message(negative: true) do
             H3 { @compile_error_heading }
@@ -57,6 +71,23 @@ class LiveCodeSegment < HyperComponent
     #   end
     # end
     # Sem.Divider(hidden: true)
+    #
+
+  end
+
+  before_unmount do
+    @ruby_code = ""
+    @random = ""
+    @tab_value = 0
+  end
+
+  def tab( value)
+    mutate @tab_value = value
+  end
+
+  def tab_content
+    return code_editor_and_results.as_node if @tab_value == 0
+    CompiledJsTab(opal_code: @compiled_code).as_node if @tab_value == 1
   end
 
   def code_editor_and_results
@@ -86,14 +117,14 @@ class LiveCodeSegment < HyperComponent
     compiled_js = CompiledJsTab(opal_code: @compiled_code).as_node
     # html_output = HtmlOutputTab(element_id: "result-#{@random}").as_node
 
-    panes = []
-    panes.concat [ { menuItem: 'Live Ruby',   render: -> { live_code.to_n } },
-                   { menuItem: 'Generated JS', render: -> { compiled_js.to_n } }
-                   # { menuItem: 'HTML output', render: -> { html_output.to_n } }
-    ]
-
-    menu = { secondary: false, pointing: true }
-    Sem.Tab(menu: menu.to_n, panes: panes.to_n )
+    panes = [live_code]
+    # alert @live_code
+    # panes.concat [ render: -> { @live_code.to_n }, render: -> { compiled_js.to_n }
+    #                # { menuItem: 'HTML output', render: -> { html_output.to_n } }
+    # ]
+    #
+    # menu = { secondary: false, pointing: true }
+    # Sem.Tab(menu: menu.to_n, panes: panes.to_n )
 
   end
 
