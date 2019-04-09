@@ -11,14 +11,11 @@ class LiveCodeSegment < HyperComponent
     @tab_value = 0
   end
 
-  # before_receive_props do |next_props|
-    # mutate @ruby_code = next_props[:code]
-    # mutate @tab_value = 0
-    # # alert @ruby_code
-    # mutate @random = random_key
-  # end
+  after_mount do
+    `$("#appear").animate({"opacity": "1"}, 600);`
+  end
 
-  render(DIV, class: 'block gray-text') do
+  render(DIV,class: 'block gray-text') do
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
       Mui.Grid(item: true, xs: 8, sm: 8, md: 6) do
         @Content
@@ -45,43 +42,23 @@ class LiveCodeSegment < HyperComponent
               tab_content
             end
           end
-        end
-      end
-    end
-    BR{}
-    Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true, xs: 8, sm: 8, md: 6) do
-        unless compile && evaluate && render_component
-          Sem.Message(negative: true) do
-            H3 { @compile_error_heading }
-            P { @compile_error_message }
+          Mui.CardContent(class: 'white-background') do
+            unless compile && evaluate && render_component
+              Sem.Message(negative: true) do
+                H3 { @compile_error_heading }
+                P { @compile_error_message }
+              end
+            end
           end
         end
       end
     end
-
-
-    # Sem.Divider(hidden: true)
-    # Sem.Grid(columns: 2, relaxed: true, padded: false, container: false) do
-    #   Sem.GridColumn(width: 4, className: 'tight-box') { @Content }
-    #   Sem.GridColumn(width: 12, className: 'tight-box') do
-    #     Sem.Container(className: 'white-background outline-box') do
-    #       tabs
-    #     end
-    #   end
-    # end
-    # Sem.Divider(hidden: true)
-    #
+    BR{}
 
   end
 
-  before_unmount do
-    @ruby_code = ""
-    @random = ""
-    @tab_value = 0
-  end
 
-  def tab( value)
+  def tab(value)
     mutate @tab_value = value
   end
 
@@ -137,7 +114,7 @@ class LiveCodeSegment < HyperComponent
       matchBrackets: true
     }
     ReactCodeMirror(options: options.to_n, value: @ruby_code.to_n,
-      onChange: lambda { |value| mutate(@ruby_code = value) })
+                    onChange: lambda { |value| mutate(@ruby_code = value) })
   end
 
   def compile
@@ -187,3 +164,4 @@ class LiveCodeSegment < HyperComponent
   end
 
 end
+

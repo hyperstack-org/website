@@ -60,23 +60,27 @@ class HomePage < HyperComponent
       end
       DIV(class: 'white-background') do
 
-        case @active_example
-        when 0
-          LiveCodeSegment(key: :HELLO_WORLD_EXAMPLE, content: simple_components, code: HELLO_WORLD_EXAMPLE)
-        when 1
-          LiveCodeSegment(key: :STYLISH_COMPONENT,content: html_dsl, code: STYLISH_COMPONENT)
-        when 2
-          LiveCodeSegment(key: :STATE_EXAMPLE, content: stateful_components, code: STATE_EXAMPLE)
-        when 3
-          LiveCodeSegment(key: :JAVASCRIPT_COMPONENTS,content: javascript_in_ruby, code: JAVASCRIPT_COMPONENTS)
-        when 4
-          LiveCodeSegment(key: :SERVERLESS,content: serverless, code: SERVERLESS)
+        DIV(id: :appear) do
+          case @active_example
+            when 0
+              LiveCodeSegment(key: :HELLO_WORLD_EXAMPLE, content: simple_components, code: HELLO_WORLD_EXAMPLE)
+            when 1
+              LiveCodeSegment(key: :STYLISH_COMPONENT,content: html_dsl, code: STYLISH_COMPONENT)
+            when 2
+              LiveCodeSegment(key: :STATE_EXAMPLE, content: stateful_components, code: STATE_EXAMPLE)
+            when 3
+              LiveCodeSegment(key: :JAVASCRIPT_COMPONENTS,content: javascript_in_ruby, code: JAVASCRIPT_COMPONENTS)
+            when 4
+              LiveCodeSegment(key: :SERVERLESS,content: serverless, code: SERVERLESS)
+          end
         end
         BR {}
         DIV(class: 'text-center space-left space-right') do
           Mui.Button(variant: :contained, color: :secondary) {"Next Example: #{@next_example}"}.on(:click) do
             `var element_to_scroll_to = $('.anchor')[0];`
             `element_to_scroll_to.scrollIntoView();`
+            `$("#appear").css("opacity", "0.2");`
+
             @active_example < 4 ? @active_example +=1 : @active_example = 0
             case @active_example
             when 0
