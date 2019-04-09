@@ -16,7 +16,6 @@ import ReactDOM from 'react-dom';
 
 import * as Sem from 'semantic-ui-react';
 import * as Mui from '@material-ui/core';
-import * as Mic from '@material-ui/icons';
 
 import Marked from 'marked';
 import CodeMirror from 'react-codemirror';
@@ -38,7 +37,6 @@ global.ReactDOM = ReactDOM;
 
 global.Sem = Sem;
 global.Mui = Mui;
-global.Mic = Mic;
 global.Marked = Marked;
 global.ReactCodeMirror = CodeMirror;
 global.CodeMirrorRuby = CodeMirrorRuby;
