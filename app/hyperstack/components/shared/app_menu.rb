@@ -17,22 +17,17 @@ class AppMenu < HyperComponent
 
   render(DIV) do
 
-
     Mui.AppBar(position: :fixed, className: 'other-background') do
-
       Mui.Toolbar() do
-
         if @menu == 'true'
-
           Mui.IconButton( id:'menu', 'aria-owns': 'simple-menu', 'aria-haspopup': true) do
             Sem.Icon(id:'menu', name: 'diamond', size: :small, color: :pink)
             DIV(id:'menu', class: "dropdown-content") do
               Mui.MenuList(id:'menu') do
-                Mui.MenuItem(id:'menu', class: 'white-text') {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
-                Mui.MenuItem(id:'menu', class: 'white-text') {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
-                Mui.MenuItem(id:'menu', class: 'white-text') {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Docs'}.on(:click) { docs_link }
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Github'}.on(:click) { repo_link }
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Chat'}.on(:click) { chat_link }
               end
-
             end
           end.on(:click) do|evt|
             ::Element.find('.dropdown-content').add_class('show')
@@ -45,23 +40,22 @@ class AppMenu < HyperComponent
 
           DIV(className: 'right') do
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained, className: 'space-right') {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+              Mui.Button(variant: :contained, className: 'space-right') {'Docs'}.on(:click) { docs_link }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained,className: 'space-right') {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+              Mui.Button(variant: :contained,className: 'space-right') {'Github'}.on(:click) { repo_link }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained,className: 'space-right') {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+              Mui.Button(variant: :contained,className: 'space-right') {'Chat'}.on(:click) { chat_link }
             end
           end
         end
       end
     end
-
-    BR(){}
-    BR(){}
+    BR() {}
+    BR() {}
   end
 
   def change_menu
@@ -80,4 +74,15 @@ class AppMenu < HyperComponent
     x.addListener(myFunction) `
   end
 
+  def chat_link
+    `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");`
+  end
+
+  def repo_link
+    `window.open('https://github.com/hyperstack-org', "_blank");`
+  end
+
+  def docs_link
+    AppStore.history.push "/#{AppStore.version}/docs"
+  end
 end
