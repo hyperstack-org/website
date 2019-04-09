@@ -8,7 +8,7 @@ Each page on the website has an 'Improve this page' button which will create a P
 
 ## If you think you can improve the website
 
-Please create an issue describing your plans and reach out to us in the Gitter chat. Our goal for this site is that it acts as a showcase for all that Hyperstack can do, so your creativity is very welcome.
+Please create an issue describing your plans and reach out to us in the Slack chat. Our goal for this site is that it acts as a showcase for all that Hyperstack can do, so your creativity is very welcome.
 
 ## If you find a bug
 

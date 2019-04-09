@@ -24,7 +24,18 @@
 + Semantic UI React as the main stylesheet
 + Latest version of Rails
 + Hosted on Heroku
-+ Travis build process for CI/CD deployments to edge and master
+
+## Help and support
+
+### Slack chat
++ First, join our Slack group here: https://hyperstack.org/slack-invite
++ Once you have joined, you can access Slack through the multi-platform app (you can add Hyperstack-org if you already use Slack for work) or if you prefer not to use the app, you can use your browser with a shortcut here: https://hyperstack.org/slack
+
+### StackOverflow
+
++ We are using SO for all technical Q&A now. Please feel free to also ask and discuss in the Slack chat, but we are trying to get as many good Q&A in SO as we can, so we might ask you to re-ask in SO as well. Our tag is hyperstack but we like to add the ruby-on-rails, ruby and react-js tags as well to bring the project to wider attention (please mention you are using Hyperstack and even add a link to the project if you can).
++ To ask a question use: https://hyperstack.org/question
++ To see all hyperstack questions use https://hyperstack.org/questions
 
 ## Setup
 
@@ -45,7 +56,7 @@ Deployment is done directly to Heroku. There are two heroku instances running:
 
 ### Deploying to staging or production
 
-**You need to be a member of the Hyperstack Heroku account to be able to deploy, so if you are not then these instructions will not work for you. If you would like to participate please reach out in Gitter**
+**You need to be a member of the Hyperstack Heroku account to be able to deploy, so if you are not then these instructions will not work for you. If you would like to participate please reach out in Slack**
 
 #### Setup the staging instance
 + clone the repo
@@ -56,6 +67,7 @@ Deployment is done directly to Heroku. There are two heroku instances running:
 + clone the repo, checkout master
 + `heroku git:remote -a hyperstack-website` - this will add the remote
 + `git remote rename heroku heroku-production` - this will rename the heroku remote heroku-production
++ Note if you are on your own branch then you will need to use `git push heroku-staging my_branch_name:master`
 
 ### Deploying to staging.hyperstack.org
 + `git push heroku-staging master` - the master is confusing, but basically its saying to deploy to the Heroku master (not the local master branch)

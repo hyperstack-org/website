@@ -18,15 +18,19 @@ class AppFooter < HyperComponent
       SPAN { ' and supported by a '}
       SPAN(class: 'blue-text') { 'friendly community' }
     end
-    P(class: 'gray-text') { 'Reach out in Gitter and we will be happy to help get you onboarded.' }
+    P(class: 'gray-text') { 'Reach out in Slack and we will be happy to help get you onboarded.' }
   end
 
   def links
     A { 'Github' }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
     BR()
-    A { 'Gitter chat' }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+    A { 'Join Slack chat' }.on(:click) { `window.open('https://hyperstack.org/slack-invite', "_blank");` }
     BR()
-    A { 'Stack Overflow questions' }.on(:click) { `window.open('https://stackoverflow.com/questions/ask?tags=hyperstack+ruby-on-rails+reactjs+ruby+isomorphic', "_blank");` }
+    A { 'Access Slack' }.on(:click) { `window.open('https://hyperstack.org/slack', "_blank");` }
+    BR()
+    A { 'Ask a StackOverflow question' }.on(:click) { `window.open('https://hyperstack.org/question', "_blank");` }
+    BR()
+    A { 'See all StackOverflow questions' }.on(:click) { `window.open('https://hyperstack.org/questions', "_blank");` }
     BR()
     A { 'Docs' }.on(:click) { `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/docs', "_blank");` }
     BR()

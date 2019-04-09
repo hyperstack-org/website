@@ -15,10 +15,13 @@ class AppMenu < HyperComponent
           A { SPAN(class: 'top-nav') {'Github'} }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
         end
         Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Chat'} }.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+           A { SPAN(class: 'top-nav') {'Join Slack'} }.on(:click) { `window.open('https://hyperstack.org/slack-invite', "_blank");` }
+         end
+        Sem.MenuItem do
+           A { SPAN(class: 'top-nav') {'Access Slack'} }.on(:click) { `window.open('https://hyperstack.org/slack', "_blank");` }
          end
          Sem.MenuItem do
-            A { SPAN(class: 'top-nav') {'Ask a Question'} }.on(:click) { `window.open('https://stackoverflow.com/questions/ask?tags=hyperstack+ruby-on-rails+reactjs+ruby+isomorphic', "_blank");` }
+            A { SPAN(class: 'top-nav') {'Ask a Question'} }.on(:click) { `window.open('https://hyperstack.org/question', "_blank");` }
           end
          Sem.MenuItem(position: 'right') do
            IFRAME(class: 'github',
