@@ -182,13 +182,3 @@ a:hover {
         font-size: 10px;
     }
 }
-
-.div.MuiToolbar-root-134 {
-    background-color: yellow;
-    @include media-breakpoint-up(xs) {
-        background-color: black;
-    }
-    @include media-breakpoint-up(sm) {
-        background-color: white;
-    }
-}
