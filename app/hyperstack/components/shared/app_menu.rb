@@ -1,7 +1,7 @@
 require 'helpers/helpers'
 class AppMenu < HyperComponent
 
-  after_mount do
+  before_mount do
     @menu = ''
     change_menu
   end
@@ -12,8 +12,7 @@ class AppMenu < HyperComponent
 
         if @menu == 'true'
           Mui.IconButton() do
-            # Mic.Icon(fontSize: :large) { 'expand_icon' }
-            "MobileIcon"
+            Sem.Icon(name: 'diamond', size: :small)
           end
         else
           Mui.Button(color: :secondary ) {'Hyperstack'}.on(:click) { AppStore.history.push "/#{AppStore.version}" }
