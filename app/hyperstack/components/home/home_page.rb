@@ -79,7 +79,7 @@ class HomePage < HyperComponent
           Mui.Button(variant: :contained, color: :secondary) {"Next Example: #{@next_example}"}.on(:click) do
             `var element_to_scroll_to = $('.anchor')[0];`
             `element_to_scroll_to.scrollIntoView();`
-            `$("#appear").css("opacity", "0.2");`
+            `$("#appear").css("opacity", "0");`
 
             @active_example < 4 ? @active_example +=1 : @active_example = 0
             case @active_example

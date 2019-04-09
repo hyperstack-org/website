@@ -12,7 +12,7 @@ class LiveCodeSegment < HyperComponent
   end
 
   after_mount do
-    `$("#appear").animate({"opacity": "1"}, 600);`
+    `$("#appear").animate({"opacity": "1"}, 650);`
   end
 
   render(DIV,class: 'block gray-text') do
@@ -42,7 +42,7 @@ class LiveCodeSegment < HyperComponent
               tab_content
             end
           end
-          Mui.CardContent(class: 'white-background') do
+          Mui.CardContent(class: 'clear-background') do
             unless compile && evaluate && render_component
               Sem.Message(negative: true) do
                 H3 { @compile_error_heading }
