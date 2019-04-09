@@ -16,9 +16,6 @@ class HomePage < HyperComponent
           end
         end
 
-        BR(){}
-        BR(){}
-
         Mui.Toolbar() do
 
           DIV(className: 'right') do

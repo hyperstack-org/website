@@ -102,7 +102,7 @@
 }
 
 .other-background {
-    background: hsl(224, 19%, 18%) !important;
+    background: rgba(60, 66, 72, 0.95) !important;
 }
 
 .hyperlooppink { color: #e81176;}
@@ -186,3 +186,16 @@ a:hover {
         font-size: 10px;
     }
 }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    background-color: hsl(220, 13%, 18%);
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.show {display: block;}

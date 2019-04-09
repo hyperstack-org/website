@@ -12,7 +12,7 @@ class LiveCodeSegment < HyperComponent
   end
 
   after_mount do
-    `$("#appear").animate({"opacity": "1"}, 650);`
+    `$("#appear").delay(200).animate({"opacity": "1"}, 700);`
   end
 
   render(DIV,class: 'block gray-text') do

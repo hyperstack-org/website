@@ -1,4 +1,13 @@
 require 'helpers/helpers'
+
+# hide mobile-menu on click outside
+Window.on(:click) do|e|
+  ed = e.target.to_n
+  if ed.attr('id') != 'menu'
+    ::Element.find('.dropdown-content').remove_class('show')
+  end
+end
+
 class AppMenu < HyperComponent
 
   before_mount do
@@ -7,32 +16,52 @@ class AppMenu < HyperComponent
   end
 
   render(DIV) do
+
+
     Mui.AppBar(position: :fixed, className: 'other-background') do
+
       Mui.Toolbar() do
 
         if @menu == 'true'
-          Mui.IconButton() do
-            Sem.Icon(name: 'diamond', size: :small)
+
+          Mui.IconButton( id:'menu', 'aria-owns': 'simple-menu', 'aria-haspopup': true) do
+            Sem.Icon(id:'menu', name: 'diamond', size: :small, color: :pink)
+            DIV(id:'menu', class: "dropdown-content") do
+              Mui.MenuList(id:'menu') do
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+                Mui.MenuItem(id:'menu', class: 'white-text') {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+              end
+
+            end
+          end.on(:click) do|evt|
+            ::Element.find('.dropdown-content').add_class('show')
           end
         else
-          Mui.Button(color: :secondary ) {'Hyperstack'}.on(:click) { AppStore.history.push "/#{AppStore.version}" }
+          Mui.Button(variant: :contained, color: :default) do
+            Mui.Typography(){'Hyperstack '}
+            Sem.Icon(id:'menu', name: 'diamond', color: :grey )
+          end.on(:click) { AppStore.history.push "/#{AppStore.version}" }
 
           DIV(className: 'right') do
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained, color: :secondary, className: 'space-right') {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+              Mui.Button(variant: :contained, className: 'space-right') {'Docs'}.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :outlined, color: :secondary, className: 'space-right') {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+              Mui.Button(variant: :contained,className: 'space-right') {'Github'}.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :outlined, color: :secondary, className: 'space-right') {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
+              Mui.Button(variant: :contained,className: 'space-right') {'Chat'}.on(:click) { `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");` }
             end
           end
         end
       end
     end
+
+    BR(){}
+    BR(){}
   end
 
   def change_menu
@@ -49,18 +78,6 @@ class AppMenu < HyperComponent
     var x = window.matchMedia("(max-width: 700px)")
     myFunction(x)
     x.addListener(myFunction) `
-
-    # how would I write this in Ruby?
-    # def my_def(x)
-    #   if x # x.matches is not defined
-    #     alert 'boom'
-    #   else
-    #     alert 'pow'
-    #   end
-    # end
-    # x = `window`.match_media("(max-width: 700px)")
-    # my_def(x)
-    # x.add_listener('my_def') # add_listener is not defined
   end
 
 end
