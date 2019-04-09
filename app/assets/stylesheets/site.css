@@ -98,7 +98,7 @@
 }
 
 .other-background {
-    background: rgb(0, 0, 0, 0.2) !important;
+    background: hsl(224, 19%, 18%) !important;
 }
 
 .hyperlooppink { color: #e81176;}
