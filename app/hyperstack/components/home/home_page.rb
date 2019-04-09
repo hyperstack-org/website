@@ -53,7 +53,6 @@ class HomePage < HyperComponent
         DIV(class: 'anchor'){}
         BR {}
         BR {}
-        BR {}
       end
       DIV(class: 'white-background') do
 
@@ -71,9 +70,8 @@ class HomePage < HyperComponent
               LiveCodeSegment(key: :SERVERLESS,content: serverless, code: SERVERLESS)
           end
         end
-        BR {}
         DIV(class: 'text-center space-left space-right') do
-          Mui.Button(variant: :contained, color: :secondary) {"Next Example: #{@next_example}"}.on(:click) do
+          Mui.Button(variant: :contained, color: :secondary) {"See the next Example: #{@next_example}"}.on(:click) do
             `var element_to_scroll_to = $('.anchor')[0];`
             `element_to_scroll_to.scrollIntoView();`
             `$("#appear").css("opacity", "0");`
@@ -94,6 +92,15 @@ class HomePage < HyperComponent
             mutate @active_example
           end
         end
+
+        BR {}
+        BR {}
+        BR {}
+        DIV(class: 'text-center') do
+          IFRAME( width:"560", height:"315", src:"https://www.youtube.com/embed/GEe7hHIhyUs", frameborder:"0",
+                  allow:"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen: true)
+        end
+
         BR {}
         BR {}
 

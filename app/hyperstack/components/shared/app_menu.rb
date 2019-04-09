@@ -34,8 +34,7 @@ class AppMenu < HyperComponent
           end
         else
           Mui.Button(variant: :contained, color: :default) do
-            Mui.Typography(){'Hyperstack '}
-            Sem.Icon(id:'menu', name: 'diamond', color: :grey )
+            Mui.Typography(){'Hyperstack'}
           end.on(:click) { AppStore.history.push "/#{AppStore.version}" }
 
           DIV(className: 'right') do
@@ -75,7 +74,7 @@ class AppMenu < HyperComponent
   end
 
   def chat_link
-    `window.open('https://gitter.im/ruby-hyperloop/chat', "_blank");`
+    `window.open('https://hyperstack.org/slack-invite', "_blank");`
   end
 
   def repo_link
