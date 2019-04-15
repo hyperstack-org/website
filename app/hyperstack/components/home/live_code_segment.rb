@@ -24,29 +24,36 @@ class LiveCodeSegment < HyperComponent
     BR{}
 
     Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
-      Mui.Grid(item: true, xs: 10, sm: 10, md: 8, lg: 6) do
+      Mui.Grid(item: true,xs: 10, sm: 10, md: 10, lg: 8, xl: 8) do
         Mui.Card() do
-          Mui.Tabs(value: @tab_value) do
-            Mui.Tab(label: "Live Ruby") {}
-            Mui.Tab(label: "Generated JS") {}
-          end.on(:change) do |evt, value|
-            tab value
-          end
+          Mui.Grid(container:true, justify: :center,className: :grow, spacing: 8) do
 
-          Mui.CardContent(class:'grey') do
-            Mui.Typography(variant: :h5, component: :h3) do
-              # "Simple Component"
-              # code_editor_and_results.as_node
-              # alert @tab_value
-              # tabs[@tab_value]
-              tab_content
+            Mui.Grid(item: true,xs: 12, sm: 12, md: 8, lg: 8, xl: 8) do
+              Mui.Tabs(value: @tab_value) do
+                Mui.Tab(label: "Live Ruby") {}
+                Mui.Tab(label: "Generated JS") {}
+              end.on(:change) do |evt, value|
+                tab value
+              end
+
+              Mui.CardContent(class:'grey') do
+                Mui.Typography(variant: :h5, component: :h3) do
+                  # "Simple Component"
+                  # code_editor_and_results.as_node
+                  # alert @tab_value
+                  # tabs[@tab_value]
+                  tab_content
+                end
+              end
             end
-          end
-          Mui.CardContent(class: 'clear-background') do
-            unless compile && evaluate && render_component
-              Sem.Message(negative: true) do
-                H3 { @compile_error_heading }
-                P { @compile_error_message }
+            Mui.Grid(item: true,xs: 12, sm: 12, md: 4, lg: 4, xl:4) do
+              Mui.CardContent(class: 'clear-background') do
+                unless compile && evaluate && render_component
+                  Sem.Message(negative: true) do
+                    H3 { @compile_error_heading }
+                    P { @compile_error_message }
+                  end
+                end
               end
             end
           end

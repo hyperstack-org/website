@@ -39,15 +39,15 @@ class AppMenu < HyperComponent
 
           DIV(className: 'right') do
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained, className: 'space-right') {'Docs'}.on(:click) { docs_link }
+              Mui.Button(variant: :outlined, className: 'space-right', style:{"color": "white"}) {'Docs'}.on(:click) { docs_link }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained,className: 'space-right') {'Github'}.on(:click) { repo_link }
+              Mui.Button(variant: :outlined,className: 'space-right', style:{"color": "white"}) {'Github'}.on(:click) { repo_link }
             end
 
             SPAN(class: 'space-right' ) do
-              Mui.Button(variant: :contained,className: 'space-right') {'Chat'}.on(:click) { chat_link }
+              Mui.Button(variant: :outlined,className: 'space-right', style:{"color": "white"}) {'Chat'}.on(:click) { chat_link }
             end
           end
         end

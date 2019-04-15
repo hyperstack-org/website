@@ -2,7 +2,8 @@ class HomePage < HyperComponent
 
   before_mount do
     @active_example = 0
-    @next_example = "Stylish Components"
+    @next_example = "HTML DSL"
+    @prev_example = "Serverless & RPC"
   end
 
   render do
@@ -70,27 +71,45 @@ class HomePage < HyperComponent
               LiveCodeSegment(key: :SERVERLESS,content: serverless, code: SERVERLESS)
           end
         end
-        DIV(class: 'text-center space-left space-right') do
-          Mui.Button(variant: :contained, color: :secondary) {"See the next Example: #{@next_example}"}.on(:click) do
-            `var element_to_scroll_to = $('.anchor')[0];`
-            `element_to_scroll_to.scrollIntoView();`
-            `$("#appear").css("opacity", "0");`
 
-            @active_example < 4 ? @active_example +=1 : @active_example = 0
-            case @active_example
-            when 0
-              @next_example = "HTML DSL"
-            when 1
-              @next_example = "STATEFUL components"
-            when 2
-              @next_example = "Bridging Ruby and JavaScript"
-            when 3
-              @next_example = "Serverless & RPC"
-            when 4
-              @next_example = "simple components"
-            end
-            mutate @active_example
+        DIV(class: 'text-center space-left space-right') do
+          Mui.Button(variant: :contained, color: :secondary) {"previous: #{@prev_example}"}.on(:click) do
+            @active_example > 0 ? @active_example -=1 : @active_example = 4
+            handle_button
           end
+          Mui.Button(variant: :contained, color: :secondary) {"next: #{@next_example}"}.on(:click) do
+            @active_example < 4 ? @active_example +=1 : @active_example = 0
+            handle_button
+          end
+
+        # Mui.MobileStepper(
+        #     variant: "progress",
+        #     steps: 6,
+        #     position: "static"
+        # # ,
+        # #     'nextButton': lambda {Mui.Button(size: "small") {'next'}}
+        # #     backButton: lambda {Mui.Button(size: "small") {'next'}.to_n}
+        # ) { Mui.Button(size: "small") {'next'} }
+
+        #   <MobileStepper
+        #   variant="progress"
+        #   steps={6}
+        #   position="static"
+        #   activeStep={this.state.activeStep}
+        #   className={classes.root}
+        #   nextButton={
+        #       <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === 5}>
+        #       Next
+        #   {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+        #   </Button>
+        # }
+        # backButton={
+        #   <Button size="small" onClick={this.handleBack} disabled={this.state.activeStep === 0}>
+        #     {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+        #     Back
+        #   </Button>
+        #   }
+        #   />
         end
 
         BR {}
@@ -119,6 +138,32 @@ class HomePage < HyperComponent
       AppFooter()
 
     end
+  end
+
+  def handle_button
+    `var element_to_scroll_to = $('.anchor')[0];`
+    `element_to_scroll_to.scrollIntoView();`
+    `$("#appear").css("opacity", "0");`
+
+    case @active_example
+    when 0 # "simple components"
+      @prev_example = "Serverless & RPC"
+      @next_example = "HTML DSL"
+    when 1 # "HTML DSL"
+      @prev_example = "simple components"
+      @next_example = "STATEFUL components"
+    when 2 # "STATEFUL components"
+      @prev_example = "HTML DSL"
+      @next_example = "Bridging Ruby and JavaScript"
+    when 3 # "Bridging Ruby and JavaScript"
+      @prev_example = "STATEFUL components"
+      @next_example = "Serverless & RPC"
+    when 4 # "Serverless & RPC"
+      @prev_example = "Bridging Ruby and JavaScript"
+      @next_example = "simple components"
+    end
+
+    mutate @active_example
   end
 
   def container_default
