@@ -179,7 +179,7 @@ class HomePage < HyperComponent
     # LiveCodeSegment(content: content, code: HELLO_WORLD_EXAMPLE)
     DIV do
       Sem.Header(as: :h2, class: 'pink') { "Simple Components" }
-        P { 'A Hyperstack user-interface is composed of Components which mix conditional logic and HTML elements.' }
+        P { 'A Hyperstack user-interface is composed of Components which use a Ruby DSL to describe your HTML.' }
         SPAN { 'Under the covers, we use '}
         A(href: 'https://opalrb.com/', target: "_blank") { 'Opal' }
         SPAN { ' to compile your Ruby code into ' }
@@ -193,10 +193,9 @@ class HomePage < HyperComponent
     # LiveCodeSegment(content: content, code: STYLISH_COMPONENT  )
     DIV do
     Sem.Header(as: :h2, class: 'pink') { "HTML DSL" }
-      P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
-      P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the standard Ruby style rules slightly, but we think it reads better this way." }
-      P { "You can specify the CSS class on any HTML element." }
       P { "The Hyperstack Component DSL lets you code in Ruby so you don't have to learn a new templating language like ERB or JSX." }
+      P { "The state, logic, classes and styles describing your HTML is concisely described by Ruby classes." }
+      P { "Notice that HTML elements like BUTTON and DIV are in CAPS. This is so that they are easily distinguished from other Ruby methods, and don't pollute your application's namespace" }
     end.as_node
   end
 
@@ -205,8 +204,8 @@ class HomePage < HyperComponent
       Sem.Header(as: :h2, class: 'pink') { "Stateful Components" }
       P { "In Hyperstack you write code in a declarative way with Components that manage their own state." }
       P { "As State changes, React works out how to render the user interface without you having to worry about the DOM." }
-      P { "State is held in any instance variable. To alert React to a state change we use the mutate method. This will cause a rerender of any component depending on that instance variables.." }
-      P { "Because state is built out of Ruby instance variables, any Ruby class can become a component, removing the need for complex flux loops, reducers, and subscribtions." }
+      P { "State is held in any instance variable. To alert React to a state change use the mutate method. This will cause a rerender of parts of the display depending on that state." }
+      P { "Because state is simply Ruby instance data any Ruby class can become a state store, removing the need for complex flux loops, reducers, and subscriber functions." }
     end.as_node
   end
 
@@ -214,8 +213,8 @@ class HomePage < HyperComponent
     DIV do
       Sem.Header(as: :h2, class: 'pink') { "Bridging Ruby and JavaScript" }
       P { "Hyperstack gives you full access to the entire universe of JavaScript libraries and components directly within your Ruby code." }
-      P { "Everything you can do in JavaScript is simple to do in Ruby; this includes passing parameters between Ruby and JavaScript and even passing Ruby methods as JavaScript callbacks." }
-      STRONG { 'There is no need to learn JavaScript' }
+      P { "Everything you can do in JavaScript is simple to do in Ruby; this includes passing parameters between Ruby and Javascript and even passing Ruby methods as JavaScript callbacks." }
+      STRONG { 'There is no need to learn Javascript' }
       SPAN {', all you need to understand is how to bridge between JS and Ruby.'}
       BR()
       BR()
