@@ -38,10 +38,6 @@ class LiveCodeSegment < HyperComponent
 
               Mui.CardContent(class:'grey') do
                 Mui.Typography(variant: :h5, component: :h3) do
-                  # "Simple Component"
-                  # code_editor_and_results.as_node
-                  # alert @tab_value
-                  # tabs[@tab_value]
                   tab_content
                 end
               end
@@ -75,24 +71,7 @@ class LiveCodeSegment < HyperComponent
   end
 
   def code_editor_and_results
-    # Sem.Grid(columns: 2, relaxed: false, padded: false, container: true) do
-    #   Sem.GridColumn(width: 12, className: 'tight-box') { code_mirror_editor }
-    #   Sem.GridColumn(width: 4) do
-    #     unless compile && evaluate && render_component
-    #       Sem.Message(negative: true) do
-    #         H3 { @compile_error_heading }
-    #         P { @compile_error_message }
-    #       end
-    #     end
-    #   end
-    # end
-
-    # Mui.Grid(container:true, justify: :center, spacing: 24) do
-    #   Mui.Grid(item: true, xs: 24) do
-        code_mirror_editor
-    #   end
-    # end
-
+     code_mirror_editor
   end
 
   def tabs
@@ -102,14 +81,6 @@ class LiveCodeSegment < HyperComponent
     # html_output = HtmlOutputTab(element_id: "result-#{@random}").as_node
 
     panes = [live_code]
-    # alert @live_code
-    # panes.concat [ render: -> { @live_code.to_n }, render: -> { compiled_js.to_n }
-    #                # { menuItem: 'HTML output', render: -> { html_output.to_n } }
-    # ]
-    #
-    # menu = { secondary: false, pointing: true }
-    # Sem.Tab(menu: menu.to_n, panes: panes.to_n )
-
   end
 
   def code_mirror_editor
