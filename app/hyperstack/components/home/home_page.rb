@@ -72,44 +72,18 @@ class HomePage < HyperComponent
           end
         end
 
-        DIV(class: 'text-center space-left space-right') do
-          Mui.Button(variant: :contained, color: :secondary) {"previous: #{@prev_example}"}.on(:click) do
-            @active_example > 0 ? @active_example -=1 : @active_example = 4
-            handle_button
+          Mui.Grid(container: true, alignContent: :stretch, direction: :row, justify: :center, alignItems: :center, spacing: 40) do
+          Mui.Grid(:item, xs: 12, sm: 10, md: 4) do
+          Mui.MobileStepper(variant: "progress", steps: 5, position: "static", activeStep: @active_example,
+                            nextButton: Mui.Button(size: "small") { 'next' }.on(:click) do
+                              @active_example < 4 ? @active_example += 1 : @active_example = 0
+                              handle_button
+                            end.as_node.to_n,
+                            backButton: Mui.Button(size: "small") { 'back' }.on(:click) do
+                              @active_example > 0 ? @active_example -= 1 : @active_example = 4
+                              handle_button
+                            end.as_node.to_n)
           end
-          Mui.Button(variant: :contained, color: :secondary) {"next: #{@next_example}"}.on(:click) do
-            @active_example < 4 ? @active_example +=1 : @active_example = 0
-            handle_button
-          end
-
-        # Mui.MobileStepper(
-        #     variant: "progress",
-        #     steps: 6,
-        #     position: "static"
-        # # ,
-        # #     'nextButton': lambda {Mui.Button(size: "small") {'next'}}
-        # #     backButton: lambda {Mui.Button(size: "small") {'next'}.to_n}
-        # ) { Mui.Button(size: "small") {'next'} }
-
-        #   <MobileStepper
-        #   variant="progress"
-        #   steps={6}
-        #   position="static"
-        #   activeStep={this.state.activeStep}
-        #   className={classes.root}
-        #   nextButton={
-        #       <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === 5}>
-        #       Next
-        #   {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-        #   </Button>
-        # }
-        # backButton={
-        #   <Button size="small" onClick={this.handleBack} disabled={this.state.activeStep === 0}>
-        #     {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-        #     Back
-        #   </Button>
-        #   }
-        #   />
         end
 
         BR {}
@@ -165,7 +139,7 @@ class HomePage < HyperComponent
 
     mutate @active_example
   end
-
+  
   def container_default
     {container:true ,alignContent: :stretch, direction: :column, justify: :center, alignItems: :center, spacing: 40}
   end
