@@ -76,7 +76,7 @@ class UsingState < HyperComponent
 
   def input
     DIV(class: 'ui input fluid block') do
-      INPUT(type: :text).on(:change) do |evt|
+      INPUT(type: :text, value: @input_value).on(:change) do |evt|
         # we are updating the value per keypress
         # using mutate will cause a rerender
         mutate @input_value = evt.target.value
