@@ -28,7 +28,8 @@
 ## Help and support
 
 ### Slack chat
-+ First, join our Slack group here: https://hyperstack.org/slack-invite
++ First, join our Slack group here: https://join.slack.com/t/hyperstack-org/shared_invite/enQtNTg4NTI5NzQyNTYyLWQ4YTZlMGU0OGIxMDQzZGIxMjNlOGY5MjRhOTdlMWUzZWYyMTMzYWJkNTZmZDRhMDEzODA0NWRkMDM4MjdmNDE
+
 + Once you have joined, you can access Slack through the multi-platform app (you can add Hyperstack-org if you already use Slack for work) or if you prefer not to use the app, you can use your browser with a shortcut here: https://hyperstack.org/slack
 
 ### StackOverflow

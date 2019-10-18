@@ -1,33 +1,32 @@
-require 'helpers/helpers'
+require "helpers/helpers"
 
 class AppMenu < HyperComponent
-
-  render(DIV, class: 'gray-background') do
-    Sem.Container(className: 'Top') do
-      Sem.Menu(secondary: true, className: 'gray-background') do
+  render(DIV, class: "gray-background") do
+    Sem.Container(className: "Top") do
+      Sem.Menu(secondary: true, className: "gray-background") do
         Sem.MenuItem do
-          A { SPAN(class: 'top-nav') {'Hyperstack'} }.on(:click) { AppStore.history.push "/#{AppStore.version}" }
+          A { SPAN(class: "top-nav") { "Hyperstack" } }.on(:click) { AppStore.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Docs'} }.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
-         end
-        Sem.MenuItem do
-          A { SPAN(class: 'top-nav') {'Github'} }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+          A { SPAN(class: "top-nav") { "Docs" } }.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
         end
         Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Join Slack'} }.on(:click) { `window.open('https://hyperstack.org/slack-invite', "_blank");` }
-         end
+          A { SPAN(class: "top-nav") { "Github" } }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
+        end
         Sem.MenuItem do
-           A { SPAN(class: 'top-nav') {'Access Slack'} }.on(:click) { `window.open('https://hyperstack.org/slack', "_blank");` }
-         end
-         Sem.MenuItem do
-            A { SPAN(class: 'top-nav') {'Ask a Question'} }.on(:click) { `window.open('https://hyperstack.org/question', "_blank");` }
-          end
-         Sem.MenuItem(position: 'right') do
-           IFRAME(class: 'github',
-             src: 'https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true',
-             frameBorder: '0', scrolling: '0', width: '100', height: '20')
-         end
+          A { SPAN(class: "top-nav") { "Join Slack" } }.on(:click) { `window.open('https://join.slack.com/t/hyperstack-org/shared_invite/enQtNTg4NTI5NzQyNTYyLWQ4YTZlMGU0OGIxMDQzZGIxMjNlOGY5MjRhOTdlMWUzZWYyMTMzYWJkNTZmZDRhMDEzODA0NWRkMDM4MjdmNDE', "_blank");` }
+        end
+        Sem.MenuItem do
+          A { SPAN(class: "top-nav") { "Access Slack" } }.on(:click) { `window.open('https://hyperstack.org/slack', "_blank");` }
+        end
+        Sem.MenuItem do
+          A { SPAN(class: "top-nav") { "Ask a Question" } }.on(:click) { `window.open('https://hyperstack.org/question', "_blank");` }
+        end
+        Sem.MenuItem(position: "right") do
+          IFRAME(class: "github",
+                 src: "https://ghbtns.com/github-btn.html?user=hyperstack-org&repo=hyperstack&type=watch&count=true",
+                 frameBorder: "0", scrolling: "0", width: "100", height: "20")
+        end
       end
     end
   end
