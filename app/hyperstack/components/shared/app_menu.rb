@@ -8,7 +8,7 @@ class AppMenu < HyperComponent
           A { SPAN(class: "top-nav") { "Hyperstack" } }.on(:click) { AppStore.history.push "/#{AppStore.version}" }
         end
         Sem.MenuItem do
-          A { SPAN(class: "top-nav") { "Docs" } }.on(:click) { AppStore.history.push "/#{AppStore.version}/docs" }
+          A { SPAN(class: "top-nav") { "Docs" } }.on(:click) { `window.open('https://docs.hyperstack.org', "_blank");` }
         end
         Sem.MenuItem do
           A { SPAN(class: "top-nav") { "Github" } }.on(:click) { `window.open('https://github.com/hyperstack-org', "_blank");` }
