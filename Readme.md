@@ -38,6 +38,13 @@
 + To ask a question use: https://hyperstack.org/question
 + To see all hyperstack questions use https://hyperstack.org/questions
 
+## Node.js version setup
+
++ The project uses `node.js v10.24.0`
++ Better to install the nvm node versions manager (https://github.com/nvm-sh/nvm)
++ Then `nvm install 10.24.0`
++ in the project directory `nvm use`
+
 ## Setup
 
 + `bundle`
