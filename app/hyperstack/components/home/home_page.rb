@@ -13,7 +13,7 @@ class HomePage < HyperComponent
           html_dsl
           stateful_components
           javascript_in_ruby
-          serverless
+          # serverless
           get_started
         end
 
