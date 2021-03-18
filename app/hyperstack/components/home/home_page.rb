@@ -154,7 +154,7 @@ class HomePage < HyperComponent
         Sem.GridColumn(textAlign: :center) do
           Sem.Button(primary: true, size: :huge, basic: false) { "Get started with Hyperstack on Rails in under 5 minutes" }.on(:click) do
             # AppStore.history.push '/edge/docs/installation/installation'
-            `window.open('https://github.com/hyperstack-org/hyperstack/tree/edge/install', "_blank");`
+            `window.open('https://docs.hyperstack.org/rails-installation', "_blank");`
           end
         end
       end

@@ -1,2 +1,2 @@
-web: bundle exec puma
-hot: opal-hot-reloader -p 25222 -d app/hyperstack/
+web: bundle exec rails s -b 0.0.0.0
+hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack

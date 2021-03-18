@@ -45,6 +45,7 @@ gem 'hyper-state', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'r
 gem 'hyper-store', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec' # path: '../hyperstack/ruby/hyper-store' #
 gem 'hyper-router', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
 gem 'hyperstack-config', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+# gem "hyperstack-config", path: "../hyperstack/ruby/hyperstack-config"
 
 # Local gems
 # gem 'hyper-component', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
@@ -53,7 +54,7 @@ gem 'hyperstack-config', github: 'hyperstack-org/hyperstack', branch: 'edge', gl
 # gem 'hyper-router', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
 # gem 'hyperstack-config', path: '../hyperstack', glob: 'ruby/*/*.gemspec'
 
-gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader', branch: 'hyperstack'
+# gem 'opal_hot_reloader', github: 'hyperstack-org/opal-hot-reloader', branch: 'hyperstack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.3.1', require: false
@@ -72,6 +73,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'foreman'
+  gem 'rubocop'
+  gem 'hyper-trace', github: 'hyperstack-org/hyperstack', branch: 'edge', glob: 'ruby/*/*.gemspec'
+  gem 'pry'
 end
 
 group :test do
