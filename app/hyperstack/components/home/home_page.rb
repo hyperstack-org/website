@@ -41,7 +41,6 @@ class HomePage < HyperComponent
     content = DIV do
       Sem.Header(as: :h2, class: 'pink') { "HTML DSL" }
       P { "Conditional logic, HTML elements, state and style all intermingle in a Hyperstack Component." }
-      P { "Notice that the HTML elements (BUTTON, DIV, etc.) are in CAPS. We know this is bending the standard Ruby style rules slightly, but we think it reads better this way." }
       P { "You can specify the CSS class on any HTML element." }
       P { "The Hyperstack Component DSL lets you code in Ruby so you don't have to learn a new templating language like ERB or JSX." }
     end.as_node
