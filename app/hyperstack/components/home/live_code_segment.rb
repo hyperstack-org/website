@@ -1,3 +1,4 @@
+require 'corelib/string/unpack'
 require 'opal/compiler'
 
 class LiveCodeSegment < HyperComponent
